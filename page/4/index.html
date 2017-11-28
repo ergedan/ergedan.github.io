@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/WEB工作过程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/编译安装httpd-2.4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/WEB工作过程/" itemprop="url">WEB工作过程</a></h1>
+                <a class="post-title-link" href="/2017/11/28/编译安装httpd-2.4/" itemprop="url">编译安装httpd-2.4</a></h1>
         
 
         <div class="post-meta">
@@ -381,8 +381,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Apache/WEB工作过程/" itemprop="url" rel="index">
-                    <span itemprop="name">WEB工作过程</span>
+                  <a href="/categories/服务/Apache/编译安装httpd-2-4/" itemprop="url" rel="index">
+                    <span itemprop="name">编译安装httpd-2.4</span>
                   </a>
                 </span>
 
@@ -420,15 +420,14 @@
       
         
           
-          Web服务请求处理过程    此图为经过的OSI模型
-
-
-（1）Client需要和Server通信，这时需要发出建立连接请求
-（2）Client与Server进行传输数据包时，需要经应用层–&gt;传输层–&gt;网络层–&gt;链路层:层层打包然后传输至Server，Server对此包进行 链路层
+          编译安装httpd-2.4（1）准备安装前环境
+[root@localhost ~]# yum groupinstall -y &quot;development tools&quot;
+（2）编译安装apr
+[root@localhost src]# tar xf apr-1.6.2.tar.gz
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/WEB工作过程/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/编译安装httpd-2.4/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -535,7 +534,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -546,7 +545,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
