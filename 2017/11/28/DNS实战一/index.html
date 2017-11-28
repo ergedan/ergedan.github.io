@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="主从，转发，子域和父域," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="实战（1）搭建主DNS服务器（a）[root@localhost ~]# yum install -y bind   #安装包（b）[root@localhost ~]# vim /etc/named.conf   #修改主配置文件 方式一： 方式二： （c）[root@localhost ~]# vim /etc/ ">
+<meta name="keywords" content="主从，转发，子域和父域">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DNS实战">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/DNS实战一/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="实战（1）搭建主DNS服务器（a）[root@localhost ~]# yum install -y bind   #安装包（b）[root@localhost ~]# vim /etc/named.conf   #修改主配置文件 方式一： 方式二： （c）[root@localhost ~]# vim /etc/ named.rfc1912.zones   #修改zone文件 zone &amp;qu">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_091807.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_092049.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_092600.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_095035.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_093930.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_115226.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_115354.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_115520.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_140721.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_140912.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_141458.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_144032.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_181534.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_182100.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_182517.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_182708.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_182708.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_184101.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_185513.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_181534.png">
+<meta property="og:updated_time" content="2017-11-28T15:57:15.175Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DNS实战">
+<meta name="twitter:description" content="实战（1）搭建主DNS服务器（a）[root@localhost ~]# yum install -y bind   #安装包（b）[root@localhost ~]# vim /etc/named.conf   #修改主配置文件 方式一： 方式二： （c）[root@localhost ~]# vim /etc/ named.rfc1912.zones   #修改zone文件 zone &amp;qu">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-20_091807.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/DNS实战一/"/>
+
+
+
+
+
+  <title>DNS实战 | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/DNS实战一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DNS实战</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/DNS/" itemprop="url" rel="index">
+                    <span itemprop="name">DNS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/DNS/DNS实战一/" itemprop="url" rel="index">
+                    <span itemprop="name">DNS实战一</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><h4 id="（1）搭建主DNS服务器"><a href="#（1）搭建主DNS服务器" class="headerlink" title="（1）搭建主DNS服务器"></a>（1）搭建主DNS服务器</h4><p>（a）<code>[root@localhost ~]# yum install -y bind</code>   #安装包<br>（b）<code>[root@localhost ~]# vim /etc/named.conf</code>   #修改主配置文件</p>
+<p>方式一：<br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_091807.png" alt=""></p>
+<p>方式二：<br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_092049.png" alt=""></p>
+<p>（c）<code>[root@localhost ~]# vim /etc/
+named.rfc1912.zones</code>   #修改zone文件</p>
+<pre><code>zone &quot;test.com&quot; IN {
+        type master;
+        file &quot;test.com.zone&quot;    #此地方可以写绝对路径和相对路径，如果写相对路径，默认为`/var/named/test.com.zone`，因此在`/var/named`目录下文件名一定要与这里的文件名一致。
+};
+</code></pre><p>（d）<code>[root@localhost ~]# named-checkconf</code>    #使用命令对配置文件检查</p>
+<pre><code>/etc/named.rfc1912.zones:27: missing &apos;;&apos; before &apos;}&apos; #此时检查为27行处没有加&quot;;&quot;修改完再检查即可。
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_092600.png" alt=""></p>
+<p><strong>注意：修改rfc1912.zones文件时，要以“；”结尾；参数与选项之间必须有空格隔开。</strong></p>
+<p>（e）修改zone文件<br><code>[root@localhost named]# cp named.localhost test.com.zone</code></p>
+<p>但是这里有一个问题，bind程序是以who的身份运行呢？下面通过命令查询看下：<br><code>[root@localhost named]# ps aux |grep named</code></p>
+<pre><code>named      4002  0.2  1.2 161124 13028 ?        Ssl  09:55   0:00 /usr/sbin/named -u named
+</code></pre><p>通过命令查看我们看到是以name身份运行的，但是我们在复制文件时，文件名时root，如下图；所以在复制过来以后记得修改文件的权限。</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_095035.png" alt=""></p>
+<p>方法一：修改文件的所属组</p>
+<p><code>[root@localhost named]# chgrp named test.com.zone</code></p>
+<p>方法二：复制模板文件时，直接加“-p”</p>
+<p><code>[root@localhost named]# cp -p named.localhost test.com.zone</code><br><code>[root@localhost named]# vim test.com.zone</code>    #修改ZONE文件</p>
+<pre><code>$TTL 1D
+@       IN SOA  dns1 mail.test.com. (
+                                        0       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        NS      dns1
+dns1    A       192.168.4.132
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_093930.png" alt=""></p>
+<p>（f）加载zone文件</p>
+<p><code>[root@localhost named]# rndc reload</code></p>
+<p>（g）查看是否可以解析</p>
+<p><code>[root@localhost named]# dig-t ns test.com  @192.168.4.132</code> #在本机测试</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_115226.png" alt=""></p>
+<p>在另外一台机器上测试</p>
+<p>修改这台机器上的DNS<br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_115354.png" alt=""></p>
+<p>测试</p>
+<p><code>[root@localhost/etc/sysconfig/network-scripts]#dig -t ns test.com @192.168.4.132</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_115520.png" alt=""></p>
+<h4 id="（2）搭建从DNS服务器"><a href="#（2）搭建从DNS服务器" class="headerlink" title="（2）搭建从DNS服务器"></a>（2）搭建从DNS服务器</h4><p>在主机IP地址为192.168.4.144搭建从服务器</p>
+<p>（a）安装bind包</p>
+<p>（b）编辑<code>/etc/named.conf</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_140721.png" alt=""></p>
+<p>（c）编辑配置zone文件<code>/etc/named.rfc1912zones</code></p>
+<pre><code>zone &quot;test.com&quot; IN {
+       type slave;     #修改类型
+       masters { 192.168.4.132; }; #主DNS服务器的地址
+       file &quot;slaves/test.com.slave.zone&quot;;  #从DNS服务文件存放的位置
+};
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_140912.png" alt=""></p>
+<p>（d）启动bind服务，使其生效</p>
+<p><code>[root@localhost~]#systemctl restart named</code><br><code>[root@localhost~]#ls /var/named/slaves/test.com.slave.zone</code></p>
+<p>（e）测试</p>
+<p><code>[root@localhost~]#dig www.test.com @192.168.4.144</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_141458.png" alt=""></p>
+<h4 id="（3）实现转发功能"><a href="#（3）实现转发功能" class="headerlink" title="（3）实现转发功能"></a>（3）实现转发功能</h4><p>假如一个公司有三台DNS服务器，A,B,C并且这三台主机不在同一个位置；A机器可以直接连接互联网，而B，C不可以直接连接互联网。用户使用电脑想访问www.qq.com，只能通过专线先到C再到A，然后才能访问www.qq.com，通过C转发到A。</p>
+<p>方式一：全局转发</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_144032.png" alt=""></p>
+<p>（1）分别在CentOS 6和CentOS 7 主机上设置，CentOS 7为转发</p>
+<p>(A)在CentOS 6主机上配置</p>
+<p><code>[root@localhost ~]# vim /etc/named.conf</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_181534.png" alt=""></p>
+<p><code>[root@localhost ~]# vim /etc/named.rfc1912.zones</code></p>
+<pre><code>zone &quot;test.com&quot; IN {
+        type master;
+        file &quot;test.com.zone&quot;;
+};
+</code></pre><p>重启服务</p>
+<p><code>[root@localhost ~]# service named restart</code></p>
+<p>(B)在CentOS 7主机上配置</p>
+<p><code>[root@localhost~]#vim /etc/named.conf</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_182100.png" alt=""></p>
+<p><strong>切记，做这个实验室一定要关闭dnssec功能；dnssec-enable no; dnssec-validation no。</strong></p>
+<p>重启服务</p>
+<p><code>[root@localhost~]#systemctl restart named</code></p>
+<p>(C)修改客户端机器的dns</p>
+<p><code>[root@localhost~]#vim /etc/sysconfig/network-scripts/ifcfg-ens33</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_182517.png" alt=""></p>
+<p>(D)在客户端机器上测试</p>
+<p><code>[root@localhost~]#dig www.test.com @192.168.4.148</code><br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_182708.png" alt=""></p>
+<p><strong>在这里给大家提个醒：自己搞这个明明很简单的搞了一个多小时都没有成功，原因在于没有关闭dnssce功能。</strong></p>
+<p>方式二：特定区域转发</p>
+<p>在CentOS 主机上配置</p>
+<p><code>[root@localhost~]#vim /etc/named.rfc1912.zones</code></p>
+<pre><code>zone &quot;test.com&quot; IN {          
+    type forward;       
+    forward first;        
+    forwarders {192.168.4.132;};
+ };
+</code></pre><p><code>[root@localhost~]#systemctl restart named</code> #重启服务</p>
+<p>在客户端主机上测试</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_182708.png" alt=""></p>
+<h4 id="（4）实现父域与子域的关系"><a href="#（4）实现父域与子域的关系" class="headerlink" title="（4）实现父域与子域的关系"></a>（4）实现父域与子域的关系</h4><p>在前面实验的基础上，执行如下操作：</p>
+<p>（A）在CentOS 7主机上</p>
+<p><code>[root@localhost~]#vim /etc/named.rfc1912.zones</code> 创建zone</p>
+<pre><code>zone &quot;do.test.com&quot; IN {
+       type master;
+       file &quot;do.test.com.zone&quot;; 
+ };
+</code></pre><p><code>[root@localhost/var/named]#vim do.test.com.zone</code>   #配置解析库</p>
+<pre><code>$TTL 1D
+@       IN SOA  dns1 rname.invalid. (
+                                            0       ; serial
+                                            1D      ; refresh
+                                            1H      ; retry
+                                            1W      ; expire
+                                            3H )    ; minimum
+                   NS      dns1
+dns1           A       192.168.4.148
+webserver   A     192.168.4.148
+www           CNAME   webserver
+</code></pre><p>(B)<code>[root@localhost named]# vim test.com.zone</code>    #在CentOS 6主机上修改解析库<br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_184101.png" alt=""></p>
+<p><code>[root@localhost named]# service named restart</code> #重启服务</p>
+<p>(C)重启服务测试</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_185513.png" alt=""></p>
+<h4 id="（5）主从服务器"><a href="#（5）主从服务器" class="headerlink" title="（5）主从服务器"></a>（5）主从服务器</h4><p>案例前提：准备4台虚拟机</p>
+<p>（A）CentOS6主机作为主DNS服务器，同上面的配置类似，这里就不再阐述。</p>
+<p>（B）在CentOS 7两台主机上做从DNS服务器，进行如下配置：</p>
+<p><code>[root@localhost ~]# vim /etc/named.conf</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_181534.png" alt=""></p>
+<p><code>[root@localhost~]#vim /etc/named.rfc1912.zones</code>#创建zone</p>
+<pre><code>zone &quot;test.com&quot; IN {
+      type slave;
+      masters {192.168.4.132;};
+       file &quot;slaves/test.com.slave.zone&quot;;
+ };
+</code></pre><p>启动bind的服务即可以同步到<code>/var/named/slaves</code>目录下</p>
+<p><code>[root@localhost~]#systemctl restart named</code><br><code>[root@localhost~]#ll /var/named/slaves/test.com.slave1.zone</code></p>
+<pre><code>-rw-r--r--. 1 named named 382 Sep 20 19:08 /var/named/slaves/test.com.slave1.zone
+</code></pre><p>如果主从服务器想指定从DNS服务器，可以在<code>/etc/named.conf</code>配置文件中添加选项 allow-transfer {IP;}；</p>
+<p>在从服务器上添加“allow-transfer {none;};”在主DNS服务器上“allow-transfer {IP;};”这样就限制了。</p>
+<p><strong>注意：通过以上几个实验总结出需要注意的一些地方</strong></p>
+<p>1、在做实验过程中一定要关闭dnssec功能；</p>
+<p>2、复制文件<code>/var/named/named.localhost</code>做模板时，一定要加选项“-a”或“-p”选项。复制完成后一定看所有者、所属组和权限。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/主从，转发，子域和父域/" rel="tag"># 主从，转发，子域和父域</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/DNS实战二/" rel="next" title="DNS实战">
+                <i class="fa fa-chevron-left"></i> DNS实战
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/ansible初级认识/" rel="prev" title="ansible初级认识">
+                ansible初级认识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实战"><span class="nav-number">1.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）搭建主DNS服务器"><span class="nav-number">1.1.</span> <span class="nav-text">（1）搭建主DNS服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）搭建从DNS服务器"><span class="nav-number">1.2.</span> <span class="nav-text">（2）搭建从DNS服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）实现转发功能"><span class="nav-number">1.3.</span> <span class="nav-text">（3）实现转发功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）实现父域与子域的关系"><span class="nav-number">1.4.</span> <span class="nav-text">（4）实现父域与子域的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）主从服务器"><span class="nav-number">1.5.</span> <span class="nav-text">（5）主从服务器</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
