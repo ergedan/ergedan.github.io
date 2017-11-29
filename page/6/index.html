@@ -349,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/MySQL双主模式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/PAM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -368,7 +368,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/MySQL双主模式/" itemprop="url">MySQL双主模式</a></h1>
+                <a class="post-title-link" href="/2017/11/28/PAM/" itemprop="url">PAM</a></h1>
         
 
         <div class="post-meta">
@@ -403,8 +403,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/安全/" itemprop="url" rel="index">
+                    <span itemprop="name">安全</span>
                   </a>
                 </span>
 
@@ -414,8 +414,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/MySQL双主模式/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL双主模式</span>
+                  <a href="/categories/安全/PAM/" itemprop="url" rel="index">
+                    <span itemprop="name">PAM</span>
                   </a>
                 </span>
 
@@ -453,17 +453,11 @@
       
         
           
-          双主模式互为主从：两个节点各自都要开启binlog和relay log
-（1）数据不一致
-（2）自动增长ID 
-    定义一个节点使用奇数ID
-        auto_increment_offset=1
-        auto_increment_increment=2
-    另外一个节点
+          PAM认证1、概念   PAM （Pluggable Authentication Modules）可插入认证模块是一套共享库,使本地系统管理员可以随意选择程序的认证方式.。提供了对所有服务进行认证的中央机制，适用于login，远程登录（telnet，rlogin,fsh,ftp，点对点协议（ppp
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/MySQL双主模式/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/PAM/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -518,7 +512,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/MySQL半同步复制/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Redis主从复制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -537,7 +531,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/MySQL半同步复制/" itemprop="url">MySQL半同步复制</a></h1>
+                <a class="post-title-link" href="/2017/11/28/Redis主从复制/" itemprop="url">Redis主从复制</a></h1>
         
 
         <div class="post-meta">
@@ -572,8 +566,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/缓存服务/" itemprop="url" rel="index">
+                    <span itemprop="name">缓存服务</span>
                   </a>
                 </span>
 
@@ -583,8 +577,19 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/MySQL半同步复制/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL半同步复制</span>
+                  <a href="/categories/缓存服务/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/缓存服务/Redis/Redis主从复制/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis主从复制</span>
                   </a>
                 </span>
 
@@ -622,14 +627,14 @@
       
         
           
-          mysql半同步复制-
-半同步复制是基于异步复制基础之上进行的。从Slave节点中选取一个节点进行半同步复制，当master节点提交一个事物将受到阻塞，直到得知一个已开启半同步复制功能的Slave同步完成之后返回ack包，master才会向用户返回事物提交。
-1、半同步流程图：
-2、半同步潜在的问题
+          redis主从复制一个master可以有多个slave主机，支持链式复制；master以非阻塞方式同步数据值slave主机。
+修改方式：
+redis-cli&gt; SLAVEOF &lt;MASTER_IP&gt; &lt;MASTER_PORT&gt;
+redis-cli&gt; CONFIG 
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/MySQL半同步复制/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/Redis主从复制/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -684,7 +689,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/MySQL基于SSL实现主从复制/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/PHP工作方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -703,7 +708,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/MySQL基于SSL实现主从复制/" itemprop="url">MySQL基于SSL实现主从复制</a></h1>
+                <a class="post-title-link" href="/2017/11/28/PHP工作方式/" itemprop="url">PHP工作方式</a></h1>
         
 
         <div class="post-meta">
@@ -738,8 +743,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
                   </a>
                 </span>
 
@@ -749,8 +754,19 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/MySQL基于SSL实现主从复制/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL基于SSL实现主从复制</span>
+                  <a href="/categories/服务/LAMP/" itemprop="url" rel="index">
+                    <span itemprop="name">LAMP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/LAMP/PHP工作方式/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP工作方式</span>
                   </a>
                 </span>
 
@@ -788,16 +804,12 @@
       
         
           
-          mysql数据库基于SSL实现主从复制实验环境：
-node1:192.168.4.61
-node2:192.168.4.62
-CA：192.168.4.63
-node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
-[root@node2~]#ntpdate 1
+          CGI和FastCGI1、CGICGI（Common Gateway Interface，通用网关接口），HTTP服务器与你的货其他机器上的程序进行交谈的工具，其程序一般运行在网络服务器上。CGI可以用任何一种语言编写，只要这种语言具有标准输入、输出和环境变量。
+2、FastCGIFastCGI像是
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/MySQL基于SSL实现主从复制/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/PHP工作方式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -852,7 +864,7 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/MySQL基于证书连接/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Redis简单介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -871,7 +883,7 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/MySQL基于证书连接/" itemprop="url">MySQL基于证书连接</a></h1>
+                <a class="post-title-link" href="/2017/11/28/Redis简单介绍/" itemprop="url">Redis简单介绍</a></h1>
         
 
         <div class="post-meta">
@@ -906,8 +918,8 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/缓存服务/" itemprop="url" rel="index">
+                    <span itemprop="name">缓存服务</span>
                   </a>
                 </span>
 
@@ -917,8 +929,19 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/MySQL基于证书连接/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL基于证书连接</span>
+                  <a href="/categories/缓存服务/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/缓存服务/Redis/Redis简单介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis简单介绍</span>
                   </a>
                 </span>
 
@@ -956,16 +979,11 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
       
         
           
-          基于证书连接
-搭建私有CA
-
-[root@CA/etc/pki/CA]#echo 01 &gt; serial
-[root@CA/etc/pki/CA]#touch index.txt
-[root@CA/etc/pki/CA]#(umask 077;openssl genrsa -out priva
+          一、Redis1、Redis简介Redis是一个开源的内存数据结构存储，用作数据库，缓存和消息代理。支持数据结构：字符串、列表（数组）、hahses（关联数据）、集合、有序集合、位图、hyperloglogs、空间索引。支持内建的复制，Lua 脚本，LRU算法、事物、持久存储、高可用。基于内存的高性
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/MySQL基于证书连接/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/Redis简单介绍/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1020,7 +1038,7 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/MySQL备份与恢复/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Redis集群/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -1039,7 +1057,7 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/MySQL备份与恢复/" itemprop="url">MySQL备份与恢复</a></h1>
+                <a class="post-title-link" href="/2017/11/28/Redis集群/" itemprop="url">Redis集群</a></h1>
         
 
         <div class="post-meta">
@@ -1074,8 +1092,8 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/缓存服务/" itemprop="url" rel="index">
+                    <span itemprop="name">缓存服务</span>
                   </a>
                 </span>
 
@@ -1085,8 +1103,19 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/MySQL备份与恢复/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL备份与恢复</span>
+                  <a href="/categories/缓存服务/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/缓存服务/Redis/Redis集群/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis集群</span>
                   </a>
                 </span>
 
@@ -1124,20 +1153,16 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
       
         
           
-          mysql备份和恢复（数据）：备份存储的数据副本；原始数据：持续改变。
-备份原因：灾难恢复：硬件故障（冗余）、软件故障（bug）、自然灾害、黑客攻击、误操作等等。
-备份时应注意事项
-能容忍最多丢失多少数据
-恢复数据需要在多长时间内完成
-需要恢复哪些数据
+          redis集群同步时间主机名互相解析确保firewalld和iptables关闭1、配置三个节点[root@node3~]#yum install -y redis
+2、修改配置文件
+node1配置：
 
-备份类型
-备份的数据集的范围：
-  完全备份
+[root@node1~]#vim /etc/redis.conf
+bind 192.168.4
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/MySQL备份与恢复/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/Redis集群/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1192,7 +1217,7 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/MySQL基础一/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/SQL语法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -1211,7 +1236,7 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/MySQL基础一/" itemprop="url">MySQL基础一</a></h1>
+                <a class="post-title-link" href="/2017/11/28/SQL语法/" itemprop="url">SQL语法</a></h1>
         
 
         <div class="post-meta">
@@ -1257,8 +1282,8 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/MySQL基础一/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL基础一</span>
+                  <a href="/categories/数据库/SQL语法/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL语法</span>
                   </a>
                 </span>
 
@@ -1296,11 +1321,11 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
       
         
           
-          mysql1、概念MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下产品。MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面，MySQL是最好的 RDBMS (Relational Database Management Syste
+          SQL1、概念结构化查询语言(Structured Query Language)简称SQL，是一种特殊目的的编程语言，是一种数据库查询和程序设计语言，用于存取数据以及查询、更新和管理关系数据库系统；同时也是数据库脚本文件的扩展名。结构化查询语言是高级的非过程化编程语言，允许用户在高层数据结构上工作
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/MySQL基础一/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/SQL语法/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1355,7 +1380,7 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/MySQL工作方式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/TCP三次握手/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -1374,7 +1399,7 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/MySQL工作方式/" itemprop="url">MySQL工作方式</a></h1>
+                <a class="post-title-link" href="/2017/11/28/TCP三次握手/" itemprop="url">TCP三次握手</a></h1>
         
 
         <div class="post-meta">
@@ -1409,8 +1434,8 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
                   </a>
                 </span>
 
@@ -1420,8 +1445,19 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/MySQL工作方式/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL工作方式</span>
+                  <a href="/categories/服务/TCP/" itemprop="url" rel="index">
+                    <span itemprop="name">TCP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/TCP/三次握手/" itemprop="url" rel="index">
+                    <span itemprop="name">三次握手</span>
                   </a>
                 </span>
 
@@ -1459,17 +1495,11 @@ node1和node2时间同步[root@node1~]#ntpdate 172.18.0.1
       
         
           
-          
-##1、mysql读取配置文件次序
-###my_print_defaultsdisplay options from option files
-使用方法：
-my_print_defaults [options] option_group ...
-选项：
---defaults-file=file_n
+          一、Socket1、概念 socket是“孔”和“插座”之意。在linux中显然是插座的意思，相当于我们家中插头和插座之意，它们连接才能通电。在Linux基本哲学之一就是“一切皆文件”，都可以用“打开open –&gt; 读写write/read –&gt; 关闭close”模式来操作。Socket
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/MySQL工作方式/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/TCP三次握手/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1524,7 +1554,7 @@ my_print_defaults [options] option_group ...
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/MySQL日志/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/TCP_wrappers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -1543,7 +1573,7 @@ my_print_defaults [options] option_group ...
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/MySQL日志/" itemprop="url">MySQL日志</a></h1>
+                <a class="post-title-link" href="/2017/11/28/TCP_wrappers/" itemprop="url">TCP_wrappers</a></h1>
         
 
         <div class="post-meta">
@@ -1578,8 +1608,8 @@ my_print_defaults [options] option_group ...
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/安全/" itemprop="url" rel="index">
+                    <span itemprop="name">安全</span>
                   </a>
                 </span>
 
@@ -1589,8 +1619,8 @@ my_print_defaults [options] option_group ...
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/MySQL日志/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL日志</span>
+                  <a href="/categories/安全/TCP-wrappers/" itemprop="url" rel="index">
+                    <span itemprop="name">TCP_wrappers</span>
                   </a>
                 </span>
 
@@ -1628,20 +1658,11 @@ my_print_defaults [options] option_group ...
       
         
           
-          ##mysql日志
-mysql日志分类
-查询日志：general_log
-慢查询日志：log_slow_queries
-错误日志：log_error，log_warnings
-二进制日志：binlog
-中继日志：relay_log
-事物日志：innodb_log
-
-查询日志记录查询语句日志存储位置：
+          tcp_wrappers1、概念Transmission Control Protocol (TCP) Wrappers 为由 inetd 生成的服务提供了增强的安全性。TCP Wrappers 是一种对使用 /etc/inetd.sec 的替换方法。TCP Wrappers 提供防止主机名和主机地
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/MySQL日志/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/TCP_wrappers/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1687,7 +1708,7 @@ mysql日志分类
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1737,7 +1758,7 @@ mysql日志分类
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1748,7 +1769,7 @@ mysql日志分类
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1759,7 +1780,7 @@ mysql日志分类
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">79</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

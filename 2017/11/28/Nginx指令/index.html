@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="nginx，指令," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Nginx配置指令参考： https://nginx.org/en/docs/- 事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。 正常运行必备指令- （1）user 指定worker进程的运行身份，如果组不指定，默认和用户名同名。 Syntax:    user u">
+<meta name="keywords" content="nginx，指令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx指令">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/Nginx指令/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="Nginx配置指令参考： https://nginx.org/en/docs/- 事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。 正常运行必备指令- （1）user 指定worker进程的运行身份，如果组不指定，默认和用户名同名。 Syntax:    user user [group]; Default:     user nobody no">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-29T12:11:06.491Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx指令">
+<meta name="twitter:description" content="Nginx配置指令参考： https://nginx.org/en/docs/- 事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。 正常运行必备指令- （1）user 指定worker进程的运行身份，如果组不指定，默认和用户名同名。 Syntax:    user user [group]; Default:     user nobody no">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/Nginx指令/"/>
+
+
+
+
+
+  <title>Nginx指令 | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Nginx指令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Nginx指令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/Nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">Nginx</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/Nginx/Nginx指令/" itemprop="url" rel="index">
+                    <span itemprop="name">Nginx指令</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Nginx配置指令"><a href="#Nginx配置指令" class="headerlink" title="Nginx配置指令"></a>Nginx配置指令</h2><p>参考： <a href="https://nginx.org/en/docs/" target="_blank" rel="noopener">https://nginx.org/en/docs/</a><br>-</p>
+<p><strong>事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。</strong></p>
+<p>正常运行必备指令<br>-</p>
+<p>（1）user</p>
+<p>指定worker进程的运行身份，如果组不指定，默认和用户名同名。</p>
+<pre><code>Syntax:    user user [group];
+Default:    
+user nobody nobody;  这里需要注意下如果系统中默认有nginx账户，不会使用nobody账户运行。
+Context:    main   规定只能在main定义此指令
+</code></pre><p>（2）pid /PATH/TO/PID_FILE</p>
+<p>指定存储nginx主进程PID的文件路径</p>
+<pre><code>Syntax:    pid file;
+Default:    
+pid nginx.pid;
+Context:    main
+</code></pre><p>（3）include file |mask</p>
+<p>指明包含进来的其他配置文件片段</p>
+<pre><code>Syntax:    include file | mask;
+Default:    —
+Context:    any
+</code></pre><p>（4）load_module file</p>
+<p>指明加载模块的路径</p>
+<p>模块加载配置文件：<code>/usr/share/nginx/modules/*.conf</code></p>
+<p>指明要装载的动态模块路径：<code>/usr/lib64/nginx/modules</code></p>
+<pre><code>Syntax:    load_module file;
+Default:    —
+Context:    main
+This directive appeared in version 1.9.11. 此指令在1.9.11版本中才有
+</code></pre><p>性能优化相关指令<br>-</p>
+<p>（1）worker_process number|auto</p>
+<p>worker进程的数量，通常应该设置为小于或等于当前主机CPU的物理核心数</p>
+<pre><code>Syntax:    worker_processes number | auto;
+Default:    
+worker_processes 1;
+Context:    main
+</code></pre><p>（2）worker_cpu_affinity auto [cpumask] </p>
+<p>指定运行在哪些CPU上</p>
+<pre><code>Syntax:    worker_cpu_affinity cpumask ...;
+worker_cpu_affinity auto [cpumask];
+Default:    —
+Context:    main
+</code></pre><p>示例：</p>
+<pre><code>worker_processes    4;
+worker_cpu_affinity 0001 0010 0100 1000;
+</code></pre><p>查看工作在哪颗CPU的命令</p>
+<pre><code>ps axo pid,cmd,psr,ni |grep nginx
+</code></pre><p>（3）worker_priority number</p>
+<p>指定worker进程nice值，设置worker进程优先级[-20,20]，不过正常的话nice值为[-20，19]</p>
+<pre><code>Syntax:    worker_priority number;
+Default:    worker_priority 0;
+Context:    main
+</code></pre><p>（4）worker_rlimit_nofile number</p>
+<p>worker进程所能够打开的文件数量上限</p>
+<pre><code>Syntax:    worker_rlimit_nofile number;
+Default:    —
+Context:    main
+</code></pre><p>事件驱动相关指令：<br>-</p>
+<p>（1）worker_connections number</p>
+<p>每个worker进程所能够打开的最大并发连接数量</p>
+<pre><code>Syntax:    worker_connections number;
+Default:    
+worker_connections 512;
+Context:    events
+</code></pre><p>（2）use method</p>
+<p>指明并发连接请求的处理方法，默认自动选择最优方法，默认使用epoll</p>
+<pre><code>Syntax:    use method;
+Default:    —
+Context:    events
+</code></pre><p>（3）accept_mutex on|off</p>
+<p>互斥处理新的连接请求方法</p>
+<pre><code>on：指由各个worker轮流处理新的请求
+off：指每个新请求的到达都会通知所有的worker进程，但只有一个进程可获得连接，造成“惊群”，影响性能，默认为on
+
+Syntax:    accept_mutex on | off;
+Default:    accept_mutex on;
+Context:    events
+</code></pre><p>调试和定位问题<br>-</p>
+<p>（1）daemon on|off</p>
+<p>是否以守护进程方式运行nginx，默认为守护进程方式</p>
+<pre><code>Syntax:    daemon on | off;
+Default:   daemon on;
+Context:    main
+</code></pre><p>（2）master_process on|off</p>
+<p>是否以master/worker模型运行nginx；默认为on</p>
+<pre><code>Syntax:    master_process on | off;
+Default:   master_process on;
+Context:    main
+</code></pre><p>（3）error_log file [level]</p>
+<p>错误日志文件及其级别；出于调试需要可设置为debug；如果要是用debug，需要在编译使用“–with-debug”选项</p>
+<pre><code>Syntax:    error_log file [level];
+Default:    error_log logs/error.log error;
+Context:    main, http, mail, stream, server, location
+
+stderr：发送到标准错误
+syslog：server-address[,parameter=values]：发送到syslog 
+memory： size内存
+level:debug|info|notice|warn|error|crit|alter|emerg
+</code></pre><p>（4）time_resolution</p>
+<p>计时器解析度；降低此值，可减少gettimeofday（）系统调用的次数</p>
+<pre><code>Syntax:    resolver_timeout time;
+Default:    
+resolver_timeout 30s;
+Context:    mail, server
+</code></pre><p>http协议的相关指令<br>-</p>
+<p>（1）server{…}</p>
+<p>配置一个虚拟主机</p>
+<p>（2）listen PORT|address[:port]|unix:/PATH/TO/SOCKET_FILE</p>
+<p>listen address[:port] [default_server] [ssl] [http2 | spdy] [backlog=number] [rcvbuf=size] [sndbuf=size]</p>
+<pre><code>Default:  listen *:80 | *:8000;
+Context:    server
+
+default_server：设置为默认虚拟主机
+ssl ：限制仅能够通过ssl连接提供服务
+backlog=number：超过并发连接数后，新请求进入后院队列的长度
+rcvbuf=size：接受缓冲区大小sndbuf=size发送缓冲区大小
+</code></pre><p>示例：</p>
+<pre><code>listen 127.0.0.1:8000;
+listen 127.0.0.1;
+listen 8000;
+listen localhost:8000;
+</code></pre><p><strong>注意：</strong></p>
+<ul>
+<li><p>（1）基于port</p>
+<p>  listen PORT；指令监听在不同的端口</p>
+</li>
+<li><p>（2）基于IP的虚拟主机</p>
+<p>  listen IP:PORT；IP地址不同</p>
+</li>
+<li><p>（3）基于hostname </p>
+<p>  server_name FQDN:指令指向不同的主机名</p>
+</li>
+</ul>
+<p><strong>listen只能放在server端中</strong></p>
+<p>（3）server_name name …;</p>
+<p>指定虚拟主机的主机名称，可跟多个由空白字符分隔的字符串</p>
+<pre><code>Syntax:    server_name name ...;
+Default:    
+server_name &quot;&quot;;
+Context:    server
+</code></pre><p>server_name支持“*”通配任意长度的任意字符</p>
+<p>示例：</p>
+<pre><code>server_name *.test.com
+</code></pre><p>server_name支持“~”起始的字符做正则表达式匹配；此方法会消耗性能</p>
+<pre><code>server_name ~^www\d+.test\.com$
+
+\d表示[0-9]
+</code></pre><h3 id="匹配优先级"><a href="#匹配优先级" class="headerlink" title="匹配优先级"></a>匹配优先级</h3><ul>
+<li>（1）首先是字符串精确匹配,www.test.com</li>
+<li>（2）左侧<em>通配符  \</em>.test.com</li>
+<li>（3）右侧<em>通配符 www.test.\</em></li>
+<li>（4）正则表达式  ~^www\d+.test.com$</li>
+<li>（5）default_server</li>
+</ul>
+<p>（4）tcp_nodelay on|off</p>
+<p>在keepalived模式下的连接是否启用tcp_nodelay</p>
+<pre><code>Syntax:    tcp_nodelay on | off;
+Default:    tcp_nodelay on;
+Context:    http, server, location
+
+off：延迟发送，合并多个请求后再发送
+on：不延迟发送
+</code></pre><p>（5）sendfile on|off</p>
+<p>是否启用sendfile功能，在内核封装报文直接发送</p>
+<pre><code>Syntax:    sendfile on | off;
+Default:    sendfile off;
+Context:    http, server, location, if in location
+</code></pre><p>（6）server_tokens on|off|build|string</p>
+<p>是否在响应报文的server首部显示nginx版本</p>
+<pre><code>Syntax:    server_tokens on | off | build | string;
+Default:    server_tokens on;
+Context:    http, server, location
+</code></pre><h2 id="定义路径相关指令"><a href="#定义路径相关指令" class="headerlink" title="定义路径相关指令"></a>定义路径相关指令</h2><p>（1）root </p>
+<p>设置web资源的路径映射；用于指明请求的URL所对应的文档的目录路径</p>
+<pre><code>Syntax:    root path;
+Default:    root html;
+Context:    http, server, location, if in location
+</code></pre><p>示例：</p>
+<pre><code>location /i/ {
+                root /data/w3;
+}
+</code></pre><p>（2）location [ = | ~ | ~* | ^~ ] uri { … }</p>
+<p>在一个server中location配置段可存在多个，用于实现从URI到文件系统的路径映射；nginx会根据用户请求的URI来检查定义的所有location，并找出一个最佳匹配，而后应用其配置</p>
+<pre><code>Syntax:    location [ = | ~ | ~* | ^~ ] uri { ... }
+location @name { ... }
+Default:    —
+Context:    server, location
+
+
+^~：对URI的最左边部分做匹配检查，不区分字符大小写
+~：对URI做正则表达式做模式匹配，区分字符大小写
+~*：对URI做正则表达式模式匹配，不区分字符大小写
+不带符号：匹配起始于URI的所有URI
+</code></pre><h4 id="匹配优先级从左到右降低"><a href="#匹配优先级从左到右降低" class="headerlink" title="匹配优先级从左到右降低"></a>匹配优先级从左到右降低</h4><pre><code>=  ^~  ~   ~* 不带符号
+</code></pre><p>示例：</p>
+<pre><code>location = / {
+    [ configuration A ]
+}
+
+location / {
+    [ configuration B ]
+}
+
+location /documents/ {
+    [ configuration C ]
+}
+
+location ^~ /images/ {
+    [ configuration D ]
+}
+
+location ~* \.(gif|jpg|jpeg)$ {
+    [ configuration E ]
+}
+</code></pre><p>（2）alias path</p>
+<p>路径别名，文档映射的另一种机制；仅能用于location上下文</p>
+<pre><code>Syntax:    alias path;
+Default:    —
+Context:    location
+</code></pre><h3 id="alias和root指令的区别"><a href="#alias和root指令的区别" class="headerlink" title="alias和root指令的区别"></a>alias和root指令的区别</h3><p>（a）root指令给定的路径对应于localtion中的URI左侧的</p>
+<p>（b）alias指令给定的路径对应于localtion中的URI右侧</p>
+<p>示例：</p>
+<pre><code>http://www.test.com/bbs/index.html
+
+location /bbs/ {
+                 alias /web/forum/;
+} 
+
+  --&gt; /web/forum/index.html 
+
+location /bbs/ {
+                root /web/forum/;
+}
+
+   --&gt; /web/forum/bbs/index.html
+</code></pre><p>（3）index file </p>
+<p>指定默认网页资源；ngx_http_index_module模块提供</p>
+<pre><code>Syntax:    index file ...;
+Default:   index index.html;
+Context:    http, server, location
+</code></pre><p>（4）error_page code …[=[response]] URI</p>
+<p>定义错误页，以指定的响应码状态进行响应</p>
+<pre><code>Syntax:    error_page code ... [=[response]] uri;
+Default:    —
+Context:    http, server, location, if in location
+</code></pre><p>示例：</p>
+<pre><code>error_page 404 /404.html
+error_page 404 =200 /404.html
+</code></pre><p>（5）try_files files … URI</p>
+<p>按顺序检查文件是否存在，返回对一个找到的文件或文件夹（结尾加斜线表示文件夹）；如果所有的文件或文件夹都找不到，会进行一个内部重定向到最后一个参数，只有最后一个参数可以引起一个内部重定向，之前的参数只设置内部URI的指向；最后一个参数是回退URI且必须存在，否则会出现内部500错误</p>
+<pre><code>Syntax:    try_files file ... uri;
+try_files file ... =code;
+Default:    —
+Context:    server, location
+</code></pre><p>示例：</p>
+<pre><code>location /images/ {
+             try_files $uri /images/default.gif;
+}
+location / {
+            try_files $uri $uri/index.html $uri.html =404;
+}
+</code></pre><h3 id="定义客户端请求的指令"><a href="#定义客户端请求的指令" class="headerlink" title="定义客户端请求的指令"></a>定义客户端请求的指令</h3><p>（1）keepalive_timeout timeout [header_timeout]</p>
+<p>设置保持连接时长超时时长，0表示禁止长连接，默认为75秒</p>
+<pre><code>Syntax:    keepalive_timeout timeout [header_timeout];
+Default:    keepalive_timeout 75s;
+Context:    http, server, location
+</code></pre><p>（2）keepalive——request number</p>
+<p>在一次长连接上所允许请求的资源最大数量</p>
+<pre><code>Syntax:    keepalive_requests number;
+Default:    keepalive_requests 100;
+Context:    http, server, location
+</code></pre><p>（3）keepalive——disable none|browser</p>
+<p>对哪种浏览器禁用长连接</p>
+<pre><code>Syntax:    keepalive_disable none | browser ...;
+Default:    keepalive_disable msie6;
+Context:    http, server, location
+</code></pre><p>（4）send_timeout time</p>
+<p>向客户端发送响应报文的超时时长，此处是指两次写操作之间的间隔时长，而非整个过程的传输时长</p>
+<pre><code>Syntax:    send_timeout time;
+Default:    send_timeout 60s;
+Context:    http, server, location
+</code></pre><p>（5）client_body_buffer_size size</p>
+<p>用于接受每个客户端请求报文的body部分的缓冲区大小；默认为16k，超出此大小时，将其暂存到磁盘上由client_body_temp_path指令所定义的位置，仅能应用于上传</p>
+<pre><code>Syntax:    client_body_buffer_size size;
+Default:    client_body_buffer_size 8k|16k;
+Context:    http, server, location
+</code></pre><p>（6）client_body_temp_path path [level 1 [level2 [level3]]]</p>
+<p>设定用于存储客户端请求报文的body部分的临时存储路径及子目录结构和数量</p>
+<pre><code>目录名为16进制的数字
+client_body_temp_path /var/tmp/client_body 1 2 2
+1 :1级目录占1位16进制即2^4=16个目录 0-f
+2:2级目录占2位16进制，即2^8=256个目录 00-ff
+2:3级目录占2位16进制，即2^8=256个目录 00-ff
+</code></pre><h3 id="对客户端进行限制的相关指令"><a href="#对客户端进行限制的相关指令" class="headerlink" title="对客户端进行限制的相关指令"></a>对客户端进行限制的相关指令</h3><p>（1）limit_rate rate</p>
+<p>限制响应给客户端的传输速率，单位为bytes/second，默认为0表示无限制</p>
+<pre><code>Syntax:    limit_rate rate;
+Default:    limit_rate 0;
+Context:    http, server, location, if in location
+</code></pre><p>（2）limit_except method …{…}，</p>
+<p>限制客户端使用除了制定的请求方法之外的其他方法</p>
+<pre><code>Syntax:    limit_except method ... { ... }
+Default:    —
+Context:    location
+</code></pre><p>method： GET, HEAD, POST, PUT, DELETE, MKCOL, COPY, MOVE, OPTIONS, PROPFIND, PROPPATCH, LOCK, UNLOCK, or PATCH.</p>
+<p>示例：</p>
+<pre><code>limit_expect GET {
+    allow 192.168.4.0./24;
+    deny all;
+}
+</code></pre><h3 id="文件操作优化指令"><a href="#文件操作优化指令" class="headerlink" title="文件操作优化指令"></a>文件操作优化指令</h3><p>（1）aio on|off|threads[=pool]</p>
+<p>是否开启aio功能</p>
+<pre><code>Syntax:    aio on | off | threads[=pool];
+Default:    aio off;
+Context:    http, server, location
+This directive appeared in version 0.8.11.0.8.11版本以后才可以支持
+</code></pre><p>（2）directio size|off</p>
+<p>是否同步写磁盘，而非写缓存，在linux 主机启用O_DIRECT标记，则文件大于等于给定大小时使用</p>
+<pre><code>Syntax:    directio size | off;
+Default:    directio off;
+Context:    http, server, location
+This directive appeared in version 0.7.7.
+</code></pre><p>示例：</p>
+<pre><code>directio 4m 当文件大于或者等于4m开始同步磁盘
+</code></pre><p>（3）open_file_cache off</p>
+<p>open_file_cache max=N[inactive=time]</p>
+<pre><code>Syntax:    open_file_cache off;
+open_file_cache max=N [inactive=time];
+Default:    open_file_cache off;
+Context:    http, server, location
+</code></pre><p>nginx可以缓存以下三种信息：</p>
+<p>a、文件元数据：文件FD、文件大小和最近一次的修改时间</p>
+<p>b、打开的目录结构</p>
+<p>c、没有找到的或者没有权限访问的文件的相关信息</p>
+<p>max=N：可缓存的缓存项上限；达到上限后会使用LRU算法实现管理；</p>
+<p>inactive=time：缓存项的非活动时长，在此处指令的时长内未被命中的或者命中次数少于open_file_cache_min_uses指令指定的次数的缓存项；即非活动项将被删除</p>
+<p>（4）open_file_cache_errors on|off</p>
+<p>是否缓存查找时文件发生错误的文件一类的信息</p>
+<pre><code>Syntax:    open_file_cache_errors on | off;
+Default:    open_file_cache_errors off;
+Context:    http, server, location
+</code></pre><p>（5）open_file_cache_min_uses number</p>
+<p>open_file_cache指令的inactive参数指定的时长内，至少被命中此处指令的次数方可被归类为活动项</p>
+<pre><code>Syntax:    open_file_cache_min_uses number;
+Default:    open_file_cache_min_uses 1;
+Context:    http, server, location
+</code></pre><p>（6）open_file_cache_valid time</p>
+<p>缓存项有效检查频率</p>
+<pre><code>Syntax:    open_file_cache_valid time;
+Default:    open_file_cache_valid 60s;
+Context:    http, server, location
+</code></pre><h2 id="ngx-http-access-module-实现基于IP访问控制功能"><a href="#ngx-http-access-module-实现基于IP访问控制功能" class="headerlink" title="ngx_http_access_module 实现基于IP访问控制功能"></a>ngx_http_access_module 实现基于IP访问控制功能</h2><p>（1）allow address|CIDR|unix：|all</p>
+<p>指定允许访问的IP</p>
+<p>（2）deny address | CIDR | unix: | all;</p>
+<p>指定不能访问的IP</p>
+<p>Syntax:    allow/deny address | CIDR | unix: | all;<br>Default:    —<br>Context:    http, server, location, limit_except</p>
+<p><strong>注意：检查规则为自上而下检查，一旦匹配，将生效；建议条件严格的放置前面。</strong></p>
+<p>示例：</p>
+<pre><code>location / {
+deny 192.168.1.1; 
+allow 192.168.1.0/24;
+allow 10.1.1.0/16; 
+allow 2001:0db8::/32; deny all;
+}   
+</code></pre><h2 id="ngx-http-auth-basic-module实现基于用户的访问控制，使用basic机制进行用户认证"><a href="#ngx-http-auth-basic-module实现基于用户的访问控制，使用basic机制进行用户认证" class="headerlink" title="ngx_http_auth_basic_module实现基于用户的访问控制，使用basic机制进行用户认证"></a>ngx_http_auth_basic_module实现基于用户的访问控制，使用basic机制进行用户认证</h2><p>（1）auth_basic string|off</p>
+<p>是否可以认证功能或string</p>
+<pre><code>Syntax:    auth_basic string | off;
+Default:    auth_basic off;
+Context:    http, server, location, limit_except
+</code></pre><p>（2）auth_basic_user_file filename</p>
+<p>认证文件的位置</p>
+<pre><code>Syntax:    auth_basic_user_file file;
+Default:    —
+Context:    http, server, location, limit_except
+</code></pre><p>用户口令方式：</p>
+<p>a、明文文本</p>
+<p>格式：</p>
+<pre><code>name:password:comment
+</code></pre><p>b、加密文本：需要htpasswd工具实现，由httpd_tools安装包提供</p>
+<p>格式：</p>
+<pre><code>USERNAME
+PASSWORD
+</code></pre><h2 id="ngx-http-stub-stastus-module-用于输出nginx基本状态信息"><a href="#ngx-http-stub-stastus-module-用于输出nginx基本状态信息" class="headerlink" title="ngx_http_stub_stastus_module 用于输出nginx基本状态信息"></a>ngx_http_stub_stastus_module 用于输出nginx基本状态信息</h2><p>stub_status</p>
+<pre><code>Syntax:    stub_status;
+Default:    —
+Context:    server, location
+</code></pre><p>示例：</p>
+<pre><code>location /status {
+    stub_status;
+    allow 192.168.4.0/24;
+    deny all;
+}
+</code></pre><p><strong>显示信息解释：</strong></p>
+<pre><code>active connection ：当前状态，活动状态的连接数
+accepts：统计总值，已经接受的客户端请求的总数
+handled：统计总值，已经处理完成的客户端请求的总数
+requests：统计总值，客户端发来的总的请求数
+reading：当前状态，正在读取客户端的请求报文的链接数
+writing：当前状态，正在向客户端响应报文过程中的连接数
+waiting：当前状态，正在等待客户端发出请求的空闲连接数
+</code></pre><h2 id="ngx-http-log-module指定日志格式记录请求"><a href="#ngx-http-log-module指定日志格式记录请求" class="headerlink" title="ngx_http_log_module指定日志格式记录请求"></a>ngx_http_log_module指定日志格式记录请求</h2><p>（1）log_format name string …</p>
+<p>nginx核心模块及其他模块内嵌的变量</p>
+<pre><code>Syntax:    log_format name [escape=default|json] string ...;
+Default:    log_format combined &quot;...&quot;;
+Context:    http
+</code></pre><p>（2）    access_log path [format [buffer=size] [gzip[=level]] [flush=time] [if=condition]]</p>
+<p>access_log off; 是否开启日志功能</p>
+<p>访问日志文件路径，格式及相关的配置</p>
+<pre><code>buffer=size 定义缓存区大小
+gzip 定义日志压缩级别
+flush 定义刷新时间
+</code></pre><p>示例：</p>
+<pre><code>log_format compression &apos;$remote_addr - $remote_user [$time_local] &apos;
+                   &apos;&quot;$request&quot; $status $bytes_sent &apos;
+                   &apos;&quot;$http_referer&quot; &quot;$http_user_agent&quot; &quot;$gzip_ratio&quot;&apos;;
+
+access_log /spool/logs/nginx-access.log compression buffer=32k;
+</code></pre><p><strong>注意：为了使用压缩工作，必须安装zlib 库</strong></p>
+<p>（3）open_log_file_cache max=N[inactive=time][valid=time]</p>
+<p>open_log_file_cache off；是否开启日志缓存</p>
+<pre><code>max：缓存的最大文件描述符数量
+min_uses：在inactive指定的时长内访问大于等于此值认为活动项
+inactive：非活动时长
+valid：验证缓存中各缓存是否为活动项的时间间隔
+
+
+Syntax:    open_log_file_cache max=N [inactive=time] [min_uses=N] [valid=time];
+open_log_file_cache off;
+Default:    open_log_file_cache off;
+Context:    http, server, location
+</code></pre><h2 id="ngx-http-gzip-module使用gzip方法压缩响应数据，可以节约带宽"><a href="#ngx-http-gzip-module使用gzip方法压缩响应数据，可以节约带宽" class="headerlink" title="ngx_http_gzip_module使用gzip方法压缩响应数据，可以节约带宽"></a>ngx_http_gzip_module使用gzip方法压缩响应数据，可以节约带宽</h2><p>（1）gzip on|off</p>
+<p>是否启用gizp压缩</p>
+<pre><code>Syntax:    gzip on | off;
+Default:    gzip off;
+Context:    http, server, location, if in location
+</code></pre><p>（2）gzip_comp_level level</p>
+<p>指定压缩比  范围1-9</p>
+<pre><code>Syntax:    gzip_comp_level level;
+Default:    gzip_comp_level 1;
+Context:    http, server, location
+</code></pre><p>（3）gzip_disable regex …</p>
+<p>匹配到客户端浏览器不执行压缩</p>
+<pre><code>Syntax:    gzip_disable regex ...;
+Default:    —
+Context:    http, server, location
+</code></pre><p>（4）gzip_min_length length</p>
+<p>启用压缩功能的响应报文大小阈值</p>
+<pre><code>Syntax:    gzip_min_length length;
+Default:    gzip_min_length 20;
+Context:    http, server, location
+</code></pre><p>（5）gzip_http_version 1.0|1.1</p>
+<p>设定启用压缩功能时，协议的最小版本</p>
+<pre><code>Syntax:    gzip_http_version 1.0 | 1.1;
+Default:    gzip_http_version 1.1;
+Context:    http, server, location
+</code></pre><p>（6）gzip_buffers number size</p>
+<p>支持实现压缩功能时缓冲区数量及每个缓存区的大小</p>
+<pre><code>Syntax:    gzip_buffers number size;
+Default:    gzip_buffers 32 4k|16 8k;
+Context:    http, server, location
+</code></pre><p>（7）gzip_type mime_type</p>
+<p>指明仅对哪些类型的资源执行压缩操作；默认为test/html,不用再次指定，否则会报错。</p>
+<pre><code>Syntax:    gzip_types mime-type ...;
+Default:    gzip_types text/html;
+Context:    http, server, location
+</code></pre><p>（8）gzip_vary on|off</p>
+<p>如果启用压缩，是否在响应报文首部添加“vary:Accept_Encoding”</p>
+<pre><code>Syntax:    gzip_vary on | off;
+Default:    gzip_vary off;
+Context:    http, server, location
+</code></pre><p>（9）    gzip_proxied off | expired | no-cache | no-store | private | no_last_modified | no_etag | auth | any …</p>
+<pre><code>Syntax:    gzip_proxied off | expired | no-cache | no-store | private | no_last_modified | no_etag | auth | any ...;
+Default:    gzip_proxied off;
+Context:    http, server, location
+</code></pre><p>nginx对于代理服务器请求的响应报文，在何种情况下启用压缩功能</p>
+<p>|<br>|off|对于被代理的请求不启用压缩<br>|expired，no-cache,no-store，private|对代理服务器请求的响应报文首部Cache-Control值任何一个，启用压缩功能</p>
+<p>示例：</p>
+<pre><code>gzip            on;
+gzip_min_length 1000;
+gzip_proxied    expired no-cache no-store private auth;
+gzip_types      text/plain application/xml;
+</code></pre><h2 id="ngx-http-ssl-module"><a href="#ngx-http-ssl-module" class="headerlink" title="ngx_http_ssl_module"></a>ngx_http_ssl_module</h2><p>（1）ssl on|off</p>
+<p>是否启用https protocol，建议用listen指令代替</p>
+<pre><code>listen 443 ssl
+
+Syntax:    ssl on | off;
+Default:    ssl off;
+Context:    http, server
+</code></pre><p>（2）ssl_certificate file</p>
+<p>当前虚拟机使用证书文件路径</p>
+<pre><code>Syntax:    ssl_certificate file;
+Default:    —
+Context:    http, server
+</code></pre><p>（3）ssl_certificate_key file</p>
+<p>当前虚拟机使用证书的私钥文件</p>
+<pre><code>Syntax:    ssl_certificate_key file;
+Default:    —
+Context:    http, server
+</code></pre><p>（4）ssl_protocols [SSLv2] [SSLv3] [TLSv1] [TLSv1.1] [TLSv1.2] [TLSv1.3</p>
+<p>支持ssl协议版本</p>
+<pre><code>Syntax:    ssl_protocols [SSLv2] [SSLv3] [TLSv1] [TLSv1.1] [TLSv1.2] [TLSv1.3];
+Default:    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+Context:    http, server
+</code></pre><p>（5）ssl_session_cache off|none|[builtin[:sieze]][shared:name:size]</p>
+<p>是否开启ssl会话缓存</p>
+<pre><code>none：相当于干跑
+builtin[:size]：使用openssl内建缓存，为每个worker进程私有；
+[shared:name:size]：在各worker之间使用一个共享缓存
+
+Syntax:    ssl_session_cache off | none | [builtin[:size]] [shared:name:size];
+Default:    ssl_session_cache none;
+Context:    http, server
+</code></pre><p>（6）ssl_session_timeout time</p>
+<p>客户端连接可以服用ssl session cache中缓存的ssl参数有效市场</p>
+<pre><code>Syntax:    ssl_session_timeout time;
+Default:    ssl_session_timeout 5m;
+Context:    http, server
+</code></pre><p>示例：</p>
+<pre><code>server {
+    listen 443 ssl;
+    server_name www.test.com;
+     root /vhosts/ssl/htdocs;
+    ssl_certificate /etc/nginx/ssl/nginx.crt; 
+    ssl_certificate_key /etc/nginx/ssl/nginx.key;
+    ssl_session_cache  shared:sslcache:20m; 
+    ssl_session_timeout 10m;
+}
+</code></pre><p>查看证书</p>
+<pre><code>openssl s_client -connect www.test.com/443
+</code></pre><p><strong>注意：可以为每个FQDN提供不同的证书，这是在apache中不能实现的</strong></p>
+<pre><code>server {
+    listen 443 ssl;
+    server_name www.test.com;
+     root /vhosts/ssl/htdocs;
+    ssl_certificate /etc/nginx/ssl/nginx.crt; 
+    ssl_certificate_key /etc/nginx/ssl/nginx.key;
+    ssl_session_cache  shared:sslcache:20m; 
+    ssl_session_timeout 10m;
+}
+server {
+    listen 443 ssl;
+    server_name www.test2.com;
+     root /vhosts/ssl/htdocs;
+    ssl_certificate /etc/nginx/ssl/nginx2.crt; 
+    ssl_certificate_key /etc/nginx/ssl/ngin2x.key;
+    ssl_session_cache  shared:sslcache:20m; 
+    ssl_session_timeout 10m;
+}
+server {
+    listen 443 ssl;
+    server_name www.test2.com;
+     root /vhosts/ssl/htdocs;
+    ssl_certificate /etc/nginx/ssl/nginx3.crt; 
+    ssl_certificate_key /etc/nginx/ssl/nginx3.key;
+    ssl_session_cache  shared:sslcache:20m; 
+    ssl_session_timeout 10m;
+}
+</code></pre><p>##ngx_http_rewrite_module<br>将用户请求URI基于PCRE regex所描述的模式进行检查，而完成重定向替换</p>
+<p>（1）rewrite regex replacement[flag]</p>
+<p>将用户的请求的URI基于regex所描述的模式进行检查，匹配到时将其替换为replacement指定新的URI</p>
+<pre><code>Syntax:    rewrite regex replacement [flag];
+Default:    —
+Context:    server, location, if
+</code></pre><p>[flag]所表示的标志位用于控制此循环机制</p>
+<pre><code>last：重写完成后停止对当前URI在当前location中后续的其他重写操作，而后对新的URI启动新一轮重写检查；提前重启新一轮循环
+break：重写完成后停止对当前URI在当前location中后续的其他重写操作，而直接跳转至重写规则之后的其他配置；结束循环，建议在location中使用
+redirect：临时重定向，重写完成之后以临时重定向后生成新的URI给客户端，由客户端重新发起新的；不能以http://huo https://开头，使用相对路径，状态码为302
+permanent：重写完成之后以永久重定向方式直接返回重写后生成新的URI给客户端，由客户端重新发起新请求：状态码为301
+</code></pre><p>上述中last和break是在服务器内部做跳转；redirect和permanent是客户端做跳转</p>
+<p>（2）return </p>
+<pre><code>Syntax:    return code [text];
+               return code URL;
+               return URL;
+Default:    —
+Context:    server, location, if
+</code></pre><p>停止处理，并返回客户端指定的响应码</p>
+<p>（3）rewrite_log on|log</p>
+<p>是否开启重写日志，发送至error_log</p>
+<pre><code>Syntax:    rewrite_log on | off;
+Default:    rewrite_log off;
+Context:    http, server, location, if
+</code></pre><p>（4）set $variable value</p>
+<p>用户自定义变量</p>
+<p><strong>注意：变量定义和调用都要以$开头</strong></p>
+<pre><code>Syntax:    set $variable value;
+Default:    —
+Context:    server, location, if
+</code></pre><p>（5）if(condition){…}</p>
+<p>引入新的上下文，条件满足时，执行配置块中的配置指令</p>
+<p>|<br>|==|相同<br>|！=|不相同<br>|~|模式匹配，区分字符大小写<br>|~<em>|模式匹配，不区分大小写<br>|！~和!~</em>|上述两种的否定</p>
+<p>文件及目录存在性判断</p>
+<p>|<br>|-e，！-e|存在，不存在<br>|-f，！-f|是否为文件<br>|-d，！-d|是否为目录<br>|-x，！-x|是否可执行</p>
+<p>####注意：如果在同一级配置块中存在多个rewrite规则，那么会自上而下逐个检查，被某条件规则替换完成后，会重新一轮的替换检查。隐含有循环机制，但不超过10次，如果超过10此，提示500响应码</p>
+<p>示例：</p>
+<pre><code>location /admin {
+        return 403 “Not Found”;
+}
+
+location /admin {
+        return 403 http://www.baidu.com;
+}
+location /admin {
+        return http://www.baidu.com;
+}
+</code></pre><h2 id="ngx-http-referer-module"><a href="#ngx-http-referer-module" class="headerlink" title="ngx_http_referer_module"></a>ngx_http_referer_module</h2><p>（1）valid_referers none|blocked|server_names|string …</p>
+<p>定义referer首部的合法可用值，不能匹配的将是非法值</p>
+<pre><code>Syntax:    valid_referers none | blocked | server_names | string ...;
+Default:    —
+Context:    server, location
+</code></pre><p>#<br>|<br>|none|请求报文首部没有referer首部<br>|blocked|请求报文有referer首部，但无有效值，前段可能被代理服务器删除<br>|server_names|参数，其可以有值作为主机名或主机名模式<br>|arbitrary_string|任意字符串，但可使用*做通配符<br>|regular experssion|被指定的正则表达式模式匹配的字符串，要使用~开头</p>
+<p>示例：</p>
+<pre><code>valid_referers none blocked server_names
+           *.example.com example.* www.example.org/galleries/
+           ~\.google\.;
+</code></pre><h2 id="ngx-http-headers-module"><a href="#ngx-http-headers-module" class="headerlink" title="ngx_http_headers_module"></a>ngx_http_headers_module</h2><p>由代理服务器响应给客户端的响应报文添加自定义首部，或修改指定首部的值</p>
+<p>（1）add_header name value [always]</p>
+<p>添加自定义首部</p>
+<pre><code>Syntax:    add_header name value [always];
+Default:    —
+Context:    http, server, location, if in location
+</code></pre><p>（2）add_tralier name value [always]</p>
+<p>添加自定义响应信息的尾部</p>
+<pre><code>Syntax:    add_trailer name value [always];
+Default:    —
+Context:    http, server, location, if in location
+</code></pre><p>示例：</p>
+<pre><code>add_header X-Via    $server_addr;
+add_header X-Cache $upstream_cache_status;
+ add_header X-Accel $server_name;
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nginx，指令/" rel="tag"># nginx，指令</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/NFS/" rel="next" title="NFS">
+                <i class="fa fa-chevron-left"></i> NFS
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/Apache分析工具和日志管理工具/" rel="prev" title="Apache分析工具和日志管理工具">
+                Apache分析工具和日志管理工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx配置指令"><span class="nav-number">1.</span> <span class="nav-text">Nginx配置指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配优先级"><span class="nav-number">1.1.</span> <span class="nav-text">匹配优先级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义路径相关指令"><span class="nav-number">2.</span> <span class="nav-text">定义路径相关指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#匹配优先级从左到右降低"><span class="nav-number">2.0.1.</span> <span class="nav-text">匹配优先级从左到右降低</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alias和root指令的区别"><span class="nav-number">2.1.</span> <span class="nav-text">alias和root指令的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义客户端请求的指令"><span class="nav-number">2.2.</span> <span class="nav-text">定义客户端请求的指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对客户端进行限制的相关指令"><span class="nav-number">2.3.</span> <span class="nav-text">对客户端进行限制的相关指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件操作优化指令"><span class="nav-number">2.4.</span> <span class="nav-text">文件操作优化指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-access-module-实现基于IP访问控制功能"><span class="nav-number">3.</span> <span class="nav-text">ngx_http_access_module 实现基于IP访问控制功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-auth-basic-module实现基于用户的访问控制，使用basic机制进行用户认证"><span class="nav-number">4.</span> <span class="nav-text">ngx_http_auth_basic_module实现基于用户的访问控制，使用basic机制进行用户认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-stub-stastus-module-用于输出nginx基本状态信息"><span class="nav-number">5.</span> <span class="nav-text">ngx_http_stub_stastus_module 用于输出nginx基本状态信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-log-module指定日志格式记录请求"><span class="nav-number">6.</span> <span class="nav-text">ngx_http_log_module指定日志格式记录请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-gzip-module使用gzip方法压缩响应数据，可以节约带宽"><span class="nav-number">7.</span> <span class="nav-text">ngx_http_gzip_module使用gzip方法压缩响应数据，可以节约带宽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-ssl-module"><span class="nav-number">8.</span> <span class="nav-text">ngx_http_ssl_module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-referer-module"><span class="nav-number">9.</span> <span class="nav-text">ngx_http_referer_module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-headers-module"><span class="nav-number">10.</span> <span class="nav-text">ngx_http_headers_module</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

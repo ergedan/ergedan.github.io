@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="tomcat," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Tomcat是由Apache软件基金会下属的Jakarta项目开发的一个Servlet容器，按照Sun Microsystems提供的技术规范，实现了对Servlet和JavaServer Page（JSP）的支持，并提供了作为web服务器的一些特有功能，如Tomcat管理和控制平台、安全域管理和Tomcat阈等。但是">
+<meta name="keywords" content="tomcat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tomcat简单介绍">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/Tomcat简单介绍/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="Tomcat是由Apache软件基金会下属的Jakarta项目开发的一个Servlet容器，按照Sun Microsystems提供的技术规范，实现了对Servlet和JavaServer Page（JSP）的支持，并提供了作为web服务器的一些特有功能，如Tomcat管理和控制平台、安全域管理和Tomcat阈等。但是不能将Tomcat和Apache HTTP服务器混淆，Apache HTTP服">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-03_190947.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/java%E8%BF%87%E7%A8%8B.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-03_200219.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/tomcat-http-guocheng.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/java-http.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-03_221835.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_093049.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_101732.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_110703.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_111511.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_111645.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_111922.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_113352.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_113653.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_114918.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_114840.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_115428.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_141848.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_142628.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_142853.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_142837.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_142908.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_143912.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_144159.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-04_144330.jpg">
+<meta property="og:updated_time" content="2017-11-29T12:59:23.537Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tomcat简单介绍">
+<meta name="twitter:description" content="Tomcat是由Apache软件基金会下属的Jakarta项目开发的一个Servlet容器，按照Sun Microsystems提供的技术规范，实现了对Servlet和JavaServer Page（JSP）的支持，并提供了作为web服务器的一些特有功能，如Tomcat管理和控制平台、安全域管理和Tomcat阈等。但是不能将Tomcat和Apache HTTP服务器混淆，Apache HTTP服">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-03_190947.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/Tomcat简单介绍/"/>
+
+
+
+
+
+  <title>Tomcat简单介绍 | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Tomcat简单介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Tomcat简单介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/Tomcat/" itemprop="url" rel="index">
+                    <span itemprop="name">Tomcat</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/Tomcat/Tomcat简单介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">Tomcat简单介绍</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-03_190947.jpg" alt=""></p>
+<p>Tomcat是由Apache软件基金会下属的Jakarta项目开发的一个Servlet容器，按照Sun Microsystems提供的技术规范，实现了对Servlet和JavaServer Page（JSP）的支持，并提供了作为web服务器的一些特有功能，如Tomcat管理和控制平台、安全域管理和Tomcat阈等。但是不能将Tomcat和Apache HTTP服务器混淆，Apache HTTP服务器时一个用C语言实现的HTTP web服务器，而Tomcat则是由Java编写。</p>
+<p>#一、java<br>Java是一种广泛使用的计算机编程语言，拥有跨平台、面向对象、泛型编程的特性，广泛应用于企业级Web应用开发和移动应用开发。Java的特点之一面向对象，是程序设计方法的一种。</p>
+<p>#####程序是由指令和数据组成。</p>
+<pre><code>过程式编程：以指令为中心，数据服务于代码
+对象式编程：以数据位中，指令服务于数据
+</code></pre><p>###1、Java代码编译过程</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/java%E8%BF%87%E7%A8%8B.png" alt=""></p>
+<p>用java语言编译源代码，通过JAVAC （Java complie）它编译成java .class(bytes code)文件，然后在Java VM中运行.class文件；当编写程序时，通过调用类（API class）中的方法来访问系统资源，而当程序运行时，它通过调用class文件中实现Java API的方法来满足程序的Java API调用。Java VM 和Java API一起组成一个平台，被称为JDK（Java Development Kit），所有的Java程序都在其上编译和运行。</p>
+<p><strong>Java VM</strong>主要任务时装载class文件并且执行其中的字节码，加载程序的类文件即程序的类文件依赖到的其他的类文件而后运行，整个运行表现为一个jvm进程。它包含一个类装载器（class loader）可以从程序和API装载class文件；但是Java API的类只在程序执行中需要时才会装载。</p>
+<p>###2、Java API</p>
+<p>Java SE包含了Java二进制程序（如JVM和Java字码编译器）和Java的核心代码库；而Java EE标准则包含了一组适用于创建企业级Web应用程序API。Java EE是建立在Java SE基础之上；它包含了多个独立的API，如Servlet和JSP等</p>
+<p>###3、Java VM 内部体系结构</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-03_200219.jpg" alt=""></p>
+<p><strong>方法区</strong>线程共享，用于存储被JVM加载的class信息、常量、静态变量、方法等</p>
+<p><strong>堆</strong>JVM所管理的内存中占用空间最大的一部分；也是GC管理的主要区域；存储对象</p>
+<p><strong>栈</strong>线程私有，存储线程自己的局部变量</p>
+<p><strong>PC寄存器</strong>线程私有的内存空间，程序的指令指针</p>
+<p><strong>本地方法栈</strong>执行引擎调用本地方法是的运行时聂村去</p>
+<p>JVM的功能模块主要包括类加载器、执行引擎和垃圾回收系统。</p>
+<p>– JVM组成</p>
+<pre><code>JRE（JVM+java SE API）：是用于实现java程序运行的最小环境
+JDK（Java+API+JVM）：是用于实现Java程序开发的最小环境
+</code></pre><p>###3、JSP代码运行过程</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/tomcat-http-guocheng.jpg" alt=""></p>
+<p>index.jsp–&gt;jasper–&gt;servert Source Code(.java)–&gt;Java Compiler (.class)–&gt;在JVM虚拟机上运行</p>
+<p>注意：基于jasper将静态输出的数据转为java代码进行输出，结果为servlet规范的代码。<br>-</p>
+<p>#二、Tomcat<br>Tomcat不是一个完整意义上的Java EE服务器，甚至没有提供对一个主要java EE API。由于遵守apache开源协议，tomcat为众多java应用程序服务器嵌入自己的产品中构建商业的java应用程序服务器，如JBoss等</p>
+<p>###1、JSP和Servlet区别</p>
+<p>Servlet通常需要实现编译好，而JSP则并非必须事先编译。这意味着Servlet通常放置于私有资源区域，而JSP则通常以嵌入代码的方式包含于HTML页面文件中，这些HTML文件通常放置在公开资源区域。</p>
+<p>###2、MVC架构<br>MVC架构由Contoller、Model和View构成，实现Apache Structs框架。</p>
+<pre><code>a、Servlet用于实现应用逻辑
+b、JSP用于内容展示
+c、标签库和JSP扩展语言用于替换JSP内部嵌入Java代码，进而降低了HTML维护的复杂度
+d、MVC框架用于实现展示和应用逻辑分离
+</code></pre><p>###3、Servlet目录结构<br>对于一个web应用程序而言，其通常由Servlet、JSP和其他文件等共同组成。这些文件通常被打包成WAR（Web Application Archive）格式，并以.war作为打包后的文件扩展名。而Servlet规范则定义了在WAR内部组织这些文件的标准目录结构。</p>
+<pre><code>/   ：web应用程序的根目录，所有可被公开访问的文件均放置于此处，如HTML、JSP和图片文件等
+/WEB-INF :此目录为私有资源目录，其内部的所有文件和子目录不能被公开访问；包含此web应用程序的配置文件web.xml，通常放置于此目录
+/WEB-INF/classes：当前web应用程序的类文件存在目录
+/WEB-INF/lib：可被打包为JAR格式的类文件通常放置于此目录
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/java-http.png" alt=""></p>
+<p>###4、Tomcat目录</p>
+<pre><code>bin：脚本，即启动时用到的类
+conf：配置文件目录
+lib：库文件，Java类库，jar
+logs：日志文件目录
+temp：临时文件目录
+webapps：webapp的默认目录
+work：工作目录，存放编译后的字节码文件
+</code></pre><p>###5、Tomcat文件</p>
+<ul>
+<li><strong>server.xml</strong> tomcat主配置文件，包含service、connector、engine、realm、valve、host相关配置信息</li>
+<li><strong>web.xml</strong> 每个webapp只有“部署”后才能被访问，它的部署方式通常有web.xml进行定义，其存放的位置为WEB-INF/目录下，次文件为所有的webapps提供默认部署相关的配置</li>
+<li><strong>context.xml</strong> 每个文本app都可以使用的配置文件，它通常有专用的配置文件contest.xml来定义，其存放位置为WEB-INF/目录下</li>
+<li><strong>tomcat-user.xml</strong> realm认证时用到的相关角色、用户和密码等信息；tomcat自带的manager默认情况下会用到此文件。此文件在tomcat启动时被装入内存</li>
+<li><strong>catalina.policy</strong> 当使用-security选项启动tomcat时，用于为tomcat设置安全策略</li>
+<li><strong>catalina.properties</strong>  Java属性的定义文件，用于设定类加载器路径，以及一些与JVM调优相关参数</li>
+<li><strong>logging.properties</strong> 日志系统相关的配置</li>
+</ul>
+<p>####server.xml组件</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-03_221835.jpg" alt=""></p>
+<p><strong>Tomcat组件</strong></p>
+<pre><code>顶级组件：位于配置层次的顶级，并且彼此间有着严格的对应关系（server、service）
+连接器：连接客户端请求至servlet（connector）
+容器：包含一组其他组件（engine、host、context）
+被嵌套的组件：位于一个容器当中，但不能包含其他组件（valve、logger、realm）
+
+
+
+
+
+        &lt;Server&gt;
+            &lt;Service&gt;
+                &lt;connector/&gt;
+                &lt;connector/&gt;
+                ...
+                &lt;Engine&gt;
+                    &lt;Host&gt;
+                        &lt;Context/&gt;
+                        &lt;Context/&gt;
+                        ...
+                    &lt;/Host&gt;
+                    &lt;Host&gt;
+                        ...
+                    &lt;/Host&gt;
+                    ...
+                &lt;/Engine&gt;
+            &lt;/Service&gt;
+        &lt;/Server&gt;
+</code></pre><p>#####tomcat常用组件配置</p>
+<ul>
+<li><em>server</em>：代表tomcat instance，即表现出一个java进程；监听在8005端口，只能接受“SHUTDOWN”指令。各server监听的端口不能相同，因此在同一物理主机启动多个示例时，需要修改其监听端口为不同的端口。这个端口的定义为管理员提供一个关闭此示例的便捷途径，管理员可以直接使用telnet命令连接此端口SHUTDOWN关闭此示例。基于安全角度考虑，通常不允许远程进行</li>
+<li><p><em>service</em>：用于实现将一个或多个connector组件关联至一个engine组件</p>
+<p>  <em>className</em>：用于实现service的类名<br>  <em>name</em>：此服务的名称，默认为catalina</p>
+</li>
+<li><p><em>connector</em>：负责接收请求，常见的有三类http、https、ajp</p>
+<p>  <em>address</em>：指定连接器监听的地址，默认为所有地址<br>  <em>maxThreads</em>：支持的最大并发连接数，默认为200<br>  <em>port</em>：监听的端口，默认为0<br>  <em>protocol</em>：连接器使用的协议，默认为HTTP/1.1，定义AJP协议时通常为AJP/1.3<br>  <em>redirectPort</em>：如果某连接器支持的协议时HTTP，当接收客户端发来的HTTPS请求时则转发至此属性的定义端口<br>  <em>connectionTimeout</em>：等待客户端发送请求的超时时间，单位为毫秒，默认为6000<br>  <em>enableLookups</em>：是否通过request.getRemoteHost（）即是否启用DNS查询功能<br>  <em>acceptCount</em>：设置等待队列的最大长度</p>
+</li>
+<li><p><em>engine</em>： servlet示例，即servlet引擎，其内部可以一个或多个host组件来定义站点；通常需要defaultHost属性来为其定义一个接受所有发往非明确定义虚拟主机的请求的host组件</p>
+<p>  <em>name</em>：engine组件的名称，用于日志和错误信息记录时却别不同的引擎</p>
+</li>
+<li><p><em>host</em>：位于engine内部用于接受请求并进行响应处理的主机或虚拟主机</p>
+<p>  <em>appBase</em>：此host的webapps的默认存放目录，指存放非归档的web应用程序的目录或归档的WAR文件目录路径；可以使用基于$CATALINA_BASE变量所定义的路径的相对路径<br>  <em>autoDepoly</em>：在tomcat处于运动状态时，将某webapp放置于appBase所定义的目录中，是否自动将其部署至tomcat；默认为true<br>  <em>unpackWars</em>：在启用此webapss时是否对WAR格式的归档文件先进行展开，默认为true</p>
+</li>
+</ul>
+<p>主机别名定义：如果一个主机有两个或两个以上的主机名，额外的名称均可以以别名的形式进行定义</p>
+<p><strong>示例</strong></p>
+<pre><code>&lt;Host name=&quot;www.test.com&quot; appBase=&quot;webapps&quot; unpackWARS=&quot;true&quot;&gt;
+    &lt;Alias&gt;test.com&lt;/Alias&gt;
+&lt;/Host&gt;
+</code></pre><ul>
+<li><p><em>context</em>：context在某些意义上类似于apache的路径别名，一个context定义用于表示tomcat示例中的一个web应用程序</p>
+<p>  <em>docBase</em>：相应的web应用程序存放位置；也可以使用相对路径，起始路径为Context所属Host中appBase定义的路径；切记，docBase的路径名不能与相应的Host中的appBase中定义的路径名有包含关系，比如appBase为deploy，而docBase决不能为deploy-bbs类的名字<br>  <em>path</em>：相对于web服务器根目录而言的URI，如果为空，则表示为webapp的根路径；如果context定义了一个单独的xml文件，此属性不需要定义<br>  <em>reloadable</em>：是否允许重新加载此context相关的web应用程序类，默认为false</p>
+</li>
+</ul>
+<p><strong>示例</strong></p>
+<pre><code>&lt;Context path=&quot;/path&quot; docBase=&quot;/path/to/somedir&quot; reloadable=&quot;&quot;/&gt;
+</code></pre><ul>
+<li><p><em>realm</em>：一个realm表示一个安全上下文，授权访问某个给定context的用户列表和某用户所允许切换角色相关定义的列表</p>
+</li>
+<li><p><em>valve</em>：<br>类似于过滤器，valve定义的次序决定了他们的生效次序。</p>
+<p>  RemoteHostValve：基于远程主机名称的访问控制<br>  RemouteAddrValve：基于远程地址的访问控制</p>
+<p>  控制本身可以通过allow或deny来进行定义，这有点类似于apache的访问控制功能</p>
+</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code>&lt;Context path=&quot;/test&quot; docBase=&quot;test&quot;&gt;
+    &lt;Valve className=&quot;org.apache.catalina.valves.RemoteAddrValve&quot; allow=&quot;127\.0\.0\.1&quot;/&gt;
+&lt;/Context&gt;
+
+
+*className*：相关的java实现的类名
+*allow*：以逗号分开的允许访问的IP地址列表，支持正则表达式，使用“.”需要转义；仅定义allow选项是，被明确allow的地址均被deny
+*deny*：以逗号分开的禁止访问IP地址列表，支持正则表达式，使用方式同allow
+</code></pre><p><strong>部署（deploy）webapp相关操作</strong></p>
+<p>将webapp的源文件放置于目标目录，配置tomcat服务器能够基于web.xml和context.xml文件中定义的路径来访问webapp；将其特有的类和依赖的类通过class loader装载至JVM中</p>
+<pre><code>部署方式：
+
+    （1）自动部署auto deploy
+    （2）手动部署
+
+            冷部署：把webapp复制到指定的位置，而后才能启动tomcat
+            热部署：在不停止tomcat的前提下进行部署
+                部署工具：manager、ant脚本、tcd（tomcat client deployer）
+
+        undeploy：拆除（反部署），停止webapp，并从tomcat示例上卸载webapp
+        start：启动处于停止状态的webapp
+        stop：停止webapp，不再向用户提供服务，其类亦然在jvm上
+        redeploy：重新部署
+</code></pre><p>###6、启动manager功能</p>
+<pre><code>&lt;role rolename=&quot;manager-gui&quot;/&gt;
+&lt;role rolename=&quot;manager-script&quot;/&gt;
+&lt;role rolename=&quot;standard&quot;/&gt;
+&lt;user username=&quot;tomcat&quot; password=&quot;secret&quot; roles=&quot;admin-gui,manager-script,standard&quot;/&gt;
+</code></pre><p>###7、tomcat请求的分类</p>
+<pre><code>（1）standalone：请求来自客户端浏览器
+（2）由其他的web server反代，来自前段的反代服务器
+        nginx--&gt;http connector --&gt;tomcat
+        httpd(proxy_http_module)--&gt;http connector--&gt;tomcat
+        httpd(proxy_ajp_module)--&gt;ajp connector --&gt;tomcat
+        http(mod_jk)--&gt;ajp connector --&gt;tomcat
+</code></pre><p>#三、Tomcat安装<br>方式一：<br>-</p>
+<p>使用yum源安装即可</p>
+<p>（1）安装jdk环境，由于base源提供了三个不同版本的jdk环境，根据我们的需要自行安装所需要的版本</p>
+<p><code>[root@localhost~]#yum install -y java-1.8.0-openjdk-src</code></p>
+<p><code>[root@localhost~]#java -version</code>   #查看是否安装成功</p>
+<p><em>如果多 版本并存时，可使用alternatives命令设定默认使用的版本。</em></p>
+<p>（2）安装tomcat</p>
+<p><code>[root@localhost~]#yum install -y tomcat tomcat-admin-webapps tomcat-docs-webapp tomcat-webapps tomcat-libs</code></p>
+<p><code>[root@localhost~]#systemctl start tomcat.service</code>  #启动服务</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_093049.jpg" alt=""></p>
+<p>方式二：<br>-</p>
+<p>（1）从官网下载rpm安装jdk<br>#</p>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p>
+<p>#<br><code>[root@localhost~]#rpm -ivh jdk-8u144-linux-x64.rpm</code></p>
+<p><code>[root@localhost~]#java -version</code>   #测试是否安装成功</p>
+<p>（2）二进制安装tomcat</p>
+<p><a href="https://tomcat.apache.org/download-80.cgi" target="_blank" rel="noopener">https://tomcat.apache.org/download-80.cgi</a></p>
+<p><code>[root@localhost~]#tar xf apache-tomcat-7.0.78.tar.gz -C /usr/local/</code>   #解压缩</p>
+<p><code>[root@localhost~]#cd /usr/local/</code></p>
+<p><code>[root@localhost/usr/local]#ln -sv apache-tomcat-7.0.78/ tomcat</code>    #创建软连接</p>
+<p><code>[root@localhost/usr/local/tomcat]#vim /etc/profile.d/tomcat.sh</code>    #修改环境变量</p>
+<pre><code>1 export CATALINA_BASE=/usr/local/tomcat
+2 export PATH=$CATALINA_BASE/bin:$PATH
+</code></pre><blockquote>
+<p>修改权限</p>
+</blockquote>
+<p><code>[root@localhost/usr/local]#useradd -r tomcat</code>  #创建用户</p>
+<p><code>[root@localhost/usr/local]#chown -R :tomcat tomcat/</code>   #修改配置文件所属组</p>
+<p><code>[root@localhost/usr/local/tomcat]#chown tomcat ./{logs,temp,work,webapps}</code></p>
+<p><code>[root@localhost/usr/local/tomcat]#source /etc/profile.d/tomcat.sh</code> #使环境变量生效</p>
+<p>（3）重启服务测试</p>
+<p><code>[root@localhost/usr/local/tomcat/bin]#catalina.sh --help</code></p>
+<pre><code>Usage: catalina.sh ( commands ... )
+commands:
+  debug             Start Catalina in a debugger
+  debug -security   Debug Catalina with a security manager
+  jpda start        Start Catalina under JPDA debugger
+  run               Start Catalina in the current window
+  run -security     Start in the current window with security manager
+  start             Start Catalina in a separate window
+  start -security   Start in a separate window with security manager
+  stop              Stop Catalina, waiting up to 5 seconds for the process to end
+  stop n            Stop Catalina, waiting up to n seconds for the process to end
+  stop -force       Stop Catalina, wait up to 5 seconds and then use kill -KILL if still running
+  stop n -force     Stop Catalina, wait up to n seconds and then use kill -KILL if still running
+  configtest        Run a basic syntax check on server.xml - check exit code for result
+  version           What version of tomcat are you running?
+</code></pre><p><code>[root@localhost~]#mkdir test/{logs,temp,work,webapps} -pv</code></p>
+<p><code>[root@localhost~]#chown -R tomcat test/{logs,temp,work,webapps}</code>   </p>
+<p><code>[root@localhost/usr/local/tomcat/bin]#catalina.sh start</code>   #启动服务</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_101732.jpg" alt=""></p>
+<p><strong>建议一般以普通用户运行tomcat</strong></p>
+<p>#四、示例</p>
+<p>###1、冷部署方法</p>
+<p>（1）创建所需要的目录</p>
+<p><code>[root@localhost~]#mkdir test/{classes,lib,WEB-INF} -pv</code></p>
+<p>（2）创建index.jsp文件</p>
+<p><code>[root@localhost~]#vim test/index.jsp</code></p>
+<pre><code> 1  &lt;%@ page language=&quot;java&quot; %&gt;
+ 2  &lt;%@ page import=&quot;java.util.*&quot; %&gt;
+ 3  &lt;html&gt;
+ 4          &lt;head&gt;
+ 5                  &lt;title&gt;Test Page&lt;/title&gt;
+ 6          &lt;/head&gt;
+ 7          &lt;body&gt;
+ 8                  &lt;% out.println(&quot;hello world&quot;);
+ 9                  %&gt;
+10          &lt;/body&gt;
+11  &lt;/html&gt;
+</code></pre><p>（3）将test目录移动到webapps目录下</p>
+<p><code>[root@localhost~]#cp -r test/ /usr/share/tomcat/webapps/</code></p>
+<p>（4）重启服务测试</p>
+<p><code>[root@localhost~]#systemctl start tomcat</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_110703.jpg" alt=""></p>
+<p><strong>如果是程序员将打包好的jar文件发给我们，可以将此包直接防止webapps目录下，可以自行部署</strong></p>
+<p>（5）查看部署过程</p>
+<p><code>[root@localhost/usr/share/tomcat/work/Catalina/localhost]#tree test/</code></p>
+<pre><code>test/
+└── org
+    └── apache
+        └── jsp
+            ├── index_jsp.class
+            └── index_jsp.java
+</code></pre><p>###2、手动使用SHUTDOWN关闭服务<br>（1）首先先查看下我们的服务是否正常运行</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_111511.jpg" alt=""></p>
+<p>（2）使用telnet连接关闭服务</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_111645.jpg" alt=""></p>
+<p>此时我们再看服务已经没有开启了，为了防止恶意之人，我们需要将命令修改为随机数等等</p>
+<p><code>[root@localhost/etc/tomcat]#openssl rand -hex 20</code></p>
+<pre><code>fb8a9c1a78827dcb81950feca0e18c6d4470997e
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_111922.jpg" alt=""></p>
+<p>###3、创建站点</p>
+<p><code>[root@localhost/etc/tomcat]#vim server.xml</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_113352.jpg" alt=""></p>
+<p><code>[root@localhost/etc/tomcat]#mkdir -pv /app/webapps</code></p>
+<p><code>[root@localhost/etc/tomcat]#mkdir -pv /app/webapps/ROOT/{lib,classes,WEB-INF}</code></p>
+<p><code>[root@localhost/etc/tomcat]#cp /usr/share/tomcat/webapps/test/index.jsp /app/webapps/ROOT/</code>    #创建站点文件</p>
+<blockquote>
+<p>重启服务测试</p>
+</blockquote>
+<p><code>[root@localhost/etc/tomcat]#systemctl start tomcat</code></p>
+<p><code>[root@localhost/etc/tomcat]#curl www.test.com:8080</code></p>
+<pre><code>&lt;html&gt;
+        &lt;head&gt;
+                &lt;title&gt;Test Page&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+                hello world
+
+        &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>出现上述结果正常，使用的是curl命令没有做修改</p>
+<p><code>[root@localhost/etc/tomcat]#links www.test.com:8080</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_113653.jpg" alt=""></p>
+<p>###4、修改conext组件相当于修改别名</p>
+<p>（1）创建目录</p>
+<p><code>[root@localhost~]#cp -r test/ /data/test</code></p>
+<p>（2）编辑server.xml文件</p>
+<p><code>[root@localhost~]#vim /etc/tomcat/server.xml</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_114918.jpg" alt=""></p>
+<p>（3）编辑index.jsp文件</p>
+<p><code>[root@localhost/data/test]#vim index.jsp</code></p>
+<pre><code> 1  &lt;%@ page language=&quot;java&quot; %&gt;
+ 2  &lt;%@ page import=&quot;java.util.*&quot; %&gt;
+ 3  &lt;html&gt;
+ 4          &lt;head&gt;
+ 5                  &lt;title&gt;Test Page&lt;/title&gt;
+ 6          &lt;/head&gt;
+ 7          &lt;body&gt;
+ 8                  &lt;% out.println(&quot;hello tomcat&quot;);
+ 9                  %&gt;
+10          &lt;/body&gt;
+11  &lt;/html&gt;
+</code></pre><p>（4）重启服务测试</p>
+<p><code>[root@localhost/data/test]#links www.test.com:8080/test</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_114840.jpg" alt=""></p>
+<p>###5、启动web-gui管理</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_115428.jpg" alt=""></p>
+<p>（1）如果我们想启用Server Status功能需要认证，如果我们点击cancle则出现指示方法</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_141848.jpg" alt=""></p>
+<p>（2）修改tomcat-user.xml配置文件</p>
+<p><code>[root@localhost/etc/tomcat]#vim tomcat-users.xml</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_142628.jpg" alt=""></p>
+<p>（3）重启tomcat服务测试</p>
+<p><code>[root@localhost/etc/tomcat]#systemctl restart tomcat</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_142853.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_142837.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_142908.jpg" alt=""></p>
+<p>###5、禁止或允许某个或某些远程IP主机管理</p>
+<p>（1）编辑server.xml配置文件</p>
+<p><code>[root@localhost/etc/tomcat]#vim server.xml</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_143912.jpg" alt=""></p>
+<p>（2）测试</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_144159.jpg" alt=""></p>
+<p>禁止此IP访问没有显示内容 </p>
+<p>那么接下来我们允许此IP访问并再次重启服务测试</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_144330.jpg" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tomcat/" rel="tag"># tomcat</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/ngx_http_upstream_module/" rel="next" title="ngx_http_upstream_module">
+                <i class="fa fa-chevron-left"></i> ngx_http_upstream_module
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/Zabbix基于微信告警/" rel="prev" title="Zabbix基于微信告警">
+                Zabbix基于微信告警 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="samba," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，基于C/S架构。SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服">
+<meta name="keywords" content="samba">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Samba">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/Samba/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，基于C/S架构。SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。通过设置“NetBIOS over TC">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-18_104753.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-18_105307.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-18_105624.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-18_112436.jpg">
+<meta property="og:updated_time" content="2017-11-29T11:47:23.194Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Samba">
+<meta name="twitter:description" content="Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，基于C/S架构。SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。通过设置“NetBIOS over TC">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-18_104753.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/Samba/"/>
+
+
+
+
+
+  <title>Samba | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Samba/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Samba</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/文件管理/" itemprop="url" rel="index">
+                    <span itemprop="name">文件管理</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/文件管理/Samba/" itemprop="url" rel="index">
+                    <span itemprop="name">Samba</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，基于C/S架构。SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。通过设置“NetBIOS over TCP/IP”使得Samba不但能与局域网络主机分享资源，还能与全世界的电脑分享资源。</p>
+<h1 id="一、SAMAB基本概念"><a href="#一、SAMAB基本概念" class="headerlink" title="一、SAMAB基本概念"></a>一、SAMAB基本概念</h1><h2 id="1、SMB的基本功能"><a href="#1、SMB的基本功能" class="headerlink" title="1、SMB的基本功能"></a>1、SMB的基本功能</h2><ul>
+<li>共享文件和打印，实现在线编辑</li>
+<li>实现登录SMB用户的身份认证</li>
+<li>可以进行NetBIOS名称解析</li>
+<li>外围设备共享</li>
+</ul>
+<h2 id="2、SAMAB服务基于协议"><a href="#2、SAMAB服务基于协议" class="headerlink" title="2、SAMAB服务基于协议"></a>2、SAMAB服务基于协议</h2><h3 id="（1）、NetBIOS协议"><a href="#（1）、NetBIOS协议" class="headerlink" title="（1）、NetBIOS协议"></a>（1）、NetBIOS协议</h3><p>NETBIOS（Network Basic Input/Output System）协议是由IBM公司开发，主要用于数十台计算机的小型局域网。该协议是一种在局域网上的程序可以使用的应用程序编程接口（API），为程序提供了请求低级服务的统一的命令集，作用是为了给局域网提供网络以及其他特殊功能。系统可以利用WINS服务、广播及Lmhost文件等多种模式将NetBIOS名-——特指基于NETBIOS协议获得计算机名称——解析为相应IP地址，实现信息通讯，所以在局域网内部使用NetBIOS协议可以方便地实现消息通信及资源的共享。</p>
+<h3 id="NetBIOS特点"><a href="#NetBIOS特点" class="headerlink" title="NetBIOS特点"></a>NetBIOS特点</h3><ul>
+<li>占用系统资源少</li>
+<li>传输效率高</li>
+</ul>
+<h3 id="（2）CIFS协议"><a href="#（2）CIFS协议" class="headerlink" title="（2）CIFS协议"></a>（2）CIFS协议</h3><p>CIFS 是一个新提出的协议，它使程序可以访问远程Internet计算机上的文件并要求此计算机提供服务。CIFS 使用客户/服务器模式。客户程序请求远在服务器上的服务器程序为它提供服务。服务器获得请求并返回响应。CIFS是公共的或开放的SMB协议版本，并由Microsoft使用。SMB协议在局域网上用于服务器文件访问和打印的协议。像SMB协议一样，CIFS在高层运行，而不像TCP/IP协议那样运行在底层。CIFS可以看做是应用程序协议如文件传输协议和超文本传输协议的一个实现。</p>
+<h3 id="CIFS协议功能"><a href="#CIFS协议功能" class="headerlink" title="CIFS协议功能"></a>CIFS协议功能</h3><ul>
+<li>访问服务器本地文件并读写这些文件</li>
+<li>与其他用户一起共享一些文件</li>
+<li>在短线时自动回复与网络的连接</li>
+<li>使用统一码文件名</li>
+</ul>
+<h3 id="（3）smb协议"><a href="#（3）smb协议" class="headerlink" title="（3）smb协议"></a>（3）smb协议</h3><p>SMB(全称是Server Message Block)是一个协议名，它能被用于Web连接和客户端与服务器之间的信息沟通。SMB最初是IBM的贝瑞·费根鲍姆（Barry Feigenbaum）研制的，其目的是将DOS操作系统中的本地文件接口“中断13”改造为网络文件系统。</p>
+<h2 id="3、SAMBA服务文件介绍"><a href="#3、SAMBA服务文件介绍" class="headerlink" title="3、SAMBA服务文件介绍"></a>3、SAMBA服务文件介绍</h2><h3 id="（1）samba相关包介绍"><a href="#（1）samba相关包介绍" class="headerlink" title="（1）samba相关包介绍"></a>（1）samba相关包介绍</h3><table>
+<thead>
+<tr>
+<th>包名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>samba</td>
+<td>提供smb服务</td>
+</tr>
+<tr>
+<td>samba-client</td>
+<td>提供客户端工具</td>
+</tr>
+<tr>
+<td>samba-common</td>
+<td>通用软件</td>
+</tr>
+<tr>
+<td>cifs-utils</td>
+<td>smb客户端工具</td>
+</tr>
+<tr>
+<td>samba-winbind</td>
+<td>和AD相关的包</td>
+</tr>
+</tbody>
+</table>
+<h3 id="（2）主配置文件-etc-samba-smb-conf"><a href="#（2）主配置文件-etc-samba-smb-conf" class="headerlink" title="（2）主配置文件/etc/samba/smb.conf"></a>（2）主配置文件<code>/etc/samba/smb.conf</code></h3><p>sbm.conf继承了.ini（initialization）文件格式，用[]分成不同的部分。</p>
+<p><strong>配置文件分为类</strong></p>
+<ul>
+<li>[global]：服务器通过或全局设置的部分</li>
+<li>[homes]：用户的家目录共享</li>
+<li>[printers]：定义打印机资源和服务</li>
+<li>[SHARENAME]：自定义共享目录配置</li>
+</ul>
+<p><strong>配置文件宏定义</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%m</td>
+<td>客户端主机的NetBIOS名</td>
+</tr>
+<tr>
+<td>%M</td>
+<td>客户端的FQDN</td>
+</tr>
+<tr>
+<td>%H</td>
+<td>当前用户家目录路径</td>
+</tr>
+<tr>
+<td>%U</td>
+<td>当前用户用户名</td>
+</tr>
+<tr>
+<td>%g</td>
+<td>当前用户所属组</td>
+</tr>
+<tr>
+<td>%h</td>
+<td>samba服务器的主机名</td>
+</tr>
+<tr>
+<td>%L</td>
+<td>samba服务器的NetBIOS</td>
+</tr>
+<tr>
+<td>%I</td>
+<td>客户端主机的IP</td>
+</tr>
+<tr>
+<td>%T</td>
+<td>当前日期和时间</td>
+</tr>
+<tr>
+<td>%S</td>
+<td>可登录的用户名</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置文件选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>workgroup</td>
+<td>指定工作组名称</td>
+</tr>
+<tr>
+<td>server string</td>
+<td>主机注释信息</td>
+</tr>
+<tr>
+<td>netbios name</td>
+<td>指定NetBIOS名</td>
+</tr>
+<tr>
+<td>interface</td>
+<td>指定服务监听的接口和IP </td>
+</tr>
+<tr>
+<td>host allow</td>
+<td>指定允许指定主机访问，如多个主机可以网段，离散可以使用“，”、空格或tab分离；或使用主机名；默允许所有主机访问。示例192.168.4.</td>
+</tr>
+<tr>
+<td>config file=/PAHT/TO/SOMEFIEL/%U</td>
+<td>用户独立的配置文件</td>
+</tr>
+<tr>
+<td>log file=/var/log/samba/log.%m</td>
+<td>不同主机采用不同日志</td>
+</tr>
+<tr>
+<td>max log size</td>
+<td>日志文件大小，单位为KB</td>
+</tr>
+<tr>
+<td>log level</td>
+<td>设置日志级别</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>注释信息</td>
+</tr>
+<tr>
+<td>path</td>
+<td>所共享的目录路径</td>
+</tr>
+<tr>
+<td>public = {yes或no}</td>
+<td>能否被guest访问的共享，默认为no</td>
+</tr>
+<tr>
+<td>guest ok = {yes或no}</td>
+<td>是否允许来宾账号访问</td>
+</tr>
+<tr>
+<td>writable = {yes或no}</td>
+<td>是否可读写</td>
+</tr>
+<tr>
+<td>read only = {yes或no}</td>
+<td>是否只读，如果与writeable设置冲突，放在后面的设置生效</td>
+</tr>
+<tr>
+<td>write list</td>
+<td>指定多个用户是否可写，格式：@GROUP_NAME、+GROUP_NAME或使用“，”分隔，如设置writable = no 列表中的用户或组可读写，不在列表中的用户只读</td>
+</tr>
+<tr>
+<td>vaild users</td>
+<td>特定用户才能访问此共享，如果设置为空，将允许所有用户；用户名之间使用空格分隔</td>
+</tr>
+<tr>
+<td>browsable = {yes或no}</td>
+<td>是否允许所有用户列浏览此共享，默认为yes</td>
+</tr>
+<tr>
+<td>create mask</td>
+<td>修改上传权限</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：如果是某个用户对目录有权限，此用户必须有目录权限和共享权限的交集。</strong></p>
+<p> 服务脚本：<br>    /etc/rc.d/init.d/nmb<br>    /etc/rc.d/init.d/smb</p>
+<h2 id="4、管理命令"><a href="#4、管理命令" class="headerlink" title="4、管理命令"></a>4、管理命令</h2><h3 id="（1）testparm：检查smb-conf文件是否正确"><a href="#（1）testparm：检查smb-conf文件是否正确" class="headerlink" title="（1）testparm：检查smb.conf文件是否正确"></a>（1）testparm：检查smb.conf文件是否正确</h3><p>格式：</p>
+<pre><code>testparm [-s] {config filename} [hostname hostIP]
+</code></pre><h3 id="（2）smbclient-连接SMB-CIFS资源的命令"><a href="#（2）smbclient-连接SMB-CIFS资源的命令" class="headerlink" title="（2）smbclient 连接SMB/CIFS资源的命令"></a>（2）smbclient 连接SMB/CIFS资源的命令</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-I</td>
+<td>指定服务器的IP地址；</td>
+</tr>
+<tr>
+<td>-L</td>
+<td>显示服务器端所分享出来的所有资源；</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>指定用户端所要使用的NetBIOS名称；</td>
+</tr>
+<tr>
+<td>-N</td>
+<td>不用询问密码；</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>指定服务器端TCP连接端口编号； </td>
+</tr>
+<tr>
+<td>-T</td>
+<td>备份服务器端分享的全部文件，并打包成tar格式的文件；</td>
+</tr>
+<tr>
+<td>-U&lt;用户名称&gt;</td>
+<td>指定用户名称； </td>
+</tr>
+<tr>
+<td>-w&lt;工作群组&gt;</td>
+<td>指定工作群组名称。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="（3）mount-cifs依赖于-cifs-utils包；挂载工具"><a href="#（3）mount-cifs依赖于-cifs-utils包；挂载工具" class="headerlink" title="（3）mount.cifs依赖于 cifs-utils包；挂载工具"></a>（3）mount.cifs依赖于 cifs-utils包；挂载工具</h3><h3 id="（4）smbpasswd-设置smb用户密码"><a href="#（4）smbpasswd-设置smb用户密码" class="headerlink" title="（4）smbpasswd 设置smb用户密码"></a>（4）smbpasswd 设置smb用户密码</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a</td>
+<td>向smbpasswd文件中添加用户； </td>
+</tr>
+<tr>
+<td>-c</td>
+<td>指定samba的配置文件；</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>从smbpasswd文件中删除用户；</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>在smbpasswd文件中禁用指定的用户；</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>在smbpasswd文件中激活指定的用户；</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>将指定的用户的密码置空。</td>
+</tr>
+</tbody>
+</table>
+<p>密码文件存在在<code>/var/lib/samba/private/passdb.tdb</code></p>
+<h3 id="（5）pdbedit"><a href="#（5）pdbedit" class="headerlink" title="（5）pdbedit"></a>（5）pdbedit</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a username</td>
+<td>新建Samba账户。</td>
+</tr>
+<tr>
+<td>-x username</td>
+<td>删除Samba账户。</td>
+</tr>
+<tr>
+<td>-L</td>
+<td>列出Samba用户列表，读取`/var/lib/samba/private/passdb.tdb数据库文件。</td>
+</tr>
+<tr>
+<td>-Lv</td>
+<td>列出Samba用户列表的详细信息。</td>
+</tr>
+<tr>
+<td>-c “[D]” –u username</td>
+<td>暂停该Samba用户的账号。</td>
+</tr>
+<tr>
+<td>-c “[]” –u username</td>
+<td>恢复该Samba用户的账号。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="（6）cifscreds-管理NTLM在内核密钥环中"><a href="#（6）cifscreds-管理NTLM在内核密钥环中" class="headerlink" title="（6）cifscreds 管理NTLM在内核密钥环中"></a>（6）cifscreds 管理NTLM在内核密钥环中</h3><pre><code>add：把指定用户的用户名和密码加入内核密钥环
+</code></pre><h1 id="二、实现共享"><a href="#二、实现共享" class="headerlink" title="二、实现共享"></a>二、实现共享</h1><h2 id="（1）实现linux为客户端，windows为服务器端共享"><a href="#（1）实现linux为客户端，windows为服务器端共享" class="headerlink" title="（1）实现linux为客户端，windows为服务器端共享"></a>（1）实现linux为客户端，windows为服务器端共享</h2><p>在windows系统上创建一个共享目录</p>
+<p>选中目录–&gt;右击点属性–&gt;共享</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-18_104753.jpg" alt=""></p>
+<p>点击图中的用户可以设置权限</p>
+<p>在linux客户端查看</p>
+<p><code>[root@localhost ~]# smbclient -L 192.168.4.1 -U joah%PASSWORD</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-18_105307.jpg" alt=""></p>
+<p><code>[root@localhost ~]# smbclient //192.168.4.1/linuxclient -U joah</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-18_105624.jpg" alt=""></p>
+<p>挂载此目录</p>
+<p>[root@localhost ~]# mount //192.168.4.1/linuxclient -o username=joah,password=PASSWORD /mnt/samba/</p>
+<h2 id="（2）实现linux作服务器端，windows作客户端共享文件"><a href="#（2）实现linux作服务器端，windows作客户端共享文件" class="headerlink" title="（2）实现linux作服务器端，windows作客户端共享文件"></a>（2）实现linux作服务器端，windows作客户端共享文件</h2><p>创建smb账号</p>
+<p><code>[root@localhost ~]# useradd -r smb1</code><br><code>[root@localhost ~]# useradd -r smb2</code><br><code>[root@localhost ~]# useradd -r smb2</code></p>
+<p>设置smb账号密码</p>
+<p><code>[root@localhost ~]# smbpasswd -a smb1</code><br><code>[root@localhost ~]# smbpasswd -a smb2</code><br><code>[root@localhost ~]# smbpasswd -a smb3</code></p>
+<p>使用命令查看</p>
+<p><code>[root@localhost ~]# pdbedit -L</code></p>
+<pre><code>smb1:496:
+smb3:494:
+smb2:495:
+</code></pre><p>创建共享目录</p>
+<p><code>[root@localhost ~]# vim /etc/samba/smb.conf</code></p>
+<pre><code>[sharewin]
+        comment = linux share
+        path = /app/smbshare
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-18_112436.jpg" alt=""></p>
+<p>弹出对话框输入上述账户和密码即可登录</p>
+<h2 id="（3）linux中实现不同用户权限访问共享目录"><a href="#（3）linux中实现不同用户权限访问共享目录" class="headerlink" title="（3）linux中实现不同用户权限访问共享目录"></a>（3）linux中实现不同用户权限访问共享目录</h2><p>###创建共享目录</p>
+<p><code>[root@localhost ~]# mkdir /app/share{1,2,3}</code><br><code>[root@localhost ~]# chmod 777 /app/share{1,2,3}</code>   并设置目录权限</p>
+<h3 id="编辑配置文件"><a href="#编辑配置文件" class="headerlink" title="编辑配置文件"></a>编辑配置文件</h3><p><code>[root@localhost ~]# vim /etc/samba/smb.conf</code>在全部设置下添加如下一行内容</p>
+<pre><code>config file = /etc/samba/conf.d/%U
+</code></pre><h3 id="创建每个用户的配置文件"><a href="#创建每个用户的配置文件" class="headerlink" title="创建每个用户的配置文件"></a>创建每个用户的配置文件</h3><p><code>[root@localhost ~]# mkdir /etc/samba/conf.d</code>   #创建指定配置文件存放位置</p>
+<p><code>[root@localhost conf.d]# vim smb1</code></p>
+<pre><code>[share]
+comment = share1
+path = /app/share1
+writeable = yes
+</code></pre><p><code>[root@localhost conf.d]# vim smb2</code></p>
+<pre><code>[share]
+comment = share2
+path = /app/share2
+</code></pre><p><code>[root@localhost conf.d]# vim smb3</code></p>
+<pre><code>[share]
+comment = share3
+path = /app/share3
+</code></pre><h3 id="重启服务测试"><a href="#重启服务测试" class="headerlink" title="重启服务测试"></a>重启服务测试</h3><p><code>[root@localhost conf.d]# service nmb restart ;service smb restart</code></p>
+<p>在另一外linux主机上测试</p>
+<p><code>[root@localhost ~]# smbclient -L //192.168.4.55 -U smb1%123456</code></p>
+<p><code>[root@localhost ~]# smbclient //192.168.4.55/share -U smb1%magedu</code></p>
+<h3 id="挂载共享目录在本地"><a href="#挂载共享目录在本地" class="headerlink" title="挂载共享目录在本地"></a>挂载共享目录在本地</h3><p><code>[root@localhost smb]# mount //192.168.4.55/share /mnt/smb/ -o username=smb1,password=123456</code></p>
+<h3 id="实现开机自动挂载"><a href="#实现开机自动挂载" class="headerlink" title="实现开机自动挂载"></a>实现开机自动挂载</h3><p><code>[root@localhost smb]# vim /etc/fstab</code></p>
+<pre><code>//192.168.4.55/share    /mnt/smb                cifs    username=smb1,password=magedu   0 0
+</code></pre><p>如果我们这样挂载的话，密码直接暴露出来，显然不安装，我们可以将用户和密码写到一个配置文件中</p>
+<p><code>[root@localhost smb]# vim /etc/samba/userpasswd</code></p>
+<pre><code>username=smb1
+password=123456
+</code></pre><p><code>[root@localhost ~]# chmod 600 /etc/samba/userpasswd</code>  #修改文件权限</p>
+<p><code>[root@localhost ~]# vim /etc/fstab</code></p>
+<pre><code>//192.168.4.55/share    /mnt/smb                cifs    credentials=/etc/samba/userpasswd       0 0
+</code></pre><p><code>[root@localhost ~]# mount -a</code>  #使挂载生效</p>
+<p><code>[root@localhost ~]# df</code></p>
+<pre><code>Filesystem           1K-blocks    Used Available Use% Mounted on
+/dev/sda2             50264772 1632864  46071908   4% /
+tmpfs                   502056       0    502056   0% /dev/shm
+/dev/sda3             50264772   89224  47615548   1% /app
+/dev/sda1               487652   35604    426448   8% /boot
+/dev/sr0               3878870 3878870         0 100% /media/cdrom
+//192.168.4.55/share  50264772   53092  47651680   1% /mnt/smb  #挂载成功
+</code></pre><h2 id="（4）实现多用户挂载（CentOS-7中可以启用这种方法）"><a href="#（4）实现多用户挂载（CentOS-7中可以启用这种方法）" class="headerlink" title="（4）实现多用户挂载（CentOS 7中可以启用这种方法）"></a>（4）实现多用户挂载（CentOS 7中可以启用这种方法）</h2><h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p><code>[root@localhost ~]# vim /etc/samba/smb.conf</code></p>
+<pre><code>[share]
+        comment = sharedirectory
+        path = /app/sharedir
+        write list = smb1   #设置只有smb1用户具有写权限
+</code></pre><h3 id="创建共享目录并赋予权限"><a href="#创建共享目录并赋予权限" class="headerlink" title="创建共享目录并赋予权限"></a>创建共享目录并赋予权限</h3><p><code>[root@localhost ~]# mkdir /app/sharedir</code><br><code>[root@localhost ~]# chmod 777 /app/sharedir</code></p>
+<h3 id="在客户端创建与服务器端相同的账号"><a href="#在客户端创建与服务器端相同的账号" class="headerlink" title="在客户端创建与服务器端相同的账号"></a>在客户端创建与服务器端相同的账号</h3><p><strong>注意：客户端与服务器端必须有相同的用户。</strong></p>
+<p><code>[root@localhost ~]# useradd smb1</code></p>
+<p><code>[root@localhost ~]# useradd smb2</code></p>
+<p><code>[root@localhost ~]# useradd smb3</code></p>
+<h3 id="使用smb3用户挂载目录"><a href="#使用smb3用户挂载目录" class="headerlink" title="使用smb3用户挂载目录"></a>使用smb3用户挂载目录</h3><p><code>[root@localhost ~]# vim /etc/samba/userpasswd</code></p>
+<pre><code>username=smb3
+password=123456
+</code></pre><h3 id="修改-etc-fstab文件"><a href="#修改-etc-fstab文件" class="headerlink" title="修改/etc/fstab文件"></a>修改<code>/etc/fstab</code>文件</h3><p><code>[root@localhost ~]# vim /etc/fstab</code></p>
+<pre><code>//192.168.4.55/share    /mnt/smb                cifs    multiuser,credentials=/etc/samba/userpasswd     0 0
+
+
+//192.168.4.55/share    /mnt/smb                cifs    credentials=/etc/samba/userpasswd,multiuser     0 0
+
+
+
+credentials：用于指定包含挂载用户信息文件
+multiuser：用于指定使用多用户挂载
+</code></pre><p><code>[root@localhost ~]# mount -a</code>  #使挂载生效</p>
+<h3 id="测试是否可以切换到smb1有写权限"><a href="#测试是否可以切换到smb1有写权限" class="headerlink" title="测试是否可以切换到smb1有写权限"></a>测试是否可以切换到smb1有写权限</h3><p><code>[root@localhost/mnt/smb]#su - smb1</code><br><code>[smb1@localhost~]$cifscreds add 192.168.4.55</code></p>
+<pre><code>Password: 
+</code></pre><p><code>[smb1@localhost~]$ls /mnt/smb/</code></p>
+<pre><code>anaconda-ks.cfg  xx
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/samba/" rel="tag"># samba</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/LNMT、LAMT环境/" rel="next" title="LNMT、LAMT环境">
+                <i class="fa fa-chevron-left"></i> LNMT、LAMT环境
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/LNMT实现Jsprun论坛/" rel="prev" title="LNMT实现Jsprun论坛">
+                LNMT实现Jsprun论坛 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、SAMAB基本概念"><span class="nav-number">1.</span> <span class="nav-text">一、SAMAB基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、SMB的基本功能"><span class="nav-number">1.1.</span> <span class="nav-text">1、SMB的基本功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、SAMAB服务基于协议"><span class="nav-number">1.2.</span> <span class="nav-text">2、SAMAB服务基于协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、NetBIOS协议"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）、NetBIOS协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NetBIOS特点"><span class="nav-number">1.2.2.</span> <span class="nav-text">NetBIOS特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）CIFS协议"><span class="nav-number">1.2.3.</span> <span class="nav-text">（2）CIFS协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CIFS协议功能"><span class="nav-number">1.2.4.</span> <span class="nav-text">CIFS协议功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）smb协议"><span class="nav-number">1.2.5.</span> <span class="nav-text">（3）smb协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、SAMBA服务文件介绍"><span class="nav-number">1.3.</span> <span class="nav-text">3、SAMBA服务文件介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）samba相关包介绍"><span class="nav-number">1.3.1.</span> <span class="nav-text">（1）samba相关包介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）主配置文件-etc-samba-smb-conf"><span class="nav-number">1.3.2.</span> <span class="nav-text">（2）主配置文件/etc/samba/smb.conf</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、管理命令"><span class="nav-number">1.4.</span> <span class="nav-text">4、管理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）testparm：检查smb-conf文件是否正确"><span class="nav-number">1.4.1.</span> <span class="nav-text">（1）testparm：检查smb.conf文件是否正确</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）smbclient-连接SMB-CIFS资源的命令"><span class="nav-number">1.4.2.</span> <span class="nav-text">（2）smbclient 连接SMB/CIFS资源的命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）mount-cifs依赖于-cifs-utils包；挂载工具"><span class="nav-number">1.4.3.</span> <span class="nav-text">（3）mount.cifs依赖于 cifs-utils包；挂载工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）smbpasswd-设置smb用户密码"><span class="nav-number">1.4.4.</span> <span class="nav-text">（4）smbpasswd 设置smb用户密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）pdbedit"><span class="nav-number">1.4.5.</span> <span class="nav-text">（5）pdbedit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）cifscreds-管理NTLM在内核密钥环中"><span class="nav-number">1.4.6.</span> <span class="nav-text">（6）cifscreds 管理NTLM在内核密钥环中</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、实现共享"><span class="nav-number">2.</span> <span class="nav-text">二、实现共享</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（1）实现linux为客户端，windows为服务器端共享"><span class="nav-number">2.1.</span> <span class="nav-text">（1）实现linux为客户端，windows为服务器端共享</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（2）实现linux作服务器端，windows作客户端共享文件"><span class="nav-number">2.2.</span> <span class="nav-text">（2）实现linux作服务器端，windows作客户端共享文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（3）linux中实现不同用户权限访问共享目录"><span class="nav-number">2.3.</span> <span class="nav-text">（3）linux中实现不同用户权限访问共享目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑配置文件"><span class="nav-number">2.3.1.</span> <span class="nav-text">编辑配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建每个用户的配置文件"><span class="nav-number">2.3.2.</span> <span class="nav-text">创建每个用户的配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启服务测试"><span class="nav-number">2.3.3.</span> <span class="nav-text">重启服务测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载共享目录在本地"><span class="nav-number">2.3.4.</span> <span class="nav-text">挂载共享目录在本地</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现开机自动挂载"><span class="nav-number">2.3.5.</span> <span class="nav-text">实现开机自动挂载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（4）实现多用户挂载（CentOS-7中可以启用这种方法）"><span class="nav-number">2.4.</span> <span class="nav-text">（4）实现多用户挂载（CentOS 7中可以启用这种方法）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改配置文件"><span class="nav-number">2.4.1.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建共享目录并赋予权限"><span class="nav-number">2.4.2.</span> <span class="nav-text">创建共享目录并赋予权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在客户端创建与服务器端相同的账号"><span class="nav-number">2.4.3.</span> <span class="nav-text">在客户端创建与服务器端相同的账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用smb3用户挂载目录"><span class="nav-number">2.4.4.</span> <span class="nav-text">使用smb3用户挂载目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-etc-fstab文件"><span class="nav-number">2.4.5.</span> <span class="nav-text">修改/etc/fstab文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试是否可以切换到smb1有写权限"><span class="nav-number">2.4.6.</span> <span class="nav-text">测试是否可以切换到smb1有写权限</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="tomcat," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="为什么我们要自动化安装系统呢？管理一些重复性的操作呢，这样可以减轻自己的操作，并且提高了工作效率，假如公司中又有十几台甚至更多的服务器，不可能自己一台一台的安装，这样就需要自动化安装。 一、光盘内容简介1、CentOS系统的启动流程POST–&amp;gt;boot Sequence–&amp;gt;bootloade">
+<meta name="keywords" content="tomcat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统安装">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/系统安装/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="为什么我们要自动化安装系统呢？管理一些重复性的操作呢，这样可以减轻自己的操作，并且提高了工作效率，假如公司中又有十几台甚至更多的服务器，不可能自己一台一台的安装，这样就需要自动化安装。 一、光盘内容简介1、CentOS系统的启动流程POST–&amp;gt;boot Sequence–&amp;gt;bootloader(MBR)–&amp;gt;kernel(initramdisk)–&amp;gt;rootfs–&amp;gt;/s">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-15_183233.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-15_183559.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-15_192911.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-15_193257.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-15_194000.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-15_193257.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-15_200110.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-15_202146.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-15_202146.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-17_171832.png">
+<meta property="og:updated_time" content="2017-11-29T13:11:48.266Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="系统安装">
+<meta name="twitter:description" content="为什么我们要自动化安装系统呢？管理一些重复性的操作呢，这样可以减轻自己的操作，并且提高了工作效率，假如公司中又有十几台甚至更多的服务器，不可能自己一台一台的安装，这样就需要自动化安装。 一、光盘内容简介1、CentOS系统的启动流程POST–&amp;gt;boot Sequence–&amp;gt;bootloader(MBR)–&amp;gt;kernel(initramdisk)–&amp;gt;rootfs–&amp;gt;/s">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-15_183233.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/系统安装/"/>
+
+
+
+
+
+  <title>系统安装 | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/系统安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">系统安装</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化/系统安装/" itemprop="url" rel="index">
+                    <span itemprop="name">系统安装</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>为什么我们要自动化安装系统呢？管理一些重复性的操作呢，这样可以减轻自己的操作，并且提高了工作效率，假如公司中又有十几台甚至更多的服务器，不可能自己一台一台的安装，这样就需要自动化安装。</p>
+<h2 id="一、光盘内容简介"><a href="#一、光盘内容简介" class="headerlink" title="一、光盘内容简介"></a>一、光盘内容简介</h2><h3 id="1、CentOS系统的启动流程"><a href="#1、CentOS系统的启动流程" class="headerlink" title="1、CentOS系统的启动流程"></a>1、CentOS系统的启动流程</h3><p>POST–&gt;boot Sequence–&gt;bootloader(MBR)–&gt;kernel(initramdisk)–&gt;rootfs–&gt;/sbin/init/</p>
+<h3 id="2、光盘内容"><a href="#2、光盘内容" class="headerlink" title="2、光盘内容"></a>2、光盘内容</h3><p>（1）<code>[root@centos7/media/cdrom/isolinux]#ls</code></p>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boot.cat</td>
+<td>相当于启动菜单显示内容 </td>
+</tr>
+<tr>
+<td>grub.conf</td>
+<td>启动系统启动与boot.cat显示内容配置文件</td>
+</tr>
+<tr>
+<td>isolinux.bin</td>
+<td>相当于系统安装的stage2阶段</td>
+</tr>
+<tr>
+<td>memtest</td>
+<td>内存检测，这是个独立程序</td>
+</tr>
+<tr>
+<td>vmlinuz</td>
+<td>内核映像</td>
+</tr>
+<tr>
+<td>boot.msg</td>
+</tr>
+<tr>
+<td>initrd.img</td>
+<td>虚拟文件系统 </td>
+</tr>
+<tr>
+<td>isolinux.cfg</td>
+<td>isolinux.cat的配置文件</td>
+</tr>
+<tr>
+<td>splash.png</td>
+<td>背景图片</td>
+</tr>
+<tr>
+<td>vesamenu.c32</td>
+<td>显示背景界面</td>
+</tr>
+</tbody>
+</table>
+<p>（2）isolinux.cfg详解</p>
+<pre><code>default vesamenu.c32      #支持菜单功能
+timeout 600    #菜单倒计时，十分之算
+
+display boot.msg    #显示一条信息
+
+# Clear the screen when exiting the menu, instead of leaving the menu displayed.
+# For vesamenu, this means the graphical background is still displayed without
+# the menu itself for as long as the screen remains in graphics mode.
+menu clear  #清除菜单选项
+menu background splash.png  #显示背景图片
+menu title CentOS Linux 7   #显示title
+menu vshift 8   
+menu rows 18
+menu margin 8
+#menu hidden    
+menu helpmsgrow 15
+# Border Area
+menu color border * #00000000 #00000000 none
+
+# Selected item
+menu color sel 0 #ffffffff #00000000 none
+
+# Title bar
+menu color title 0 #ff7ba3d0 #00000000 none
+
+# Press [Tab] message
+menu color tabmsg 0 #ff3a6496 #00000000 none
+
+# Unselected menu item
+menu color unsel 0 #84b8ffff #00000000 none
+
+
+# Unselected hotkey
+menu color hotkey 0 #ffffffff #00000000 none
+
+# Help text
+menu color help 0 #ffffffff #00000000 none
+
+# A scrollbar of some type? Not sure.
+menu color scrollbar 0 #ffffffff #ff355594 none
+
+# Timeout msg
+menu color timeout 0 #ffffffff #00000000 none
+menu color timeout_msg 0 #ffffffff #00000000 none
+
+# Command prompt text
+
+
+menu tabmsg Press Tab for full configuration options on menu items.     #键入TAB进入配置模式
+
+menu separator # insert an empty line
+menu separator # insert an empty line
+
+label linux     #相当于标签
+  menu label ^Install CentOS Linux 7        #安装linux
+  kernel vmlinuz    #内核文件
+  append initrd=initrd.img inst.stage2=hd:LABEL=CentOS\x207\x20x86_64 quiet     #向内核传递参数
+
+label check
+  menu label Test this ^media &amp; install CentOS Linux 7
+  menu default      #默认启动项
+  kernel vmlinuz
+
+menu separator # insert an empty line
+
+# utilities submenu
+menu begin ^Troubleshooting
+  menu title Troubleshooting
+
+label vesa
+  menu indent count 5
+  menu label Install CentOS Linux 7 in ^basic graphics mode
+  text help
+        Try this option out if you&apos;re having trouble installing
+        CentOS Linux 7.
+  endtext
+  kernel vmlinuz
+  append initrd=initrd.img inst.stage2=hd:LABEL=CentOS\x207\x20x86_64 xdriver=vesa nomodeset quiet
+
+label rescue
+  menu indent count 5
+  menu label ^Rescue a CentOS Linux system
+  text help
+        If the system will not boot, this lets you access files
+        and edit config files to try to get it booting again.
+  endtext
+  kernel vmlinuz
+  append initrd=initrd.img inst.stage2=hd:LABEL=CentOS\x207\x20x86_64 rescue quiet
+
+label memtest
+  menu label Run a ^memory test
+  text help
+        If your system is having issues, a problem with your
+        system&apos;s memory may be the cause. Use this utility to
+        see if the memory is working correctly.
+  endtext
+  kernel memtest
+
+menu separator # insert an empty line
+
+label local
+  menu label Boot from ^local drive
+  localboot 0xffff
+
+menu separator # insert an empty line
+menu separator # insert an empty line
+
+label returntomain
+  menu label Return to ^main menu
+  menu exit
+
+menu end
+</code></pre><p>配置文件中有“^”相当于快捷键。</p>
+<h3 id="3、anaconda程序"><a href="#3、anaconda程序" class="headerlink" title="3、anaconda程序"></a>3、anaconda程序</h3><h4 id="（1）概念"><a href="#（1）概念" class="headerlink" title="（1）概念"></a>（1）概念</h4><pre><code>anaconda是系统安装程序。启动系统安装过程。
+</code></pre><h4 id="（2）anaconda安装过程"><a href="#（2）anaconda安装过程" class="headerlink" title="（2）anaconda安装过程"></a>（2）anaconda安装过程</h4><p>anaconda安装分为三个阶段：</p>
+<p>（a）安装前配置阶段</p>
+<pre><code>安装过程使用的语言
+键盘类型
+安装目标存储设备
+    basic storage 本地磁盘
+    特殊设备 iscsI
+设定主机名
+配置网络接口
+时区设置
+管理员密码
+设定分区方式及MBR的安装位置
+创建一个普通用户
+选定要安装的程序包
+</code></pre><p>（b）安装阶段在目标磁盘</p>
+<pre><code>创建分区，执行格式化操作等
+选定的程序包安装至目标位置
+安装BootLoader和initramfs
+</code></pre><p>（c）图形模式首次启动</p>
+<pre><code>iptables
+selinux
+core dump
+</code></pre><h4 id="（3）安装程序包的选择"><a href="#（3）安装程序包的选择" class="headerlink" title="（3）安装程序包的选择"></a>（3）安装程序包的选择</h4><pre><code>（a）本地光盘
+（b）本地硬盘
+（c）NFS
+（d）URL
+    ftp server :yum repository
+    http server:yum repository
+（e）手动指定安装源
+    在系统启动选项菜单界面进入TAB键，进入boot命令行模式输入`linux askmethod`，如果需要网络后续会跳出来一个对话框填入IP即可。
+</code></pre><h4 id="（4）anaconda配置方式"><a href="#（4）anaconda配置方式" class="headerlink" title="（4）anaconda配置方式"></a>（4）anaconda配置方式</h4><pre><code>（a）交互式配置
+（b）通过读取事先给定的配置文件自动完成配置（kickstart文件）
+</code></pre><h3 id="4、kickstart文件"><a href="#4、kickstart文件" class="headerlink" title="4、kickstart文件"></a>4、kickstart文件</h3><h4 id="（1）配置文件详解"><a href="#（1）配置文件详解" class="headerlink" title="（1）配置文件详解"></a>（1）配置文件详解</h4><pre><code>#version=DEVEL  #指明版本
+# System authorization information   
+auth --enableshadow --passalgo=sha512 
+# Install OS instead of upgrade
+install
+# Use text install
+text
+# Firewall configuration
+firewall --disabled
+firstboot --disable
+ignoredisk --only-use=sda
+# Keyboard layouts
+keyboard --vckeymap=cn --xlayouts=&apos;cn&apos;
+# System language
+lang en_US.UTF-8
+# Use network installation
+#url --url=&quot;http://172.16.0.1/cblr/links/CentOS-7-1511-x86_64&quot;
+#repo --name=&quot;source-1&quot; --baseurl=http://172.16.0.1/cobbler/ks_mirror/CentOS-7-1511-x86_64
+#url --url=&quot;http://172.16.0.1/cobbler/ks_mirror/7/&quot;
+url --url=$tree
+
+# Network information
+network  --bootproto=dhcp --device=ens33 --onboot=yes  --ipv6=auto
+network  --hostname=localhost.localdomain
+# Reboot after installation
+reboot
+# SELinux configuration
+selinux --disabled
+# Do not configure the X Window System
+skipx
+
+# Root password
+rootpw --iscrypted $6$dGARWYghrvhD9W7P$4af2uw8A4tHvNLe2F6bDrk0J69dt.uYoV4SneKG4kzIsc/nF3JpfnuHg7D5lVE.jxC3p6.K29FCjwtom9VXWf.
+# System timezone
+timezone Asia/Shanghai
+user --groups=wheel --name=wang --password=$6$S0t9SxXkvSI0Npz5$YDVonz69YGGGkGyZDy/KesO4CI1HUBLNThcHj6PXDntQGS0Cl0SNpN6zGASuzYE.z5veu1XAzMvO4xLWbKE.n0 --iscrypted --gecos=&quot;123456&quot;
+# System bootloader configuration
+bootloader --location=mbr --boot-drive=sda
+# Partition clearing information
+clearpart --all --initlabel
+# Disk partitioning information
+part /boot --fstype=&quot;xfs&quot; --ondisk=sda --size=500
+part swap --fstype=&quot;swap&quot; --ondisk=sda --size=2049
+part / --fstype=&quot;xfs&quot; --ondisk=sda --size=40960
+part /app --fstype=&quot;xfs&quot; --ondisk=sda --size=20480
+
+%post
+systemctl set-default multi-user.target
+
+[ ! -d /root/.ssh ] &amp;&amp; mkdir /root/.ssh &amp;&amp; chmod og=--- /root/.ssh
+
+cat &gt;&gt; /root/.ssh/authorized_keys &lt;&lt; EOF
+ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAlmq1z0G/7wbGuSUewfXlFnwzqCg/myqTi/AwP8LP+JJ49xzIKMzpeWXHD8RWIf5RlDzo+6N7uPK5O22x/QtMosi0egz4shavEJeUkO0EH+KygXXgBIGuMWmAsL+yzbgWXT9H3zdzXi/qWcrBeBv2nYB5mpYSf7o0xqdhCst1MTfcYLD8qxvkwC8RiqBA/1u9N6jeDFbHO+UzZYYCr9zgk9uz4Rrhb9BU7c1GhjUCgRwBDAuo47IHw/OT6KS9lb8lT2R/ujVoDARy/eOhw8cAFXo+QcvzNSW2qKf/Qo21uR/wz2u9SRV0lvUDNSvC2PYtR+iPlDwHY81md430yiNf9w== root@172.16.0.1
+EOF
+
+ClientName=`ifconfig enoens33 | awk &apos;/inet\&gt;/{print $2}&apos; | awk -F. &apos;{print $NF}&apos;`
+hostnamectl set-hostname &quot;stu$ClientName.wang.com&quot;
+
+#mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
+#wget http://172.18.0.1/repos/CentOS-Base.repo -O /etc/yum.repos.d/CentOS-Base.repo
+
+%end
+
+%packages
+@base
+@core
+@fonts
+@input-methods
+@kde-apps
+@kde-desktop
+@network-file-system-client
+@networkmanager-submodules
+@x11
+lftp
+screen
+
+%end
+
+%addon com_redhat_kdump --disable --reserve-mb=&apos;auto&apos;
+
+%end
+</code></pre><h4 id="（2）kickstart文件格式"><a href="#（2）kickstart文件格式" class="headerlink" title="（2）kickstart文件格式"></a>（2）kickstart文件格式</h4><p>（a）命令端：指明各种安装前配置，如果键盘类型，时区等<br>    必备命令<br>        authconfig：认证方式配置<br>            authconfig –useshadow –passalgo=sha512<br>        bootloader:bootloader的安装位置及相关配置<br>            bootloader –location=mbr –driverorder=sda –append=“crashkernel=auto rhgb quiet”<br>        keyboard：设定键盘类型<br>        lang：语言类型<br>        part：创建分区<br>        rootpw：指明root的密码<br>        timezone：时区<br>    可选命令<br>        install OR update<br>        text :文本界面安装<br>        network 设定网络<br>        firewall 设置防火墙<br>        selinux 设置selinux<br>        halt<br>        poweroff<br>        reboot<br>        repo<br>        user：安装完成后为系统创建新用户<br>        url：指明安装源<br>        key -skip：跳过安装号码，适用于rhel版本</p>
+<p>（b）程序包段：指明要安装的程序包或程序包组，不安装的包等</p>
+<pre><code>%packages #表明开始安装程序包或包组
+@group_name #安装包组
+package #安装程序包
+-package #不安装程序包
+%end 指明安装结束
+</code></pre><p>（c）脚本段：指明运行的脚本</p>
+<pre><code>%pre #安装前脚本
+    运行环境：运行于安装介质上的微型linux环境
+%post   #安装后脚本
+    运行环境：运行于安装完成后的系统
+</code></pre><p><strong>注意：在每段中一定要有开始有结束%end表明结束安装。</strong></p>
+<h4 id="（3）kickstart文件创建方式"><a href="#（3）kickstart文件创建方式" class="headerlink" title="（3）kickstart文件创建方式"></a>（3）kickstart文件创建方式</h4><p>（a）直接手动编辑，可以依赖模板进行自行修改</p>
+<p>（b）可使用创建工具：system-config-kickstart命令，依赖某模板修改并生成新的配置文件<br><strong>注意：在CentOS7中，如果要使用此命令必须把yum仓库光盘的名称修改为development。</strong><br>    检查ks文件的语法错误：ksvalidator<br>        格式：ksvalidator /PATH/TO/SOMEFILE</p>
+<h4 id="（4）指明kickstart位置"><a href="#（4）指明kickstart位置" class="headerlink" title="（4）指明kickstart位置"></a>（4）指明kickstart位置</h4><pre><code>DVD drive:ks=cdrom:/PATH/TO/KICKSTART_FILE
+Hard drive:ks=hd:/PATH/TO/KICKSTART_FILE
+FTP server:ks=ftp://host:port/PATH/TO/KICKSTART_FILE
+HTTP server:ks=http://host:port/PATH/TO/KICKSTART_FILE
+HTTPS server:ks=https://host:port/PATH/TO/KICKSTART_FILE
+NFS server:ks=nfs:host:/PATH/TO/KICKSTART_FILE
+</code></pre><p>如果想理解更多，请查考详细内容《Installation Guide》。</p>
+<h4 id="（5）系统启动的不同方式"><a href="#（5）系统启动的不同方式" class="headerlink" title="（5）系统启动的不同方式"></a>（5）系统启动的不同方式</h4><p>（a）text：文本安装模式</p>
+<p>（b）askmethod：手动指定安装方法<br>    在系统启动界面，键入ESC进入boot命令行模式：输入linux askmethod<br>    与网络相关的引导选项：<br>        ip=IPADDR<br>        netmask=NETMAKS<br>        gateway=GATEWAY<br>        dns=DNS_SERVER_IP<br>        ifname=NAME:MAC_ADDR<br>（c）与远程功能相关的引导选项<br>    vns<br>    vncpassword=“PASSWORD”</p>
+<p><strong>实战</strong></p>
+<p>手动指定kickstart文件安装系统</p>
+<p>方式一：</p>
+<p>（1）在CentOS7上搭建ftp服务</p>
+<p><code>[root@centos7~]#cd /var/ftp/pub/</code><br><code>[root@centos7/var/ftp/pub]#cp /root/ks*.cfg .</code><br><code>[root@centos7/var/ftp/pub]#ls</code></p>
+<pre><code>ks6.cfg  ks7.cfg
+</code></pre><p>（2）创建一块虚拟机</p>
+<p>（3）手动指定按启动，选定光盘启动</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-15_183233.png" alt=""><br>当出现上面图示时，我们手动指定kickstart启动。</p>
+<p>方法一：<br>按TAB键，输入ks=ftp://192.168.4.135/pub/ks6.cfg；回车启动<br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-15_183559.png" alt=""><br>方法二：<br>按ESC键进入boot命令行，输入linux ks=ftp://192.168.4.135/pub/ks6.cfg</p>
+<p>方式二：</p>
+<p>在CentOS7搭建http服务</p>
+<p><code>[root@centos7/var/www/html]#mkdir ks</code><br><code>[root@centos7/var/www/html]#mv ks*.cfg ks</code></p>
+<p>其余步骤同上述方法类似。</p>
+<p><strong>注意：上述过程必须使ks文件权限为644.上述方法前提为桥接模式。</strong></p>
+<p>上述方法是没有办法安装包等后续工作的，我们可以搭建网络yum源进行安装。</p>
+<p>方式一：创建网络yum源安装</p>
+<p>（1）安装vsftpd服务，并启动服务</p>
+<p>（2）将ks7.cfg文件复制到    <code>/var/ftp/pub</code>目录下</p>
+<p>（3）在<code>/var/ftp/pub</code>目录下创建centos/7</p>
+<p><code>[root@centos7/var/ftp/pub]#mkdir centos/7 -pv</code></p>
+<p>（4）将光盘挂载到centos/7上</p>
+<p><code>[root@centos7/var/ftp/pub]#mount  /dev/sr0 /var/ftp/pub/centos/7/</code><br>（5）测试是否能在网页中打开</p>
+<p>输入地址ftp://192.168.4.135/pub<br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-15_192911.png" alt=""></p>
+<p>（6）新建一台虚拟机测试</p>
+<p>按ESC键进入boot命令行，输入linux ks=ftp://192.168.4.135/pub/ks6.cfg  ip=192.168.4.138 netmask=255.255.255.0</p>
+<p>或<br>按TAB键在行后追加<br>ks=ftp://192.168.4.135/pub/ks6.cfg  ip=192.168.4.138 netmask=255.255.255.0</p>
+<p>（7）出现下面说明成功<br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-15_193257.png" alt=""></p>
+<p>方式二：</p>
+<p>（1）在CentOS7上搭建http服务</p>
+<p>（2）在<code>/var/www/html</code>目录下创建ks目录和centos/7目录</p>
+<p><code>[root@centos7/var/www/html]#mkdir testcentos/7 -pv</code></p>
+<p>（3）将光盘挂载至centos/7目录下<br><code>[root@centos7/var/www/html]#mount /dev/sr0 testcentos/7/</code></p>
+<p>（4）重启服务测试<br>在网站输入<a href="http://192.168.4.135/test" target="_blank" rel="noopener">http://192.168.4.135/test</a><br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-15_194000.png" alt=""><br>（5）新建一台虚拟机重新测试，出现下面内容说明成功</p>
+<p>按ESC键进入boot命令行，输入linux ks=ftp://192.168.4.135/pub/ks7.cfg  ip=192.168.4.138 netmask=255.255.255.0</p>
+<p>或</p>
+<p>按TAB键在行后追加<br>ks=ftp://192.168.4.135/pub/ks7.cfg  ip=192.168.4.138 netmask=255.255.255.0<br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-15_193257.png" alt=""></p>
+<h2 id="二、制作光盘或U盘"><a href="#二、制作光盘或U盘" class="headerlink" title="二、制作光盘或U盘"></a>二、制作光盘或U盘</h2><p>在日常的生产活动中，使用光驱的已经很少了，但是U盘自身的特点得到了大多数人的使用，这样让我掌握如何制作U盘变得特别重要，如果我们公司有的服务器没有光盘咋办，？U盘就很好的帮我们解决了这个问题。</p>
+<h3 id="1、如何制作光盘"><a href="#1、如何制作光盘" class="headerlink" title="1、如何制作光盘"></a>1、如何制作光盘</h3><p>（1）mkisofs命令有关包genisoimage<br>制作光盘需要使用命令才能执行。</p>
+<p>|<br>|选项|解释|<br>|-o|指定影响文件的名称|<br>|-b|指定在制作可开机光盘是所需要的开机映像文件|<br>|-c|制作可开机光盘时，会将开机映像文件中的no-eltorito-catalog全部内容做成一个文件|<br>|-no-emul-boot|非模拟模式启动|<br>|-boot-load-size 4|设置载入部分的数量|<br>|-boot-info-table|在启动的图像中显示信息|<br>|-R，-rock|使用Rock RidgeExtensions|<br>|-J，-joliet|使用Joliet格式的目录与文件名称|<br>|-v，-verbose|执行时显示过程|<br>|-T，-translation-table|建立文件名的装换表，适用于不支持Rock RidgeExtensions的系统上|</p>
+<p>（2）制作光盘过程</p>
+<p>（a）在CentOS7主机上搭建yum源，并绑定到ftp服务上。</p>
+<p>（b）创建光盘引导文件</p>
+<p><code>[root@centos7~]#mkdir /tmp/testiso</code><br><code>[root@centos7~]#mkdir /tmp/testiso/isolinux</code><br><code>[root@centos7~]#cp /media/cdrom/isolinux/* /tmp/testiso/isolinux</code><br><code>[root@centos7/tmp/testiso]#cp /var/ftp/pub/ks7.cfg .</code><br><code>[root@centos7/tmp/testiso]#vim ks7.cfg</code> #编辑配置文件<br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-15_200110.png" alt=""><br><code>[root@centos7/tmp/testiso]#tree</code></p>
+<pre><code>.
+├── isolinux
+│   ├── boot.cat
+│   ├── boot.msg
+│   ├── grub.conf
+│   ├── initrd.img
+│   ├── isolinux.bin
+│   ├── isolinux.cfg
+│   ├── memtest
+│   ├── splash.png
+│   ├── TRANS.TBL
+│   ├── vesamenu.c32
+│   └── vmlinuz
+└── ks7.cfg
+</code></pre><p><strong>注意：此处创建使用的是相对路径，而和工作目录无关。必须在isolinux下。</strong></p>
+<p>（c）创建光盘<br><code>[root@centos7/tmp]#mkisofs -R -J -T -v --no-emul-boot --boot-load-size 4 --boot-info-table -V &quot;CentOS 6.9 x86_64 boot&quot; -b isolinux/isolinux.bin -c isolinux/boot.cat -o /root/boot.iso myiso/</code></p>
+<p>（d）将光盘下载至本机，安装到虚拟中尝试启动<br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-15_202146.png" alt=""></p>
+<p>说明我们制作的光盘成功</p>
+<p>（3）制作U盘</p>
+<p>（a）我们这里虚拟一块U盘，添加一块硬盘</p>
+<p>（b）将光盘拷贝至硬盘中</p>
+<p><code>[root@centos7~]#dd if=boot.iso of=/dev/sdb</code></p>
+<p>（c）新建虚拟机挂载此光盘启动<br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-15_202146.png" alt=""><br>出现上述情况说明我们安装成功。但是这种方法还需要通过网络才能安装，如果我们去到一个地方没有网络，怎么办呢？有没有想过我们把rpm包到拷贝至一个U盘或光盘上呢？这样是不是很方便我们办公呢？</p>
+<h3 id="（4）制作完整的光盘和U盘"><a href="#（4）制作完整的光盘和U盘" class="headerlink" title="（4）制作完整的光盘和U盘"></a>（4）制作完整的光盘和U盘</h3><p>（a）创建一个临时目录并拷贝文件至此目录下<br><code>[root@localhost ~]#mkdir /tmp/fulliso</code><br><code>[root@localhost ~]# cp -a /media/cdrom/* /tmp/fulliso/</code><br><code>[root@localhost ~]# cd /tmp/fulliso/</code><br><code>[root@localhost fulliso]# cp /media/cdrom/.treeinfo .</code><br><code>[root@localhost fulliso]# cp /media/cdrom/.discinfo .</code></p>
+<p>（b) 删除repodate目录非<em>comps.xml结尾的文件。<br>`[root@localhost fulliso]# find repodata/ -not -name </em>-comps.xml -delete<code>`[root@localhost fulliso]# find -name TRANS.TBL -delete</code></p>
+<p>（c）以上述那个文件制作仓库<br><code>[root@localhost fulliso]# ls repodata/
+d918936f5019be3fb66e9981a28cb2a41477a2963d741d454f79377a22214f43-c7-x86_64-comps.xml</code></p>
+<p>（d）编辑kickstart配置文件，并复制fulliso目录下<br><code>[root@localhost fulliso]# vim ks7.cfg</code></p>
+<pre><code>auth --enableshadow --passalgo=sha512
+# Use graphical install
+graphical
+# Run the Setup Agent on first boot
+firstboot --enable
+ignoredisk --only-use=sda
+# Keyboard layouts
+keyboard --vckeymap=us --xlayouts=&apos;us&apos;
+# System language
+lang en_US.UTF-8
+
+# Network information
+network  --bootproto=dhcp --device=ens33 --onboot=on --ipv6=auto 
+network  --hostname=localhost.localdomain
+
+# Root password
+# System services
+services --disabled=&quot;chronyd&quot;
+# System timezone
+timezone Asia/Shanghai
+# X Window System configuration information
+xconfig  --startxonboot
+# System bootloader configuration
+bootloader --append=&quot; crashkernel=auto&quot; --location=mbr --boot-drive=sda
+zerombr
+reboot
+# Partition clearing information
+clearpart --all
+part /boot --fstype=&quot;xfs&quot; --ondisk=sda --size=1024
+part swap --fstype=&quot;swap&quot; --ondisk=sda --size=2048
+part / --fstype=&quot;xfs&quot; --ondisk=sda --size=50000
+part /app --fstype=&quot;xfs&quot; --ondisk=sda --size=50000
+
+%packages
+@^gnome-desktop-environment
+@base
+@core
+@desktop-debugging
+@dial-up
+@directory-client
+@fonts
+@gnome-desktop
+@guest-agents
+@guest-desktop-agents
+@input-methods
+@internet-browser
+@java-platform
+@multimedia
+@network-file-system-client
+@networkmanager-submodules
+@print-client
+@x11
+kexec-tools
+autofs
+lftp
+dhcp
+vsftpd
+
+%end
+%post
+#Create repo
+mkdir /media/cdrom
+mkdir /etc/yum.repos.d/bak
+mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/bak
+cat &gt; /etc/yum.repos.d/base &lt;&lt;EOF
+[base]
+name=centos 7
+baseurl=file:///media/cdrom
+gpgcheck=0
+enabled=1
+EOF
+
+cat &gt;&gt; /etc/fstab &lt;&lt; EOF
+/dev/sr0        /media/cdrom    iso9660 defaults 0 0
+
+cat &gt;&gt; /root/.bashrc &lt;&lt; EOF
+alias cdnet=&quot;cd /etc/sysconfig/network-scripts/&quot;
+EOF
+
+cat &gt;&gt; /etc/profile.d/env.sh
+export PS1=&apos;\[\e[31m\][\u@\h\w]\$\[\e[0m\]&apos;
+EOF
+
+sed -i &apos;s/quiet/&amp; net.ifnames=0/&apos; /etc/default/grub
+grub2-config -o /boot/grub2/grub.cfg
+
+%end
+</code></pre><p>（e）编辑isolinux.cfg文件<br><code>[root@localhost fulliso]# vim isolinux/isolinux.cfg</code></p>
+<pre><code>default vesamenu.c32
+timeout 600
+
+display boot.msg
+
+# Clear the screen when exiting the menu, instead of leaving the menu displayed.
+# For vesamenu, this means the graphical background is still displayed without
+# the menu itself for as long as the screen remains in graphics mode.
+menu clear
+menu background splash.png
+menu title CentOS Linux 7
+menu vshift 8
+menu rows 18
+menu margin 8
+#menu hidden
+menu helpmsgrow 15
+menu tabmsgrow 13
+
+# Border Area
+# Selected item
+menu color sel 0 #ffffffff #00000000 none
+
+# Title bar
+menu color title 0 #ff7ba3d0 #00000000 none
+
+# Press [Tab] message
+menu color tabmsg 0 #ff3a6496 #00000000 none
+
+# Unselected menu item
+menu color unsel 0 #84b8ffff #00000000 none
+
+# Selected hotkey
+menu color hotsel 0 #84b8ffff #00000000 none
+
+# Unselected hotkey
+menu color hotkey 0 #ffffffff #00000000 none
+
+# Help text
+menu color help 0 #ffffffff #00000000 none
+
+# A scrollbar of some type? Not sure.
+menu color scrollbar 0 #ffffffff #ff355594 none
+
+# Timeout msg
+menu color timeout 0 #ffffffff #00000000 none
+menu color timeout_msg 0 #ffffffff #00000000 none
+
+# Command prompt text
+menu color cmdmark 0 #84b8ffff #00000000 none
+menu color cmdline 0 #ffffffff #00000000 none
+
+# Do not display the actual menu unless the user presses a key. All that is displayed is a timeout message.
+
+menu tabmsg Press Tab for full configuration options on menu items.
+
+menu separator # insert an empty line
+menu separator # insert an empty line
+
+label desktop
+  menu label desktop Linux 7
+  kernel vmlinuz
+  append initrd=initrd.img ks=cdrom:/ks7.cfg
+
+label mini
+  menu label mini linux 7
+  menu default
+  kernel vmlinuz
+  append initrd=initrd.img ks=cdrom:/ks7mini.cfg
+
+menu end
+</code></pre><p>（f）制作光盘<br><code>[root@localhost ~]# mkisofs -R -T -J -v --no-emul-boot --boot-load-size 4 --boot-info-table -V &quot;CentOS 7 custom&quot; -b isolinux/isolinux.bin -c isolinux/boot.cat -o /root/centos7.iso /tmp/fulliso/</code></p>
+<p>（g）测试是否可成功,新建一台虚拟机，测试<br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-17_171832.png" alt=""><br>出现上述界面，表明制作光盘已经成功。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tomcat/" rel="tag"># tomcat</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/模型IO/" rel="next" title="Linux中五种I/O模型">
+                <i class="fa fa-chevron-left"></i> Linux中五种I/O模型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/ngx_http_upstream_module/" rel="prev" title="ngx_http_upstream_module">
+                ngx_http_upstream_module <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、光盘内容简介"><span class="nav-number">1.</span> <span class="nav-text">一、光盘内容简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、CentOS系统的启动流程"><span class="nav-number">1.1.</span> <span class="nav-text">1、CentOS系统的启动流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、光盘内容"><span class="nav-number">1.2.</span> <span class="nav-text">2、光盘内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、anaconda程序"><span class="nav-number">1.3.</span> <span class="nav-text">3、anaconda程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）概念"><span class="nav-number">1.3.1.</span> <span class="nav-text">（1）概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）anaconda安装过程"><span class="nav-number">1.3.2.</span> <span class="nav-text">（2）anaconda安装过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）安装程序包的选择"><span class="nav-number">1.3.3.</span> <span class="nav-text">（3）安装程序包的选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）anaconda配置方式"><span class="nav-number">1.3.4.</span> <span class="nav-text">（4）anaconda配置方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、kickstart文件"><span class="nav-number">1.4.</span> <span class="nav-text">4、kickstart文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）配置文件详解"><span class="nav-number">1.4.1.</span> <span class="nav-text">（1）配置文件详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）kickstart文件格式"><span class="nav-number">1.4.2.</span> <span class="nav-text">（2）kickstart文件格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）kickstart文件创建方式"><span class="nav-number">1.4.3.</span> <span class="nav-text">（3）kickstart文件创建方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）指明kickstart位置"><span class="nav-number">1.4.4.</span> <span class="nav-text">（4）指明kickstart位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）系统启动的不同方式"><span class="nav-number">1.4.5.</span> <span class="nav-text">（5）系统启动的不同方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、制作光盘或U盘"><span class="nav-number">2.</span> <span class="nav-text">二、制作光盘或U盘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、如何制作光盘"><span class="nav-number">2.1.</span> <span class="nav-text">1、如何制作光盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）制作完整的光盘和U盘"><span class="nav-number">2.2.</span> <span class="nav-text">（4）制作完整的光盘和U盘</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

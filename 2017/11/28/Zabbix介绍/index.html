@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="zabbix," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Zabbix是一款能够监控各种网络参数以及服务器健康性和完整性的软件。Zabbix使用灵活的通知机制，允许用户为几乎任何事件配置基于邮件告警。Zabbix提供了出色的报告和数据可视化功能。Zabbix所有的报告、统计信息和配置参数都可以通过基于Web的前端页面进行访问。 一、Zabbix1、Zabbix特点 数据收集 ">
+<meta name="keywords" content="zabbix">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zabbix介绍">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/Zabbix介绍/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="Zabbix是一款能够监控各种网络参数以及服务器健康性和完整性的软件。Zabbix使用灵活的通知机制，允许用户为几乎任何事件配置基于邮件告警。Zabbix提供了出色的报告和数据可视化功能。Zabbix所有的报告、统计信息和配置参数都可以通过基于Web的前端页面进行访问。 一、Zabbix1、Zabbix特点 数据收集 可用性和性能检查 支持SNMP,IPMI,JMX,VMware监控 自定义检查">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-21_192245.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-21_194622.jpg">
+<meta property="og:image" content="http://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-2.el7.noarch.rpm">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-21_204201.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-21_210721.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-21_211657.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-21_214628.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-21_214738.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-21_233644.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-21_234016.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-21_234126.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-22_193458.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-22_193706.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-22_193814.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-22_193946.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-22_194133.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/zabbix01.gif">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/zabbix02.gif">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-22_230317.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/zabbix03.gif">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-22_232237.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/zabbix04.gif">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/zabbix05.gif">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/zabbix06.gif">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/zabbix07.gif">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/zabbix08.gif">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-23_140540.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-23_140657.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-23_144642.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-23_152252.jpg">
+<meta property="og:updated_time" content="2017-11-29T13:08:34.800Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Zabbix介绍">
+<meta name="twitter:description" content="Zabbix是一款能够监控各种网络参数以及服务器健康性和完整性的软件。Zabbix使用灵活的通知机制，允许用户为几乎任何事件配置基于邮件告警。Zabbix提供了出色的报告和数据可视化功能。Zabbix所有的报告、统计信息和配置参数都可以通过基于Web的前端页面进行访问。 一、Zabbix1、Zabbix特点 数据收集 可用性和性能检查 支持SNMP,IPMI,JMX,VMware监控 自定义检查">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-21_192245.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/Zabbix介绍/"/>
+
+
+
+
+
+  <title>Zabbix介绍 | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Zabbix介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Zabbix介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/Zabbix/" itemprop="url" rel="index">
+                    <span itemprop="name">Zabbix</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/Zabbix/Zabbix介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">Zabbix介绍</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-21_192245.jpg" alt=""></p>
+<p>Zabbix是一款能够监控各种网络参数以及服务器健康性和完整性的软件。Zabbix使用灵活的通知机制，允许用户为几乎任何事件配置基于邮件告警。Zabbix提供了出色的报告和数据可视化功能。Zabbix所有的报告、统计信息和配置参数都可以通过基于Web的前端页面进行访问。</p>
+<h2 id="一、Zabbix"><a href="#一、Zabbix" class="headerlink" title="一、Zabbix"></a>一、Zabbix</h2><h3 id="1、Zabbix特点"><a href="#1、Zabbix特点" class="headerlink" title="1、Zabbix特点"></a>1、Zabbix特点</h3><ul>
+<li>数据收集<ul>
+<li>可用性和性能检查</li>
+<li>支持SNMP,IPMI,JMX,VMware监控</li>
+<li>自定义检查</li>
+<li>按照自定义的间隔收集需要的数据</li>
+</ul>
+</li>
+<li>灵活的阈值定义</li>
+<li>高度可配置化的告警</li>
+<li>实时图表绘制</li>
+<li>Web监控功能</li>
+<li>丰富的可视化选项<ul>
+<li>能够创建自定义的图形，图形中可将多个监控项组合在一个视图展示</li>
+<li>网络拓扑图</li>
+<li>以仪表盘的样式展现自定义的展现和幻灯片</li>
+<li>报告</li>
+<li>监控资源的高级视图</li>
+</ul>
+</li>
+<li>历史数据存储<ul>
+<li>数据存储在数据库中</li>
+<li>可配置历史数据</li>
+<li>内置数据管理机制</li>
+</ul>
+</li>
+<li>配置简单<ul>
+<li>将被监控对象添加为主机</li>
+<li>主机被创建用于监控，在数据库中唯一存在</li>
+<li>应用模板来监控设备</li>
+</ul>
+</li>
+<li>使用模板<ul>
+<li>在模板中分组检查</li>
+<li>模板可以关联其他模板</li>
+</ul>
+</li>
+<li>网络发现<ul>
+<li>自动发现网络设备</li>
+<li>监控代理自动注册</li>
+<li>发现文件系统，网络接口和SNMP OID值</li>
+</ul>
+</li>
+<li>简介的Web界面<ul>
+<li>web前段基于PHP</li>
+<li>可以自定义自己的操作方式</li>
+<li>审核日志</li>
+</ul>
+</li>
+<li>权限管理系统<ul>
+<li>安全用户认证</li>
+<li>特定用户可以限制访问特定的视图</li>
+</ul>
+</li>
+<li>功能强大并易于扩展监控代理<ul>
+<li>部署在被监控对象上</li>
+<li>可以部署在OS</li>
+</ul>
+</li>
+</ul>
+<h3 id="2、Zabbix结构"><a href="#2、Zabbix结构" class="headerlink" title="2、Zabbix结构"></a>2、Zabbix结构</h3><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-21_194622.jpg" alt=""></p>
+<ul>
+<li>zabbix_server：服务端守护进程；负责接收agent发送的报告信息的核心组件，所有配置、统计数据及操作系统均由其组织进行</li>
+<li>zabbix_agentd：agent守护进程</li>
+<li>zabbix_proxy：代理服务器，可选组件</li>
+<li>zabbix_get：命令行工具，手动测试向agent发起数据采集请求</li>
+<li>zabbix_sender：命令行工具，运行于agent端，手动向server端发送数据</li>
+<li>zabbix_java_gateway：java网关</li>
+<li>zabbix_database：MySQL或PGSQL；专用于存储所有配置信息，以及由zabbix收集的数据</li>
+<li>zabbix_web：Web-GUI结构，可以运行在任意主机中，连接Zabbix-Server并将数据库的内容在前段展示</li>
+</ul>
+<h3 id="3、Zabbix逻辑组件"><a href="#3、Zabbix逻辑组件" class="headerlink" title="3、Zabbix逻辑组件"></a>3、Zabbix逻辑组件</h3><ul>
+<li>Host Group（主机组）：主机的逻辑容器，可以包含主机和模板，但同一组内的主机和模板不能互相连接；主机组通常在给用户或用户组指派监控权限时使用</li>
+<li>Host（主机）：要监控的网络设备，可由IP或DNS名称指定</li>
+<li>item（监控项）：关键时key（实现获取监控的目标上的数据命令或脚本名称）；key+parameter构成。<ul>
+<li>key分类：<ul>
+<li>（1）Zabbix内建key</li>
+<li>（2）用户自定义key</li>
+</ul>
+</li>
+<li>存储的值<ul>
+<li>As is：不对数据做任何处理，保留原值</li>
+<li>Delta：（simple change）本次采样减去前一次采样值的结果</li>
+<li>Delta：（speed per second）本次采样减去上一次采样的值除以经过的时长</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>application（应用）：同一类监控项的集合</li>
+<li>trigger（触发器）：用于评估某监控对象的特定item内所接受到的数据是否在合理范围内，即阈值；如果不在合理范围内，触发器状态从“ok”转为“problem”<pre><code>- 安全级别：
+    - Not classified
+    - Information
+    - Warning
+    - Average
+    - High
+    - Disaster
+- trigger条件的设定：使用数据运算符
+</code></pre></li>
+</ul>
+<p><strong>注意：触发器之间存在依赖关系，如果前段有路由器down，则可以后端主机不发生告警。</strong></p>
+<ul>
+<li>event（事件）：即发生的一个值得关注的事情</li>
+<li>action（动作）：由条件（condition，多个条件之间存在逻辑关系，如果第一步执行不成功则进行设定的下一步，以此类推。）和操作（operation，条件满足时触发的动作）组件构成</li>
+</ul>
+<ul>
+<li><p>media（媒介）：发送通知的通道；需要用户上定义对各种媒介通道的接收方式</p>
+<p>  （1）email<br>  （2）script：告警脚本</p>
+<pre><code>脚本放置路径在zabbix_server.conf配置文件汇总AlertScriptsPath定义，默认路径为/usr/lib/zabbix/alertscripts/目录下
+zabbix服务器调用脚本时可以传递三个参数
+        $1：经由此信道接受信息的目标
+        $2：subject
+        $3：body
+</code></pre><p>   （3）remote command执行远程命令</p>
+<pre><code>在agent所在的主机上运行用户指定的命令或脚本；如，重启服务、通过IPMI重启服务器、任何用户自定义脚本中定义的操作
+</code></pre></li>
+</ul>
+<p><strong>注意：在agent执行远程命令时需要进行配置</strong></p>
+<p><strong>a、zabbix用户拥有所需要执行命令的权限，编译<code>/etc/sudoers</code>配置文件</strong></p>
+<pre><code>Defaults requiretty  关闭使用终端执行命令，这里需要在进程中执行命令
+zabbix ALL（ALL） NOPASSWD：ALL  这里需要注意的是，如果要执行某种命令给定即可，越小权限越好；NOPASSWD必须给定，如果不给定的话执行命令需要输入命令，但是我们在进程中运行，显然这不是理想的结果，因此不需要输入密码。
+</code></pre><p><strong>b、agent进程要允许远程执行命令</strong></p>
+<pre><code>编辑/etc/zabbix/zabbix_agentd.conf
+    EnableRemoteCommands=1 设定允许远程执行 命令
+    LogRemoteCommands=1 执行命令记录日志中
+</code></pre><ul>
+<li>notification（通知）：通过选定的媒介发送通知，例如email，wechat等</li>
+<li>remote command（远程命令）：预定义的命令，可在被监控主机处于某特定条件下自动执行</li>
+<li>告警升级：如果在设定的条件中，没有解决则向上一级发送通知</li>
+<li>template（模板）：快速定义被监控主机的各监控项的预设项目集合</li>
+<li>graph（图形）：用于展示历史数据或趋势数据的图像</li>
+<li>screen（屏幕）：由多个graph组成</li>
+</ul>
+<p><strong>注意：zabbix执行过程为Host Group–&gt;Host–&gt;Application–&gt;Item–&gt;trigger<br>–&gt;action，只有前一步发生才会执行下一步操作。</strong></p>
+<h3 id="4、zabbix检查方式"><a href="#4、zabbix检查方式" class="headerlink" title="4、zabbix检查方式"></a>4、zabbix检查方式</h3><p>Zabbix agent可以执行被动和主动两种检方式，Zabbix Server执行的方式取决于Zabbix agent设定的方式</p>
+<p><strong>passive</strong></p>
+<pre><code>在passive check模式中agent应答数据请求，Zabbix server询问agent数据，如CPU负载情况，然后返回给Zabbix agent结果
+</code></pre><p><strong>active</strong></p>
+<pre><code>Action check模式中，Zabbix agent首先从Zabbix server索取监控项列表进行独立处理，然后周期性地发送新的值给Zabbix server
+</code></pre><h3 id="宏"><a href="#宏" class="headerlink" title="宏"></a>宏</h3><p>预设的文本替换模式</p>
+<h5 id="级别："><a href="#级别：" class="headerlink" title="级别："></a>级别：</h5><pre><code>全局：Administation--&gt;Genersl--&gt;Macros
+模板：编辑模板--&gt;Macros
+主机：编辑主机--&gt;Macros
+</code></pre><h5 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h5><pre><code>主机  &gt;   模板   &gt;  全局
+</code></pre><h5 id="类型："><a href="#类型：" class="headerlink" title="类型："></a>类型：</h5><pre><code>内建：{MACRO_NAME}
+自定义：{$MACRO_NAME}
+    命名方式：大写字母、数字和下划线
+    宏名称中允许使用以下字符：A-Z , 0-9 , _ , . 
+</code></pre><h5 id="Zabbix优先级解析宏"><a href="#Zabbix优先级解析宏" class="headerlink" title="Zabbix优先级解析宏"></a>Zabbix优先级解析宏</h5><pre><code>（1）主机级别的宏（首先检查）
+（2）为主机的第一级别模板定义的宏（直接链接到主机的模板），按照模板ID来排序
+（3）为主机的第二级别模板定义的宏等
+（4）全局宏（最后检查）
+</code></pre><h3 id="用户自定义参数key"><a href="#用户自定义参数key" class="headerlink" title="用户自定义参数key"></a>用户自定义参数key</h3><p>格式：</p>
+<pre><code>UserParameter=&lt;key&gt;,&lt;command&gt;
+</code></pre><p><strong>用户自定义key需要在代理端设置，设定完之后必须重启才能生效。</strong></p>
+<p>格式2：</p>
+<pre><code>UserParameter=key[*],command
+    key：唯一的监控项key；[*]定义该key接受括号内的参数
+    command：执行的命令
+</code></pre><p><strong>注意：可以使用命令中的位置引用监控项key中的相应参数。不管使用双引号还是单引号，都会解析位置引用。要使用位置引用不变，需使用”$$”</strong></p>
+<h2 id="二、Zabbix安装"><a href="#二、Zabbix安装" class="headerlink" title="二、Zabbix安装"></a>二、Zabbix安装</h2><p>使用创建仓库的方式安装。</p>
+<p>地址为：<img src="http://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-2.el7.noarch.rpm" alt=""></p>
+<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><p><code>[root@node4~]#yum install -y http://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-2.el7.noarch.rpm</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-21_204201.jpg" alt=""></p>
+<h4 id="一台主机上安装"><a href="#一台主机上安装" class="headerlink" title="一台主机上安装"></a>一台主机上安装</h4><blockquote>
+<p>mariadb安装</p>
+</blockquote>
+<p>由于Zabbix数据时存储在database中需要数据存放，这里安装mariadb</p>
+<p><code>[root@node4~]#yum install -y mariadb-server</code></p>
+<p><code>[root@node4~]#systemctl start mariadb.service</code> 启动mariadb服务</p>
+<p><code>[root@node4~]#mysql_secure_installation</code>  #基于安全考虑执行此命令，取出空密码等操作</p>
+<p><code>MariaDB [(none)]&gt; CREATE DATABASE zabbix;</code>     #创建存放表的数据库</p>
+<p><code>MariaDB [(none)]&gt; GRANT ALL ON zabbix.* TO &#39;zbxuser&#39;@&#39;192.168.4.%&#39; IDENTIFIED BY &#39;centos&#39;;</code>    #授权用户</p>
+<p><code>[root@node4~]#yum install -y zabbix-server-mysql zabbix-web zabbix-web-mysql zabbix-agent zabbix-get zabbix-sender</code>       #安装所需要的包</p>
+<table>
+<thead>
+<tr>
+<th>包名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zabbix-server-mysql</td>
+<td>连接后端mysql包</td>
+</tr>
+<tr>
+<td>zabbix-web</td>
+<td>zabbix的web展示接口</td>
+</tr>
+<tr>
+<td>zabbix-server</td>
+<td>zabbix作为监控端提供服务程序包</td>
+</tr>
+<tr>
+<td>zabbix-agent</td>
+<td>zabbix的agent用于做为客户端交互接口</td>
+</tr>
+<tr>
+<td>zabbix-get</td>
+<td>zabbix的get工具，手动调试使用</td>
+</tr>
+<tr>
+<td>zabbix-sender</td>
+<td>zabbix的sender工具，手动调试使用</td>
+</tr>
+</tbody>
+</table>
+<p><strong>zabbix中web是基于LAMP环境构建的，所以在安装时自动安装了所需要的包。如果分开安装需要先搭建LAMP环境。</strong></p>
+<blockquote>
+<p>初始化数据库</p>
+</blockquote>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-21_210721.jpg" alt=""></p>
+<p><code>[root@node4~]#unzip /usr/share/doc/zabbix-server-mysql-3.4.4/create.sql.gz</code>    #解压</p>
+<p><code>[root@node4~]#mysql -uroot -p zabbix &lt; /usr/share/doc/zabbix-server-mysql-3.4.4/create.sql</code>    #将表导入创建的数据库中</p>
+<p><strong>注意：这里需要制定导入数据库的名称。</strong></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-21_211657.jpg" alt=""></p>
+<h4 id="zabbix-server-conf文件"><a href="#zabbix-server-conf文件" class="headerlink" title="zabbix_server.conf文件"></a>zabbix_server.conf文件</h4><p><code>[root@node4~]#grep &#39;####&#39; /etc/zabbix/zabbix_server.conf</code></p>
+<pre><code>############ GENERAL PARAMETERS #################   全局参数设置
+############ ADVANCED PARAMETERS ################   高级参数设置
+####### LOADABLE MODULES #######    模块设置
+####### TLS-RELATED PARAMETERS #######  加密设置
+</code></pre><p><code>[root@node4~]#grep &#39;###&#39; /etc/zabbix/zabbix_server.conf</code>  #可以查看每个块中的选项类型</p>
+<p><code>[root@node4~]#vim /etc/zabbix/zabbix_server.conf</code> #修改服务配置文件</p>
+<pre><code>ListenPort=10051    设置监听端口
+SourceIP=192.168.4.64 绑定地址
+LogFile=/var/log/zabbix/zabbix_server.log   日志文件位置
+LogFileSize=0   日志文件大小
+DebugLevel=3   日志级别
+PidFile=/var/run/zabbix/zabbix_server.pid   pid文件
+SocketDir=/var/run/zabbix   socket文件
+DBHost=192.168.4.64 数据库主机
+DBName=zabbix   数据库名
+DBUser=zbxuser  数据库用户
+DBPassword=centos   数据库密码
+DBSocket=/tmp/mysql.sock    数据库socket文件
+DBPort=3306 数据库端口
+</code></pre><blockquote>
+<p>设置时区</p>
+</blockquote>
+<p><strong>方法一：</strong></p>
+<p>在<code>/etc/php.ini</code>配置文件中设置</p>
+<pre><code>date.timezone   
+</code></pre><h5 id="这种方法设置对php程序都有效。"><a href="#这种方法设置对php程序都有效。" class="headerlink" title="这种方法设置对php程序都有效。"></a>这种方法设置对php程序都有效。</h5><p><strong>方法二：</strong></p>
+<p>在<code>/etc/httpd/conf.d/zabbix/conf</code>配置文件中设置</p>
+<pre><code>php_value date.timezone
+</code></pre><h5 id="这种方法设置仅对zabbix程序有效。"><a href="#这种方法设置仅对zabbix程序有效。" class="headerlink" title="这种方法设置仅对zabbix程序有效。"></a>这种方法设置仅对zabbix程序有效。</h5><p><code>[root@node4~]#vim /etc/httpd/conf.d/zabbix.conf</code></p>
+<pre><code>php_value date.timezone Asia/Shanghai
+</code></pre><p><code>[root@node4~]#systemctl start zabbix-server.service</code>  启动服务</p>
+<p><code>[root@node4~]#systemctl start httpd.service</code>   #启动httpd服务</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p><a href="http://192.168.4.64/zabbix/setup.php" target="_blank" rel="noopener">http://192.168.4.64/zabbix/setup.php</a></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-21_214628.jpg" alt=""></p>
+<h5 id="出现这个界面初步已经搭建成功"><a href="#出现这个界面初步已经搭建成功" class="headerlink" title="出现这个界面初步已经搭建成功"></a>出现这个界面初步已经搭建成功</h5><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-21_214738.jpg" alt=""></p>
+<h5 id="如果配置不正确，有的选项会显示false。"><a href="#如果配置不正确，有的选项会显示false。" class="headerlink" title="如果配置不正确，有的选项会显示false。"></a>如果配置不正确，有的选项会显示false。</h5><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-21_233644.jpg" alt=""></p>
+<h5 id="这里填写创建数据库的名称，密码等"><a href="#这里填写创建数据库的名称，密码等" class="headerlink" title="这里填写创建数据库的名称，密码等"></a>这里填写创建数据库的名称，密码等</h5><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-21_234016.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-21_234126.jpg" alt=""></p>
+<p><strong>建议：登陆以后修改密码</strong></p>
+<p>分别在三台主机安装<br>-</p>
+<h3 id="安装database"><a href="#安装database" class="headerlink" title="安装database"></a>安装database</h3><p><code>[root@node3~]#yum install -y mariadb-server</code></p>
+<p><code>[root@node3~]#systemctl start mariadb.service</code></p>
+<p><code>[root@node3~]#mysql_secure_installation</code></p>
+<p><code>MariaDB [(none)]&gt; CREATE DATABASE zabbix;</code></p>
+<p><code>MariaDB [(none)]&gt; GRANT ALL ON zabbix.* TO &#39;zbxuser&#39;@&#39;192.168.4.%&#39; IDENTIFIED BY &#39;centos&#39;;</code></p>
+<h3 id="安装web-GUI"><a href="#安装web-GUI" class="headerlink" title="安装web GUI"></a>安装web GUI</h3><p><code>[root@node2~]#yum install -y httpd php php-mysql php-mbstring php-gd php-bcmath php-ldap php-xml</code></p>
+<p><code>[root@node2~]#yum install -y zabbix-web zabbix-sender</code></p>
+<p><code>[root@node2~]#vim /etc/httpd/conf.d/zabbix.conf</code></p>
+<pre><code>php_value date.timezone Asia/Shanghai
+</code></pre><p><code>[root@node2~]#systemctl start httpd.service</code></p>
+<h3 id="安装server端"><a href="#安装server端" class="headerlink" title="安装server端"></a>安装server端</h3><p><code>[root@node1~]#yum install -y zabbix-server-mysql zabbix-get</code></p>
+<h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><p><code>[root@node1~]#scp /usr/share/doc/zabbix-server-mysql-3.4.4/create.sql.gz 192.168.4.63:/root/test.sql.gz</code></p>
+<p><code>[root@node3~]#gzip -d test.sql.gz</code></p>
+<p><code>[root@node3~]#mysql -uroot -p zabbix &lt;test.sql</code></p>
+<h3 id="编辑zabbix-server-conf配置文件"><a href="#编辑zabbix-server-conf配置文件" class="headerlink" title="编辑zabbix_server.conf配置文件"></a>编辑<code>zabbix_server.conf</code>配置文件</h3><pre><code>ListenPort=10051
+LogFile=/var/log/zabbix/zabbix_server.log
+LogFileSize=0
+DebugLevel=3
+PidFile=/var/run/zabbix/zabbix_server.pid
+SocketDir=/var/run/zabbix
+DBHost=192.168.4.63
+DBName=zabbix
+DBUser=zbxuser
+DBPassword=centos
+DBPort=3306
+</code></pre><p><code>[root@node1~]#systemctl status zabbix-server.service</code></p>
+<p>在地址栏输入：<br><a href="http://192.168.4.62/zabbix/" target="_blank" rel="noopener">http://192.168.4.62/zabbix/</a></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-22_193458.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-22_193706.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-22_193814.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-22_193946.jpg" alt=""></p>
+<h4 id="图中信息介绍"><a href="#图中信息介绍" class="headerlink" title="图中信息介绍"></a>图中信息介绍</h4><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-22_194133.jpg" alt=""></p>
+<pre><code>Zabbix server is running    Yes    192.168.4.61:10051     #显示zabbix是否正常运行以及IP及端口
+
+Number of hosts (enabled/disabled/templates)    76    0 / 1 / 75
+    0：表示是否已经启用的主机
+    1：表示不可用的主机
+    75：表示模板数量
+
+Number of items (enabled/disabled/not supported)    68    0 / 68 / 0
+    0：表示启用的监控项
+    68：没有启动的监控项
+    0：监控项是否不支持
+
+Number of triggers (enabled/disabled [problem/ok])    46    0 / 46 [0 / 0]
+    0：表示启动的触发器
+    46：未启用的触发器
+    [0/0]：表示状态
+
+
+Number of users (online)    2    2
+    2：表示用户
+
+Required server performance, new values per second    0    
+    0：表示每秒的值
+</code></pre><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="在node5上安装"><a href="#在node5上安装" class="headerlink" title="在node5上安装"></a>在node5上安装</h4><p><code>[root@node5~]#wget http://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-2.el7.noarch.rpm</code><br><code>[root@node5~]#rpm -ivh zabbix-release-3.4-2.el7.noarch.rpm</code></p>
+<p><code>[root@node5~]#yum install -y zabbix-agent zabbix-sender</code></p>
+<h5 id="编辑-etc-zabbix-zabbix-agent-conf配置文件"><a href="#编辑-etc-zabbix-zabbix-agent-conf配置文件" class="headerlink" title="编辑/etc/zabbix/zabbix_agent.conf配置文件"></a>编辑<code>/etc/zabbix/zabbix_agent.conf</code>配置文件</h5><pre><code>PidFile=/var/run/zabbix/zabbix_agentd.pid   #pid文件
+LogFile=/var/log/zabbix/zabbix_agentd.log   #日志存放位置
+LogFileSize=0   #是否滚动日志
+DebugLevel=3    #日志级别
+SourceIP=192.168.4.65   #监听地址，如果有多个地址需要指定
+EnableRemoteCommands=1  #是否启用远程命令
+LogRemoteCommands=1 #是否记录执行的远程命令
+Server=192.168.4.61 #Zabbix Server 地址
+ListenPort=10050    #监听的端口
+ListenIP=192.168.4.65
+StartAgents=3
+ServerActive=192.168.4.61   #是否主动监听
+Hostname=node5  #Zabbix Agent主机名
+</code></pre><h4 id="创建一个主机（host）"><a href="#创建一个主机（host）" class="headerlink" title="创建一个主机（host）"></a>创建一个主机（host）</h4><p><img src="http://owatlfstl.bkt.clouddn.com/zabbix01.gif" alt=""></p>
+<h4 id="定义一个item（监控项）"><a href="#定义一个item（监控项）" class="headerlink" title="定义一个item（监控项）"></a>定义一个item（监控项）</h4><p><img src="http://owatlfstl.bkt.clouddn.com/zabbix02.gif" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-22_230317.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/zabbix03.gif" alt=""></p>
+<h3 id="创建trigger"><a href="#创建trigger" class="headerlink" title="创建trigger"></a>创建trigger</h3><p><code>[root@node5~]#vim /etc/nginx/nginx.conf</code></p>
+<pre><code>53         location /status {
+54             stub_status on;
+55             allow 192.168.4.0/24;
+56             deny all;
+57         }
+</code></pre><p><code>[root@node5~]#systemctl start nginx.service</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-22_232237.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/zabbix04.gif" alt=""></p>
+<h3 id="定义action"><a href="#定义action" class="headerlink" title="定义action"></a>定义action</h3><p><img src="http://owatlfstl.bkt.clouddn.com/zabbix05.gif" alt=""></p>
+<h6 id="如果在远程执行命令需要对zabbix用户给予权限。"><a href="#如果在远程执行命令需要对zabbix用户给予权限。" class="headerlink" title="如果在远程执行命令需要对zabbix用户给予权限。"></a>如果在远程执行命令需要对zabbix用户给予权限。</h6><p><code>[root@node5~]#visudo</code><br>zabbix ALL=(ALL) NOPASSWOD: ALL</p>
+<h6 id="需要在agent端开启执行远程命令的选项"><a href="#需要在agent端开启执行远程命令的选项" class="headerlink" title="需要在agent端开启执行远程命令的选项"></a>需要在agent端开启执行远程命令的选项</h6><p><code>[root@node5~]#vim /etc/zabbix/zabbix_agentd.conf</code></p>
+<pre><code>EnableRemoteCommands=1
+LogRemoteCommands=1
+</code></pre><h3 id="创建template"><a href="#创建template" class="headerlink" title="创建template"></a>创建template</h3><p><img src="http://owatlfstl.bkt.clouddn.com/zabbix06.gif" alt=""></p>
+<p>#######下面的操作就和创建item、action、traggers等一样。</p>
+<h3 id="创建screen"><a href="#创建screen" class="headerlink" title="创建screen"></a>创建screen</h3><p><img src="http://owatlfstl.bkt.clouddn.com/zabbix07.gif" alt=""></p>
+<h3 id="创建slide-show"><a href="#创建slide-show" class="headerlink" title="创建slide show"></a>创建slide show</h3><p><img src="http://owatlfstl.bkt.clouddn.com/zabbix08.gif" alt=""></p>
+<h3 id="web监控"><a href="#web监控" class="headerlink" title="web监控"></a>web监控</h3><p>web场景包括一个或多个HTTP请求或”步骤”。Zabbix服务器根据预定义的命令周期性的执行这些步骤。</p>
+<h6 id="所有web收集的数据："><a href="#所有web收集的数据：" class="headerlink" title="所有web收集的数据："></a>所有web收集的数据：</h6><pre><code>整个场景中所有步骤的下载速度
+失败的步骤数量
+最后一次错误信息
+</code></pre><h6 id="对于web场景的所有步骤收集的数据"><a href="#对于web场景的所有步骤收集的数据" class="headerlink" title="对于web场景的所有步骤收集的数据"></a>对于web场景的所有步骤收集的数据</h6><pre><code>平均下载速度
+响应时间
+HTTP状态码
+</code></pre><p>参考地址：<a href="https://www.zabbix.com/documentation/3.4/zh/manual/web_monitoring" target="_blank" rel="noopener">https://www.zabbix.com/documentation/3.4/zh/manual/web_monitoring</a></p>
+<h3 id="网络发现"><a href="#网络发现" class="headerlink" title="网络发现"></a>网络发现</h3><p>Zabbix提供了有效和非常灵活的网络自动发现功能。包括发现（discovery）和动作（action）</p>
+<h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h5><pre><code>加快Zabbix部署
+简化管理
+无需过多管理就能快速变化的环境中使用Zabbix
+</code></pre><h5 id="网络发现方式"><a href="#网络发现方式" class="headerlink" title="网络发现方式"></a>网络发现方式</h5><pre><code>IP范围
+可用的外部服务
+zabbix agent信息
+snmp agetn信息    
+</code></pre><h5 id="网络发现模块每次检测到service和host都会生成一个discovey时间"><a href="#网络发现模块每次检测到service和host都会生成一个discovey时间" class="headerlink" title="网络发现模块每次检测到service和host都会生成一个discovey时间"></a>网络发现模块每次检测到service和host都会生成一个discovey时间</h5><p>|<br>|Service Discovered    |服务首次被发现或者由’down’变’up’<br>|Service Up    |服务持续 ‘up’<br>|Service Lost    |服务由 ‘up’ 变 ‘down’<br>|Service Down    |服务持续 ‘down’<br>|Host Discovered    |在主机的所有服务都 ‘down’ 之后，至少一个服务是’up’。<br>|Host Up    |主机至少有一个服务是 ‘up’ 状态<br>|Host Lost|    主机的所有服务在至少一个是 ‘up’ 之后全部是 ‘down’。<br>|Host Down    |所有服务都持续 ‘down’</p>
+<h5 id="采取的动作"><a href="#采取的动作" class="headerlink" title="采取的动作"></a>采取的动作</h5><pre><code>发送通知
+添加/删除主机
+启用/禁用主机
+添加主机到组
+从组中删除主机
+将主机链接到模板/从模板中取消链接
+执行远程脚本命令
+</code></pre><h3 id="JMX监控"><a href="#JMX监控" class="headerlink" title="JMX监控"></a>JMX监控</h3><p>JMX监控可用于监视java应用程序的JMX计数器。</p>
+<h5 id="为java应用程序启用远程JMX监视功能"><a href="#为java应用程序启用远程JMX监视功能" class="headerlink" title="为java应用程序启用远程JMX监视功能"></a>为java应用程序启用远程JMX监视功能</h5><p>编辑<code>/etc/sysconfig/tomcat</code>配置文件</p>
+<pre><code>CATALINA_OPTS=&quot;-Djava.rmi.server.hostname=TOMCAT_SERVER_IP -Djavax.management.builder.initial= -Dcom.sun.management.jmxremote=true   -Dcom.sun.management.jmxremote.port=12345  -Dcom.sun.management.jmxremote.ssl=false  -Dcom.sun.management.jmxremote.authenticate=false&quot;
+</code></pre><h5 id="在Zabbix-Web管理段配置JMX接口"><a href="#在Zabbix-Web管理段配置JMX接口" class="headerlink" title="在Zabbix Web管理段配置JMX接口"></a>在Zabbix Web管理段配置JMX接口</h5><pre><code>JavaGateway=192.168.3.14
+JavaGatewayPort=10052
+StartJavaPollers=5
+</code></pre><h5 id="在Zabbix-Web添加监控项"><a href="#在Zabbix-Web添加监控项" class="headerlink" title="在Zabbix Web添加监控项"></a>在Zabbix Web添加监控项</h5><pre><code>jmx[&quot;java.lang:type=Memory&quot;,&quot;HeapMemoryUsage.used&quot;]
+    object name 代表MBean的对象名称
+    attribute name 一个MBean属性名称，可选的符合数据字段名称以点分隔
+</code></pre><p><strong>示例：</strong></p>
+<p><code>[root@node3~]#yum install -y zabbix-agent zabbix-sender</code></p>
+<p><code>[root@node3~]#yum install -y java-1.8.0-openjdk tomcat-admin-webapps tomcat-doc-webapp tomcat-webapps</code></p>
+<p><code>[root@node3~]#vim /etc/sysconfig/tomcat</code></p>
+<pre><code>28 CATALINA_OPTS=&quot;-Djava.rmi.server.hostname=192.168.4.63 -Djavax.management.builder.initial= -Dco
+m.sun.management.jmxremote=true   -Dcom.sun.management.jmxremote.port=12345  -Dcom.sun.manageme
+nt.jmxremote.ssl=false  -Dcom.sun.management.jmxremote.authenticate=false&quot;
+</code></pre><p><code>[root@node3~]#systemctl start tomcat.service</code><br><code>[root@node3~]#systemctl status tomcat.service</code></p>
+<p><code>[root@node3~]#grep &#39;^[^#]&#39; /etc/zabbix/zabbix_agentd.conf</code></p>
+<pre><code>PidFile=/var/run/zabbix/zabbix_agentd.pid
+LogFile=/var/log/zabbix/zabbix_agentd.log
+LogFileSize=0
+DebugLevel=3
+SourceIP=192.168.4.63
+EnableRemoteCommands=1
+LogRemoteCommands=1
+Server=192.168.4.61
+ListenPort=10050
+ServerActive=192.168.4.61
+Hostname=node3
+</code></pre><p><code>[root@node3~]#systemctl start zabbix-agent.service</code><br><code>[root@node3~]#systemctl status zabbix-agent.service</code></p>
+<p>Zabbix Server配置<br>-</p>
+<p><code>[root@node1~]#yum install -y zabbix-java-gateway</code></p>
+<p><code>[root@node1~]#vim /etc/zabbix/zabbix_server.conf</code></p>
+<pre><code>JavaGateway=192.168.4.61
+JavaGatewayPort=10052
+StartJavaPollers=5
+</code></pre><p><code>[root@node1~]#systemctl start zabbix-java-gateway.service</code></p>
+<p><code>[root@node1~]#systemctl status zabbix-java-gateway.service</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-23_140540.jpg" alt=""></p>
+<h4 id="进行配置"><a href="#进行配置" class="headerlink" title="进行配置"></a>进行配置</h4><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-23_140657.jpg" alt=""></p>
+<h5 id="导入模板即可"><a href="#导入模板即可" class="headerlink" title="导入模板即可"></a>导入模板即可</h5><h3 id="Zabbix-Proxy"><a href="#Zabbix-Proxy" class="headerlink" title="Zabbix Proxy"></a>Zabbix Proxy</h3><p>zabbix proxy可以替代zabbix server收集性能和可用性数据，然后把数据汇报给zabbix server，并且在一定程度上分担了zabbix server的压力。</p>
+<h5 id="zabbix-proxy使用场景"><a href="#zabbix-proxy使用场景" class="headerlink" title="zabbix proxy使用场景"></a>zabbix proxy使用场景</h5><ul>
+<li>监控远程区域设备</li>
+<li>监控本地网络不稳定区域</li>
+<li>当zabbix监控上千设备时，使用它来减轻server的压力</li>
+<li>简化分布式监控的维护</li>
+</ul>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-23_144642.jpg" alt=""></p>
+<p><strong>注意：使用agent active模式，一定要在agent配置文件参数ServerActive加上proxy的IP地址。</strong></p>
+<p><strong>示例：</strong></p>
+<p><code>[root@node4~]#yum install -y zabbix-proxy-mysql zabbix-get zabbix-agent zabbix-sender</code></p>
+<p><code>[root@node4~]#yum install -y mariadb-server</code></p>
+<p><code>MariaDB [(none)]&gt; CREATE DATABASE zbxdb CHARACTER &#39;utf8&#39;;</code></p>
+<p><code>MariaDB [(none)]&gt; GRANT ALL ON zbxdb.* TO  &#39;zbxuser&#39;@&#39;192.168.4.%&#39; IDENTIFIED BY &#39;centos&#39;;</code></p>
+<p><code>[root@node4~]#mysql -uroot -p zabbix &lt; test.sql</code></p>
+<p><code>[root@node4~]#grep &#39;^[^#]&#39; /etc/zabbix/zabbix_proxy.conf</code></p>
+<pre><code>Server=192.168.4.61
+ServerPort=10051
+Hostname=node4
+LogFile=/var/log/zabbix/zabbix_proxy.log
+LogFileSize=0
+PidFile=/var/run/zabbix/zabbix_proxy.pid
+SocketDir=/var/run/zabbix
+DBHost=192.168.4.64
+DBName=zbxdb
+DBUser=zbxuser
+DBPassword=centos
+DBPort=3306
+ConfigFrequency=10  #根据实际生产中修改
+DataSenderFrequency=1
+</code></pre><p><code>[root@node4~]#systemctl restart zabbix-proxy.service</code><br><code>[root@node4~]#systemctl status zabbix-proxy.service</code></p>
+<p><code>[root@node5~]#vim /etc/zabbix/zabbix_agentd.conf</code></p>
+<pre><code>Server=192.168.4.61,192.168.4.64
+ServerActive=192.168.4.61,192.168.4.64
+</code></pre><p><strong>需要在被代理主机上填入代理主机的地址</strong></p>
+<p><code>[root@node5~]#systemctl restart zabbix-agent.service</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-23_152252.jpg" alt=""></p>
+<h3 id="SNMP"><a href="#SNMP" class="headerlink" title="SNMP"></a>SNMP</h3><p><strong>示例：</strong></p>
+<p><code>[root@node2~]#yum install -y net-snmp net-snmp-utils</code><br><code>[root@node2~]#systemctl start snmpd.service</code><br><code>[root@node2~]#systemctl status snmpd.service</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/zabbix/" rel="tag"># zabbix</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/Tomcat基于Memcached缓存session共享/" rel="next" title="Tomcat基于Redis缓存session共享">
+                <i class="fa fa-chevron-left"></i> Tomcat基于Redis缓存session共享
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/Zabbix+Grafana/" rel="prev" title="Zabbix+Grafana">
+                Zabbix+Grafana <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Zabbix"><span class="nav-number">1.</span> <span class="nav-text">一、Zabbix</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、Zabbix特点"><span class="nav-number">1.1.</span> <span class="nav-text">1、Zabbix特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、Zabbix结构"><span class="nav-number">1.2.</span> <span class="nav-text">2、Zabbix结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、Zabbix逻辑组件"><span class="nav-number">1.3.</span> <span class="nav-text">3、Zabbix逻辑组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、zabbix检查方式"><span class="nav-number">1.4.</span> <span class="nav-text">4、zabbix检查方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宏"><span class="nav-number">1.5.</span> <span class="nav-text">宏</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#级别："><span class="nav-number">1.5.0.1.</span> <span class="nav-text">级别：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优先级"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">优先级</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#类型："><span class="nav-number">1.5.0.3.</span> <span class="nav-text">类型：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Zabbix优先级解析宏"><span class="nav-number">1.5.0.4.</span> <span class="nav-text">Zabbix优先级解析宏</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户自定义参数key"><span class="nav-number">1.6.</span> <span class="nav-text">用户自定义参数key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Zabbix安装"><span class="nav-number">2.</span> <span class="nav-text">二、Zabbix安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建仓库"><span class="nav-number">2.1.</span> <span class="nav-text">创建仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一台主机上安装"><span class="nav-number">2.1.1.</span> <span class="nav-text">一台主机上安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zabbix-server-conf文件"><span class="nav-number">2.1.2.</span> <span class="nav-text">zabbix_server.conf文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#这种方法设置对php程序都有效。"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">这种方法设置对php程序都有效。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#这种方法设置仅对zabbix程序有效。"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">这种方法设置仅对zabbix程序有效。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">2.2.</span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#出现这个界面初步已经搭建成功"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">出现这个界面初步已经搭建成功</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如果配置不正确，有的选项会显示false。"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">如果配置不正确，有的选项会显示false。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#这里填写创建数据库的名称，密码等"><span class="nav-number">2.2.0.3.</span> <span class="nav-text">这里填写创建数据库的名称，密码等</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装database"><span class="nav-number">2.3.</span> <span class="nav-text">安装database</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装web-GUI"><span class="nav-number">2.4.</span> <span class="nav-text">安装web GUI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装server端"><span class="nav-number">2.5.</span> <span class="nav-text">安装server端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建表"><span class="nav-number">2.6.</span> <span class="nav-text">创建表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑zabbix-server-conf配置文件"><span class="nav-number">2.7.</span> <span class="nav-text">编辑zabbix_server.conf配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图中信息介绍"><span class="nav-number">2.7.1.</span> <span class="nav-text">图中信息介绍</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">2.8.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在node5上安装"><span class="nav-number">2.8.1.</span> <span class="nav-text">在node5上安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#编辑-etc-zabbix-zabbix-agent-conf配置文件"><span class="nav-number">2.8.1.1.</span> <span class="nav-text">编辑/etc/zabbix/zabbix_agent.conf配置文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个主机（host）"><span class="nav-number">2.8.2.</span> <span class="nav-text">创建一个主机（host）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义一个item（监控项）"><span class="nav-number">2.8.3.</span> <span class="nav-text">定义一个item（监控项）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建trigger"><span class="nav-number">2.9.</span> <span class="nav-text">创建trigger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义action"><span class="nav-number">2.10.</span> <span class="nav-text">定义action</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#如果在远程执行命令需要对zabbix用户给予权限。"><span class="nav-number">2.10.0.0.1.</span> <span class="nav-text">如果在远程执行命令需要对zabbix用户给予权限。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#需要在agent端开启执行远程命令的选项"><span class="nav-number">2.10.0.0.2.</span> <span class="nav-text">需要在agent端开启执行远程命令的选项</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建template"><span class="nav-number">2.11.</span> <span class="nav-text">创建template</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建screen"><span class="nav-number">2.12.</span> <span class="nav-text">创建screen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建slide-show"><span class="nav-number">2.13.</span> <span class="nav-text">创建slide show</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web监控"><span class="nav-number">2.14.</span> <span class="nav-text">web监控</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#所有web收集的数据："><span class="nav-number">2.14.0.0.1.</span> <span class="nav-text">所有web收集的数据：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#对于web场景的所有步骤收集的数据"><span class="nav-number">2.14.0.0.2.</span> <span class="nav-text">对于web场景的所有步骤收集的数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络发现"><span class="nav-number">2.15.</span> <span class="nav-text">网络发现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#优点："><span class="nav-number">2.15.0.1.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#网络发现方式"><span class="nav-number">2.15.0.2.</span> <span class="nav-text">网络发现方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#网络发现模块每次检测到service和host都会生成一个discovey时间"><span class="nav-number">2.15.0.3.</span> <span class="nav-text">网络发现模块每次检测到service和host都会生成一个discovey时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#采取的动作"><span class="nav-number">2.15.0.4.</span> <span class="nav-text">采取的动作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JMX监控"><span class="nav-number">2.16.</span> <span class="nav-text">JMX监控</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为java应用程序启用远程JMX监视功能"><span class="nav-number">2.16.0.1.</span> <span class="nav-text">为java应用程序启用远程JMX监视功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在Zabbix-Web管理段配置JMX接口"><span class="nav-number">2.16.0.2.</span> <span class="nav-text">在Zabbix Web管理段配置JMX接口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在Zabbix-Web添加监控项"><span class="nav-number">2.16.0.3.</span> <span class="nav-text">在Zabbix Web添加监控项</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进行配置"><span class="nav-number">2.16.1.</span> <span class="nav-text">进行配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#导入模板即可"><span class="nav-number">2.16.1.1.</span> <span class="nav-text">导入模板即可</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zabbix-Proxy"><span class="nav-number">2.17.</span> <span class="nav-text">Zabbix Proxy</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#zabbix-proxy使用场景"><span class="nav-number">2.17.0.1.</span> <span class="nav-text">zabbix proxy使用场景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SNMP"><span class="nav-number">2.18.</span> <span class="nav-text">SNMP</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

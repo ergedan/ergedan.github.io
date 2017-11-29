@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="rsyslog," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="在日常生活中如果您是一个生活有条理的人，一定会记录一下每天发生的事情，方便自己回看。CentOS系统中也是这样工作的，当我们在某时发生了错误时，这时日志就给我们起到了举足轻重的作用；我们可以查看日志并分析错误产生的原因等等。 一、rsyslog基本介绍1、rsyslog基本概念Rsyslog是用于UNIX和类Unix的">
+<meta name="keywords" content="rsyslog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rsyslog">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/rsyslog/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="在日常生活中如果您是一个生活有条理的人，一定会记录一下每天发生的事情，方便自己回看。CentOS系统中也是这样工作的，当我们在某时发生了错误时，这时日志就给我们起到了举足轻重的作用；我们可以查看日志并分析错误产生的原因等等。 一、rsyslog基本介绍1、rsyslog基本概念Rsyslog是用于UNIX和类Unix的计算机系统上用于转发IP 网络中的日志消息的开源软件实用程序。它实现了基本的sy">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-12_200339.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-12_201148.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-12_201537.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-12_203146.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-12_205148.jpg">
+<meta property="og:updated_time" content="2017-11-29T12:16:26.146Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rsyslog">
+<meta name="twitter:description" content="在日常生活中如果您是一个生活有条理的人，一定会记录一下每天发生的事情，方便自己回看。CentOS系统中也是这样工作的，当我们在某时发生了错误时，这时日志就给我们起到了举足轻重的作用；我们可以查看日志并分析错误产生的原因等等。 一、rsyslog基本介绍1、rsyslog基本概念Rsyslog是用于UNIX和类Unix的计算机系统上用于转发IP 网络中的日志消息的开源软件实用程序。它实现了基本的sy">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-12_200339.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/rsyslog/"/>
+
+
+
+
+
+  <title>rsyslog | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/rsyslog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">rsyslog</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日志/" itemprop="url" rel="index">
+                    <span itemprop="name">日志</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日志/rsyslog/" itemprop="url" rel="index">
+                    <span itemprop="name">rsyslog</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在日常生活中如果您是一个生活有条理的人，一定会记录一下每天发生的事情，方便自己回看。CentOS系统中也是这样工作的，当我们在某时发生了错误时，这时日志就给我们起到了举足轻重的作用；我们可以查看日志并分析错误产生的原因等等。</p>
+<h1 id="一、rsyslog基本介绍"><a href="#一、rsyslog基本介绍" class="headerlink" title="一、rsyslog基本介绍"></a>一、rsyslog基本介绍</h1><h2 id="1、rsyslog基本概念"><a href="#1、rsyslog基本概念" class="headerlink" title="1、rsyslog基本概念"></a>1、rsyslog基本概念</h2><p>Rsyslog是用于UNIX和类Unix的计算机系统上用于转发IP 网络中的日志消息的开源软件实用程序。它实现了基本的syslog协议，扩展了基于内容的过滤，丰富的过滤功能，灵活的配置选项，并添加了使用TCP进行传输的功能</p>
+<h2 id="2、rsyslog构成"><a href="#2、rsyslog构成" class="headerlink" title="2、rsyslog构成"></a>2、rsyslog构成</h2><p>CentOS 5之前版本：sysklogd</p>
+<p>CentOS 5之后版本：</p>
+<pre><code>syslogd：记录系统日志
+klogd：记录内核日志
+</code></pre><p>事件记录格式：</p>
+<pre><code>日期时间  主机   进程[PID]: 事件内容
+</code></pre><p>示例：</p>
+<pre><code>Sep 18 11:10:33 localhost rz[3487]: [root] xcache-3.2.0.tar.bz2/ZMODEM: 148392 Bytes, 1037300 BPS
+</code></pre><h2 id="3、rsyslog工作模式"><a href="#3、rsyslog工作模式" class="headerlink" title="3、rsyslog工作模式"></a>3、rsyslog工作模式</h2><p>基于C/S架构：通过TCP或UDP协议的服务完成日志记录传送，将分布在不同主机的日志实现集中管理。</p>
+<h2 id="4、rsyslog特性"><a href="#4、rsyslog特性" class="headerlink" title="4、rsyslog特性"></a>4、rsyslog特性</h2><p>（1）支持多协议；UDP,TCP,SSL,TLS,RELP等<br>（2）实现日志存储；MySQL，gpsql，oracle等<br>（3）强大的过滤器，可实现过滤日志信息中任何部分<br>（4）自定义输出格式</p>
+<h2 id="5、rsyslog配置文件"><a href="#5、rsyslog配置文件" class="headerlink" title="5、rsyslog配置文件"></a>5、rsyslog配置文件</h2><p>主程序：</p>
+<pre><code>/usr/sbin/rsyslogd
+</code></pre><p>库文件</p>
+<pre><code>/lib64/rsyslog/*.so
+</code></pre><p>主配置文件</p>
+<pre><code>/etc/rsyslog.conf和/etc/rsyslog.d/*.conf
+</code></pre><p><code>[root@localhost~]#grep &quot;^###&quot; /etc/rsyslog.conf</code> </p>
+<pre><code>#### MODULES ####   相关模块配置
+#### GLOBAL DIRECTIVES #### 全局配置
+#### RULES #### 日志记录相关的规则配置
+</code></pre><p>（1）MODULES格式</p>
+<pre><code>$ModLoad ModulesName
+</code></pre><p>（2）GLOBAL DIRECTIVES格式</p>
+<pre><code>$WorkDirectory /var/lib/rsyslog 定义工作目录
+$ActionFileDefaultTemplate  使用时间戳格式 RSYSLOG_TraditionalFileFormat   
+$ActionFileEnableSync on  
+$IncludeConfig /etc/rsyslog.d/*.conf      其他配置文件位置
+$OmitLocalLogging on       
+$IMJournalStateFile imjournal.state
+</code></pre><p>（3）RULES格式</p>
+<p>facility.priority   target</p>
+<p><strong>facility</strong>    设施，从功能或程序上对日志进行分类</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auth</td>
+<td>授权日志信息</td>
+</tr>
+<tr>
+<td>authpriv</td>
+<td>认证日志信息</td>
+</tr>
+<tr>
+<td>cron</td>
+<td>任务计划日志信息</td>
+</tr>
+<tr>
+<td>daemon</td>
+<td>进程日志信息</td>
+</tr>
+<tr>
+<td>kern</td>
+<td>内核日志信息</td>
+</tr>
+<tr>
+<td>lpr</td>
+<td>打印机日志信息</td>
+</tr>
+<tr>
+<td>mail</td>
+<td>邮件日志信息</td>
+</tr>
+<tr>
+<td>mark</td>
+<td>标签日志信息</td>
+</tr>
+<tr>
+<td>news</td>
+<td>新闻日志信息</td>
+</tr>
+<tr>
+<td>security</td>
+<td>安全日志信息</td>
+</tr>
+<tr>
+<td>user</td>
+<td>用户日志信息</td>
+</tr>
+<tr>
+<td>uucp</td>
+<td>uucp日志信息</td>
+</tr>
+<tr>
+<td>syslog</td>
+<td>系统日志信息</td>
+</tr>
+<tr>
+<td>local0-local7</td>
+<td>自定义日志信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>priority</strong> 优先级</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>debug</td>
+<td>只要发生就记录下来</td>
+</tr>
+<tr>
+<td>info</td>
+<td>一些基本的信息说明，无任何严重性</td>
+</tr>
+<tr>
+<td>notice</td>
+<td>系统进程，但有发生要注意的事项</td>
+</tr>
+<tr>
+<td>warn（warning）</td>
+<td>系统发生警告信息，但还不至于影响Daemon的正常工作</td>
+</tr>
+<tr>
+<td>err（error）</td>
+<td>发生重大的错误信息，这些信息通畅可以是说明无法启动的原因</td>
+</tr>
+<tr>
+<td>crit（critical）</td>
+<td>系统发生比err还严重的错误信息，通畅表示到达系统临界点</td>
+</tr>
+<tr>
+<td>emerg（panic）</td>
+<td>最严重的等级，通畅表示系统已经瘫痪</td>
+</tr>
+</tbody>
+</table>
+<p>如何指定级别？</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>指定所有级别</td>
+</tr>
+<tr>
+<td>none</td>
+<td>没有级别</td>
+</tr>
+<tr>
+<td>PRIORITY</td>
+<td>此级别及更高的级别日志信息</td>
+</tr>
+<tr>
+<td>=PRIORITY</td>
+<td>只指定此级别</td>
+</tr>
+</tbody>
+</table>
+<p><strong>target</strong></p>
+<pre><code>文件路径：通常在/var/log目录下定义，文件路径前的“-”表示异步写入，可以提升系统性能
+用户：将日志事件通知给指定的用户，*表示登录的所有用户
+日志服务器：@HOST,把日志发送至指定的远程服务器中记录；这些可以将日志集中管理。默认监听在TCP/UDP的514端口上。
+管道：|COMMAND,转发给其他命令处理
+</code></pre><h2 id="6、其他日志文件"><a href="#6、其他日志文件" class="headerlink" title="6、其他日志文件"></a>6、其他日志文件</h2><p><code>/var/log/secure</code>:系统安装日志，文本格式，应周期性分析此日志文件<br><code>/var/log/btmp</code>：当前系统上，用户的失败尝试登陆相关的日志信息，二进制格式。可以使用lastb命令查看，再日常工作中可以查看是否有人尝试破解密码登录，然后截取除IP地址丢进防火墙中即可。</p>
+<p><strong>注意：如果想清楚文件中的内容不能直接把文件删除可以使用<code>&gt;/var/log/wtmp</code>进行清楚。</strong></p>
+<p><code>[root@localhost~]#lastb</code></p>
+<pre><code>root     :0           :0               Wed Sep 20 11:45 - 11:45  (00:00)    
+
+btmp begins Wed Sep 20 11:45:14 2017
+</code></pre><p><code>/var/log/wtmp</code>:当前系统上，用户正常登录系统的相关日志信息，二进制格式，可以使用last命令查看</p>
+<p><code>[root@localhost~]#last</code></p>
+<pre><code>root     pts/1        192.168.4.1      Thu Oct 12 08:43   still logged in   
+root     pts/0        192.168.4.1      Thu Oct 12 08:20   still logged in   
+root     :0           :0               Thu Oct 12 08:20   still logged in 
+</code></pre><p><code>/var/log/lastlog</code>:每一个用户最近一次的登陆信息，二进格式，可以使用lastlog命令查看。</p>
+<p><code>[root@localhost~]#lastlog</code></p>
+<pre><code>Username         Port     From             Latest
+root             pts/1    192.168.4.1      Thu Oct 12 08:43:58 +0800 2017
+bin                                        **Never logged in**
+daemon                                     **Never logged in**
+</code></pre><p><code>/var/log/dmesg</code>:系统引导过程中的日志信息，文本格式，可以使用专用命令dmesg命令查看，如果系统出错可以查看是否启动过程哪里出错</p>
+<p><code>/var/log/anaconda</code>:存放anaconda的日志目录</p>
+<h1 id="二、如何启用日志服务器"><a href="#二、如何启用日志服务器" class="headerlink" title="二、如何启用日志服务器"></a>二、如何启用日志服务器</h1><p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-12_200339.jpg" alt=""></p>
+<p>上面是架构图比较省略，下面我们来实现这个功能。</p>
+<p>环境构建：CentOS 6（客户端） 和CentOS 7 (服务器)</p>
+<p>（1）在服务端配置/etc/rsyslog.conf文件</p>
+<p><code>[root@localhost~]#vim /etc/rsyslog.conf</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-12_201148.jpg" alt=""></p>
+<p><code>[root@localhost~]#systemctl restart rsyslog.service</code>      #重启服务</p>
+<p><code>[root@localhost~]#ss -tnul |grep 514</code>  #查看端口是否开启</p>
+<pre><code>udp    UNCONN     0      0         *:514                   *:*                  
+udp    UNCONN     0      0        :::514                  :::*                  
+tcp    LISTEN     0      25        *:514                   *:*                  
+tcp    LISTEN     0      25       :::514                  :::*
+</code></pre><p>  （2）客户端进行配置</p>
+<p><code>[root@localhost ~]# vim /etc/rsyslog.conf</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-12_201537.jpg" alt=""></p>
+<p><code>[root@localhost ~]# service rsyslog restart</code>   #重启服务</p>
+<p>（3）测试</p>
+<p><code>[root@localhost ~]# logger &quot;test&quot;</code> 在CentOS 6 上测试</p>
+<p>看看CentOS 7 上查看是否能收到</p>
+<p><code>[root@localhost~]#tail -f /var/log/messages</code></p>
+<pre><code>Oct  2 22:40:48 localhost root: test
+</code></pre><h1 id="三、如何将日志存储到mysql服务器上"><a href="#三、如何将日志存储到mysql服务器上" class="headerlink" title="三、如何将日志存储到mysql服务器上"></a>三、如何将日志存储到mysql服务器上</h1><p>将日志存储到日志服务器上这样的好处是集中管理日志，但是当我们某天遇到问题时，不可能一个一个的去查询，这样显然增加了我们的工作量，如果可以直接搜索查询多好，mysql就为我们解决了这个问题。</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-12_203146.jpg" alt=""></p>
+<p>（1）在客户端安装mysql模块相关的程序包</p>
+<p><code>[root@localhost~]#yum install -y rsyslog-mysql</code><br><code>[root@localhost~]#rpm -ql rsyslog-mysql</code>   #查看文件</p>
+<pre><code>/usr/lib64/rsyslog/ommysql.so
+/usr/share/doc/rsyslog-8.24.0/mysql-createDB.sql
+</code></pre><p>将数据文件拷贝到mysql服务器上</p>
+<p><code>[root@localhost ~]# scp /usr/share/doc/rsyslog-mysql-5.8.10/createDB.sql 192.168.4.60:/root/rsyslogdb</code></p>
+<p>（2）安装数据库，原本我CentOS7上已经有数据库就在此不安装了。</p>
+<p><code>[root@localhost~]#mysql -uroot -p &lt; rsyslogdb</code>  #为rsyslog创建数据库及表</p>
+<p><code>[root@localhost~]#mysql -uroot -p</code></p>
+<pre><code>MariaDB [(none)]&gt; GRANT ALL ON Syslog.* TO &apos;joah&apos;@&apos;192.168.4.170&apos; IDENTIFIED BY &apos;123456&apos;;   #对用户进行授权
+</code></pre><p>（3）在客户端进行配置</p>
+<pre><code>$ModLoad ommysql
+*.info;mail.none;authpriv.none;cron.none                :ommysql:192.168.4.60,Syslog,joah,123456
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-12_205148.jpg" alt=""></p>
+<p><code>[root@localhost ~]# service rsyslog restart</code>   #重启服务</p>
+<p>（4）测试</p>
+<p>在CentOS 6上测试</p>
+<p><code>[root@localhost ~]# logger &quot;test first&quot;</code></p>
+<p><code>[root@localhost~]#mysql -u root -p</code>    #登陆mysql日志服务器查看</p>
+<pre><code>MariaDB [(none)]&gt; use Syslog
+MariaDB [Syslog]&gt; SELECT count(*)  FROM SystemEvents;
++----------+
+| count(*) |
++----------+
+|        3 |
++----------+
+1 row in set (0.00 sec)
+</code></pre><h1 id="四、日志图形化管理工具"><a href="#四、日志图形化管理工具" class="headerlink" title="四、日志图形化管理工具"></a>四、日志图形化管理工具</h1><p>（1）解压缩</p>
+<p><code>[root@localhost/usr/local/src]#tar xf loganalyzer-4.1.5.tar.gz</code></p>
+<p>（2）配置环境，由于是编译的httpd所有和yum安装的有所不一样</p>
+<p><code>[root@localhost/usr/local/src/loganalyzer-4.1.5]#cp -r src/ /app/httpd24/htdocs/loganalyzer</code></p>
+<p><code>[root@localhost/app/httpd24]#cp /usr/local/src/loganalyzer-4.1.5/contrib/* htdocs/</code></p>
+<p><code>[root@localhost/app/httpd24/htdocs/loganalyzer]#chmod +x secure.sh</code><br><code>[root@localhost/app/httpd24/htdocs/loganalyzer]#chmod +x configure.sh</code><br><code>[root@localhost/app/httpd24/htdocs/loganalyzer]#./configure.sh</code><br><code>[root@localhost/app/httpd24/htdocs/loganalyzer]#./secure.sh</code><br>（3）重启httpd服务</p>
+<p><code>[root@localhost/app/httpd24/htdocs/loganalyzer]#apachectl stop</code><br><code>[root@localhost/app/httpd24/htdocs/loganalyzer]#apachectl start</code></p>
+<p>（4）测试是否成功</p>
+<p><a href="http://192.168.4.60/loganalyzer/install.php?step=8" target="_blank" rel="noopener">http://192.168.4.60/loganalyzer/install.php?step=8</a></p>
+<p>如果想生成图表可以安装<code>yum install -y php-gd</code>,然后重新启动httpd服务即可。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/rsyslog/" rel="tag"># rsyslog</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/scp、rsync，pssh工具/" rel="next" title="scp、rsync，pssh工具">
+                <i class="fa fa-chevron-left"></i> scp、rsync，pssh工具
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/模型IO/" rel="prev" title="Linux中五种I/O模型">
+                Linux中五种I/O模型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、rsyslog基本介绍"><span class="nav-number">1.</span> <span class="nav-text">一、rsyslog基本介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、rsyslog基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1、rsyslog基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、rsyslog构成"><span class="nav-number">1.2.</span> <span class="nav-text">2、rsyslog构成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、rsyslog工作模式"><span class="nav-number">1.3.</span> <span class="nav-text">3、rsyslog工作模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、rsyslog特性"><span class="nav-number">1.4.</span> <span class="nav-text">4、rsyslog特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、rsyslog配置文件"><span class="nav-number">1.5.</span> <span class="nav-text">5、rsyslog配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、其他日志文件"><span class="nav-number">1.6.</span> <span class="nav-text">6、其他日志文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、如何启用日志服务器"><span class="nav-number">2.</span> <span class="nav-text">二、如何启用日志服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、如何将日志存储到mysql服务器上"><span class="nav-number">3.</span> <span class="nav-text">三、如何将日志存储到mysql服务器上</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、日志图形化管理工具"><span class="nav-number">4.</span> <span class="nav-text">四、日志图形化管理工具</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
