@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="WEB," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="一、HAProxyHAProxy（High Available Proxy）是基于四层和七层的高可用负载均衡代理服务器，对客户端10000以上的同时连接的高性能的TCP和HTTP负载均衡器。 1、HAProxy功能 TCP/HTTP反向代理服务器，尤其适合于高可用性环境 可以针对HTTP请求添加cookie，进行路由后">
+<meta name="keywords" content="WEB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HAproxy">
+<meta property="og:url" content="http://yoursite.com/2017/11/29/HAproxy/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="一、HAProxyHAProxy（High Available Proxy）是基于四层和七层的高可用负载均衡代理服务器，对客户端10000以上的同时连接的高性能的TCP和HTTP负载均衡器。 1、HAProxy功能 TCP/HTTP反向代理服务器，尤其适合于高可用性环境 可以针对HTTP请求添加cookie，进行路由后端服务器 可平衡负载至后端服务器，并支持持久连接 支持基于cookie进行调度">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-31_200948.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/haproxy-pmode.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-31_203624.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-02_170043.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-02_170833.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-02_190210.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-02_190455.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-02_190710.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-02_193758.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-02_195302.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-02_195343.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-02_195723.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-02_200306.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-02_204032.jpg">
+<meta property="og:updated_time" content="2017-11-29T08:18:50.175Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HAproxy">
+<meta name="twitter:description" content="一、HAProxyHAProxy（High Available Proxy）是基于四层和七层的高可用负载均衡代理服务器，对客户端10000以上的同时连接的高性能的TCP和HTTP负载均衡器。 1、HAProxy功能 TCP/HTTP反向代理服务器，尤其适合于高可用性环境 可以针对HTTP请求添加cookie，进行路由后端服务器 可平衡负载至后端服务器，并支持持久连接 支持基于cookie进行调度">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-31_200948.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/29/HAproxy/"/>
+
+
+
+
+
+  <title>HAproxy | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/29/HAproxy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HAproxy</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-29T00:00:00+08:00">
+                2017-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/HAproxy/" itemprop="url" rel="index">
+                    <span itemprop="name">HAproxy</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-31_200948.jpg" alt=""></p>
+<h1 id="一、HAProxy"><a href="#一、HAProxy" class="headerlink" title="一、HAProxy"></a>一、HAProxy</h1><p>HAProxy（High Available Proxy）是基于四层和七层的高可用负载均衡代理服务器，对客户端10000以上的同时连接的高性能的TCP和HTTP负载均衡器。</p>
+<h2 id="1、HAProxy功能"><a href="#1、HAProxy功能" class="headerlink" title="1、HAProxy功能"></a>1、HAProxy功能</h2><ul>
+<li>TCP/HTTP反向代理服务器，尤其适合于高可用性环境</li>
+<li>可以针对HTTP请求添加cookie，进行路由后端服务器</li>
+<li>可平衡负载至后端服务器，并支持持久连接</li>
+<li>支持基于cookie进行调度</li>
+<li>支持所有主服务器故障切换至备用服务器</li>
+<li>支持专用端口实现监控服务</li>
+<li>支持不影响现有连接情况下停止接受新连接请求</li>
+<li>可以在双向添加、修改或删除HTTP报文首部</li>
+<li>支持基于PATTERN实现连接请求的访问控制</li>
+<li>通过特定的URI为授权用户提供详细的状态信息</li>
+</ul>
+<h2 id="2、HAProxy工作原理"><a href="#2、HAProxy工作原理" class="headerlink" title="2、HAProxy工作原理"></a>2、HAProxy工作原理</h2><p><img src="http://owatlfstl.bkt.clouddn.com/haproxy-pmode.png" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-31_203624.jpg" alt=""></p>
+<p>HAProxy和lvs的工作类似，只不过是在名称上有所改变。</p>
+<p>HAProxy由前段（frontend）和后端（backend）过程，前后端都可以有多个，并且可以实现交叉调度。如果前段和后端是一对一的情况可以使用listen来实现。frontend区域根据Client的请求调度到backend服务器上。不过frontend可以根据HTTP请求的header信息来定义一些规则，将符合规则的请求转发至backend服务器上去。</p>
+<h2 id="3、HAProxy安装及配置文件详解"><a href="#3、HAProxy安装及配置文件详解" class="headerlink" title="3、HAProxy安装及配置文件详解"></a>3、HAProxy安装及配置文件详解</h2><p><code>[root@localhost~]#yum install -y haproxy</code></p>
+<blockquote>
+<p>HAProxy主配置文件</p>
+</blockquote>
+<pre><code>/etc/haproxy/haproxy.cfg
+</code></pre><blockquote>
+<p>定义错误页面文件</p>
+</blockquote>
+<pre><code>/usr/share/haproxy/400.http
+/usr/share/haproxy/403.http
+/usr/share/haproxy/408.http
+/usr/share/haproxy/500.http
+/usr/share/haproxy/502.http
+/usr/share/haproxy/503.http
+/usr/share/haproxy/504.http
+</code></pre><h3 id="etc-haproxy-haproxy-cfg配置文件详解"><a href="#etc-haproxy-haproxy-cfg配置文件详解" class="headerlink" title="/etc/haproxy/haproxy.cfg配置文件详解"></a><code>/etc/haproxy/haproxy.cfg</code>配置文件详解</h3><p>配置段<br>-</p>
+<blockquote>
+<p>global：全局配置段</p>
+</blockquote>
+<pre><code>定义进程及安全配置相关的参数
+性能调整相关参数
+debug参数
+</code></pre><blockquote>
+<p>proxies：代理配置段</p>
+</blockquote>
+<pre><code>default：为frontend、backend、listen提供默认配置
+frontend：定义一组接受客户端侦听的套接字连接
+backend：定义代理将连接的一组服务器转发连接
+listen：同时拥有前后端，适用于一对一环境；通常用于TCP中。
+</code></pre><p>配置指令详解<br>-</p>
+<h3 id="global配置参数"><a href="#global配置参数" class="headerlink" title="global配置参数"></a>global配置参数</h3><ul>
+<li>nbproc <number> ：要启动的haproxy的进程数量，系统默认单进程，要求使用daemon模式</number></li>
+<li>ulimit-n<number>：每个haproxy进程可打开的最大文件数，系统自动会自定，不建议设置</number></li>
+<li>daemon：后端方式运行，建议使用</li>
+<li>log：定义全局syslog服务器；最多可以定义两个</li>
+</ul>
+<p>格式：</p>
+<pre><code>log &lt;address&gt; [len &lt;length&gt;] &lt;facility&gt; [max level [min level]]
+
+    &lt;address&gt;：日志服务器地址
+    [len &lt;length&gt;]：最大长度，默认1024
+    &lt;facility&gt;：日志设施
+    [max level [min level]]：指定日志级别
+</code></pre><ul>
+<li><p>no log 不启用日志</p>
+</li>
+<li><p>log global 如果需要使用日志，引用global日志</p>
+</li>
+<li><p>log-format  <string> ：定义日志格式</string></p>
+</li>
+</ul>
+<p><strong>示例：</strong></p>
+<p>（1）配置日志服务器</p>
+<p><code>[root@log~]#yum install -y mariadb-server</code> #安装数据库</p>
+<p><code>[root@log~]#systemctl restart mariadb.service</code></p>
+<p><code>[root@log~]#systemctl enable mariadb.service</code>  #设置为开机启动</p>
+<p><code>[root@log~]#yum install -y rsyslog-mysql</code>  #安装基于mysql的模块</p>
+<p><code>[root@log~]#mysql -uroot -p &lt; /usr/share/doc/rsyslog-8.24.0/mysql-createDB.sql</code>    #创建日志数据库</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-02_170043.jpg" alt=""></p>
+<pre><code>MariaDB [(none)]&gt; GRANT ALL ON Syslog.* TO joah@&apos;192.168.4.65&apos; IDENTIFIED BY &apos;123456&apos;;  #授权用户
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-02_170833.jpg" alt=""></p>
+<pre><code>74 local2.*                                                :ommysql:192.168.4.65,Syslog,joah,123456
+</code></pre><blockquote>
+<p>将特定信息记录在日志中</p>
+</blockquote>
+<ul>
+<li><p>capture cookie <name> len <length>：捕获请求和响应报文中的cookie并记录日志</length></name></p>
+</li>
+<li><p>capture request header <name> len <length>：捕获请求报文中指定的首部并记录日志</length></name></p>
+</li>
+<li><p>capture response header <name> len <length>：捕获响应报文中的首部并记录日志</length></name></p>
+</li>
+</ul>
+<p><strong>示例：</strong><br><code>[root@haproxy/etc/haproxy]#vim haproxy.cfg</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-02_190210.jpg" alt=""></p>
+<p><code>[root@node1~]#vim /etc/httpd/conf/httpd.conf</code><br><img src="http://owatlfstl.bkt.clouddn.com/2017-11-02_190455.jpg" alt=""></p>
+<p>重启服务测试</p>
+<p><code>[root@client~]#curl http://172.18.4.62</code></p>
+<pre><code>node1
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-02_190710.jpg" alt=""></p>
+<p>上述的定义均需在httpd.conf选项Log_Format中定义 ：例如{X-Forwarded-For} 如果有多个需要使用“|”分隔。<br>-</p>
+<h4 id="性能优化指令"><a href="#性能优化指令" class="headerlink" title="性能优化指令"></a>性能优化指令</h4><ul>
+<li>maxconn <number>：设定每个haproxy进程所能接受的最大并发连接数</number></li>
+<li>maxconnrate <number>：设置每个进程每秒种所能建立的最大连接数量</number></li>
+<li>maxsessrate<number>：设置每个进程每秒钟所能建立的最大会话数量；一个连接里面可以有多个会话</number></li>
+<li>maxsslconn  <number>：每个进程支持SSL的最大连接数量</number></li>
+<li>spread-checks <0..50,in percent="">：健康监测延迟时长比；建议2-5之间，默认为0</0..50,in></li>
+</ul>
+<h3 id="配置段"><a href="#配置段" class="headerlink" title="配置段"></a>配置段</h3><ul>
+<li>defaults <name>：默认配置段</name></li>
+<li>frontend <name>：指定接受客户端连接侦听套接字设置</name></li>
+<li>backend <name>：指定将连接请求转发至后端服务器的相关设置</name></li>
+<li><p>listen <name>：指定完整前后端设置，只对TCP有效，只有前后端一对一时使用。</name></p>
+</li>
+<li><p>bind：指定一个或多个前段侦听地址和端口</p>
+</li>
+</ul>
+<p>格式：</p>
+<pre><code>bind [&lt;address&gt;]:&lt;port_range&gt; [, ...] [param*]
+bind /&lt;path&gt; [, ...] [param*]
+
+[param*]常用选项
+    user：设置用户
+    mode：设置权限
+    accept-proxy：接受代理
+</code></pre><p><strong>示例：</strong></p>
+<p><code>[root@haproxy/etc/haproxy]#vim haproxy.cfg</code></p>
+<pre><code>68 frontend web
+69     bind 172.18.4.62:80
+70     default_backend websrvs
+</code></pre><h3 id="balance配置"><a href="#balance配置" class="headerlink" title="balance配置"></a>balance配置</h3><ul>
+<li>balance：后端服务器组内调度算法</li>
+</ul>
+<p>格式：</p>
+<pre><code>balance &lt;algorithm&gt; [ &lt;arguments&gt; ]
+balance url_param &lt;param&gt; [check_post]
+</code></pre><blockquote>
+<p>\<algorithm>类型</algorithm></p>
+</blockquote>
+<pre><code>roundrobin：基于权重轮询，动态算法，支持权重的运行时调整，支持慢启动；每个后端backend中最多支持4095个server
+static-rr：基于权重轮询，静态算法，不支持权重的运行时调整及慢启动；后端主机数量无上限
+leastconn：加权最少连接，动态算法，最少连接的后端服务器优先分配接受新连接，相同连接时轮询；推荐在较长会话场景使用，如mysql、LDAP等
+first：根据服务器中列表中的位置，自上而下进行调度；前面服务器的连接数达到上限，新请求才会分配给下一台服务器
+source：源地址hash，新连接先按权重分配，后续连接按source分配请求
+uri：对于URI的左半部分或整个URI做hash计算，并除以服务器总权重取模，以后派发至挑出的服务器，仅适用于后端缓存服务器；只要会话是同一个URI则一直访问同一台服务器
+    示例：
+        &lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;
+            左半部分：/&lt;path&gt;;&lt;params&gt;
+            整个URI：/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;
+
+url_param：对用于请求的URI听&lt;params&gt;部分中的参数的值做hash计算，并由服务器总权重相除以后派发至某挑选的服务器；通常用于追踪用户，以确保俩字同一个用户的请求始终发往同一个backend server
+hadr （&lt;name&gt;）：对于每个http请求，此处由&lt;name&gt;指定的http首部将会被取出做hash计算；并由服务器总权重相除以后派发至某跳出的服务器；无有效值的会被轮询调度
+rdp-cookie：远程桌面相关
+</code></pre><ul>
+<li>hash-type：哈希算法</li>
+</ul>
+<p>格式：</p>
+<pre><code>hash-type &lt;method&gt; &lt;function&gt; &lt;modifier&gt;
+</code></pre><blockquote>
+<p>\<mothed></mothed></p>
+</blockquote>
+<pre><code>map-based：除权取余法，哈希数据结构时静态数组
+consistent：一致性哈希，哈希数据结构是一棵树
+</code></pre><ul>
+<li>default_backend：无use_backend匹配时，使用默认的backend，用于frontend中</li>
+</ul>
+<p>格式：</p>
+<pre><code>default_backend &lt;backend&gt;
+</code></pre><ul>
+<li>default-server ：backend中的各server设定默认选项</li>
+</ul>
+<p>格式：</p>
+<pre><code>default-server [param*]
+</code></pre><p><strong>示例：</strong></p>
+<pre><code>default_backend websrvs
+</code></pre><ul>
+<li>server ：定义后端服务器机器选项</li>
+</ul>
+<p>格式：</p>
+<pre><code>server &lt;name&gt; &lt;address&gt;[:[port]] [param*]
+
+&lt;name&gt;：服务器在haproxy上的内部名称；出现在日志及警告信息
+&lt;address&gt;：服务器地址，支持使用主机名
+[:[port]]：端口映射；省略时表示同bind中绑定的端口
+[param*]：定义参数
+
+    weight &lt;weight&gt;：权重，默认为1
+    maxconn&lt;maxconn&gt;：当前server的最大并发连接数
+    backlog&lt;backlog&gt;：当server的连接数达到上限后的后援队列长度
+    backup：设定当前server为备用服务器
+
+    check：对当前server做健康状态检测，只用于四层检测;注意：httpchk、smtpchk、mysql-check、pgsql-check和ssl-hello-chk用于定义应用层检测方法
+    addr：针对此IP地址
+    port：针对此端口进行检测
+    inter &lt;delay&gt;：连续两次检测之间的时间间隔，默认为2000ms
+    rise &lt;conunt&gt;：连续多少次检测结果为“成功”才标记服务器为可用；默认为2
+    fall &lt;count&gt;：连续多少次检测结果为“失败”才标记位不可用；默认为3
+    cookie &lt;value&gt;：为当前server指定cookie值，实现基于cookie的会话粘性
+    disabled：标记位不可用；用于服务器维护，更换
+    redir &lt;prefix&gt;：将发往此server的所有GET和HEAD类的请求重定向到指定的URL
+</code></pre><p><strong>示例：</strong></p>
+<p><code>[root@haproxy/etc/haproxy]#vim haproxy.cfg</code></p>
+<pre><code>73 backend websrvs
+74     balance roundrobin 75     server srv1 192.168.4.63:80 check weight 1 addr 192.168.4.163 port 80 inter 3000 rise 2 fall 3
+76     server srv2 192.168.4.64:80 check disabled
+</code></pre><p>重启服务测试</p>
+<p><code>[root@client~]#curl http://172.18.4.62</code></p>
+<pre><code>node1
+</code></pre><p><code>[root@client~]#curl http://172.18.4.62</code></p>
+<pre><code>node1
+</code></pre><p>通过上述测试出的结果只能调度到node1中。接下来把192.168.4.163 down掉</p>
+<p><code>[root@client~]#curl http://172.18.4.62</code></p>
+<pre><code>&lt;html&gt;&lt;body&gt;&lt;h1&gt;503 Service Unavailable&lt;/h1&gt;
+No server is available to handle this request.
+&lt;/body&gt;&lt;/html&gt;
+</code></pre><p><code>[root@client~]#curl http://172.18.4.62</code></p>
+<pre><code>&lt;html&gt;&lt;body&gt;&lt;h1&gt;503 Service Unavailable&lt;/h1&gt;
+No server is available to handle this request.
+&lt;/body&gt;&lt;/html&gt;
+</code></pre><p>此时再次测试访问不到页面出现503错误</p>
+<h3 id="cookie配置"><a href="#cookie配置" class="headerlink" title="cookie配置"></a>cookie配置</h3><ul>
+<li>cookie：基于cookie长连接用于backend</li>
+</ul>
+<p>格式：</p>
+<pre><code>cookie &lt;name&gt; [ rewrite | insert | prefix ] [ indirect ] [ nocache ]
+          [ postonly ] [ preserve ] [ httponly ] [ secure ]
+          [ domain &lt;domain&gt; ]* [ maxidle &lt;idle&gt; ] [ maxlife &lt;life&gt; ]
+
+&lt;name&gt;：cookie名称，用于实现持久连接
+rewrite：重写
+insert：插入
+prefix：前缀
+</code></pre><p><strong>示例：</strong><br>基于cookie的session sticky的实现</p>
+<p><code>[root@haproxy/etc/haproxy]#vim haproxy.cfg</code></p>
+<pre><code>73 backend websrvs
+74     balance roundrobin
+75     cookie SRV insert nocache indirect
+76     server srv1 192.168.4.63:80 check weight 2 cookie service1
+77     server srv2 192.168.4.64:80 check cookie service2
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-02_193758.jpg" alt=""></p>
+<p>统计接口启用相关参数<br>-</p>
+<ul>
+<li><p>stats enable：启动统计也；基于默认的参数启动stats page</p>
+<p>  默认设置</p>
+<ul>
+<li>stats uri：/ haproxy？stats <ul>
+<li>stats realm：“HAProxy Statistics” </li>
+<li>stats auth：no authentication </li>
+<li>stats scope：no restriction</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>stats uri <prefix> ：自定义stats page URI</prefix></p>
+</li>
+<li>stats auth <user>:<passwd>：认证账户和密码，可定义多个</passwd></user></li>
+<li>stats realm <relam>：认证时的提示信息</relam></li>
+<li>stats hide-version：隐藏版本</li>
+<li>stats refresh <delay>：设定自动刷新时间间隔</delay></li>
+<li>stats admin {if|unless} <cond>：启用stats page中管理功能，如果stats auth认证成功才可以启用管理功能</cond></li>
+</ul>
+<p><strong>示例：</strong></p>
+<p><code>[root@haproxy/etc/haproxy]#vim haproxy.cfg</code></p>
+<pre><code>73 listen stats
+74     bind 192.168.4.62:9000
+75     stats enable
+76     stats uri /hastats
+77     stats auth ha1:123456
+78     stats realm &quot;testhaproxy&quot;
+79     stats hide-version
+80     stats refresh 2s
+81     stats admin if TRUE
+</code></pre><p>重启服务</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-02_195302.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-02_195343.jpg" alt=""></p>
+<blockquote>
+<p>工作模式</p>
+</blockquote>
+<ul>
+<li>maxconn <conns>：为指定的frontend定义其最大并发连接数，默认为2000</conns></li>
+<li><p>mode {tcp|http|health}：定义haproxy工作模式</p>
+<p>  tcp：基于L4实现代理，可代理mysql，pgsql，ssh，ssl等协议，https时使用此模式，默认模式<br>  http：仅当代理协议为http时使用，CentOS默认模式<br>  health：工作为健康状态检查的响应模式，当连接请求到达时回应ok后即断开连接，较少使用</p>
+</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code>82 listen ssh
+83     bind :220
+84     balance leastconn
+85     mode tcp
+86     server sshsrv1 192.168.4.63:22 check
+87     server sshsrv2 192.168.4.64:22 check
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-02_195723.jpg" alt=""></p>
+<blockquote>
+<p>健康状态检测</p>
+</blockquote>
+<p>对后端服务器做http协议的健康状态检测</p>
+<pre><code>option httpchk  默认为：/OPTIONS HTTP/1.0
+option httpchk &lt;uri&gt;    
+option httpchk &lt;method&gt; &lt;uri&gt;
+option httpchk &lt;method&gt; &lt;uri&gt; &lt;version&gt;
+
+定义基于http协议的L7健康状态检测机制
+
+http-check expect [!] &lt;match&gt; &lt;pattern&gt;：http协议健康状态检测响应内容或指定响应码
+</code></pre><p><strong>示例：</strong></p>
+<pre><code>89 backend websrvs
+90     balance roundrobin
+91     server srv1 192.168.4.63:80 check weight 2
+92     server srv2 192.168.4.64:80 check
+93     option httpchk GET /index.html HTTP/1.1 \r\n host:
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-02_200306.jpg" alt=""></p>
+<blockquote>
+<p>forwardfor配置</p>
+</blockquote>
+<p>在由haproxy发往后端主机请求报文中添加“X-Forwardde-For”首部，其值为前端客户端的地址，用于向后端主发送真实客户端IP</p>
+<p>格式</p>
+<pre><code>option forwardfor [ except &lt;network&gt; ] [ header &lt;name&gt; ] [ if-none ]
+
+[except &lt;network&gt;]：请求报文来自此处指定的网络是不予添加此首部
+[header &lt;name&gt;]：使用自定义首部名称，而非“X-Forwarded-For”
+[if-none]：如果没有首部才添加首部，如果有使用默认值；
+</code></pre><p><strong>示例：</strong></p>
+<pre><code>48     option forwardfor       except 127.0.0.0/8 header test
+</code></pre><blockquote>
+<p>指定MIME类型启用压缩传输功能</p>
+</blockquote>
+<ul>
+<li>compression algo <algorithm>：启用http协议的压缩机制，指明压缩算法gzip、deflate</algorithm></li>
+<li>compression type <mime type="">：指明压缩的MIME类型</mime></li>
+</ul>
+<p><strong>注意：如果添加首部，需要在http服务的日志中定义。</strong></p>
+<blockquote>
+<p>错误页配置</p>
+</blockquote>
+<ul>
+<li><p>errorfile <code> <file>：自定义错误页</file></code></p>
+<p>  <code>:HTTP status；支持200、400、403、408、500、502、503、504<br>  <file>：错误页文件路径</file></code></p>
+</li>
+<li><p>errorloc <code> <url>：相当于errorloc02 <code> <url>，利用302重定向指定URL</url></code></url></code></p>
+</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code>errorloc 503 http://www.magedu.com/error_pages/503.html
+</code></pre><blockquote>
+<p>报文首部</p>
+</blockquote>
+<ul>
+<li>reqadd <string> [{if|unless} <cond>]：修改请求报文尾部添加指定首部</cond></string></li>
+<li>rspadd <string> [{if|unless} <cond>]：在响应首部尾部添加指定首部</cond></string></li>
+<li>reqdel <search> [{if|unless} <cond>]：从请求报文中删除匹配正则表达式的首部</cond></search></li>
+<li>reqidel <search> [{if|unless} <cond>]（ignore case）：从请求报文中删除匹配正则表达式的首部（不区分大小写）</cond></search></li>
+<li>rspdel  <search> [{if|unless} <cond>]</cond></search></li>
+<li>rspidel  <search> [{if|unless} <cond>]（ignore case）：从响应报文汇总删除正则表达式的首部</cond></search></li>
+</ul>
+<blockquote>
+<p>连接超时</p>
+</blockquote>
+<ul>
+<li>time client <timeout>：客户端最长空闲连接超时时长，默认单位为毫秒</timeout></li>
+<li>timeout server <timeout>：后端服务器最长空闲连接超时时长</timeout></li>
+<li>timeout http-keep-alive  <timeout>：持久连接的持久时长</timeout></li>
+<li>timeout http-request <timeout>：一次完整的HTTP请求的最大等待时长</timeout></li>
+<li>timeout connect <timeout>：成功连接后端服务器的最大等待时长</timeout></li>
+<li>timeout client-fin <timeout>：客户端半连接的空闲时长</timeout></li>
+<li>timeout server-fin <timeout>：后端服务器半连接得空闲时长</timeout></li>
+</ul>
+<blockquote>
+<p>ACL</p>
+</blockquote>
+<p>访问控制列表的使用提供了一个灵活的解决方案来执行内容交换，并且通常基于从请求中提取的内容、响应或任何环境状态进行决策。</p>
+<p>格式：</p>
+<pre><code>acl &lt;aclname&gt; &lt;criterion&gt; [flags] [operator] &lt;value&gt; ...
+
+
+&lt;value&gt;的类型
+    boolean
+    integer or integer range
+    IP address /network
+    string 
+    hex block
+&lt;flags&gt;
+    -i ：不区分大小写
+    -m：使用指定的pattern匹配方法
+    -n：不做DNS解析
+    -u：强制每个ACL必须唯一ID，否则多个同名ACL为“或”的关系
+    -- ：强制flag结束，当字符串和某个flag相似时使用
+
+[operator]
+    匹配整数值：eq、ge、gt、le、lt
+    匹配字符串：
+        -exact match （-m str）：字符串必须完全匹配模式
+        -substring mathc （-m sub）：在提取的字符串查找模式，如果其中任何一个被发现，ACL将匹配
+        -suffix match （-m end）：将模式与提取字符串的尾部进行比较，如果其中任何一个匹配，则ACL进行匹配
+        -prefix match （-m beg）：在提取的字符串首部中查找模式，如果其中任何一个被发现，ACL将匹配
+        -subdir mathc （-m dir）：查看提取出来的用斜线分隔的字符串，如果其中任何一个匹配，则ACL进行匹配
+        -domain match （-m dom）：查找提取的用“.”分隔字符串，如果其中任何一个匹配，则ACL进行匹配
+
+    acl作为条件时的逻辑关系：
+        与：隐式（默认）使用
+        或：使用“or”或”||“
+        否定：使用“！”使用
+    &lt;aclname&gt;：ACL名称，可使用字母数字，区分字符大小写
+
+&lt;criterion&gt;：比较的标准和条件
+    dst：目标IP
+    dst_port：目标port
+    src：源IP
+    src_port：源port
+</code></pre><p> base string</p>
+<p>返回第一个主机头和请求的路径部分的链接，该请求从第一个斜杠开始，并在问好之前结束，对虚拟主机有用</p>
+<p><strong>示例：</strong></p>
+<p>\<scheme>:/\<user>:\<password>@*<host>:<port>/\<path></path>;\&lt; params&gt;*?\<query>#\<frag></frag></query></port></host></password></user></scheme></p>
+<pre><code>  base     : exact string match
+  base_beg : prefix match
+  base_dir : subdir match
+  base_dom : domain match
+  base_end : suffix match
+  base_len : length match
+  base_reg : regex match
+  base_sub : substring match
+同acl类似
+</code></pre><p> path ：string</p>
+<p>提取请求的URL路径，该路径从第一个斜杠开始，并在问号之前结束</p>
+<p><strong>示例：</strong></p>
+<p>\<scheme>:/\<user>:\<password>@\<host>:<port><em>/\<path></path>;\&lt; params&gt;</em>?\<query>#\<frag></frag></query></port></host></password></user></scheme></p>
+<pre><code>path    : exact string match
+path_beg : prefix match
+path_dir : subdir match
+path_dom : domain match
+path_end : suffix match
+path_len : length match
+path_reg : regex match
+path_sub : substring match
+</code></pre><p>url：string</p>
+<p>提取请求中的URL。一个典型的应用是具有预取能力的缓存，以及需要从数据库聚合多个信息并将它们保存在缓存中的网页门户入口</p>
+<pre><code>url    : exact string match
+url_beg : prefix match
+url_dir : subdir match
+url_dom : domain match
+url_end : suffix match
+url_len : length match
+url_reg : regex match
+url_sub : substring match
+</code></pre><p>req.har（[<name>[.<occ>]]）:string</occ></name></p>
+<p>提取在一个HTTP请求报文的首部</p>
+<pre><code>hdr([&lt;name&gt;[,&lt;occ&gt;]])    : exact string match
+hdr_beg([&lt;name&gt;[,&lt;occ&gt;]]) : prefix match
+hdr_dir([&lt;name&gt;[,&lt;occ&gt;]]) : subdir match
+hdr_dom([&lt;name&gt;[,&lt;occ&gt;]]) : domain match
+hdr_end([&lt;name&gt;[,&lt;occ&gt;]]) : suffix match
+hdr_len([&lt;name&gt;[,&lt;occ&gt;]]) : length match
+hdr_reg([&lt;name&gt;[,&lt;occ&gt;]]) : regex match
+hdr_sub([&lt;name&gt;[,&lt;occ&gt;]]) : substring match
+</code></pre><p>status：integer</p>
+<p>返回在响应报文中的状态码</p>
+<blockquote>
+<p>预定义ACL</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>ACL名称</th>
+<th>等价于</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRUE</td>
+<td>always_true</td>
+<td>总是匹配</td>
+</tr>
+<tr>
+<td>FALSE</td>
+<td>always_false</td>
+<td>从不匹配</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>req_proto_http</td>
+<td>匹配HTTP协议</td>
+</tr>
+<tr>
+<td>HTTP_1.0</td>
+<td>req_ver 1.0</td>
+<td>匹配HTTP协议1.0</td>
+</tr>
+<tr>
+<td>HTTP_1.1</td>
+<td>req_ver 1.1</td>
+<td>匹配HTTP协议1.1</td>
+</tr>
+<tr>
+<td>HTTP_CONTENT</td>
+<td>hdr_val(content-length) gt 0</td>
+<td>匹配已经存在内容长度</td>
+</tr>
+<tr>
+<td>HTTP_URL_ABS</td>
+<td>url_reg ^[^/:]*://</td>
+<td>匹配URL的绝对路径</td>
+</tr>
+<tr>
+<td>HTTP_URL_SLASH</td>
+<td>url_beg /</td>
+<td>匹配URL相对路径</td>
+</tr>
+<tr>
+<td>HTTP_URL_STAR</td>
+<td>url *</td>
+<td>匹配URL等于“*”</td>
+</tr>
+<tr>
+<td>LOCALHOST</td>
+<td>src 127.0.0.1/8</td>
+<td>匹配从localhost来的链接</td>
+</tr>
+<tr>
+<td>METH_CONNECT</td>
+<td>method CONNECT</td>
+<td>匹配HTTP CONNECT 方法</td>
+</tr>
+<tr>
+<td>METH_GET</td>
+<td>method GET HEAD</td>
+<td>匹配GET和HEAD方法</td>
+</tr>
+<tr>
+<td>METH_HEAD</td>
+<td>method HEAD</td>
+<td>匹配head方法</td>
+</tr>
+<tr>
+<td>METH_OPTONS</td>
+<td>method OPTIONS</td>
+<td>匹配OPTIONS方法</td>
+</tr>
+<tr>
+<td>METH_POST</td>
+<td>method POST</td>
+<td>匹配POST方法</td>
+</tr>
+<tr>
+<td>METH_TRACE</td>
+<td>method TRACE</td>
+<td>匹配TRACE方法</td>
+</tr>
+<tr>
+<td>RDP_COOKIE</td>
+<td>req_rdp_cookie_cnt gt 0</td>
+<td>match presence of an RDP cookie</td>
+</tr>
+<tr>
+<td>REQ_CONNTENT</td>
+<td>req_len gt 0</td>
+<td>匹配数据在请求缓存中</td>
+</tr>
+<tr>
+<td>WAIT_END</td>
+<td>wait_end</td>
+<td>等待内容分析</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>use_backend <backend> [{if|unless}<condition>]</condition></backend></li>
+</ul>
+<p>当if|unless一个基于ACL的条件匹配时切换指定</p>
+<ul>
+<li>backend {if|unless} <condition></condition></li>
+</ul>
+<p>阻止L7请求if|unless一个条件匹配</p>
+<ul>
+<li>http-request {allow|deny|add-header <name> <fmt>|set-header <name> <fmt>}[{if|unless} <condition>]</condition></fmt></name></fmt></name></li>
+</ul>
+<p>对L7层请求的访问控制</p>
+<ul>
+<li>tcp-request connection {accept|reject} [{if|unless} <condition>]<br>根据L4条件对传入连接执行操作</condition></li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code>72 frontend mysql
+73     bind 172.18.4.62:3306
+74     mode tcp
+75     default_backend mysqlsrv
+76 backend mysqlsrv
+77     mode tcp
+78     server mysqlsrv1 192.168.4.63:3306 check
+79     server mysqlsrv2 192.168.4.64:3306 check
+</code></pre><p>这时我们查看下是谁发起的链接</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-02_204032.jpg" alt=""></p>
+<p>由此我们可知，真正发起的是代理服务器</p>
+<blockquote>
+<p>支持https协议</p>
+</blockquote>
+<p>（1）支持ssl会话</p>
+<pre><code>bind *:443 ssl crt /PATH/TO/SOME_PEM_FILE
+</code></pre><p><strong>注意：crt文件的后缀为PEM格式，且同时包含证书和所有私钥内容</strong></p>
+<p>（2）把80端口请求重定向到443</p>
+<pre><code>bind *:80
+redirect scheme https if!{ssl_fc}
+</code></pre><p>（3）向后端传递用户请求的协议和端口</p>
+<pre><code>http_request set-header X-Forwarded-Port %[dst_port]
+http_request add-header X-Forwarded-Proto https if { ssl_fc } 
+</code></pre><p><strong>示例：</strong></p>
+<p>（1）生成证书文件</p>
+<p><code>[root@haproxy/etc/pki/tls/certs]#make httpd.pem</code></p>
+<p><code>[root@haproxy/etc/pki/tls/certs]#cp httpd.pem /root</code></p>
+<p>（2）修改haproxy.cfg文件</p>
+<pre><code>68 frontend web
+69     bind 172.18.4.62:330 ssl crt /root/httpd.pem
+70     redirect scheme https if !{ ssl_fc }
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/WEB/" rel="tag"># WEB</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/29/firewalld/" rel="next" title="firewalld">
+                <i class="fa fa-chevron-left"></i> firewalld
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、HAProxy"><span class="nav-number">1.</span> <span class="nav-text">一、HAProxy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、HAProxy功能"><span class="nav-number">1.1.</span> <span class="nav-text">1、HAProxy功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、HAProxy工作原理"><span class="nav-number">1.2.</span> <span class="nav-text">2、HAProxy工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、HAProxy安装及配置文件详解"><span class="nav-number">1.3.</span> <span class="nav-text">3、HAProxy安装及配置文件详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-haproxy-haproxy-cfg配置文件详解"><span class="nav-number">1.3.1.</span> <span class="nav-text">/etc/haproxy/haproxy.cfg配置文件详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#global配置参数"><span class="nav-number">1.3.2.</span> <span class="nav-text">global配置参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#性能优化指令"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">性能优化指令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置段"><span class="nav-number">1.3.3.</span> <span class="nav-text">配置段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#balance配置"><span class="nav-number">1.3.4.</span> <span class="nav-text">balance配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie配置"><span class="nav-number">1.3.5.</span> <span class="nav-text">cookie配置</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

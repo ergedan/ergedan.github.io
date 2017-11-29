@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="LAMP，lamp，php，php-fpm，源码编译安装," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="编译安装LAMP环境在实际环境中我们经常根据自己所处的公司环境进行配置，适合自己公司的配置。下面我们来介绍如何进行编译安装 安装前提在CentOS7 系统: 关闭iptables 将selinux设置为disabled apr-1.6.2.tar.gz        httpd-2.4.27.tar.bz2      ">
+<meta name="keywords" content="LAMP，lamp，php，php-fpm，源码编译安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LAMP源码编译安装">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/LAMP源码编译安装/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="编译安装LAMP环境在实际环境中我们经常根据自己所处的公司环境进行配置，适合自己公司的配置。下面我们来介绍如何进行编译安装 安装前提在CentOS7 系统: 关闭iptables 将selinux设置为disabled apr-1.6.2.tar.gz        httpd-2.4.27.tar.bz2                 php-7.1.10.tar.xz apr-util-1.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-11_203909.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-11_204358.jpg">
+<meta property="og:updated_time" content="2017-11-29T08:52:45.833Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LAMP源码编译安装">
+<meta name="twitter:description" content="编译安装LAMP环境在实际环境中我们经常根据自己所处的公司环境进行配置，适合自己公司的配置。下面我们来介绍如何进行编译安装 安装前提在CentOS7 系统: 关闭iptables 将selinux设置为disabled apr-1.6.2.tar.gz        httpd-2.4.27.tar.bz2                 php-7.1.10.tar.xz apr-util-1.">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-11_203909.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/LAMP源码编译安装/"/>
+
+
+
+
+
+  <title>LAMP源码编译安装 | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/LAMP源码编译安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LAMP源码编译安装</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/LAMP/" itemprop="url" rel="index">
+                    <span itemprop="name">LAMP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/LAMP/LAMP源码编译安装/" itemprop="url" rel="index">
+                    <span itemprop="name">LAMP源码编译安装</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="编译安装LAMP环境"><a href="#编译安装LAMP环境" class="headerlink" title="编译安装LAMP环境"></a>编译安装LAMP环境</h2><p>在实际环境中我们经常根据自己所处的公司环境进行配置，适合自己公司的配置。下面我们来介绍如何进行编译安装</p>
+<h3 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h3><p>在CentOS7 系统:</p>
+<pre><code>关闭iptables
+将selinux设置为disabled
+apr-1.6.2.tar.gz       
+httpd-2.4.27.tar.bz2                
+php-7.1.10.tar.xz
+apr-util-1.6.0.tar.gz  
+mariadb-10.2.8-linux-x86_64.tar.gz  wordpress-4.8.1-zh_CN.tar.gz
+安装工具包development tools
+</code></pre><p><strong>注意：这里安装需要按顺序进行的mariadb–&gt;httpd–&gt;php，mariadb和httpd安装顺序没有关系</strong></p>
+<h3 id="源码编译httpd服务"><a href="#源码编译httpd服务" class="headerlink" title="源码编译httpd服务"></a>源码编译httpd服务</h3><p>在之前的apache博客中讲过为什么要安装apr和apr-util包，如果不懂请查看apache博客。</p>
+<h4 id="（1）源码编译安装apr"><a href="#（1）源码编译安装apr" class="headerlink" title="（1）源码编译安装apr"></a>（1）源码编译安装apr</h4><p><code>[root@localhost/usr/local/src]#tar xvf apr-1.6.2.tar.gz</code><br><code>[root@localhost/usr/local/src/apr-1.6.2]#./configure --prefix=/app/apr</code><br><code>[root@localhost/usr/local/src/apr-1.6.2]#make &amp;&amp; make install</code>    </p>
+<h4 id="（2）源码编译安装apr-util"><a href="#（2）源码编译安装apr-util" class="headerlink" title="（2）源码编译安装apr-util"></a>（2）源码编译安装apr-util</h4><p><code>[root@localhost/usr/local/src]#tar xf apr-util-1.6.0.tar.gz</code><br><code>[root@localhost apr-util-1.6.0]# yum install -y expat-devel</code><br><code>[root@localhost/usr/local/src/apr-util-1.6.0]#./configure --prefix=/app/apr-util --with-apr=/app/apr</code><br><code>[root@localhost/usr/local/src/apr-util-1.6.0]#make &amp;&amp; make install</code></p>
+<h4 id="（3）源码安装httpd"><a href="#（3）源码安装httpd" class="headerlink" title="（3）源码安装httpd"></a>（3）源码安装httpd</h4><p>首先确认系统上是否有apache用户，如果没有需要创建</p>
+<p><code>[root@localhost/usr/local/src]#useradd -r -m -d /app/website -s /sbin/nologin apache</code><br><code>[root@localhost/usr/local/src]#tar xf httpd-2.4.27.tar.bz2</code></p>
+<p>在编译安装httpd之前需要安装几个依赖包</p>
+<p><code>[root@localhost/usr/local/src/httpd-2.4.27]#yum install -y pcre-devel apr-devel apr-util-devel openssl-devel</code></p>
+<p><code>[root@localhost/usr/local/src/httpd-2.4.27]#./configure --prefix=/app/httpd24 --enable-so --enable-ssl --enable-cgi --enable-rewrite --with-zlib --with-pcre --with-apr=/app/apr/ --with-apr-util=/app/apr-util/ --enable-modules=most --enable-mpms-shared=all --with-mpm=prefork</code></p>
+<p><code>[root@localhost/usr/local/src/httpd-2.4.27]#make -j 4 &amp;&amp; make install</code></p>
+<h4 id="（4）设置环境变量"><a href="#（4）设置环境变量" class="headerlink" title="（4）设置环境变量"></a>（4）设置环境变量</h4><p><code>[root@localhost/etc/profile.d]#vim httpd24.sh</code></p>
+<pre><code>export PATH=/app/httpd24/bin:$PATH
+</code></pre><p><code>[root@localhost/etc/profile.d]#source httpd24.sh</code></p>
+<h4 id="（5）设置man手册位置"><a href="#（5）设置man手册位置" class="headerlink" title="（5）设置man手册位置"></a>（5）设置man手册位置</h4><p><code>[root@localhost/etc]#vim /etc/man_db.conf</code></p>
+<pre><code>23 MANDATORY_MANPATH                       /app/httpd24/man
+</code></pre><h4 id="（6）配置启动脚本"><a href="#（6）配置启动脚本" class="headerlink" title="（6）配置启动脚本"></a>（6）配置启动脚本</h4><p><code>[root@localhost/app/httpd24]#cp bin/apachectl /etc/init.d/httpd24</code></p>
+<h4 id="（7）测试服务是否正常启动"><a href="#（7）测试服务是否正常启动" class="headerlink" title="（7）测试服务是否正常启动"></a>（7）测试服务是否正常启动</h4><p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-11_203909.jpg" alt=""><br>已经监听80端口说明可以启动</p>
+<p><a href="http://192.168.4.60/" target="_blank" rel="noopener">http://192.168.4.60/</a><br><img src="http://owatlfstl.bkt.clouddn.com/2017-10-11_204358.jpg" alt=""></p>
+<p>###二进制安装mariadb<br>（1）二进制安装mariadb<br><code>[root@localhost/usr/local]#useradd -r -m -d /app/mysqldb -s /sbin/nologin mysql</code><br><code>[root@localhost/usr/local/src]#tar xf mariadb-10.2.8-linux-x86_64.tar.gz -C /usr/local/</code><br><code>[root@localhost/usr/local]#ln -sv mariadb-10.2.8-linux-x86_64/ mysql</code></p>
+<p>（2）添加环境变量<br><code>[root@localhost/etc/profile.d]#vim mysql.sh</code><br>    PATH=/usr/local/mysql/bin:$PATH</p>
+<p>（3）配置man手册<br><code>[root@localhost/usr/local/mysql/bin]#vim /etc/man_db.conf</code><br>    24 MANDATORY_MANPATH                       /usr/local/mysql/man</p>
+<p>（4）创建启动脚本</p>
+<p><code>[root@localhost/usr/local/mysql]#cp support-files/mysql.server /etc/init.d/mysqld</code><br><code>[root@localhost/usr/local/mysql]#chkconfig --add mysqld</code></p>
+<p>（5）配置主配置文件<br><code>[root@localhost/usr/local/mysql]#mkdir /etc/mysql</code><br><code>[root@localhost/usr/local/mysql]#cp support-files/my-large.cnf /etc/mysql/my.cnf</code><br><code>[root@localhost/usr/local/mysql]#vim /etc/mysql/my.cnf</code><br>     27 [mysqld]<br>     28 datadir         = /app/mysqldb</p>
+<p>（6）创建日志目录<br><code>[root@localhost/usr/local/mysql]#mkdir /var/log/mariadb</code><br><code>[root@localhost/usr/local/mysql]#setfacl -Rm u:mysql:rwx /var/log/mariadb/</code><br>（7）安装数据库<br><code>[root@localhost/usr/local/mysql]#scripts/mysql_install_db --user=mysql --datadir=/app/mysqldb</code></p>
+<p>（8）初始化数据库<br><code>[root@localhost~]#mysql_secure_installation</code><br>（9）测试数据库是否安装成功</p>
+<p><code>[root@localhost~]#mysql -u root -p</code></p>
+<pre><code>MariaDB [(none)]&gt; CREATE DATABASE wpdb;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]&gt; GRANT ALL ON wpdb.* TO &apos;joah&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;123456&apos;;
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]&gt; GRANT ALL ON wpdb.* TO &apos;joah&apos;@&apos;127.0.0.1&apos; IDENTIFIED BY &apos;123456&apos;;
+</code></pre><h3 id="源码安装php"><a href="#源码安装php" class="headerlink" title="源码安装php"></a>源码安装php</h3><p>（1）解压缩并编译安装<br><code>[root@localhost/usr/local/src/php-7.1.10]#yum install -y libxml2-devel bzip2-devel libmcrypt-devel</code><br><code>[root@localhost/usr/local/src/php-7.1.10]#./configure --prefix=/app/php --enable-mysqlnd -- with-mysqli=mysqlnd --with-openssl --with-pdo-mysql=mysqlnd --enable-mbstring --with freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --enable-sockets -- with-apxs2=/app/httpd24/bin/apxs --with-mcrypt -- with-config-file-path=/etc --with-config-file-scan-dir=/etc/php.d --enable-maintainer-zts --disable-fileinfo</code><br><code>[root@localhost/usr/local/src/php-7.1.10]#make &amp;&amp; make install</code><br>（2）配置主配置文件<br><code>[root@localhost/usr/local/src/php-7.1.10]#cp php.ini-production /etc/php.ini</code><br>（3）修改<code>/etc/httpd/conf/httpd.conf</code></p>
+<pre><code>259 &lt;IfModule dir_module&gt;
+260     DirectoryIndex index.php index.html
+261 &lt;/IfModule&gt;
+
+512 AddType Application/x-httpd-php .php
+513 AddType Application/x-httpd-php-source .phps
+</code></pre><p>（4）测试能否与httpd连接成功<br><code>[root@localhost/app/httpd24/htdocs]#vim index.php</code></p>
+<pre><code>1 &lt;?php
+2         phpinfo();
+3 ?&gt;
+</code></pre><p>（5）测试是否能否可以和mariadb连接成功<br><code>[root@localhost/app/httpd24/htdocs]#vim index.php</code></p>
+<pre><code>&lt;?php
+$mysqli=new mysqli(&quot;localhost&quot;,&quot;root&quot;,&quot;centos&quot;);
+if(mysqli_connect_errno()){
+        echo &quot;连接数据库失败!&quot;;
+        $mysqli=null;
+        exit;
+}
+        echo &quot;连接数据库成功!&quot;;
+        $mysqli-&gt;close();
+        phpinfo();
+?&gt;
+</code></pre><h3 id="安装wordpress"><a href="#安装wordpress" class="headerlink" title="安装wordpress"></a>安装wordpress</h3><h4 id="（1）解压缩"><a href="#（1）解压缩" class="headerlink" title="（1）解压缩"></a>（1）解压缩</h4><p>[root@localhost/usr/local/src]#tar xf wordpress-4.8.tar.gz -C /app/httpd24/htdocs</p>
+<h4 id="（2）配置主配置文件"><a href="#（2）配置主配置文件" class="headerlink" title="（2）配置主配置文件"></a>（2）配置主配置文件</h4><p><code>[root@localhost/app/httpd24/htdocs/wordpress]#cp wp-config-sample.php wp-config.php</code><br><code>[root@localhost/app/httpd24/htdocs/wordpress]#vim wp-config.php</code></p>
+<pre><code>23 define(&apos;DB_NAME&apos;, &apos;wpdb&apos;);
+24 
+25 /** MySQL database username */
+26 define(&apos;DB_USER&apos;, &apos;joah&apos;);
+27 
+28 /** MySQL database password */
+29 define(&apos;DB_PASSWORD&apos;, &apos;123456&apos;);
+30 
+31 /** MySQL hostname */
+32 define(&apos;DB_HOST&apos;, &apos;localhost&apos;);
+</code></pre><p><a href="http://192.168.4.59/wordpress/wp-admin/setup-config.php" target="_blank" rel="noopener">http://192.168.4.59/wordpress/wp-admin/setup-config.php</a></p>
+<p>测试其性能如何<br><code>[root@localhost/app/httpd24/htdocs/wordpress]#ab -c 10 -n 100 http://192.168.4.60/wordpress/</code></p>
+<pre><code>HTML transferred:       5209700 bytes
+Requests per second:    25.25 [#/sec] (mean)    #在没有加速器性能还不错
+Time per request:       396.061 [ms] (mean)
+</code></pre><h1 id="CentOS-6-源码编译"><a href="#CentOS-6-源码编译" class="headerlink" title="CentOS 6 源码编译"></a>CentOS 6 源码编译</h1><p>安装前环境准备<br>    apr-1.6.2.tar.gz<br>    httpd-2.4.27.tar.bz2<br>    php-5.6.31.tar.xz<br>    xcache-3.2.0.tar.bz2<br>    apr-util-1.6.0.tar.gz<br>    mariadb-5.5.57-linux-x86_64.tar.gz  wordpress-4.8.1-zh_CN.tar.gz</p>
+<h2 id="二进制安装mariadb"><a href="#二进制安装mariadb" class="headerlink" title="二进制安装mariadb"></a>二进制安装mariadb</h2><p>（1）二进制安装mariadb<br><code>[root@localhost/usr/local]#useradd -r -m -d /app/mysqldb -s /sbin/nologin mysql</code><br><code>[root@localhost/usr/local/src]#tar xf mariadb-10.2.8-linux-x86_64.tar.gz -C /usr/local/</code><br><code>[root@localhost/usr/local]#ln -sv mariadb-10.2.8-linux-x86_64/ mysql</code></p>
+<p>（2）添加环境变量<br><code>[root@localhost/etc/profile.d]#vim mysql.sh</code><br>    PATH=/usr/local/mysql/bin:$PATH</p>
+<p>（3）配置man手册<br><code>[root@localhost/usr/local/mysql/bin]#vim /etc/man_db.conf</code><br>    24 MANDATORY_MANPATH                       /usr/local/mysql/man</p>
+<p>（4）创建启动脚本</p>
+<p><code>[root@localhost/usr/local/mysql]#cp support-files/mysql.server /etc/init.d/mysqld</code><br><code>[root@localhost/usr/local/mysql]#chkconfig --add mysqld</code></p>
+<p>（5）配置主配置文件<br><code>[root@localhost/usr/local/mysql]#mkdir /etc/mysql</code><br><code>[root@localhost/usr/local/mysql]#cp support-files/my-large.cnf /etc/mysql/my.cnf</code><br><code>[root@localhost/usr/local/mysql]#vim /etc/mysql/my.cnf</code><br>     27 [mysqld]<br>     28 datadir         = /app/mysqldb</p>
+<p>（6）创建日志目录<br><code>[root@localhost mysql]# touch /var/log/mysqld.log</code></p>
+<p>（7）安装数据库<br><code>[root@localhost/usr/local/mysql]#scripts/mysql_install_db --user=mysql --datadir=/app/mysqldb</code></p>
+<p>（8）初始化数据库</p>
+<p><code>[root@localhost~]#mysql_secure_installation</code></p>
+<p>（9）测试数据库是否安装成功</p>
+<p><code>[root@localhost~]#mysql -u root -p</code></p>
+<pre><code>MariaDB [(none)]&gt; CREATE DATABASE wpdb;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]&gt; GRANT ALL ON wpdb.* TO &apos;joah&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;123456&apos;;
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]&gt; GRANT ALL ON wpdb.* TO &apos;joah&apos;@&apos;127.0.0.1&apos; IDENTIFIED BY &apos;123456&apos;;
+</code></pre><h2 id="编译安装httpd服务"><a href="#编译安装httpd服务" class="headerlink" title="编译安装httpd服务"></a>编译安装httpd服务</h2><p>（1）解压缩httpd源码包<br><code>[root@localhost httpd-2.4.27]# yum install -y apr-devel apr-util-devel openssl-devel pcre-devel</code><br><code>[root@localhost httpd-2.4.27]# tar xf apr-1.6.2.tar.gz</code><br><code>[root@localhost httpd-2.4.27]# tar xf apr-util-1.6.0.tar.gz</code><br><code>[root@localhost httpd-2.4.27]# mv apr-1.6.2 httpd-2.4.27/srclib/</code><br><code>[root@localhost httpd-2.4.27]# mv apr-util-1.6.0 httpd-2.4.27/srclib/apr-util</code><br><code>[root@localhost httpd-2.4.27]# ./configure --prefix=/app/httpd24 --enable-so --enable-ssl --enable-rewrite --with-zlib --with-pcre --with-included-apr --enable-modules=most --enable-mpms-shared=all --with-mpm=prefork</code><br><code>[root@localhost httpd-2.4.27]# make &amp;&amp; make install</code></p>
+<p>（2）配置环境变量</p>
+<p><code>[root@localhost httpd24]# vim /etc/profile.d/httpd24.sh</code><br>    PATH=/app/httpd24/bin:$PATH<br>（3）配置启动脚本</p>
+<p><code>[root@localhost httpd24]# cp /etc/init.d/httpd /etc/init.d/httpd24</code><br><code>[root@localhost httpd24]# vim /etc/init.d/httpd24</code></p>
+<pre><code>apachectl=/app/httpd24/bin/apachectl
+httpd=${HTTPD-/app/httpd24/bin/apachectl}
+prog=httpd
+pidfile=${PIDFILE-/app/httd24/logshttpd.pid}
+lockfile=${LOCKFILE-/var/lock/subsys/httpd24}
+RETVAL=0
+STOP_TIMEOUT=${STOP_TIMEOUT-10}
+</code></pre><p>（4）测试是否配置成功</p>
+<p><code>[root@localhost httpd24]# service httpd24 start</code></p>
+<h2 id="编译安装php"><a href="#编译安装php" class="headerlink" title="编译安装php"></a>编译安装php</h2><h3 id="安装方式一：基于php模块安装"><a href="#安装方式一：基于php模块安装" class="headerlink" title="安装方式一：基于php模块安装"></a>安装方式一：基于php模块安装</h3><p>（1）解压缩并编译安装<br><code>[root@localhost php-5.6.4]#yum install libxml2-devel bzip2-devel libmcrypt-devel</code><br><code>[root@localhost php-5.6.31]# ./configure --prefix=/app/php --with-mysql=/usr/local/mysql --with-openssl --with-mysqli=/usr/local/mysql/bin/mysql_config --enable-mbstring --with-png-dir --with-jpeg-dir --with-freetype-dir --with-zlib --with-libxml-dir=/usr --enable-xml --enable-sockets --with-apxs2=/app/httpd24/bin/apxs --with-mcrypt --with-config-file-path=/etc --with-config-file-scan-dir=/etc/php.d --with-bz2</code></p>
+<p><code>[root@localhost php-5.6.4]# make &amp;&amp; make install</code></p>
+<p>（2）配置主配置文件</p>
+<p><code>[root@localhost php-5.6.31]# cp php.ini-production  /etc/php.ini</code></p>
+<p>（3）在httpd.conf中配置</p>
+<pre><code>259 &lt;IfModule dir_module&gt;
+260     DirectoryIndex index.php index.html
+261 &lt;/IfModule&gt;
+
+512 AddType Application/x-httpd-php .php
+513 AddType Application/x-httpd-php-source .phps
+</code></pre><p>接下的步骤和CentOS 7中的配置类似，请参考上述配置。</p>
+<p>（4）配置环境变量</p>
+<p><code>[root@localhost php]# vim /etc/profile.d/php.sh</code></p>
+<pre><code>PATH=/app/php/bin:$PATH
+</code></pre><p><code>[root@localhost php]# source /etc/profile.d/php.sh</code></p>
+<p>（5）测试是否可以与apache通信</p>
+<p><code>[root@localhost htdocs]# vim index.php</code></p>
+<pre><code>&lt;?php
+    phpinfo();
+</code></pre><p>?&gt;</p>
+<p>（6）测试是否可以与mysql通信</p>
+<pre><code>&lt;?php
+        $msyqli=new mysqli(&quot;192.168.4.132&quot;,&quot;root&quot;,&quot;123456&quot;);
+        if(mysqli_connect_errno()){
+                echo &quot;failure&quot;;
+                $mysqli=null;
+                exit;
+        }
+                echo &quot;ok&quot;;
+                $mysqli-&gt;close;
+                phpinfo();
+?&gt;
+</code></pre><p>（7）安装wordpress</p>
+<p>步骤和CentOS7安装一样可以参考</p>
+<p>（8）源码编译安装加速器</p>
+<p><code>[root@localhost xcache-3.2.0]# phpize</code> #生成configure<br><code>[root@localhost xcache-3.2.0]# ./configure --enable-xcache --with-php-config=/app/php/bin/php-config</code><br><code>[root@localhost xcache-3.2.0]# make &amp;&amp; make install</code></p>
+<h3 id="安装方式二：基于php-fpm模块安装"><a href="#安装方式二：基于php-fpm模块安装" class="headerlink" title="安装方式二：基于php-fpm模块安装"></a>安装方式二：基于php-fpm模块安装</h3><p><code>[root@localhost php-5.6.31]# ./configure --prefix=/app/php5 --with-mysql=/usr/local/mysql --with-openssl --with-mysqli=/usr/local/mysql/bin/mysql_config --enable-mbstring --with-freetype-dir  --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --enable-sockets --enable-fpm --with-mcrypt --with-config-file-path=/etc/php5 --with-config-file-scan-dir=/etc/php5.d --with-bz2</code><br><code>[root@localhost php-5.6.31]# make &amp;&amp; make install</code></p>
+<p>（2）准备启动脚本文件</p>
+<p><code>[root@localhost php-5.6.31]# cp sapi/fpm/init.d.php-fpm.in /etc/rc.d/init.d/php-fpm</code><br><code>[root@localhost php-5.6.31]# chmod +x /etc/rc.d/init.d/php-fpm</code><br><code>[root@localhost php-5.6.31]# chkconfig --add php-fpm</code></p>
+<p>（3）配置环境变量</p>
+<p><code>[root@localhost php-5.6.31]# vim /etc/profile.d/php-fpm.sh</code><br><code>[root@localhost php-5.6.31]# source /etc/profile.d/php-fpm.sh</code></p>
+<p>（4）创建主配置文件</p>
+<p><code>[root@localhost etc]# mkdir /etc/php5</code><br><code>[root@localhost etc]# cp /usr/local/src/php-5.6.31/php.ini-production /etc/php5/php.ini</code></p>
+<p>（5）准备服务配置文件</p>
+<p><code>[root@localhost etc]# cp php-fpm.conf.default php-fpm.conf</code></p>
+<p>（6）编辑<code>/app/httpd24/conf/httpd.conf</code></p>
+<p>取消注释，启用此模块</p>
+<pre><code>LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_fcgi_module modules/mod_proxy_fcgi.so
+</code></pre><p>在配置文件末尾追加如下</p>
+<pre><code>AddType Application/x-httpd-php .php
+AddType Application/x-httpd-php-source .phps
+ProxyRequests off
+ProxyPassMatch ^/(.*\.php)$ fcgi://127.0.0.1:9000/app/httpd24/htdocs/$1
+</code></pre><p>（7）启动php-fpm服务</p>
+<p><code>[root@localhost etc]# service php-fpm start</code></p>
+<p>（8）测试是否可以与mysql和httpd连接成功</p>
+<p><a href="http://192.168.4.132/" target="_blank" rel="noopener">http://192.168.4.132/</a></p>
+<p>（9）安装wordpress</p>
+<p>安装过程和CentOS 7中安装一样，可以参考上述过程</p>
+<p>（10）测试性能如何</p>
+<pre><code>Requests per second:    579.84 [#/sec] (mean)
+Time per request:       17.246 [ms] (mean)
+Time per request:       1.725 [ms] (mean, across all concurrent requests)
+Transfer rate:          37900.46 [Kbytes/sec] received
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LAMP，lamp，php，php-fpm，源码编译安装/" rel="tag"># LAMP，lamp，php，php-fpm，源码编译安装</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/BIND编译安装/" rel="next" title="BIND编译安装">
+                <i class="fa fa-chevron-left"></i> BIND编译安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/AIDE/" rel="prev" title="AIDE">
+                AIDE <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译安装LAMP环境"><span class="nav-number">1.</span> <span class="nav-text">编译安装LAMP环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装前提"><span class="nav-number">1.1.</span> <span class="nav-text">安装前提</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码编译httpd服务"><span class="nav-number">1.2.</span> <span class="nav-text">源码编译httpd服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）源码编译安装apr"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）源码编译安装apr</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）源码编译安装apr-util"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）源码编译安装apr-util</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）源码安装httpd"><span class="nav-number">1.2.3.</span> <span class="nav-text">（3）源码安装httpd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）设置环境变量"><span class="nav-number">1.2.4.</span> <span class="nav-text">（4）设置环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）设置man手册位置"><span class="nav-number">1.2.5.</span> <span class="nav-text">（5）设置man手册位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（6）配置启动脚本"><span class="nav-number">1.2.6.</span> <span class="nav-text">（6）配置启动脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（7）测试服务是否正常启动"><span class="nav-number">1.2.7.</span> <span class="nav-text">（7）测试服务是否正常启动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码安装php"><span class="nav-number">1.3.</span> <span class="nav-text">源码安装php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装wordpress"><span class="nav-number">1.4.</span> <span class="nav-text">安装wordpress</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）解压缩"><span class="nav-number">1.4.1.</span> <span class="nav-text">（1）解压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）配置主配置文件"><span class="nav-number">1.4.2.</span> <span class="nav-text">（2）配置主配置文件</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CentOS-6-源码编译"><span class="nav-number"></span> <span class="nav-text">CentOS 6 源码编译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二进制安装mariadb"><span class="nav-number">1.</span> <span class="nav-text">二进制安装mariadb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译安装httpd服务"><span class="nav-number">2.</span> <span class="nav-text">编译安装httpd服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译安装php"><span class="nav-number">3.</span> <span class="nav-text">编译安装php</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装方式一：基于php模块安装"><span class="nav-number">3.1.</span> <span class="nav-text">安装方式一：基于php模块安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装方式二：基于php-fpm模块安装"><span class="nav-number">3.2.</span> <span class="nav-text">安装方式二：基于php-fpm模块安装</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

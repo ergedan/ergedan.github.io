@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="LAMP，lamp，php，php-fpm," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="一、LAMP1、概念LAMP指的Linux（操作系统）、ApacheHTTP 服务器，MySQL（有时也指MariaDB，数据库软件） 和PHP（有时也是指Perl或Python） 的第一个字母，一般用来建立web应用平台。 2、web资源的类型静态资源：原始形式与相应内容一致。 动态资源：原始形式通常为程序文件，需要">
+<meta name="keywords" content="LAMP，lamp，php，php-fpm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LAMP简单介绍">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/LAMP简单介绍/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="一、LAMP1、概念LAMP指的Linux（操作系统）、ApacheHTTP 服务器，MySQL（有时也指MariaDB，数据库软件） 和PHP（有时也是指Perl或Python） 的第一个字母，一般用来建立web应用平台。 2、web资源的类型静态资源：原始形式与相应内容一致。 动态资源：原始形式通常为程序文件，需要在服务器端执行之后哦，将执行结果返回给客户端。 3、LAMP结构 CGI：Com">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/LAMP_software_bundle.svg.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/lamp.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-10_201625.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-10_201730.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-10_202601.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-10_203951.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-10_205453.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-10_211650.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-10_213054.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-10_211650.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-10_213450.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-11_080510.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-11_091044.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-10-11_093859.jpg">
+<meta property="og:updated_time" content="2017-11-29T08:47:54.003Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LAMP简单介绍">
+<meta name="twitter:description" content="一、LAMP1、概念LAMP指的Linux（操作系统）、ApacheHTTP 服务器，MySQL（有时也指MariaDB，数据库软件） 和PHP（有时也是指Perl或Python） 的第一个字母，一般用来建立web应用平台。 2、web资源的类型静态资源：原始形式与相应内容一致。 动态资源：原始形式通常为程序文件，需要在服务器端执行之后哦，将执行结果返回给客户端。 3、LAMP结构 CGI：Com">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/LAMP_software_bundle.svg.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/LAMP简单介绍/"/>
+
+
+
+
+
+  <title>LAMP简单介绍 | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/LAMP简单介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LAMP简单介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/LAMP/" itemprop="url" rel="index">
+                    <span itemprop="name">LAMP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/LAMP/LAMP简单介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">LAMP简单介绍</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、LAMP"><a href="#一、LAMP" class="headerlink" title="一、LAMP"></a>一、LAMP</h2><h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><p>LAMP指的Linux（操作系统）、ApacheHTTP 服务器，MySQL（有时也指MariaDB，数据库软件） 和PHP（有时也是指Perl或Python） 的第一个字母，一般用来建立web应用平台。</p>
+<h3 id="2、web资源的类型"><a href="#2、web资源的类型" class="headerlink" title="2、web资源的类型"></a>2、web资源的类型</h3><pre><code>静态资源：原始形式与相应内容一致。
+动态资源：原始形式通常为程序文件，需要在服务器端执行之后哦，将执行结果返回给客户端。
+</code></pre><h3 id="3、LAMP结构"><a href="#3、LAMP结构" class="headerlink" title="3、LAMP结构"></a>3、LAMP结构</h3><p><img src="http://owatlfstl.bkt.clouddn.com/LAMP_software_bundle.svg.png" alt=""></p>
+<pre><code>CGI：Commom Gateway Interface可以让一个客户端从网页浏览器通过http服务器向执行在网络服务器上的程序传输数据；CGI描述了客户端与服务器程序之间传输的一种标准。
+
+程序=指令（代码文件）+数据（数据存储系统、文件）
+</code></pre><blockquote>
+<p>请求过程：</p>
+</blockquote>
+<pre><code>Client--(http协议)--&gt;httpd--&gt;(CGI)--&gt;application server（program file）--&gt;（mysql）--&gt;mysql    
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/lamp.jpg" alt="详细过程"></p>
+<h2 id="二、PHP"><a href="#二、PHP" class="headerlink" title="二、PHP"></a>二、PHP</h2><h3 id="1、PHP简介"><a href="#1、PHP简介" class="headerlink" title="1、PHP简介"></a>1、PHP简介</h3><p>PHP（PHP: Hypertext Preprocessor）是通用服务器端脚本编程语言，主要用于web开发实现动态web页面，也是最早实现将脚本嵌入HTML源码文档中的服务器端脚本语言之一。同时，php还提供了一个命令行接口，因此，其也可以在大多数系统上作为一个独立的shell来使用</p>
+<h3 id="2、PHP配置"><a href="#2、PHP配置" class="headerlink" title="2、PHP配置"></a>2、PHP配置</h3><p>（1）配置文件</p>
+<pre><code>/etc/php.ini
+/etc/php.d/*.ini
+配置文件在php解释器启动时被读取。
+</code></pre><p>（2）配置文件格式</p>
+<p>directive = value</p>
+<p>注释符：</p>
+<pre><code>#：纯粹的注释信息
+;：用于注释可启用的directive；较新的版本中，已经全部使用“；”进行注释。
+</code></pre><p>（3）php.ini配置文件设置</p>
+<p>max_execution_time = 30 #最长执行时间30s</p>
+<p>memory_limit 128 #内存限制，但是实际生产中不够，可调大此值</p>
+<p>display——startup_errors off #显示启动时出错信息，建议关闭，如果不关闭，会有可能显示一些重要信息</p>
+<p>post_max_size 8M  #最大上传数据大小，生产环境中可能临时调大</p>
+<p>upload_max_filesize 2M #最大上传文件大小，生产环境中可能要调大。但是要比post_max_size值要小。</p>
+<p>max_file_uploads = 20 #同时上传最多文件数</p>
+<p>date.timezone = Aisa/shanghai #指定时区</p>
+<p>short_open_tag = on 开启端标签，如&lt;?phpinfo()&gt;</p>
+<p>如果想了解更多请查看<a href="http://php.net/manual/zh/ini.core.php" target="_blank" rel="noopener">http://php.net/manual/zh/ini.core.php</a></p>
+<h3 id="（4）PHP的加速器"><a href="#（4）PHP的加速器" class="headerlink" title="（4）PHP的加速器"></a>（4）PHP的加速器</h3><p>php的加速器：基于PHP的特殊扩展机制如opcode缓存扩展也可以将opcode缓存于php的共享内存中，从而可以让同一段代码的后续重复执行时跳过编译阶段以提高性能。这些加速器并非真正提高了opcode的运行速度，而仅是通过分析opcode后并将它们重新排列以达到快速执行的目的。</p>
+<blockquote>
+<p>类型</p>
+</blockquote>
+<ul>
+<li><p>APC (Alternative PHP Cache)遵循PHP License的开源框架，PHP opcode缓存加速器，目前的版本不适用于PHP 5.4 项目地址<a href="http://pecl.php.net/package/APC" target="_blank" rel="noopener">http://pecl.php.net/package/APC</a></p>
+</li>
+<li><p>eAccelerator源于Turck MMCache，早期的版本包含了一个PHP encoder和 PHP loader，目前encoder已经不在支持。项目地址 <a href="http://eaccelerator.net/" target="_blank" rel="noopener">http://eaccelerator.net/</a></p>
+</li>
+<li><p>XCache快速而且稳定的PHP opcode缓存，经过严格测试且被大量用于生产环境。项目地址：<a href="http://xcache.lighttpd.net/" target="_blank" rel="noopener">http://xcache.lighttpd.net/</a>,收录EPEL源</p>
+</li>
+<li><p>Zend Optimizer和Zend Guard Loader Zend Optimizer并非一个opcode加速器，它是由ZendTechnologies为PHP5.2及以前的版本提供的一个免费、闭源的PHP扩展，其能够运行由Zend Guard生成的加密的PHP代码或模糊代码。 而Zend Guard Loader则是专为PHP5.3提供的类似于Zend Optimizer功能的扩展。项目地址<a href="http://www.zend.com/en/products/guard/runtime-decoders" target="_blank" rel="noopener"> http://www.zend.com/en/products/guard/runtime-decoders</a></p>
+</li>
+<li><p>加速器，它支持装载通过NuSphere PHP Encoder编码的PHP程序文件，并能够实现对常规PHP文件的<br>执行加速。项目地址，<a href="http://www.nusphere.com/products/phpexpress.htm" target="_blank" rel="noopener">http://www.nusphere.com/products/phpexpress.htm</a></p>
+</li>
+</ul>
+<h2 id="三、LAMP构建"><a href="#三、LAMP构建" class="headerlink" title="三、LAMP构建"></a>三、LAMP构建</h2><p>我们在构建LAMP服务时，需要每一个服务都要测试成功，必须在安装完此服务之后，测试服务是否工作正常；与其他服务是否能测试成功。在安装之前我们必须得知道php是依赖于mysql\mariadb和apache服务的，所有我们必须按前两个服务再安装php。如果先安装php也不是不可，慢慢的拍错，想必一定会成功的。</p>
+<p><strong>下面的过程在CentOS 6 中进行配置。</strong></p>
+<h3 id="1、httpd安装"><a href="#1、httpd安装" class="headerlink" title="1、httpd安装"></a>1、httpd安装</h3><h4 id="（1）使用yum源安装"><a href="#（1）使用yum源安装" class="headerlink" title="（1）使用yum源安装"></a>（1）使用yum源安装</h4><p><code>[root@localhost ~]# yum install -y httpd</code></p>
+<h4 id="（2）配置主配置文件-etc-httpd-conf-httpd-conf"><a href="#（2）配置主配置文件-etc-httpd-conf-httpd-conf" class="headerlink" title="（2）配置主配置文件/etc/httpd/conf/httpd.conf"></a>（2）配置主配置文件/etc/httpd/conf/httpd.conf</h4><p><code>[root@localhost ~]# vim /etc/httpd/conf/httpd.conf</code></p>
+<pre><code>ServerTokens prod   #修改响应报文显示系统信息
+ServerName www.example.com:79   #如果不开启这项，启动会提示如下内容：
+    Starting httpd: httpd: Could not reliably determine the server&apos;s fully qualified domain name, using localhost.localdomain for ServerName
+</code></pre><h4 id="（3）设为开机启动并启动httpd服务"><a href="#（3）设为开机启动并启动httpd服务" class="headerlink" title="（3）设为开机启动并启动httpd服务"></a>（3）设为开机启动并启动httpd服务</h4><p><code>[root@localhost ~]# chkconfig httpd on</code><br><code>[root@localhost ~]# service httpd start</code><br><code>[root@localhost ~]# ss -tnl</code>   #建议启动后查看端口是否启动</p>
+<h4 id="（4）测试是否成功"><a href="#（4）测试是否成功" class="headerlink" title="（4）测试是否成功"></a>（4）测试是否成功</h4><p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-10_201625.jpg" alt=""></p>
+<h3 id="2、mysql安装"><a href="#2、mysql安装" class="headerlink" title="2、mysql安装"></a>2、mysql安装</h3><h4 id="（1）使用yum源安装-1"><a href="#（1）使用yum源安装-1" class="headerlink" title="（1）使用yum源安装"></a>（1）使用yum源安装</h4><p><code>[root@localhost ~]# yum install -y mysql-server</code></p>
+<h4 id="（2）设置为开机启动并启动mysql服务"><a href="#（2）设置为开机启动并启动mysql服务" class="headerlink" title="（2）设置为开机启动并启动mysql服务"></a>（2）设置为开机启动并启动mysql服务</h4><p><code>[root@localhost ~]# chkconfig mysqld on</code><br><code>[root@localhost ~]# chkconfig --list mysqld</code></p>
+<pre><code>mysqld             0:off    1:off    2:on    3:on    4:on    5:on    6:off
+</code></pre><p><code>[root@localhost ~]# service mysqld start</code></p>
+<h4 id="（3）初始化数据库"><a href="#（3）初始化数据库" class="headerlink" title="（3）初始化数据库"></a>（3）初始化数据库</h4><p><code>[root@localhost ~]# mysql_secure_installation</code><br>详细的内容向看mysql配置<a href="http://merit.blog.51cto.com/10757694/1968557" target="_blank" rel="noopener">http://merit.blog.51cto.com/10757694/1968557</a></p>
+<h4 id="（4）创建用户"><a href="#（4）创建用户" class="headerlink" title="（4）创建用户"></a>（4）创建用户</h4><p><code>mysql&gt; CREATE DATABASE wpdb;</code>  #创建数据路</p>
+<p><code>mysql&gt; GRANT ALL PRIVILEGES ON wpdb.* TO joah@&#39;localhost&#39; IDENTIFIED BY &#39;123456&#39;;</code> #授权用户对wpdb权限</p>
+<p><code>mysql&gt; GRANT ALL PRIVILEGES ON wpdb.* TO joah@&#39;127.0.0.1&#39; IDENTIFIED BY &#39;123456&#39;;</code> #授权用户对wpdb权限</p>
+<p><code>mysql&gt; SELECT user,host,password FROM mysql.user;</code></p>
+<pre><code>+------+-----------+-------------------------------------------+
+| user | host      | password                                  |
++------+-----------+-------------------------------------------+
+| root | localhost | *6B8CCC83799A26CD19D7AD9AEEADBCD30D8A8664 |
+| root | 127.0.0.1 | *6B8CCC83799A26CD19D7AD9AEEADBCD30D8A8664 |
+| joah | 127.0.0.1 | *6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9 |
+| joah | localhost | *6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9 |
++------+-----------+-------------------------------------------+
+4 rows in set (0.00 sec)
+</code></pre><h4 id="（5）测试是否成功"><a href="#（5）测试是否成功" class="headerlink" title="（5）测试是否成功"></a>（5）测试是否成功</h4><p><code>[root@localhost ~]# mysql -ujoah -p</code><br><img src="http://owatlfstl.bkt.clouddn.com/2017-10-10_201730.jpg" alt=""></p>
+<h3 id="3、php安装"><a href="#3、php安装" class="headerlink" title="3、php安装"></a>3、php安装</h3><h4 id="（1）使用yum源安装php"><a href="#（1）使用yum源安装php" class="headerlink" title="（1）使用yum源安装php"></a>（1）使用yum源安装php</h4><p><code>[root@localhost ~]# yum install -y php</code></p>
+<p>php安装相当于添加了一份配置文件在<code>/etc/httpd/conf.d/</code>目录，如果要使其生效重新启动httpd服务即可。</p>
+<h3 id="4、测试php和httpd是否配置成功"><a href="#4、测试php和httpd是否配置成功" class="headerlink" title="4、测试php和httpd是否配置成功"></a>4、测试php和httpd是否配置成功</h3><h4 id="（1）在-var-www-html目录下创建文件测试"><a href="#（1）在-var-www-html目录下创建文件测试" class="headerlink" title="（1）在/var/www/html目录下创建文件测试"></a>（1）在<code>/var/www/html</code>目录下创建文件测试</h4><p>[root@localhost html]# vim index.php</p>
+<pre><code>&lt;?php
+        echo &quot;&lt;h&gt;success&lt;/h&gt;&quot;;
+        phpinfo();
+?&gt;
+</code></pre><p><code>[root@localhost html]# service httpd restart</code> #重启测试是否成功</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-10_202601.jpg" alt=""></p>
+<h3 id="5、测试php是否可以和数据库连接成功"><a href="#5、测试php是否可以和数据库连接成功" class="headerlink" title="5、测试php是否可以和数据库连接成功"></a>5、测试php是否可以和数据库连接成功</h3><h4 id="（1）php-mysql安装"><a href="#（1）php-mysql安装" class="headerlink" title="（1）php-mysql安装"></a>（1）php-mysql安装</h4><p>不过在测试之前需安装一个程序包使其能相互关联作用。</p>
+<pre><code>The php-mysql package contains a dynamic shared object that will add MySQL database support to PHP. MySQL is an object-relational database management system. PHP is an HTML-embeddable scripting language. If you need MySQL support for PHP applications, you will need to install  this package and the php package. 提供了一个动态分享库使mysql数据库支持php
+</code></pre><p><code>[root@localhost ~]# yum install -y  php-mysql</code></p>
+<h4 id="（2）编辑index-php文件"><a href="#（2）编辑index-php文件" class="headerlink" title="（2）编辑index.php文件"></a>（2）编辑index.php文件</h4><p><strong>测试方法一：</strong></p>
+<pre><code>&lt;?php
+
+
+        $conn = mysql_connect(&apos;localhost&apos;,&apos;joah&apos;,&apos;123456&apos;);
+        if($conn)
+            echo &quot;ok&quot;;
+        else
+            echo &quot;failure&quot;;
+        mysql_close();
+?&gt;
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-10_203951.jpg" alt=""></p>
+<p><strong>测试方法二：</strong></p>
+<p>编辑<code>index.php</code>文件</p>
+<pre><code>&lt;?php
+        $mysqli=new mysqli(&quot;localhost&quot;,&quot;joah&quot;,&quot;123456&quot;);
+        if(mysqli_connect_errno()){
+            echo &quot;failure&quot;;
+            $mysqli=null;
+            exit;
+        }
+            echo &quot;ok&quot;;
+            $mysqli-&gt;close();
+?&gt;
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-10_205453.jpg" alt=""></p>
+<p>此时我们就可以使用这个环境构建一些软件等；下面我们从phpMyadmin和wordpress这两个软件进行说明。</p>
+<h3 id="安装phpMyadmin"><a href="#安装phpMyadmin" class="headerlink" title="安装phpMyadmin"></a>安装phpMyadmin</h3><h4 id="（1）上传软件包并进行编译安装"><a href="#（1）上传软件包并进行编译安装" class="headerlink" title="（1）上传软件包并进行编译安装"></a>（1）上传软件包并进行编译安装</h4><p><code>[root@localhost ~]# mv phpMyAdmin-4.3.5-all-languages.zip  /usr/local/src/</code> #将上传的软件包移到到此目录下方便管理源码编译的安装包</p>
+<p><code>[root@localhost src]# unzip phpMyAdmin-4.3.5-all-languages.zip -d /var/www/html/</code> #将此包解压至<code>/var/www/html</code>目录下</p>
+<h4 id="（2）配置配置文件"><a href="#（2）配置配置文件" class="headerlink" title="（2）配置配置文件"></a>（2）配置配置文件</h4><p><code>[root@localhost html]# ln -sv phpMyAdmin-4.3.5-all-languages/ pma</code> #创建软连接</p>
+<p><code>[root@localhost pma]# cp config.sample.inc.php config.inc.php</code> #准备配置文件<br><code>[root@localhost pma]# vim config.inc.php</code> #编辑配置文件在下面行输入随机数即可<br><img src="http://owatlfstl.bkt.clouddn.com/2017-10-10_211650.jpg" alt=""></p>
+<p>重启服务测试，测试几次也不行。通过官网上查看原来php此不支持phpMyadim这个版本。</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-10_213054.jpg" alt=""></p>
+<p>重新下载一个较低版本安装</p>
+<p><code>[root@localhost html]# unzip phpMyAdmin-4.0.5-all-languages.zip</code></p>
+<p><code>[root@localhost html]# ln -sv phpMyAdmin-4.0.5-all-languages pem</code>  #创建软连接</p>
+<p><code>[root@localhost pem]# cp config.sample.inc.php config.inc.php</code> </p>
+<p><code>[root@localhost pem]# vim config.inc.php</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-10_211650.jpg" alt=""></p>
+<p>重启服务测试</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-10_213450.jpg" alt=""></p>
+<p>此时会出现错误提示，安装mbsting包即可</p>
+<p><code>[[root@localhost src]# rpm -ivh php-mbstring-5.3.3-22.el6.x86_64.rpm --force</code>  #由于在CentOS6中属于epel所以需要配置epel源，但是由于本机上不了网，所以这种方式安装</p>
+<p>重启httpd服务测试是否成功</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-11_080510.jpg" alt=""></p>
+<p>成功，接下来就是自己配置过程了 ，此时登录的用户名和密码是数据库授权的用户和密码。</p>
+<h3 id="wordpress安装"><a href="#wordpress安装" class="headerlink" title="wordpress安装"></a>wordpress安装</h3><p>WordPress是使用PHP语言开发的博客平台，用户可以在支持PHP和MySQL数据库的服务器上架设属于自己的网站。也可以把 WordPress当作一个内容管理系统（CMS）来使用。WordPress是一款个人博客系统，并逐步演化成一款内容管理系统软件，它是使用PHP语言和MySQL数据库开发的。用户可以在支持 PHP 和 MySQL数据库的服务器上使用自己的博客。&lt;摘自：百度&gt;</p>
+<h4 id="（1）解压缩安装"><a href="#（1）解压缩安装" class="headerlink" title="（1）解压缩安装"></a>（1）解压缩安装</h4><p><code>[root@localhost src]# tar xvf wordpress-4.8.tar.gz -C /var/www/html/</code></p>
+<h4 id="（2）准备配置文件"><a href="#（2）准备配置文件" class="headerlink" title="（2）准备配置文件"></a>（2）准备配置文件</h4><p><strong>方式一：</strong><br><code>[root@localhost wordpress]# cp wp-config-sample.php wp-config.php</code></p>
+<p><code>[root@localhost wordpress]# vim wp-config.php</code>    #编辑此配置文件<br><img src="http://owatlfstl.bkt.clouddn.com/2017-10-11_091044.jpg" alt=""></p>
+<p><strong>方式二：</strong></p>
+<p><code>[root@localhost wordpress]# setfacl -Rm u:apache:rwx wordpress</code> #由于是基于apache用户运行所有给apache用户对此文件rwx权限即可</p>
+<h4 id="（3）测试是否成功"><a href="#（3）测试是否成功" class="headerlink" title="（3）测试是否成功"></a>（3）测试是否成功</h4><p><a href="http://192.168.4.59/wordpress/wp-admin/setup-config.php" target="_blank" rel="noopener">http://192.168.4.59/wordpress/wp-admin/setup-config.php</a></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-11_093859.jpg" alt=""></p>
+<p>然后下面就可以搭建自己的博客啦！</p>
+<p><strong>注意在装完数据库之后切记一定要把刚刚授权的权限删除<code>[root@localhost html]# setfacl -b blog/</code></strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LAMP，lamp，php，php-fpm/" rel="tag"># LAMP，lamp，php，php-fpm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/LVS简单介绍/" rel="next" title="LVS简单介绍">
+                <i class="fa fa-chevron-left"></i> LVS简单介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/BIND编译安装/" rel="prev" title="BIND编译安装">
+                BIND编译安装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、LAMP"><span class="nav-number">1.</span> <span class="nav-text">一、LAMP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、概念"><span class="nav-number">1.1.</span> <span class="nav-text">1、概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、web资源的类型"><span class="nav-number">1.2.</span> <span class="nav-text">2、web资源的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、LAMP结构"><span class="nav-number">1.3.</span> <span class="nav-text">3、LAMP结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、PHP"><span class="nav-number">2.</span> <span class="nav-text">二、PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、PHP简介"><span class="nav-number">2.1.</span> <span class="nav-text">1、PHP简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、PHP配置"><span class="nav-number">2.2.</span> <span class="nav-text">2、PHP配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）PHP的加速器"><span class="nav-number">2.3.</span> <span class="nav-text">（4）PHP的加速器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、LAMP构建"><span class="nav-number">3.</span> <span class="nav-text">三、LAMP构建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、httpd安装"><span class="nav-number">3.1.</span> <span class="nav-text">1、httpd安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）使用yum源安装"><span class="nav-number">3.1.1.</span> <span class="nav-text">（1）使用yum源安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）配置主配置文件-etc-httpd-conf-httpd-conf"><span class="nav-number">3.1.2.</span> <span class="nav-text">（2）配置主配置文件/etc/httpd/conf/httpd.conf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）设为开机启动并启动httpd服务"><span class="nav-number">3.1.3.</span> <span class="nav-text">（3）设为开机启动并启动httpd服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）测试是否成功"><span class="nav-number">3.1.4.</span> <span class="nav-text">（4）测试是否成功</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、mysql安装"><span class="nav-number">3.2.</span> <span class="nav-text">2、mysql安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）使用yum源安装-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">（1）使用yum源安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）设置为开机启动并启动mysql服务"><span class="nav-number">3.2.2.</span> <span class="nav-text">（2）设置为开机启动并启动mysql服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）初始化数据库"><span class="nav-number">3.2.3.</span> <span class="nav-text">（3）初始化数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）创建用户"><span class="nav-number">3.2.4.</span> <span class="nav-text">（4）创建用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）测试是否成功"><span class="nav-number">3.2.5.</span> <span class="nav-text">（5）测试是否成功</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、php安装"><span class="nav-number">3.3.</span> <span class="nav-text">3、php安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）使用yum源安装php"><span class="nav-number">3.3.1.</span> <span class="nav-text">（1）使用yum源安装php</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、测试php和httpd是否配置成功"><span class="nav-number">3.4.</span> <span class="nav-text">4、测试php和httpd是否配置成功</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）在-var-www-html目录下创建文件测试"><span class="nav-number">3.4.1.</span> <span class="nav-text">（1）在/var/www/html目录下创建文件测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、测试php是否可以和数据库连接成功"><span class="nav-number">3.5.</span> <span class="nav-text">5、测试php是否可以和数据库连接成功</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）php-mysql安装"><span class="nav-number">3.5.1.</span> <span class="nav-text">（1）php-mysql安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）编辑index-php文件"><span class="nav-number">3.5.2.</span> <span class="nav-text">（2）编辑index.php文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装phpMyadmin"><span class="nav-number">3.6.</span> <span class="nav-text">安装phpMyadmin</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）上传软件包并进行编译安装"><span class="nav-number">3.6.1.</span> <span class="nav-text">（1）上传软件包并进行编译安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）配置配置文件"><span class="nav-number">3.6.2.</span> <span class="nav-text">（2）配置配置文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wordpress安装"><span class="nav-number">3.7.</span> <span class="nav-text">wordpress安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）解压缩安装"><span class="nav-number">3.7.1.</span> <span class="nav-text">（1）解压缩安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）准备配置文件"><span class="nav-number">3.7.2.</span> <span class="nav-text">（2）准备配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）测试是否成功"><span class="nav-number">3.7.3.</span> <span class="nav-text">（3）测试是否成功</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

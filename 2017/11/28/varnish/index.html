@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="varnish," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Varnish是一款高性能且开源的反向代理服务器和HTTP极速器，其采用全新的软件体系机构和现在的硬件体积紧密配合。 一、Varnish1、varnish系统结构  varnish主要运行两个进程：Manager进程和Cacher 进程  Manager进程功能： 实现应用新的配置 编译VCL（Varnish Conf">
+<meta name="keywords" content="varnish">
+<meta property="og:type" content="article">
+<meta property="og:title" content="varnish">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/varnish/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="Varnish是一款高性能且开源的反向代理服务器和HTTP极速器，其采用全新的软件体系机构和现在的硬件体积紧密配合。 一、Varnish1、varnish系统结构  varnish主要运行两个进程：Manager进程和Cacher 进程  Manager进程功能： 实现应用新的配置 编译VCL（Varnish Configure Language） 监控varnish 初始化varnish 提供">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-02_100411.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-02_094547.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/varish.svg">
+<meta property="og:updated_time" content="2017-11-29T10:06:15.885Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="varnish">
+<meta name="twitter:description" content="Varnish是一款高性能且开源的反向代理服务器和HTTP极速器，其采用全新的软件体系机构和现在的硬件体积紧密配合。 一、Varnish1、varnish系统结构  varnish主要运行两个进程：Manager进程和Cacher 进程  Manager进程功能： 实现应用新的配置 编译VCL（Varnish Configure Language） 监控varnish 初始化varnish 提供">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-02_100411.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/varnish/"/>
+
+
+
+
+
+  <title>varnish | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/varnish/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">varnish</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/缓存服务/" itemprop="url" rel="index">
+                    <span itemprop="name">缓存服务</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/缓存服务/varnish/" itemprop="url" rel="index">
+                    <span itemprop="name">varnish</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-02_100411.jpg" alt=""></p>
+<p>Varnish是一款高性能且开源的反向代理服务器和HTTP极速器，其采用全新的软件体系机构和现在的硬件体积紧密配合。</p>
+<h1 id="一、Varnish"><a href="#一、Varnish" class="headerlink" title="一、Varnish"></a>一、Varnish</h1><h2 id="1、varnish系统结构"><a href="#1、varnish系统结构" class="headerlink" title="1、varnish系统结构"></a>1、varnish系统结构</h2><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-02_094547.jpg" alt=""></p>
+<blockquote>
+<p>varnish主要运行两个进程：Manager进程和Cacher 进程</p>
+</blockquote>
+<h4 id="Manager进程功能："><a href="#Manager进程功能：" class="headerlink" title="Manager进程功能："></a>Manager进程功能：</h4><ul>
+<li>实现应用新的配置</li>
+<li>编译VCL（Varnish Configure Language）</li>
+<li>监控varnish</li>
+<li>初始化varnish</li>
+<li>提供一个命令行接口</li>
+<li>Manager进程每个几秒会探测cache进程是否正常运行，如果在指定的时间内未得到cache进程响应，Manager进程将重启此Cache进程</li>
+</ul>
+<h4 id="Cache进程包含多种类型的线程"><a href="#Cache进程包含多种类型的线程" class="headerlink" title="Cache进程包含多种类型的线程"></a>Cache进程包含多种类型的线程</h4><ul>
+<li>Acceptor进程：接受新的链接请求并响应</li>
+<li>Worker进程：cache进程会为每个会话启动一个worker线程，因此在高并发场景中可能会出现数百个worker进程或者更多</li>
+<li>Expiry进程：从缓存中清理过期内容</li>
+</ul>
+<h4 id="varnish日志"><a href="#varnish日志" class="headerlink" title="varnish日志"></a>varnish日志</h4><p>为了与系统的其他部分进行交互，Cache进程使用了可以通过文件系统接口进行访问的共享内存日志（shared memory log），如果某线程需要记录日志信息，其仅需要持有一个锁，而后向共享内存中的某内存区域写入数据，再释放持有的所即可。</p>
+<p>共享内存日志大小一般为90M，其分为两部分，前一部分为计数器，另一部分为客户端请求的数据。varnish提供了多个不同管理日志工具：varnishlog、varnishncsa、varnishstat等来分析共享内存日志中的信息并能够以指定的方式进行显示</p>
+<h2 id="2、VCL（Varnish-Configuration-Language）"><a href="#2、VCL（Varnish-Configuration-Language）" class="headerlink" title="2、VCL（Varnish Configuration Language）"></a>2、VCL（Varnish Configuration Language）</h2><p>varnish配置缓存策略工具，是一种基于“域（domain specific）”的简单编程语言。支持有限的算术运算和逻辑运算操作、允许使用正则表达式进行字符串匹配、允许用户使用set自定义变量、支持if判断语句、内置函数和变量等。使用VCL编写的缓存策略通常保存至.VCL文件中，其需要变异成二进制格式后才能由varnish调用。不过整个缓存策略由几个特定的子例程如vcl_recv、vcl_fetch等组成，它们分别在不同的位置执行，如果没有实现为某个位置自定义子例程，varnish将会执行默认定义。</p>
+<h4 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h4><p>VCL策略在启用之前，会由manager进程将其转换为C代码，然后再由gcc编译器将C代码编译成二进制程序；编译完成后，manager进程负责将其连接至varnish示例，即Cache进程。</p>
+<p><strong>优点：</strong></p>
+<p>由于编译工作在Cache进程之外完成，避免了装载错误格式VCL风险。因此varnish修改配置的开销非常小，其可以同时保存尚在引用的旧版本配置，也能够让新的配置即刻生效。编译后的旧版本配置通常在varnish重启时才会被丢弃，如果需要手动请求，则可以使用varnishadm中的<code>vcl.discard</code>命令完成。</p>
+<h2 id="3、varnish后端存储"><a href="#3、varnish后端存储" class="headerlink" title="3、varnish后端存储"></a>3、varnish后端存储</h2><p>varnish支持多种不同类型的后端存储，可以在varnishd启动时使用-s选项指定。</p>
+<blockquote>
+<p>后端存储类型</p>
+<h5 id="基于磁盘存储"><a href="#基于磁盘存储" class="headerlink" title="基于磁盘存储"></a>基于磁盘存储</h5><ul>
+<li>file：使用特定的文件存储全部的缓存数据，并通过操作系统的mmap()系统调用将整个缓存文件映射至内存区域（如果条件允许）</li>
+<li>persistent：与file功能相同，但可以持久存储数据（即重启varnish数据时不会被清除），处于测试期<h5 id="基于内存存储"><a href="#基于内存存储" class="headerlink" title="基于内存存储"></a>基于内存存储</h5></li>
+<li>malloc：使用malloc()库调用在varnish启动时向操作系统申请指定大小的内存空间以存储缓存对象；串行存储模式</li>
+<li>jemalloc：并行存储模式</li>
+</ul>
+</blockquote>
+<p>选择使用合适的存储方式有助于提升系统性，从经验的角度看，建议在内存空间足以存储所有的缓存对象时使用malloc方法，反之，file存储将有着更好的性能表现。不过varnish实际上使用的空间比使用-s选项指定的缓存空间更大，一般来说，其需要为每个缓存对象多使用差不多1k左右的存储空间。</p>
+<h1 id="二、varnish状态引擎（Varnish-Finite-State-Machine）"><a href="#二、varnish状态引擎（Varnish-Finite-State-Machine）" class="headerlink" title="二、varnish状态引擎（Varnish Finite State Machine）"></a>二、varnish状态引擎（Varnish Finite State Machine）</h1><p><img src="http://owatlfstl.bkt.clouddn.com/varish.svg" alt=""></p>
+<h2 id="1、VCL状态引擎"><a href="#1、VCL状态引擎" class="headerlink" title="1、VCL状态引擎"></a>1、VCL状态引擎</h2><p>在VCL状态引擎中，状态之间具有相关性，但彼此间互相隔离，每个引擎使用return（action）来退出当前状态并指示varnish进入下一个状态。</p>
+<h4 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程"></a>处理过程</h4><p>varnish开始处理一个请求时，首先需要分析HTTP请求本身，如从首部获取请求方法、验证其是否为一个合法的HTTP请求等；当这些基本分析结束后就需要作出第一个决策，即varnish是否从缓存中查找请求的资源（需要由vcl_recv方法完成；如果没有自定义的vcl_recv函数指定其终止操作，其扔将执行默认的vcl_recv函数。）。</p>
+<h2 id="2、VCL语法"><a href="#2、VCL语法" class="headerlink" title="2、VCL语法"></a>2、VCL语法</h2><p>基本语法：</p>
+<p>（1）//、#或/<em>comment</em>/用于注释</p>
+<p>（2）sub $name 定义函数</p>
+<p>（3）不支持循环，有内置变量</p>
+<p>（4）使用终止语句，没有返回值</p>
+<p>（5）域专用</p>
+<p>（6）操作符：=、==、~、！、&amp;&amp;、||</p>
+<p><strong>为什么VCL只有终止语句而没有返回值呢？</strong></p>
+<p>VCL函数不接受参数并没有返回值，并非真正意义上的函数，这也限定了VCL内部的数据传递只能隐藏在HTTP首部内部进行。VCL的return语句用于将控制权从VCL状态引擎返回给varnish，而非默认函数。</p>
+<h2 id="3、VCL内置函数"><a href="#3、VCL内置函数" class="headerlink" title="3、VCL内置函数"></a>3、VCL内置函数</h2><p>VCL提供了几个函数来实现字符串修改，添加bans、重启VCL状态引擎以及将控制权转回varnish等</p>
+<pre><code>regsub（str，regex，sub）和regsuball（str，regex，sub）：这两个用于基于正则表达式搜索指定的字符串并替换为指定的字符串；只替换第一次匹配到的，而regsuball全部替换
+ban（expression）：
+ban_url（regex）：bans所有其URL能够有regex匹配的缓存对象
+purge：从缓存中挑选出某对象以及其相关变种一并删除，这可以通过HTTP协议的PURGE方法完成
+hash_data（str）：指明哈希计算的数据；减少差异，以提升命中率
+return（restart）：重新运行整个VCL，即重新从vcl_recv开始进行处理；每一次重启都会增加req-restarts变量中的值，而max_restarts参数则用于限定最大重启次数
+</code></pre><h2 id="4、vcl-recv"><a href="#4、vcl-recv" class="headerlink" title="4、vcl_recv"></a>4、vcl_recv</h2><p>在varnish完成对请求报文的解码为基础数据结构后的第一个要执行的子例程</p>
+<h5 id="主要用途"><a href="#主要用途" class="headerlink" title="主要用途"></a>主要用途</h5><p>（1）修改客户端数据已减少缓存对象差异性，如删除URL中的www.等字符</p>
+<p>（2）基于客户端数据选用缓存策略，日入仅缓存特定的URL请求，不缓存POST请求等</p>
+<p>（3）位某web应用程序执行URL重写规则</p>
+<p>（4）挑选合适的后端web服务器</p>
+<h6 id="可以使用下面的终止语句，即通过return（）向varnish返回的指示操作："><a href="#可以使用下面的终止语句，即通过return（）向varnish返回的指示操作：" class="headerlink" title="可以使用下面的终止语句，即通过return（）向varnish返回的指示操作："></a>可以使用下面的终止语句，即通过return（）向varnish返回的指示操作：</h6><ul>
+<li>pass：绕过缓存，即不从缓存中查询内容或不将内容存储至缓存中</li>
+<li>pipe：不对客户端进行检查或作出任何操作，而是在客户端与后端服务器之间建立专用“管道”，并直接将数据在二者之间进行传送；此时，keep-alived连接中后续传送的数据也都将通过此管道进行直接传送，并不会出现在任何日志中</li>
+<li>lookup：在缓存中查找用户请求的对象，如果缓存中没有其请求的对象，后续操作很可能会将其请求的对象进行缓存</li>
+<li>error：由varnish自己合成一个相应报文，一般是响应一个错误类信息、重定向类信息或负载均衡器返回的后端web服务器健康状态检查类信息</li>
+<li>可以通过精巧的策略完成一定意义上的安全功能，以将某些特定的攻击扼杀于摇篮中，同时，它也可以检查出一些拼写错误并将其进行修修正</li>
+</ul>
+<h6 id="varnish默认的vcl-recv专门设计用来实现安全的缓存策略，主要完成两种功能："><a href="#varnish默认的vcl-recv专门设计用来实现安全的缓存策略，主要完成两种功能：" class="headerlink" title="varnish默认的vcl_recv专门设计用来实现安全的缓存策略，主要完成两种功能："></a>varnish默认的vcl_recv专门设计用来实现安全的缓存策略，主要完成两种功能：</h6><p>（1）仅处理可以识别的HTTP方法，并且只缓存GET和HEAD方法</p>
+<p>（2）不缓存任何用户特有的数据</p>
+<p><strong>安全起见，一般在自定义的vcl_recv中不要使用return()终止语句，而是再由默认vcl_recv进行处理，并由其作出相应的处理决策。</strong></p>
+<h2 id="5、vcl-fetch"><a href="#5、vcl-fetch" class="headerlink" title="5、vcl_fetch"></a>5、vcl_fetch</h2><p>根据服务器的响应作出缓存决策；在任何VCL状态引擎中返回的pass操作都将由vcl_fetch进行后续处理。vcl_fetch中有许多可用的内置变量，比如最常用的用于定义某对象缓存时长的beresp.ttl变量</p>
+<h5 id="通过return-返回给varnish的操作指示有："><a href="#通过return-返回给varnish的操作指示有：" class="headerlink" title="通过return()返回给varnish的操作指示有："></a>通过return()返回给varnish的操作指示有：</h5><p>（1）deliver：缓存此对象，并将其发送给客户端（vcl_deliver）</p>
+<p>（2）hit_for_pass：不缓存此对象，但可以导致后续对此对象的请求直接送达到vcl_pass进行处理</p>
+<p>（3）restart：重启整个VCL，并增加重启计数；超过max_restarts限定的最大重启次数后将会返回错误信息</p>
+<p>（4）error code [reason]：返回指定的错误代码给客户端并丢弃此请求</p>
+<p><strong>默认的vcl_fetch放弃了缓存任何使用了Set-Cookie首部的响应。</strong></p>
+<p><strong>两个特殊引擎</strong><br>-</p>
+<ul>
+<li>vcl_init：在处理任何请求之前要执行的vcl代码：主要用于初始化VMODs；</li>
+<li>vcl_fini：所有的请求都已经结束，在vcl配置被丢弃时调用；主要用于倾全力VMODs；</li>
+</ul>
+<h1 id="三、修改缓存对象"><a href="#三、修改缓存对象" class="headerlink" title="三、修改缓存对象"></a>三、修改缓存对象</h1><h2 id="1、缓存内容修剪"><a href="#1、缓存内容修剪" class="headerlink" title="1、缓存内容修剪"></a>1、缓存内容修剪</h2><p>提高缓存命中率的最有效途径之一时增加缓存对象的生存时间（TTL），但是这也可能会带来副作用，比如缓存的内容再到达为其制定的有效期之间已经失效。因此，手动检验缓存对象的有效性或者刷新时缓存很有可能成为服务器管理员的日常工作之一；varnish完成这类的任务提供了三种途径：HTTP修剪(HTTP purging)、禁用某类缓存对象（banning）和强制缓存未命中（forced cache misses）</p>
+<h2 id="2、移除单个缓存对象"><a href="#2、移除单个缓存对象" class="headerlink" title="2、移除单个缓存对象"></a>2、移除单个缓存对象</h2><p>purge用于清理缓存中的某特定对象及其变种，因此在有着明确要修剪的缓存对象时可以使用此中方式。HTTP协议的PURGE方法可以实现purge功能，不过其仅能用于vcl_hit和vcl_miss中，它会释放内存工作并移除指定缓存对象的所有vary（变种），并等待下一个针对此内容客户端请求到达时刷新此内容。起一般要与return（restart）一起使用。</p>
+<h2 id="3、强制缓存未命中"><a href="#3、强制缓存未命中" class="headerlink" title="3、强制缓存未命中"></a>3、强制缓存未命中</h2><p>在vcl_recv中使用return（pass）能够强制到上游服务器取得请求的内容，但这也会导致无法将其缓存。使用purge会移除就的缓存对象，但如果上游服务器宕机而无法取得新版本的内容时，此内容将无法再响应给客户端。使用<code>req.has_always_miss=true</code>，可以让varnish在缓存中搜寻响应的内容但却总是回应“未命中”，于是vcl_miss将后续地负责启动vcl_fetch从上游服务器取得新内容，并以新内容缓存覆盖就内容；此时，如果上游服务器宕机或未响应，旧的内容将保持原状，并能够继续服务器那些为使用<code>req.has_always_miss=true</code>的客户端，直到其过期失效或者由其他方法移除。</p>
+<h2 id="4、banning"><a href="#4、banning" class="headerlink" title="4、banning"></a>4、banning</h2><p>ban（）是一种已缓存对象中过滤出某此特定的对象并将其移除的缓存内容刷新机制，不过它并不足之处新的内容进入缓存或响应于请求。在varnish中，ban的实现是指将一个ban添加至ban列表中，这可以通过命令行接口或VCL实现，他们的使用语法时相同的。ban本身就是一个或多个VCL风格的语句，它会在varnish从缓存哈希（cache hash）中查找某缓存对象时对搜寻的对象进行比较测试，因此，一个ban语句就是类似匹配所有以/downloads开头的URL，或者响应首部中包含nginx的对象。</p>
+<p>示例：</p>
+<pre><code>ban req.http.host == “test。com” &amp;&amp; req.url ~ “\.gif$”
+</code></pre><p>定义好的ban语句会生成一个ban列表（ban-list），新添加的ban语句会被放置在列表中的首部。缓存中的所有对象在响应给客户端之前都会被ban列表检查至少一次，检查完成将会为每个缓存创建一个指向与其匹配的ban语句的指针。varnish在从缓存中获取对象时，总是会检查此缓存对象的指针是否指向了ban列表的首部；如果没有指向ban列表的首部，其将对使用所有的新添加的ban语句对此缓存对象进行测试，如果没有任何ban语句能够匹配则更新ban列表。</p>
+<h1 id="四、varnish检测后端主机的健康状态"><a href="#四、varnish检测后端主机的健康状态" class="headerlink" title="四、varnish检测后端主机的健康状态"></a>四、varnish检测后端主机的健康状态</h1><p>varnish可以检测后端主机的健康状态，在判定后端主机失效时能够给自动将其从可用后端主机列表中移除，而一旦其重新变得可用还可以自动将其设定为可用。为了避免误判，varnish在探测后端主机的健康状态发生转变时，通常需要连续执行几次探测均为新状态才将其标记为转换后的状态。</p>
+<p>每个后端服务器当前探测的健康状态探测可以使用.probe进行设定，其结果可有req.backend.healthy变量获取；也可以通过varnishlog中的backend_health查看或varnishadm的debug.health查看</p>
+<p>####### .probe的探测常用的指令：</p>
+<ul>
+<li>（1）.url：探测后端主机健康状态时请求的URL，默认为”/“</li>
+<li>（2）.request：探测后端主机健康状态时请求内容的详细格式，定义后，它会替换.url指定的探测方法</li>
+<li>（3）.window：设定在判定后端主机健康状态时基于最近多少次的探测进行，默认为8</li>
+<li>（4）.threshold：在.window中指定的次数中，至少有多少次时成功的才能判定后端主机健康运行，默认为3</li>
+<li>（5）.initial：varnish启动时对后端主机至少需要多少次的成功探测，默认同.threshold</li>
+<li>（6）.expected_response：期望后端主机响应的状态码，默认为200</li>
+<li>（7）.interval：探测请求的发送周期，默认为5s</li>
+<li>（8）.timeout：每次探测请求的过期时长，默认为2s</li>
+</ul>
+<p>如果varnish在某时刻没有任何可用的后端主机，它将尝试使用缓存对象的“宽容副本（graced copy）”，此时VCL中的各种规则亦然有效。因此更好的办法时在VCL规则中判断req.backend.health变量显示某后端主机不可用时，为此后端主机增大req.grace变量的值以设定使用的宽容期限长度。</p>
+<h1 id="五、varnish使用多台后端主机"><a href="#五、varnish使用多台后端主机" class="headerlink" title="五、varnish使用多台后端主机"></a>五、varnish使用多台后端主机</h1><p>varnish中可以使用的director指令将一个或多个近似的后端主机定义为一个逻辑组，并可以指定的调度方式来轮流将请求发送至这些主机上。不同的director可以使用同一个后端主机，而某director也可以使用“匿名”后端主机（在direcotr中直接进行定义）。每个director都必须有专用名，且在定义后必须在VCL中进行调用，VCL中任何可以指定后端主机的位置均可以按需将其替换为调用已定义的director。</p>
+<p><strong>使用前需要导入directors模块</strong></p>
+<p>示例：</p>
+<pre><code>import directors;
+
+
+backend server1 {
+    .host = 192.168.4.60
+    .port = 80
+}
+backend server2 {
+    .host = 192.168.4.61
+    .port = 80
+}
+
+sub vcl_init {
+    new testgrp = direcotrs.round_robin();
+    testgrp.add_backend(server1);
+    testgrp.add_backend(server2);
+}
+
+sub vcl_recv {
+    set req.backend_hint = testgrp.backend();
+}
+</code></pre><h1 id="六、varnish参数"><a href="#六、varnish参数" class="headerlink" title="六、varnish参数"></a>六、varnish参数</h1><p>varnish有许多参数，但是在某些场合我们需要修改他们提高性能。可以在管理接口中使用param.show命令查看这些参数，而使用param.set则能修改这些参数的值。当时，在命令行接口进行的修改不会保存至任何位置，重启varnish后这些设定会消失。可以通过启动脚本使用-p选项在varnishd启动时为其设定参数的值。</p>
+<h3 id="1、线程模型"><a href="#1、线程模型" class="headerlink" title="1、线程模型"></a>1、线程模型</h3><ul>
+<li>cache-worker线程：每连接一个用于处理请求，</li>
+<li>cache-main线程：全局只有一个，用于启动cache</li>
+</ul>
+<h3 id="2、线程相关的参数"><a href="#2、线程相关的参数" class="headerlink" title="2、线程相关的参数"></a>2、线程相关的参数</h3><ul>
+<li>thread_pools：工作线程池，最好小于或等于CPU核心数量</li>
+<li>thread_pool_max：每线程池最大线程数</li>
+<li>thread_pool_min：每线程池最小线程数，即最大空闲线程数</li>
+<li>thread_pool_timeout：每线程的超时时长</li>
+<li>thread_pool_add_delay：添加线程的延迟时间</li>
+<li>thread_pool_destory_delay：每线程销毁时长</li>
+</ul>
+<h3 id="3、timer相关的参数"><a href="#3、timer相关的参数" class="headerlink" title="3、timer相关的参数"></a>3、timer相关的参数</h3><ul>
+<li>send_timeout：客户端连接超时时长</li>
+<li>timeout_idle：Idle timeout for client connections.</li>
+<li>timeout_req：请求超时时长</li>
+<li>cli_timeout：Timeout for the childs replies to CLI requests from the mgt_param.</li>
+</ul>
+<h1 id="七、varnish命令行工具"><a href="#七、varnish命令行工具" class="headerlink" title="七、varnish命令行工具"></a>七、varnish命令行工具</h1><h3 id="1、varnishadm命令"><a href="#1、varnishadm命令" class="headerlink" title="1、varnishadm命令"></a>1、varnishadm命令</h3><p>通过命令行的方式连接至varnishd进行管理操作的工具。</p>
+<p>语法：</p>
+<pre><code>varnishadm [-t timeout] [-S secret_file] [-T address:port] [-n name] [command [...]]
+</code></pre><h5 id="指定要连接的varnish示例的方法："><a href="#指定要连接的varnish示例的方法：" class="headerlink" title="指定要连接的varnish示例的方法："></a>指定要连接的varnish示例的方法：</h5><pre><code>-n name 连接至名称为“name”的示例
+-T address:port  连接至指定套接字上的示例
+</code></pre><p>配置文件相关：</p>
+<pre><code>vcl.list：
+vcl.load：装载，加载并编译
+vcl.use：激活
+vcl.discard：删除
+vcl.show [-V] &lt;configname&gt;：查看指定的配置文件的详细信息
+</code></pre><p>运行时参数：</p>
+<pre><code>param.show -1：显示列表
+param.show &lt;PARAM&gt;
+param.set &lt;PARAM&gt; &lt;VALUE&gt;
+</code></pre><p>缓存存储：</p>
+<pre><code>storage.list
+</code></pre><p>后端服务器：</p>
+<pre><code>backend.list
+</code></pre><h3 id="2、varnish-param"><a href="#2、varnish-param" class="headerlink" title="2、varnish.param"></a>2、varnish.param</h3><p>选项</p>
+<pre><code>-a address[:port][,address[:port]...]，默认为6081端口
+-T address[:port]，默认为6082
+-s [name=]type[,options]，定义缓存存储机制
+-u user
+-g group
+-f config，VCL配置文件
+-F 运行在前台
+-p param=value：设定运行参数即数值，可重复使用多次
+-r param[,param]：设定指定的参数为只读状态
+</code></pre><h3 id="3、varnishstat"><a href="#3、varnishstat" class="headerlink" title="3、varnishstat"></a>3、varnishstat</h3><p>varnish缓存统计信息</p>
+<pre><code>-l：列出
+-f：指定字段名称列表
+    MAIN.cache_hit
+    MAIN.cache_miss
+</code></pre><h3 id="4、varnishtop"><a href="#4、varnishtop" class="headerlink" title="4、varnishtop"></a>4、varnishtop</h3><p>varnish日志全部等级</p>
+<pre><code>-l
+-i taglist，可以同时使用多个-i选项，也可以一个选项跟上多个标签
+-I &lt;[targlist:]regex&gt;
+-x taglist:排除列表
+-X &lt;[taglist:]regex&gt;
+</code></pre><h1 id="八、varnish配置文件"><a href="#八、varnish配置文件" class="headerlink" title="八、varnish配置文件"></a>八、varnish配置文件</h1><p>配置varnish服务进程的工作特性，例如监听的地址和端口，缓存机制</p>
+<pre><code>/etc/varnish/varnish.params
+</code></pre><p>配置各Child/cache线程的缓存策略</p>
+<pre><code>/etc/varnish/default.vcl
+</code></pre><p>主程序</p>
+<pre><code>/usr/sbin/varnishd
+</code></pre><p>share memory log交互工具</p>
+<pre><code>/usr/bin/varnishhist
+/usr/bin/varnishlog
+/usr/bin/varnishncsa
+/usr/bin/varnishstat
+/usr/bin/varnishtop
+</code></pre><p>测试工具程序</p>
+<pre><code>/usr/bin/varnishtest
+</code></pre><p>VCL配置文件重载程序</p>
+<pre><code>/usr/sbin/varnish_reload_vcl
+</code></pre><p>systemd unit file</p>
+<pre><code>/usr/lib/systemd/system/varnish.service
+/usr/lib/systemd/system/varishlog.service
+/usr/lib/systemd/system/varnishncsa.service
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/varnish/" rel="tag"># varnish</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/数据库类型/" rel="next" title="数据库类型">
+                <i class="fa fa-chevron-left"></i> 数据库类型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/sudo/" rel="prev" title="sudo">
+                sudo <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、Varnish"><span class="nav-number">1.</span> <span class="nav-text">一、Varnish</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、varnish系统结构"><span class="nav-number">1.1.</span> <span class="nav-text">1、varnish系统结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Manager进程功能："><span class="nav-number">1.1.0.1.</span> <span class="nav-text">Manager进程功能：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache进程包含多种类型的线程"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">Cache进程包含多种类型的线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#varnish日志"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">varnish日志</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、VCL（Varnish-Configuration-Language）"><span class="nav-number">1.2.</span> <span class="nav-text">2、VCL（Varnish Configuration Language）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编译过程"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">编译过程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、varnish后端存储"><span class="nav-number">1.3.</span> <span class="nav-text">3、varnish后端存储</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基于磁盘存储"><span class="nav-number">1.3.0.0.1.</span> <span class="nav-text">基于磁盘存储</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基于内存存储"><span class="nav-number">1.3.0.0.2.</span> <span class="nav-text">基于内存存储</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、varnish状态引擎（Varnish-Finite-State-Machine）"><span class="nav-number">2.</span> <span class="nav-text">二、varnish状态引擎（Varnish Finite State Machine）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、VCL状态引擎"><span class="nav-number">2.1.</span> <span class="nav-text">1、VCL状态引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理过程"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">处理过程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、VCL语法"><span class="nav-number">2.2.</span> <span class="nav-text">2、VCL语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、VCL内置函数"><span class="nav-number">2.3.</span> <span class="nav-text">3、VCL内置函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、vcl-recv"><span class="nav-number">2.4.</span> <span class="nav-text">4、vcl_recv</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#主要用途"><span class="nav-number">2.4.0.0.1.</span> <span class="nav-text">主要用途</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#可以使用下面的终止语句，即通过return（）向varnish返回的指示操作："><span class="nav-number">2.4.0.0.1.1.</span> <span class="nav-text">可以使用下面的终止语句，即通过return（）向varnish返回的指示操作：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#varnish默认的vcl-recv专门设计用来实现安全的缓存策略，主要完成两种功能："><span class="nav-number">2.4.0.0.1.2.</span> <span class="nav-text">varnish默认的vcl_recv专门设计用来实现安全的缓存策略，主要完成两种功能：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、vcl-fetch"><span class="nav-number">2.5.</span> <span class="nav-text">5、vcl_fetch</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通过return-返回给varnish的操作指示有："><span class="nav-number">2.5.0.0.1.</span> <span class="nav-text">通过return()返回给varnish的操作指示有：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、修改缓存对象"><span class="nav-number">3.</span> <span class="nav-text">三、修改缓存对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、缓存内容修剪"><span class="nav-number">3.1.</span> <span class="nav-text">1、缓存内容修剪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、移除单个缓存对象"><span class="nav-number">3.2.</span> <span class="nav-text">2、移除单个缓存对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、强制缓存未命中"><span class="nav-number">3.3.</span> <span class="nav-text">3、强制缓存未命中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、banning"><span class="nav-number">3.4.</span> <span class="nav-text">4、banning</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、varnish检测后端主机的健康状态"><span class="nav-number">4.</span> <span class="nav-text">四、varnish检测后端主机的健康状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、varnish使用多台后端主机"><span class="nav-number">5.</span> <span class="nav-text">五、varnish使用多台后端主机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、varnish参数"><span class="nav-number">6.</span> <span class="nav-text">六、varnish参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、线程模型"><span class="nav-number">6.0.1.</span> <span class="nav-text">1、线程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、线程相关的参数"><span class="nav-number">6.0.2.</span> <span class="nav-text">2、线程相关的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、timer相关的参数"><span class="nav-number">6.0.3.</span> <span class="nav-text">3、timer相关的参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、varnish命令行工具"><span class="nav-number">7.</span> <span class="nav-text">七、varnish命令行工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、varnishadm命令"><span class="nav-number">7.0.1.</span> <span class="nav-text">1、varnishadm命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#指定要连接的varnish示例的方法："><span class="nav-number">7.0.1.0.1.</span> <span class="nav-text">指定要连接的varnish示例的方法：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、varnish-param"><span class="nav-number">7.0.2.</span> <span class="nav-text">2、varnish.param</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、varnishstat"><span class="nav-number">7.0.3.</span> <span class="nav-text">3、varnishstat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、varnishtop"><span class="nav-number">7.0.4.</span> <span class="nav-text">4、varnishtop</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八、varnish配置文件"><span class="nav-number">8.</span> <span class="nav-text">八、varnish配置文件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

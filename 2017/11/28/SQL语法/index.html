@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="sql," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="SQL1、概念结构化查询语言(Structured Query Language)简称SQL，是一种特殊目的的编程语言，是一种数据库查询和程序设计语言，用于存取数据以及查询、更新和管理关系数据库系统；同时也是数据库脚本文件的扩展名。结构化查询语言是高级的非过程化编程语言，允许用户在高层数据结构上工作。它不要求用户指定对">
+<meta name="keywords" content="sql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL语法">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/SQL语法/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="SQL1、概念结构化查询语言(Structured Query Language)简称SQL，是一种特殊目的的编程语言，是一种数据库查询和程序设计语言，用于存取数据以及查询、更新和管理关系数据库系统；同时也是数据库脚本文件的扩展名。结构化查询语言是高级的非过程化编程语言，允许用户在高层数据结构上工作。它不要求用户指定对数据的存放方法，也不需要用户了解具体的数据存放方式，所以具有完全不同底层结构的不">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/Relational_model_concepts.png">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-09-24_210233.png">
+<meta property="og:updated_time" content="2017-11-29T09:17:17.132Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL语法">
+<meta name="twitter:description" content="SQL1、概念结构化查询语言(Structured Query Language)简称SQL，是一种特殊目的的编程语言，是一种数据库查询和程序设计语言，用于存取数据以及查询、更新和管理关系数据库系统；同时也是数据库脚本文件的扩展名。结构化查询语言是高级的非过程化编程语言，允许用户在高层数据结构上工作。它不要求用户指定对数据的存放方法，也不需要用户了解具体的数据存放方式，所以具有完全不同底层结构的不">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/Relational_model_concepts.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/SQL语法/"/>
+
+
+
+
+
+  <title>SQL语法 | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/SQL语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SQL语法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/SQL语法/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL语法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><p>结构化查询语言(Structured Query Language)简称SQL，是一种特殊目的的编程语言，是一种数据库查询和程序设计语言，用于存取数据以及查询、更新和管理关系数据库系统；同时也是数据库脚本文件的扩展名。<br>结构化查询语言是高级的非过程化编程语言，允许用户在高层数据结构上工作。它不要求用户指定对数据的存放方法，也不需要用户了解具体的数据存放方式，所以具有完全不同底层结构的不同数据库系统, 可以使用相同的结构化查询语言作为数据输入与管理的接口。结构化查询语言语句可以嵌套，这使它具有极大的灵活性和强大的功能。</p>
+<h3 id="2、RDBMS术语"><a href="#2、RDBMS术语" class="headerlink" title="2、RDBMS术语"></a>2、RDBMS术语</h3><ul>
+<li>数据库：数据库是一些关联表的集合。</li>
+<li>数据表：表示数据的矩阵。在一个数据库中的表开起来像一个简单的电子表格。</li>
+<li>列（column）：一列包含了相同的数据，又称为属性，字段。</li>
+<li>行（row）：是一组相关的数据，又称为一条记录record。</li>
+<li>域（domain）：属性的取值范围。</li>
+<li>主键（Primary Key）：一个或多个字段的组合，填入的数据必须能在本表中唯一表示本行；必须<em>提供数据</em>，即<strong>NOT NULL</strong>。一个表中<strong>有且只有一个主键</strong>。</li>
+<li>唯一键：一个或多个字段的组合，填入的数据必须能在本表中唯一表示本行；<strong>允许为NULL</strong>。一个表中可以存在多个。</li>
+<li>外键（foreign key）：一个表中的某字段可填入的数据取决于另一个表中的主键或唯一键已有的数据。即用于关联两个表。</li>
+<li>检查（check）：字段在一定范围内。</li>
+<li>索引：将表中的一个或多个字段中的数据复制一份另存，并且这些需要按特定次序排序存储。相当于我们一个书前面的目录作用。</li>
+<li>复合件：两个或多个字段组成，相当于主键的作用。<br><img src="http://owatlfstl.bkt.clouddn.com/Relational_model_concepts.png" alt=""></li>
+</ul>
+<p>SQL处理过程<br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-24_210233.png" alt=""></p>
+<h3 id="3数据表类型"><a href="#3数据表类型" class="headerlink" title="3数据表类型"></a>3数据表类型</h3><p>数值型</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小(字节)</th>
+<th>范围（有符号）</th>
+<th>范围（UNSIGNED）</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TINYINT</td>
+<td>1</td>
+<td>-128,127</td>
+<td>0,255</td>
+<td>小整数值</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>2</td>
+<td>-32768,32767</td>
+<td>大整数值</td>
+</tr>
+<tr>
+<td>MEDINUMINT</td>
+<td>3</td>
+<td>-8388608,8388607</td>
+<td>0,16777215</td>
+<td>大整数值</td>
+</tr>
+<tr>
+<td>INT或INTEGER</td>
+<td>4</td>
+<td>-2^4,2^4-1</td>
+<td>0,2^4*2</td>
+<td>大整数值</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>8</td>
+<td>-2^8,2^8-1</td>
+<td>0,2^8*2</td>
+<td>极大整数值</td>
+</tr>
+<tr>
+<td>FLOAT（m,d）</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td>单精度，浮点数值</td>
+</tr>
+<tr>
+<td>DOUBLE(m,d)</td>
+<td>8</td>
+<td></td>
+<td></td>
+<td>多精度浮点数值</td>
+</tr>
+<tr>
+<td>DECIMAL</td>
+<td></td>
+<td></td>
+<td></td>
+<td>小数值</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>DECIMAL的解释：Decimal(n,m)表示数值中共有n位数，其中整数n-m位，小数m位。例：decimal(10,6)，数值中共有10位数，其中整数占4位，小数占6位。</p>
+</blockquote>
+<p>日期和时间类型</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小（字节）</th>
+<th>范围</th>
+<th>格式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DATE</td>
+<td>3</td>
+<td>1000-01-01/9999-12-31</td>
+<td>YYYY-MM-DD</td>
+<td>日期值</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>3</td>
+<td>-838:59:59/838:59:59</td>
+<td>HH:MM:SS</td>
+<td>时间值或持续时间</td>
+</tr>
+<tr>
+<td>YEAR</td>
+<td>1</td>
+<td>1901/2155</td>
+<td>YYYY</td>
+<td>年份</td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>8</td>
+<td></td>
+<td>YYYY-MM-DD HH:MM:SS</td>
+<td>混合日期和时间值</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>4</td>
+<td>1970-01-01 00:00:00/2037年某时</td>
+<td>YYYYMMDDHHMMSS</td>
+<td>时间戳</td>
+</tr>
+</tbody>
+</table>
+<p>若一个字段定义为timestamp，这个字段的时间数据随其他字段修改的时候自动更新，这个数据的字段可以存放这条记录最后被修改的时间。</p>
+<p>字符串类型</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小(字节)</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CHAR</td>
+<td>0-255</td>
+<td>定长字符串</td>
+</tr>
+<tr>
+<td>VARCHAR</td>
+<td>0-65535</td>
+<td>变长字符串</td>
+</tr>
+<tr>
+<td>TINYBLOB</td>
+<td>0-255</td>
+<td>不超过255个字符的二进制字符串</td>
+</tr>
+<tr>
+<td>TINYTEXT</td>
+<td>0-255</td>
+<td>短文本字符串，可变长度</td>
+</tr>
+<tr>
+<td>BLOB(binary large object</td>
+<td>0-65535</td>
+<td>二进制形式的长文本数据，可变长度</td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>0-65535</td>
+<td>场文本数据可变长度</td>
+</tr>
+<tr>
+<td>MEDIUMBLOB</td>
+<td>0,2^24-1</td>
+<td>二进制中等长度文本数据，可变长度</td>
+</tr>
+<tr>
+<td>BINARY（M）</td>
+<td>0，M</td>
+<td>固定长度，可存二进制或字符，</td>
+</tr>
+<tr>
+<td>VARBINARY(M)</td>
+<td>0，M</td>
+<td>可变长度，可存二进制或字符</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>char和varchar区别</p>
+</blockquote>
+<ul>
+<li>char(n)若存入字符数小于n，则以空格补充其后，查询之时再将空格去掉。所以char类型存储的字符末尾不能有空格。</li>
+<li>char（n）固定长度，不管存入几个字符，都将占用n个字节；varchar（n）是存入的实际字符数+1个字节。真正存入的数据位实际字节-1。会使用1-2个字节来存储值长度。<br>-char类型的字符串检索速度比varchar速度快</li>
+</ul>
+<blockquote>
+<p>varchar和text区别</p>
+</blockquote>
+<ul>
+<li>varchar可指定n，text不能指定n；内部存储varchar是存入的实际字节数+1个字节，text是实际字节数+2的字节。</li>
+<li>text类型不能有默认值</li>
+<li>varchar可直接创建索引；text创建索引要指定前多少个字符。varchar查询速度比text快。</li>
+</ul>
+<blockquote>
+<p>BOLB与TEXT区别</p>
+</blockquote>
+<ul>
+<li>TEXT以文本方式存储，英文存储区分大小写；而BLOB是以二进制方式存储，不分大小写。</li>
+<li>BLOB存储的数据只能整体读出。</li>
+<li>TEXT可以指定字符集;BLOB不用指定字符集。</li>
+</ul>
+<blockquote>
+<p>如何正确的数据类型？</p>
+</blockquote>
+<p>①尽量使用可正确存储数据的最小数据类型</p>
+<p>②简单数据类型的操作通常需要更少的CPU周期</p>
+<p>③尽量避免NULL，包含NULL的列对MySQL更难优化</p>
+<p>修饰符类型</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NULL</td>
+<td>空</td>
+</tr>
+<tr>
+<td>NOT NULL</td>
+<td>确保不能有NULL值</td>
+</tr>
+<tr>
+<td>DEFAULT</td>
+<td>提供未指定时为列的默认值</td>
+</tr>
+<tr>
+<td>PRIMARY KEY</td>
+<td>唯一表示数据库表中的每一行</td>
+</tr>
+<tr>
+<td>FOREIGN KEY</td>
+<td>唯一表示热河其他数据库表中的行</td>
+</tr>
+<tr>
+<td>UNIQUE KEY</td>
+<td>确保在一列中所有的值是唯一的</td>
+</tr>
+<tr>
+<td>CHARACTER SET name</td>
+<td>指定一个字符集</td>
+</tr>
+<tr>
+<td>ATUO_INCREMENT</td>
+<td>自动递增，适用于整数类型</td>
+</tr>
+<tr>
+<td>UNSIGNED</td>
+<td>无符号</td>
+</tr>
+<tr>
+<td>CHECK</td>
+<td>确保列中的所有值满足一定的条件</td>
+</tr>
+</tbody>
+</table>
+<p>删除约束的方法<br>ALTER TABLE column_name DROP CONSTRAINT PK;</p>
+<p>###4 SQL通配符</p>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%</td>
+<td>替代一个或多个字符</td>
+</tr>
+<tr>
+<td>_</td>
+<td>仅替代一个字符</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>中括号中任意单一字符</td>
+</tr>
+<tr>
+<td>[^]或[!]</td>
+<td>除中括号中任意单一字符</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：SQL通配符必须跟LIKE运算符一起使用</strong></p>
+<p>###5、 SQL算数运算符</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>加法</td>
+</tr>
+<tr>
+<td>-</td>
+<td>减法</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘法</td>
+</tr>
+<tr>
+<td>/</td>
+<td>除法</td>
+</tr>
+<tr>
+<td>%</td>
+<td>取模，相当于取余数</td>
+</tr>
+</tbody>
+</table>
+<p>###6、SQL比较运算符</p>
+<p>=、!=、 &lt;&gt;、 &gt;、 &lt;、 &gt;=、 &lt;=、 !&lt;、 !&gt;</p>
+<p>###7、SQL逻辑运算符</p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ALL</td>
+<td>用来在另一个值设定比较值的所有值</td>
+</tr>
+<tr>
+<td>AND</td>
+<td>运行多个条件在SQL语句中，存在WHERE子句中</td>
+</tr>
+<tr>
+<td>ANY</td>
+<td>用于根据条件在列表中的值进行标胶的任何应用值</td>
+</tr>
+<tr>
+<td>BETWEEN…AND</td>
+<td>用于搜索是在一组的那个值，给定最小值和最大值</td>
+</tr>
+<tr>
+<td>EXISTS</td>
+<td>用于搜索中指定的表，以满足某些标准的存在</td>
+</tr>
+<tr>
+<td>IN</td>
+<td>用于一个值进行比较，以已被指定的文字值的列表</td>
+</tr>
+<tr>
+<td>LIKE</td>
+<td>用来标胶使用通配符运算符相似的值</td>
+</tr>
+<tr>
+<td>NOT</td>
+<td>取反</td>
+</tr>
+<tr>
+<td>OR</td>
+<td>用来多个条件子句结合起来的SQL语句</td>
+</tr>
+<tr>
+<td>IS NULL</td>
+<td>用来比较一个NULL的值</td>
+</tr>
+<tr>
+<td>UNIQUE</td>
+<td>搜索指定表的每一行的唯一性</td>
+</tr>
+</tbody>
+</table>
+<p>###8、SQL Alias<br>格式：SELECT column_names FROM table_name AS alias_name</p>
+<p>###9、SQL表达式</p>
+<ul>
+<li>SQL 布尔表达式</li>
+</ul>
+<p>语法：SELECT column_name1 column_name2 column_name3 FROM table_name WHERER SINGLE VALUE MATCHTING EXPRESSION;</p>
+<ul>
+<li>SQL 数字表达式</li>
+</ul>
+<p>语法：SELECT numerical_expression as OPERATION_NAME [FROM table_name WHERE CONDITION];</p>
+<ul>
+<li>SQL 日期表达式</li>
+</ul>
+<p>SELECT CURRENT_TIMESTAMP;  #显示当前系统的时间值</p>
+<p>SELECT GETDATE(); #显示时间</p>
+<p>###10、SQL 索引<br>索引是数据库的搜索引擎使用，以加快数据检索特定的查找表，是一个指向表中的数据。相当于一本书的目录，便于快速查找，对数据没有影响。缺点：如果UPDATE和INSERT会减慢数据的输入。</p>
+<p><strong>注意：索引是唯一的，索引防止在列或者有一个索引重复条目。</strong></p>
+<p>语法：CREATE INDEX index_name ON table_name;</p>
+<ul>
+<li>单列索引：是一个基于只有创建表列。</li>
+</ul>
+<p>语法：CREATE INDEX index_name ON table_name （colum_name）;</p>
+<ul>
+<li>唯一索引:不仅用于性能，而且要求数据的完整性。</li>
+</ul>
+<p>语法：CREATE UNIQUE INDEX index_name ON table_name （column_name）;</p>
+<ul>
+<li>组合索引：两个或多个索引</li>
+</ul>
+<p>语法：CREATE INDEX index_name ON table_name （column_name1，column_name2..）;</p>
+<p>###11、SQL视图<br>SQL视图（View）是SQL语句结果集的可视化表。视图中的字段是来自一个或多个数据库中真实表中的字段。</p>
+<p><strong>注意：数据库的设计不会受到视图中的函数、where或join语句的影响。</strong></p>
+<p>语法：CREATE VIEW view_name AS SELECT column_name（s） FROM table_name WHERE [CONDITION];</p>
+<p>WHIT CHECK OPTION 是CREATE VIEW 语句选项。目的是为了确保所有更新和插入满足视图定义的条件。</p>
+<p>示例：CREATE VIEW testView AS  SELECT name，age FROM testtable WHERE age IS NOT NULL  WITH CHECK OPTION;  #WITH CHECK OPTION  拒绝任何age为NULL值的行。</p>
+<p>那么是不是这样我们就可以随便更新视图了呢？那可不一定哦，更新视图是有一定条件的：</p>
+<ul>
+<li>SELECT子句不包含关键字DISTINCT.</li>
+<li>SELECT子句不包含汇总函数。</li>
+<li>SELECT子句不包含集合函数。</li>
+<li>SELECT子句不能包含集合运算符</li>
+<li>SELECT子句不能包含一个ORDER BY 子句。</li>
+<li>FROM子句中不能包含多个表。</li>
+<li>WHERE子句中不能包含子查询。</li>
+<li>查询不包含GROUP BY 或HAVING.</li>
+<li>计算列无法更新</li>
+<li>从基表中的所有NOT  NULL 列必须包含在视图。</li>
+</ul>
+<p>看看是不是不是随便能更新视图能。好忧伤。。。</p>
+<p>示例：UPDATE testView SET age = 20 WHERE name ‘xiaomian’ ;</p>
+<p>###12、SQL排序<br>语法：SELECT column-list FROM table_name [WHERE CONDITION] [ORDER BY column1,column2..][ASC|DESC];</p>
+<p>###13SQL约束<br>事物就是对数据库执行的工作单元。比如说，在人员管理系统中，你删除一个人员，你即需要删除人员的基本资料，也要删除和该人员相关的信息，如信箱，文章等等，这样，这些数据库操作语句就构成一个事务！</p>
+<blockquote>
+<p>事物的特性<br>事务是必须满足4个条件（ACID）： Atomicity（原子性）、Consistency（稳定性）、Isolation（隔离性）、Durability（可靠性）</p>
+</blockquote>
+<ul>
+<li><p>事务的原子性：确保工作单元中的所有操作都成功完成。否则，该事物被终止的故障点，操作回滚到操作之前的状态。</p>
+</li>
+<li><p>一致性：确保数据库正确后成功提交事物更改状态。</p>
+</li>
+<li><p>隔离性：事务独立运行。一个事务处理后的结果，影响了其他事务，那么其他事务会撤回。事务的100%隔离，需要牺牲速度。</p>
+</li>
+<li><p>可靠性：软、硬件崩溃后，InnoDB数据表驱动会利用日志文件重构修改。可靠性和高速度不可兼得， innodb_flush_log_at_trx_commit 选项 决定什么时候把事务保存到日志里。</p>
+</li>
+</ul>
+<p>控制事物使用的命令：</p>
+<ul>
+<li>COMMIT :保存修改</li>
+<li>ROLLBACK:回滚更改</li>
+<li>SAVEPOINT:回滚事物组创建点</li>
+<li>SET TRANSACTION:用来设置事物的隔离级别</li>
+</ul>
+<p>##14、 SQL命令分类<br><strong>DDL（Data Define Language）</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CREATE</td>
+<td>创建一个表、数据库、表的视图</td>
+</tr>
+<tr>
+<td>ALTER</td>
+<td>修改现有数据库对象</td>
+</tr>
+<tr>
+<td>DROP</td>
+<td>删除整个表、数据库中的表或其他对象或视图</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DML（Data Manager Language）</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INSERT</td>
+<td>插入记录</td>
+</tr>
+<tr>
+<td>UPDATE</td>
+<td>修改记录</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除记录</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DCL（Date  Control Language）</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRANT</td>
+<td>授予用户权限</td>
+</tr>
+<tr>
+<td>REVOKE</td>
+<td>撤销授予用户的权限</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DQL（Date Query Language）</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SELECT</td>
+<td>从一张表或多张表中检索特定的记录</td>
+</tr>
+</tbody>
+</table>
+<p>###、15、SQL语言规范</p>
+<ul>
+<li>在数据库系统中，SQL语句不区分大小写（建议使用大写），但在字符串中常量区分大小写。</li>
+<li>SQL语句中可以单行书写，并以“；”结尾。</li>
+<li>在SQL中关键词不能跨多行或简写。</li>
+<li>子句通常独立运行，便于管理，提高可读性。</li>
+<li>SQL注释标准：/<em>需要注释的内容</em>/    或 –需要注释的内容</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sql/" rel="tag"># sql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/TCP_wrappers/" rel="next" title="TCP_wrappers">
+                <i class="fa fa-chevron-left"></i> TCP_wrappers
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/Redis集群/" rel="prev" title="Redis集群">
+                Redis集群 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL"><span class="nav-number">1.</span> <span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、概念"><span class="nav-number">1.1.</span> <span class="nav-text">1、概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、RDBMS术语"><span class="nav-number">1.2.</span> <span class="nav-text">2、RDBMS术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3数据表类型"><span class="nav-number">1.3.</span> <span class="nav-text">3数据表类型</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

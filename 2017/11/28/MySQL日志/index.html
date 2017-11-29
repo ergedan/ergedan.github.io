@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="日志，mysql," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="##mysql日志 mysql日志分类 查询日志：general_log 慢查询日志：log_slow_queries 错误日志：log_error，log_warnings 二进制日志：binlog 中继日志：relay_log 事物日志：innodb_log  查询日志记录查询语句日志存储位置： 文件：file 表">
+<meta name="keywords" content="日志，mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL日志">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/MySQL日志/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="##mysql日志 mysql日志分类 查询日志：general_log 慢查询日志：log_slow_queries 错误日志：log_error，log_warnings 二进制日志：binlog 中继日志：relay_log 事物日志：innodb_log  查询日志记录查询语句日志存储位置： 文件：file 表：table（mysql.general_log） 选项： general_lo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-10_192945.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-10_193324.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-10_195347.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-10_200114.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-10_202724.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-10_202858.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-10_210609.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-10_210958.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-10_211309.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-10_211815.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-10_212021.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-10_212302.jpg">
+<meta property="og:updated_time" content="2017-11-29T09:32:57.678Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL日志">
+<meta name="twitter:description" content="##mysql日志 mysql日志分类 查询日志：general_log 慢查询日志：log_slow_queries 错误日志：log_error，log_warnings 二进制日志：binlog 中继日志：relay_log 事物日志：innodb_log  查询日志记录查询语句日志存储位置： 文件：file 表：table（mysql.general_log） 选项： general_lo">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-10_192945.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/MySQL日志/"/>
+
+
+
+
+
+  <title>MySQL日志 | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/MySQL日志/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL日志</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/MySQL日志/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL日志</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##mysql日志</p>
+<h3 id="mysql日志分类"><a href="#mysql日志分类" class="headerlink" title="mysql日志分类"></a>mysql日志分类</h3><ul>
+<li>查询日志：general_log</li>
+<li>慢查询日志：log_slow_queries</li>
+<li>错误日志：log_error，log_warnings</li>
+<li>二进制日志：binlog</li>
+<li>中继日志：relay_log</li>
+<li>事物日志：innodb_log</li>
+</ul>
+<h3 id="查询日志"><a href="#查询日志" class="headerlink" title="查询日志"></a>查询日志</h3><p>记录查询语句日志存储位置：</p>
+<pre><code>文件：file
+表：table（mysql.general_log）
+</code></pre><p>选项：</p>
+<pre><code>general_log={ON|OFF}：是否开启日志查询功能
+general_log_file=HOSTNAME.log：如果日志以文件存储，此时指定存放日志的文件；并且日志文件名称以主机名.log命名
+log_output={FILE|TABLE|NONE}：指定日志输出的格式
+</code></pre><p><strong>注意：查询日志一般不建议开启。</strong></p>
+<p><strong>示例：</strong></p>
+<blockquote>
+<p>基于file存储</p>
+</blockquote>
+<h4 id="查看mysql是否开启日志存储功能"><a href="#查看mysql是否开启日志存储功能" class="headerlink" title="查看mysql是否开启日志存储功能"></a>查看mysql是否开启日志存储功能</h4><pre><code>MariaDB [(none)]&gt; SHOW VARIABLES LIKE &apos;general_log%&apos;;
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-10_192945.jpg" alt=""></p>
+<h4 id="开启日志存储功能并以file存储"><a href="#开启日志存储功能并以file存储" class="headerlink" title="开启日志存储功能并以file存储"></a>开启日志存储功能并以file存储</h4><pre><code>MariaDB [(none)]&gt; SHOW VARIABLES LIKE &apos;log_output&apos;; #查看以日志存储以什么形式存储
+</code></pre><p>如果没有以file格式存储则通过如下方式开启即可</p>
+<pre><code>MariaDB [hellodb]&gt; SET @@global.log_output=FILE;
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-10_193324.jpg" alt=""></p>
+<pre><code>MariaDB [(none)]&gt; SET @@global.general_log=ON;  #开启查询日志存储功能
+</code></pre><blockquote>
+<p>测试是否我们执行操作时记录日志中</p>
+</blockquote>
+<pre><code>MariaDB [hellodb]&gt; INSERT INTO students (StuID,Name,Age,Gender,ClassID,TeacherID) VALUES (26,&quot;xiao li&quot;,25,&quot;F&quot;,5,24);
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-10_195347.jpg" alt=""></p>
+<blockquote>
+<p>基于table存储查询日志</p>
+</blockquote>
+<h4 id="设置为以table存储"><a href="#设置为以table存储" class="headerlink" title="设置为以table存储"></a>设置为以table存储</h4><pre><code>MariaDB [hellodb]&gt; SET @@global.log_output=&quot;TABLE&quot;; 
+
+MariaDB [hellodb]&gt; SHOW VARIABLES LIKE &apos;log_output&apos;;    #查询是否设置成功
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| log_output    | TABLE |
++---------------+-------+
+</code></pre><h4 id="测试是否已经启动table记录查询日志"><a href="#测试是否已经启动table记录查询日志" class="headerlink" title="测试是否已经启动table记录查询日志"></a>测试是否已经启动table记录查询日志</h4><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-10_200114.jpg" alt=""></p>
+<pre><code>event_time：时间发生时间
+user_host：用户和主机
+thread_id：线程ID
+server_id：服务ID
+command_type：命令类型
+argument：参数
+</code></pre><h4 id="慢查询日志"><a href="#慢查询日志" class="headerlink" title="慢查询日志"></a>慢查询日志</h4><p>慢查询：运行时间超出指定时长的查询</p>
+<p>选项：</p>
+<pre><code>long_query_time：慢查询等待时长
+log_slow_queries={ON|OFF}：日志是否开启慢查询功能
+slow_query_log={ON|OFF}：是否开启慢查询功能
+slow_query_log_file：慢查询文件
+log_output={FILE|TABLE|NONE}：慢查询类型
+log_slow_filter=admin,filesort,filesort_on_disk,full_join,full_scan,query_cache,query_cache_miss,tmp_table,tmp_table_on_disk 慢查询过滤
+log_slow_rate_limit：慢查询速率限制
+log_slow_verbosity
+</code></pre><p>查看默认值</p>
+<pre><code>MariaDB [mysql]&gt; SHOW VARIABLES LIKE &apos;long_query_time&apos;;
+
++-----------------+-----------+
+| Variable_name   | Value     |
++-----------------+-----------+
+| long_query_time | 10.000000 |
++-----------------+-----------+
+</code></pre><p>存储位置</p>
+<pre><code>文件：FILE
+表：TABLE,mysql.slog_log
+</code></pre><h3 id="错误日志"><a href="#错误日志" class="headerlink" title="错误日志"></a>错误日志</h3><p>错误日志记录如下几类信息：</p>
+<pre><code>（1）mysqld启动和关闭过程中输出的信息
+（2）mysqld运行中产生的错误信息
+（3）event scheduler运行时产生的信息，相当于周期性计划
+（4）主从复制架构中，从服务器复制线程启动时产生的日志
+</code></pre><p>选项：</p>
+<pre><code>log_error=/var/log/mariadb/mariadb.log|log  #是否开启错误日志
+log_warnings={ON|OFF}：是否开启警告日志
+</code></pre><p><strong>示例：</strong></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-10_202724.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-10_202858.jpg" alt=""></p>
+<p><strong>建议：开启错误日志功能，方便以后排错</strong></p>
+<h3 id="二进制日志"><a href="#二进制日志" class="headerlink" title="二进制日志"></a>二进制日志</h3><p>用于记录引起数据改变或存在引起数据改变的潜在可能性的语句（STATEMENT）或改变后的结果（ROW）,也可能是二者混合。</p>
+<p>作用：实现重放，恢复到某个时间点。</p>
+<p>选项：</p>
+<pre><code>binlog_format={STATEMENT|ROW|MIXED} #二进制日志格式
+log_bin=/PATH/TO/BIN_LOG_FILE   定义二进制日志存放位置
+session.sql_log_bin={ON|OFF}：控制某回话中的”写“操作语句是否会被记录于日志文件中
+max_binlog_size 二进制文件最大容量
+sync_binlog={1|0}：是否同步到磁盘中，binlogs先缓冲在内存中，不会立即写入磁盘中，开启此选项是否直接写入磁盘中。
+</code></pre><p>查看二进制日志文件中的事件语法：</p>
+<pre><code>SHOW BINLOG EVENTS     [IN &apos;log_name&apos;] [FROM pos] [LIMIT [offset,] row_count]
+</code></pre><p><strong>示例：</strong></p>
+<blockquote>
+<p>创建二进制日志存放位置</p>
+</blockquote>
+<p><code>[root@mysql~]#mkdir /app/data/binlog -pv</code></p>
+<p><code>[root@mysql~]#chown -R mysql.mysql /app/data/binlog/</code>  #对mysql用户赋予权限</p>
+<blockquote>
+<p>修改服务端配置文件启动二进制日志功能</p>
+</blockquote>
+<p><code>[root@mysql~]#vim /etc/my.cnf.d/server.cnf</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-10_210609.jpg" alt=""></p>
+<p><strong>注意：二进制文件自动会加后缀</strong></p>
+<blockquote>
+<p>重启mysql服务</p>
+</blockquote>
+<p><code>[root@mysql~]#systemctl restart mariadb</code></p>
+<blockquote>
+<p>查看是否启动二进制功能</p>
+</blockquote>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-10_210958.jpg" alt=""></p>
+<blockquote>
+<p>测试是否已经可以使用二进制日志功能</p>
+</blockquote>
+<p>执行一些语句</p>
+<pre><code>MariaDB [hellodb]&gt; SELECT * FROM courses;
+</code></pre><p>查看是否生成二进制文件</p>
+<p><code>[root@mysql/app/data/binlog]#ls</code></p>
+<pre><code>master-log.000001  master-log.index
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-10_211309.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-10_211815.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-10_212021.jpg" alt=""></p>
+<blockquote>
+<p>查看二进制内容方法</p>
+</blockquote>
+<p><code>[root@mysql/app/data/binlog]#mysqlbinlog master-log.000001</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-10_212302.jpg" alt=""></p>
+<pre><code>事件的起始位置：# at NUMBER
+事件发生的日期时间：#171110 21:07:44
+事件发生的服务器ID：server id 1 
+事件的结束位置： end_log_pos 427
+事件的类型：Query
+事件发生时所在服务器执行此时间的线程ID：thread_id=2
+语句的时间戳与将其写入二进制日志文件中的时间差：exec_time=0
+错误代码：error_code=0
+设定时间发生的时间戳：SET TIMESTAMP=1510320590/*!*/;   
+事件内容
+</code></pre><h3 id="中继日志："><a href="#中继日志：" class="headerlink" title="中继日志："></a>中继日志：</h3><p>从服务器上记录下来从主服务器的二进制日志文件同步过来的事件</p>
+<h3 id="事物日志："><a href="#事物日志：" class="headerlink" title="事物日志："></a>事物日志：</h3><p>事物型存储引擎innodb用于保证事物特性的日志文件</p>
+<p><strong>注意：如果我们使用二进制日志回放，建议关闭此时会话记录二进制日志。</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/日志，mysql/" rel="tag"># 日志，mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/MySQL引擎/" rel="next" title="MySQL引擎">
+                <i class="fa fa-chevron-left"></i> MySQL引擎
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/MySQL工作方式/" rel="prev" title="MySQL工作方式">
+                MySQL工作方式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql日志分类"><span class="nav-number">1.</span> <span class="nav-text">mysql日志分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询日志"><span class="nav-number">2.</span> <span class="nav-text">查询日志</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看mysql是否开启日志存储功能"><span class="nav-number">2.1.</span> <span class="nav-text">查看mysql是否开启日志存储功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开启日志存储功能并以file存储"><span class="nav-number">2.2.</span> <span class="nav-text">开启日志存储功能并以file存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置为以table存储"><span class="nav-number">2.3.</span> <span class="nav-text">设置为以table存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试是否已经启动table记录查询日志"><span class="nav-number">2.4.</span> <span class="nav-text">测试是否已经启动table记录查询日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#慢查询日志"><span class="nav-number">2.5.</span> <span class="nav-text">慢查询日志</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误日志"><span class="nav-number">3.</span> <span class="nav-text">错误日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二进制日志"><span class="nav-number">4.</span> <span class="nav-text">二进制日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中继日志："><span class="nav-number">5.</span> <span class="nav-text">中继日志：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事物日志："><span class="nav-number">6.</span> <span class="nav-text">事物日志：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Xtrabackup，mysql," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="xtrabackup由percona提供、开源工具，支持对InnoDB做热备，物理备份工具。 特点： 物理备份；速率快、可靠； 备份完成后自动校验备份结果是否可用 还原速度快  使用格式[innobackupex [--defaults-file=#] --backup | innobackupex [--defaul">
+<meta name="keywords" content="Xtrabackup，mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xtrabackup">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/Xtrabackup/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="xtrabackup由percona提供、开源工具，支持对InnoDB做热备，物理备份工具。 特点： 物理备份；速率快、可靠； 备份完成后自动校验备份结果是否可用 还原速度快  使用格式[innobackupex [--defaults-file=#] --backup | innobackupex [--defaults-file=#] --prepare] [OPTIONS] https://">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-11_184716.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-11_200331.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-11_200530.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-11_201808.jpg">
+<meta property="og:updated_time" content="2017-11-29T09:38:34.558Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xtrabackup">
+<meta name="twitter:description" content="xtrabackup由percona提供、开源工具，支持对InnoDB做热备，物理备份工具。 特点： 物理备份；速率快、可靠； 备份完成后自动校验备份结果是否可用 还原速度快  使用格式[innobackupex [--defaults-file=#] --backup | innobackupex [--defaults-file=#] --prepare] [OPTIONS] https://">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-11_184716.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/Xtrabackup/"/>
+
+
+
+
+
+  <title>Xtrabackup | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Xtrabackup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Xtrabackup</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/Xtrabackup/" itemprop="url" rel="index">
+                    <span itemprop="name">Xtrabackup</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="xtrabackup"><a href="#xtrabackup" class="headerlink" title="xtrabackup"></a>xtrabackup</h2><p>由percona提供、开源工具，支持对InnoDB做热备，物理备份工具。</p>
+<h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><ul>
+<li>物理备份；速率快、可靠；</li>
+<li>备份完成后自动校验备份结果是否可用</li>
+<li>还原速度快</li>
+</ul>
+<h3 id="使用格式"><a href="#使用格式" class="headerlink" title="使用格式"></a>使用格式</h3><pre><code>[innobackupex [--defaults-file=#] --backup | innobackupex [--defaults-file=#] --prepare] [OPTIONS]
+</code></pre><p><a href="https://www.percona.com/software/mysql-database/percona-server" target="_blank" rel="noopener">https://www.percona.com/software/mysql-database/percona-server</a></p>
+<p><strong>innobackupex命令</strong></p>
+<p>使用innobackupex备份时，其会调用xtrabackup备份所有的InnoDB表，复制所有关于表结构定义相关文件（.frm）、以及MyISAM、MERGE、CSV和ARCHIVE表相关文件，同时还会备份触发器和数据库配置信息相关文件。这些文件会被保存至一个以时间命名的目录中。</p>
+<blockquote>
+<p>在备份的同时，innobackupex还会备份目录中创建如下文件：</p>
+</blockquote>
+<ul>
+<li><p>xtrabackup_checkpoints</p>
+<p>  备份类型（如完全或增量）、备份状态（如是否已经为prepared状态）和LSN（日志序列号）范围信息<br>  每个InnoDB页（通常为16k大小）都会包含一个日志序列号（LSN）。LSN是整个数据库系统的系统版本号，每个页面相关的LSN能够表明此页面时如何发生改变的。</p>
+</li>
+<li><p>xtrabackup_binlog_info</p>
+<p>  mysql服务器当前正在使用的二进制日志文件及至备份这一刻为止二进制日志事件的位置</p>
+</li>
+<li><p>xtrabackup_binlog_pos_innodb</p>
+<p>  二进制日志文件及用于InnoDB或XtraDB表的二进制日志文件的当前position</p>
+</li>
+<li><p>xtrabackup_binary</p>
+<p>  备份中用到的xtrabackup的可执行文件</p>
+</li>
+<li><p>backup-my.cnf</p>
+<p>  备份命令用到的配置选项信息</p>
+</li>
+</ul>
+<p>在使用innobackupes进行备份时，还可以使用–no-timestamp选项来阻止命令自动创建一个以时间命名的目录；如此一来，innobackupex命令将会创建一个BCAKUP-DIR目录来存储备份数据。</p>
+<blockquote>
+<p>准备一个完全备份</p>
+</blockquote>
+<p>一般情况下，在备份完成后，数据尚且不能用于恢复操作，因为备份的数据中可能会包含尚未提交的事务或已经提交单尚未同步至数据文件中的事务。因此，此时数据文件仍处理不一致状态。“准备”的主要作用是通过回滚为提交的事务及同步已经提交的事务至数据文件也使得数据文件处于一致性状态。</p>
+<pre><code>--apply-log选项可用于实现上述功能。
+</code></pre><p>使用格式：</p>
+<pre><code>innobackupex --apply-log /PATH/TO/BACKUP-DIR
+</code></pre><p>在实现“准备”过程中，innobackupex通常还可以使用–use-memory选项来指定其可以使用的内存大小，默认为100M。如果有足够的内存使用，可以多划分一些内存给prepare的过程，以提高其完成速度。</p>
+<blockquote>
+<p>从一个完全备份中恢复数据</p>
+</blockquote>
+<p><strong>注意：恢复时不用启动mysql服务</strong></p>
+<p>innobackupex命令的–copy-back选项用于执行恢复操作，其通过复制所有数据相关的文件至mysql服务器的DATADIR目录中来执行恢复过程。innobackupex通过backup-my.cnf来获取DATADIR目录的相关信息。</p>
+<p>使用格式：</p>
+<pre><code>innobackupex --copy-back /PATH/TO/BACKUP-DIR
+</code></pre><p>当数据恢复之DATADIR目录中，需要确保所有数据文件的所属主和所属组均为mysql用户。否则，在启动mysql服务器前事先修改数据文件的所有者和所属组。</p>
+<blockquote>
+<p>使用innobackupex进行增量备份</p>
+</blockquote>
+<p>每个InnoDB的页面都会包含一个LSN信息，每当相关数据发生改变，相关的页面的LSN就会自动增长。这正式InnoDB表可以进行增量备份的基础，即innobackupex通过备份上次完全备份之后发生改变的页面来实现。</p>
+<p>使用格式：</p>
+<pre><code>innobackupex --incremental /BACKUP --incremental-basedir=/BASEDIR
+</code></pre><p>其中BASEDIR指的是完全备份所在的目录，此命令执行结束后，innobackupex命令会在/BACKUP目录中创建一个新的以时间命名的目录以存放所有的增量备份的数据。另外，在执行过增量备份之后再一次进行增量备份时，其–incremental-basedir应该指向上一次的增量备份所在的目录。</p>
+<p><strong>增量备份仅能应用于InnoDB或XtraDB表，对弈MyISAM表而言，执行增量备份时其实进行的完全备份。</strong></p>
+<blockquote>
+<blockquote>
+<p>“准备“增量备份与整理备份不同：</p>
+</blockquote>
+</blockquote>
+<p>（1）需要在每个备份（包括完全和增量备份）上，将已经提交的事物进行“回放”。所有的备份数据将合并到完全备份上</p>
+<p>（2）基于所有的备份将未提交的事物进行“回滚”</p>
+<p>操作步骤</p>
+<pre><code>innobackupex --apply-log --redo-log BASE-DIR
+innobackupex --apply-log --redo-log BASE-DIR --incremental-dir=INCREMENTAL-DIR-1
+innobackupex --apply-log --redo-log BASE-DIR --incremental-dir=INCREMENTAL-DIR-2
+</code></pre><p>其中BASE-DIR指的是完全备份所在的目录，而INCREMENTAL-DIR-1指的是第一次增量备份的目录，INCREMENTAL-DIR-2指的是第二次增量备份目录，其他依次类推，即如果有多次增量备份，每一次都要执行如上操作。</p>
+<blockquote>
+<p>Xtrabackup的“流”及“备份压缩”功能</p>
+</blockquote>
+<p>Xtrabackup对备份的数据文件支持“流”功能，即可以将备份的数据通过STDOUT传输给tar程序进行归档，而不是默认的直接保存至某备份目录中。要使用此功能仅需要使用–stream选项即可。</p>
+<p>使用格式：</p>
+<pre><code>innbackupex --stream=tar /BACKUP |gzip &gt; /BACKUP/`date +F_$H-$M_%M_%S`.tar.gz
+</code></pre><p>也可是使用如下命令将数据备份至某服务器上：</p>
+<pre><code>innobackupex --stream=tar /BACKUP |ssh user@IP &quot;cat - &gt; /backups/`date +%F_%H-%M-%S`.tar&quot;
+</code></pre><p>在执行本地备份时，还可以使用–parallel选项对多个文件进行并行复制。此选项用于指定在复制时启动的线程数目。在实际进行备份时要利用此功能的便利性，也需要启动inndb_file_per_table选项或共享表空间通过innodb_data_file_path选项存储在多个ibdata文件中。对某一数据库的多个文件的复制无法利用此功能。</p>
+<p>使用格式：</p>
+<pre><code>innobackupex --parallel /path/to/backup
+</code></pre><p>同时innobackupex备份数据文件也可以存储值远程主机，使用–remote-host选项</p>
+<p>使用格式：</p>
+<pre><code>innobackupex --remote-host=user@IP /PATH/IN/REMOTE/HOST/TO/BACKUP
+</code></pre><blockquote>
+<p>导入或导出单张表</p>
+</blockquote>
+<p>默认情况下，InnoDB表不能通过直接复制文件的方式在mysql服务器之间进行移植，即便使用了innodb_file_per_table选型。而使用Xtreabackup工具可以实现此种功能，不过此时需要“导出”表的mysql服务器启动innodb_file_per_table选项（严格来说，是要“导出”的表在其创建之前，msyql服务器就启用了innodb_file_per_table选项），并且“导入”表的服务器同时启用了innodb_file_per_table和innodb_expand_import选项。</p>
+<p>（1）导出表</p>
+<p>导出表示在备份的prepare阶段进行的，因此一旦完成备份，就可以在prepare过程中通过–export选项将某表导出了</p>
+<p>使用格式：</p>
+<pre><code>innobackupex --apply-log --export /path/to/bacup
+</code></pre><p>此命令会为每个innodb表的表空间创建一个以.exp结尾的文件，这些以.exp结尾的文件则可以用于导入至其它服务器。</p>
+<p>（2）导入表</p>
+<p>要在mysql 服务器上导入来自于其他服务器的某个innodb表，需要先在当前服务器上创建一个跟原表结构一致的表，而后才能实现将表导入：</p>
+<pre><code>CREATE TABLE mytable ENGING=InnoDB;
+
+然后将此表的表空间删除
+ALTER TABLE mydatabase.mytable DISCARD TABLESPACE;
+
+接下来，将来自于导出表的服务器的mytable表的mytable.ibd和mysqtalbe.exp文件复制到当前服务器的数据目录：
+ALTER TABLE mydatabase.mytable IMPORT TABLESPACE;
+</code></pre><blockquote>
+<p>使用Xtrabackup对数据库进行部分备份</p>
+</blockquote>
+<p>Xtrabackup也可以实现部分备份，即只备份某个或某些指定的数据库或某数据库中的某个或某些表。但要使用此功能，必须启用innodb_file_per_table选项，即每张表保存为一个独立的文件。同时其也不支持–stream选项，即不支持将数据通过管道传输给其他程序进行处理。</p>
+<p>此外，还原部分备份跟还原全部数据备份也有所不同，即不能通过简单地将prepared的部分备份使用–copy-back选项直接复制回数据目录，而是要通过导入表的防线来实现还原。当前，有些情况下，部分备份也可以直接通过–copy-back进行还原，但这种范式还原而来的数据多数会产生数据不一致的文件。</p>
+<p>（1）创建部分备份</p>
+<p>创建部分备份的方式：</p>
+<ul>
+<li>正则表达式（–include）</li>
+</ul>
+<p>要求为其制定要备份的表的完整名称，即如databasesname.tablename</p>
+<pre><code>innobackupex --include ‘^student[.]tb1’ /path/to/backup
+</code></pre><ul>
+<li>枚举表文件（–tables-file）</li>
+</ul>
+<p>此选项的参数需要一个文件名，此文件中每行包含一个要备份的表的完整名称</p>
+<pre><code>echo -e &apos;test.tb1\ntest.tb2&apos; &gt; /tmp/tables.txt
+innobackupex --tables-file=/tmp/tables.txt /path/to/backup
+</code></pre><ul>
+<li>列出要备份的数据库（–databases）</li>
+</ul>
+<p>此选项接受参数参数为数据名，如果要指定多个数据库，彼此间需要以空格隔开；同时，在指定某数据库时，也可以只指定其中的某张表。此外，此选项也可以接受一个文件为参数，文件中每一行为一个要备份的对象。</p>
+<pre><code>innobackupex --databases=“test testb” /path/to/backup
+</code></pre><p>（2）整理（preparing）部分备份</p>
+<p>prepare部分备份的过程类似于导出表的过程，要使用–export选项进行</p>
+<pre><code>innobackupex --apply-log --export /PATH/TO/PARTIAL/BACKUP
+</code></pre><p>此命令执行过程中，innobackupex会调用xtrabackup命令从数据字典中移除缺失的表，因此，会显示出许多关于“表不存在”类的警告信息。同时，也会显示出为备份文件中存在的表创建.exp文件的相关信息。</p>
+<p>（3）还原部分备份</p>
+<p>还原部分备份的过程跟导入表的过程相同。当然，也可以通过直接复制prepared状态的备份直接至数据目录中实现还原，不过此时要求数据目录处于一致状态。</p>
+<p><strong>实战：</strong></p>
+<p>准备两台虚拟器node1和node2</p>
+<blockquote>
+<p>同步时间</p>
+</blockquote>
+<p><code>[root@node1~]#ntpdate 172.18.0.1</code></p>
+<p><code>[root@node2~]#ntpdate 172.18.0.1</code></p>
+<p><code>[root@node1~]#vim /etc/chrony.conf</code>   #node1和node2操作一样</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-11_184716.jpg" alt=""></p>
+<p><code>[root@node1~]#systemctl start chronyd.service</code> #启动服务</p>
+<blockquote>
+<p>基于root密钥认证</p>
+</blockquote>
+<p>node1和node2配置一样</p>
+<p><code>[root@node2~]#ssh-keygen</code></p>
+<p><code>[root@node2~]#ssh-copy-id -i /root/.ssh/id_rsa.pub 192.168.4.61</code></p>
+<blockquote>
+<p>修改hosts文件<br>node1和node2配置相同</p>
+</blockquote>
+<p><code>[root@node1~]#vim /etc/hosts</code></p>
+<pre><code>3 192.168.4.61 node1
+4 192.168.4.62 node2
+</code></pre><blockquote>
+<p>安装数据库和extabackup</p>
+</blockquote>
+<p><code>[root@node1~]#yum install -y mariadb-server</code></p>
+<p><code>[root@node1~]#yum install -y percona-xtrabackup-24-2.4.7-2.el7.x86_64.rpm</code></p>
+<blockquote>
+<p>导入一个数据库并备份</p>
+</blockquote>
+<p><code>[root@node1~]#vim /etc/my.cnf.d/server.cnf</code></p>
+<pre><code> 9 [server]
+10 log_bin = /data/mysql/master-log
+</code></pre><p><code>[root@node1~]#vim /etc/my.cnf</code></p>
+<pre><code>10 innodb_file_per_table
+</code></pre><p><code>[root@node1~]#systemctl start mariadb.service</code></p>
+<p>创建目录并修改权限</p>
+<p><code>[root@node1~]#mkdir /data/mysql -pv</code></p>
+<p><code>[root@node1~]#chown -R mysql.mysql /data/mysql</code></p>
+<p>查看是否真正开启二进制日志功能</p>
+<pre><code>MariaDB [(none)]&gt; SELECT @@global.log_bin;
++------------------+
+| @@global.log_bin |
++------------------+
+|                1 |
++------------------+
+</code></pre><p>关闭当前会话二进制功能，并导入数据库</p>
+<pre><code>MariaDB [(none)]&gt; SET @@session.sql_log_bin=OFF;
+</code></pre><p><code>[root@node1~]#mysql &lt; hellodb.sql</code></p>
+<blockquote>
+<p>使用xtrabackup备份数据库</p>
+</blockquote>
+<pre><code>MariaDB [(none)]&gt; GRANT ALL ON *.* TO &apos;root&apos;@&apos;192.168.4.63&apos; IDENTIFIED BY &apos;123456&apos;; #授权远程用户权限
+</code></pre><p><code>[root@node1~]#innobackupex --user=root --host=localhost /data/mysql/</code>  #使用命令进行备份</p>
+<p><code>[root@node1~]#scp -r /data/mysql/*  node2:/data/mysql</code>   #将备份数据复制到node2中</p>
+<p>在node1中添加一些数据</p>
+<pre><code>MariaDB [hellodb]&gt; INSERT INTO scores (ID,StuID,CourseID,Score) VALUES (16,9,3,95);
+</code></pre><p>在node2进行如下操作：</p>
+<p><code>[root@node2~]#innobackupex --apply-log /data/mysql/2017-11-11_19-45-11/</code>   #将数据进行回滚</p>
+<p><code>[root@node2~]#innobackupex --copy-back /data/mysql/2017-11-11_19-45-11/</code>   #恢复</p>
+<p><code>[root@node2~]#chown -R mysql.mysql /var/lib/mysql/</code>    #修改权限</p>
+<p>此时只是复制了某个时间点的数据，时间点之后的数据没有如何解决？</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-11_200331.jpg" alt=""></p>
+<p>查看时间点是的二进制日志在哪个地方</p>
+<p><code>[root@node2/data/mysql/2017-11-11_19-45-11]#cat xtrabackup_binlog_info</code>  </p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-11_200530.jpg" alt=""></p>
+<p>在node1节点上查看并导出</p>
+<p><code>[root@node1~]#mysqlbinlog -j 8203 /data/mysql/master-log.000001  &gt; change.sql</code></p>
+<p><code>[root@node1~]#scp change.sql node2:/tmp</code></p>
+<p>在node2节点上导入</p>
+<pre><code>MariaDB [hellodb]&gt; SET @@session.sql_log_bin=OFF；   先关闭二进制日志功能
+
+
+MariaDB [hellodb]&gt; \. /tmp/change.sql   #导入
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-11_201808.jpg" alt=""></p>
+<p>####如何实现全量和增量？</p>
+<p>#####在node1节点操作：</p>
+<p><code>[root@node1~]#innobackupex --user=root --host=localhost /data/mysql/</code></p>
+<pre><code>MariaDB [hellodb]&gt; INSERT INTO scores (ID,StuID,CourseID,Score) VALUES (17,10,3,95);    #添加一行记录
+</code></pre><p><code>[root@node1~]#innobackupex --user=root --host=localhost /data/mysql/ --incremental --incremental-basedir=/data/mysql/2017-11-11_20-19-31</code>  #增量备份</p>
+<pre><code>MariaDB [hellodb]&gt; INSERT INTO scores (ID,StuID,CourseID,Score) VALUES (18,11,4,95);    #再次添加一条记录
+</code></pre><p><code>[root@node1~]#innobackupex --user=root --host=localhost /data/mysql/ --incremental --incremental-basedir=/data/mysql/2017-11-11_20-22-16</code>  #再次进行增量备份</p>
+<p>进行准备操作：</p>
+<p><code>[root@node1/data/mysql]#innobackupex --apply-log --redo-only 2017-11-11_20-19-31/</code></p>
+<p><code>[root@node1/data/mysql]#innobackupex --apply-log --redo-only 2017-11-11_20-19-31/ --incremental-dir=/data/mysql/2017-11-11_20-22-16</code>   #第一次增量准备</p>
+<p><code>[root@node1/data/mysql]#innobackupex --apply-log --redo-only 2017-11-11_20-19-31/ --incremental-dir=/data/mysql/2017-11-11_20-24-32</code>   #第二次增量准备</p>
+<p><code>[root@node1/data/mysql]#innobackupex --apply-log /data/mysql/2017-11-11_20-19-31/</code></p>
+<p><code>[root@node1/data/mysql]#mysqlbinlog  -j 8203 master-log.000002 &gt; /root/mysql.sql</code></p>
+<p><code>[root@node1/data/mysql]#scp -r /root/mysql.sql node2:/tmp</code></p>
+<p>将准备好的备份文件复制到node2节点中</p>
+<p><code>[root@node1/data/mysql]#scp -r /data/mysql/2017-11-11_20-19-31/ node2:/data/mysql</code></p>
+<h4 id="在node2节点上操作"><a href="#在node2节点上操作" class="headerlink" title="在node2节点上操作"></a>在node2节点上操作</h4><p><code>[root@node1/data/mysql]#innobackupex --copy-back /data/mysql/2017-11-11_20-19-31/</code> #恢复数据库</p>
+<p><code>[root@node1/data/mysql]#chown -R mysql.mysql /var/lib/mysql/</code>  #修改权限</p>
+<pre><code>MariaDB [hellodb]&gt; \. /tmp/mysql.sql
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Xtrabackup，mysql/" rel="tag"># Xtrabackup，mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/iptables命令/" rel="next" title="iptables命令">
+                <i class="fa fa-chevron-left"></i> iptables命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/Cobbler/" rel="prev" title="Cobbler">
+                Cobbler <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#xtrabackup"><span class="nav-number">1.</span> <span class="nav-text">xtrabackup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特点："><span class="nav-number">1.1.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用格式"><span class="nav-number">1.2.</span> <span class="nav-text">使用格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在node2节点上操作"><span class="nav-number">1.2.1.</span> <span class="nav-text">在node2节点上操作</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
