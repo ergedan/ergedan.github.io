@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="puppet," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="puppet是一种多系统集中配置管理工具，使用自有的puppet描述语言，可管理配置文件、用户、cron、任务等。puppet设计目的是简化对这些资源的管理以及妥善处理资源间的依赖关系。 一、Puppet介绍1、puppet工作模型 单机模型：手动应用清单 puppet apply   master/agent：由ag">
+<meta name="keywords" content="puppet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="puppet资源">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/puppet资源/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="puppet是一种多系统集中配置管理工具，使用自有的puppet描述语言，可管理配置文件、用户、cron、任务等。puppet设计目的是简化对这些资源的管理以及妥善处理资源间的依赖关系。 一、Puppet介绍1、puppet工作模型 单机模型：手动应用清单 puppet apply   master/agent：由agent周期性地向Master请求清单并自动应用于本地。 puppet mast">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-25_153400.jpg">
+<meta property="og:updated_time" content="2017-11-30T00:49:19.427Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="puppet资源">
+<meta name="twitter:description" content="puppet是一种多系统集中配置管理工具，使用自有的puppet描述语言，可管理配置文件、用户、cron、任务等。puppet设计目的是简化对这些资源的管理以及妥善处理资源间的依赖关系。 一、Puppet介绍1、puppet工作模型 单机模型：手动应用清单 puppet apply   master/agent：由agent周期性地向Master请求清单并自动应用于本地。 puppet mast">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-25_153400.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/puppet资源/"/>
+
+
+
+
+
+  <title>puppet资源 | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/puppet资源/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">puppet资源</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维工具/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化运维工具</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维工具/puppet/" itemprop="url" rel="index">
+                    <span itemprop="name">puppet</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维工具/puppet/puppet资源/" itemprop="url" rel="index">
+                    <span itemprop="name">puppet资源</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-25_153400.jpg" alt=""></p>
+<p>puppet是一种多系统集中配置管理工具，使用自有的puppet描述语言，可管理配置文件、用户、cron、任务等。puppet设计目的是简化对这些资源的管理以及妥善处理资源间的依赖关系。</p>
+<h2 id="一、Puppet介绍"><a href="#一、Puppet介绍" class="headerlink" title="一、Puppet介绍"></a>一、Puppet介绍</h2><h3 id="1、puppet工作模型"><a href="#1、puppet工作模型" class="headerlink" title="1、puppet工作模型"></a>1、puppet工作模型</h3><ul>
+<li>单机模型：手动应用清单<ul>
+<li>puppet apply</li>
+</ul>
+</li>
+<li>master/agent：由agent周期性地向Master请求清单并自动应用于本地。<ul>
+<li>puppet master</li>
+<li>puppet agent</li>
+</ul>
+</li>
+</ul>
+<h3 id="2、puppet资源"><a href="#2、puppet资源" class="headerlink" title="2、puppet资源"></a>2、puppet资源</h3><h4 id="（1）puppet从三个维度对资源进行抽象："><a href="#（1）puppet从三个维度对资源进行抽象：" class="headerlink" title="（1）puppet从三个维度对资源进行抽象："></a>（1）puppet从三个维度对资源进行抽象：</h4><ul>
+<li>相似的资源被抽象成同一个资源“类型”，如程序包资源、用户资源及服务资源等；</li>
+<li>将资源属性或状态的描述与其实现方式剥离开来，如仅说明安装一个程序包而不用关心起具体是通过什么方式实现；</li>
+<li>仅描述资源的目标状态，即期望其实现的结果，而不是其具体过程。如确定nginx运行起来而不是具体描述为运行nginx命令将其启动。</li>
+</ul>
+<p>它们统称为puppet资源抽象派（RAL）；RAL由type和provider组成。</p>
+<h4 id="（2）puppet资源定义"><a href="#（2）puppet资源定义" class="headerlink" title="（2）puppet资源定义"></a>（2）puppet资源定义</h4><p>向资源类型的属性赋值来实现，可称为资源类型实例化。定义了资源示例的文件即清单（manifest）。</p>
+<p>type{‘title’<br>            attribute1 =&gt; value1<br>            attribute2 =&gt; value2<br>            …<br>}<br><strong>注意：type必须使用小写字母；title是一个字符串并且在同一类型必须唯一。</strong></p>
+<h4 id="（3）资源属性中三个特殊属性"><a href="#（3）资源属性中三个特殊属性" class="headerlink" title="（3）资源属性中三个特殊属性"></a>（3）资源属性中三个特殊属性</h4><ul>
+<li>Namevar，可以简称为name，定义title，name可以使用。</li>
+<li>ensure，资源的目标状态</li>
+<li>Provider，指明资源的管理接口，如果不指定系统选择最优的安装方式。</li>
+</ul>
+<h4 id="（4）puppet查询资源"><a href="#（4）puppet查询资源" class="headerlink" title="（4）puppet查询资源"></a>（4）puppet查询资源</h4><p>puppet describe</p>
+<p>USAGE:</p>
+<pre><code>puppet describe [-h|--help] [-s|--short] [-p|--providers] [-l|--list] [-m|--meta]
+
+    --help 帮助信息
+    --list 列出所有类型
+    --meta 列出所有元数据
+    --short 仅仅列出参数没有详细信息
+</code></pre><h4 id="（5）资源引用"><a href="#（5）资源引用" class="headerlink" title="（5）资源引用"></a>（5）资源引用</h4><p>如果我们在某个资源中定义需要引用别的资源时，这时就需要想想如何引用资源了。</p>
+<p>格式</p>
+<pre><code>Type[‘title’]
+</code></pre><p><strong>注意：资源引用时，类型的首字母必须大写。</strong></p>
+<h4 id="（6）资源定义依赖关系"><a href="#（6）资源定义依赖关系" class="headerlink" title="（6）资源定义依赖关系"></a>（6）资源定义依赖关系</h4><p>在定义资源时，某个资源可能依赖另外某几个资源，这时就需要依赖别的资源；就像使用yum安装一样，自动解决了依赖关系；只不过这里是我们手动自定而已。</p>
+<h5 id="依赖关系方式"><a href="#依赖关系方式" class="headerlink" title="依赖关系方式"></a>依赖关系方式</h5><ul>
+<li>before<br>#<br>  type{‘A’<pre><code>attribute1 =&gt; value1
+attribute2 =&gt; value2
+before =&gt; Type[&apos;B&apos;]
+</code></pre>  }</li>
+</ul>
+<p>相当于资源类型A在资源类型B完成。</p>
+<ul>
+<li>require<br>#<br>  type{‘A’<pre><code>attribute1 =&gt; value1
+attribute2 =&gt; value2
+require =&gt; Type[&apos;B&apos;]
+</code></pre>  }</li>
+</ul>
+<p>相当资源类型A在资源类型B之后完成。</p>
+<h4 id="（7）资源通过关系"><a href="#（7）资源通过关系" class="headerlink" title="（7）资源通过关系"></a>（7）资源通过关系</h4><p>通知相关的其他资源进行“刷新”操作</p>
+<ul>
+<li><p>notify</p>
+<p>  type{‘A’</p>
+<pre><code>attribute1 =&gt; value1
+attribute2 =&gt; value2
+notify =&gt; Type[&apos;B&apos;]
+</code></pre><p>  }</p>
+</li>
+</ul>
+<p>相当于ansible中的handler触发机制。</p>
+<ul>
+<li><p>subscribe</p>
+<p>  type{‘A’</p>
+<pre><code>attribute1 =&gt; value1
+attribute2 =&gt; value2
+subscribe =&gt; Type[&apos;B&apos;]
+</code></pre><p>  }</p>
+</li>
+</ul>
+<p>相当于资源B发生改变则资源A就进行”刷新”</p>
+<h4 id="（8）puppet-apply介绍"><a href="#（8）puppet-apply介绍" class="headerlink" title="（8）puppet apply介绍"></a>（8）puppet apply介绍</h4><p>格式：</p>
+<pre><code>puppet apply [-h|--help] [-V|--version] [-d|--debug] [-v|--verbose] [-e|--execute] [--detailed-exitcodes] [-l|--logdest &lt;file&gt;] [--noop]  [--catalog &lt;catalog&gt;] [--write-catalog-summary] &lt;file&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-V</td>
+<td>版本信息</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>详细信息</td>
+</tr>
+<tr>
+<td>–noop</td>
+<td>相当于干跑</td>
+</tr>
+<tr>
+<td>–test</td>
+<td>测试</td>
+</tr>
+<tr>
+<td>–debug</td>
+<td>调试模式</td>
+</tr>
+</tbody>
+</table>
+<p>###2、资源类型</p>
+<p>####（1）group 管理组</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>组名</td>
+</tr>
+<tr>
+<td>gid</td>
+<td>组ID</td>
+</tr>
+<tr>
+<td>system</td>
+<td>是否为系统用户  true/false</td>
+</tr>
+<tr>
+<td>ensure</td>
+<td>目标状态 present absent</td>
+</tr>
+<tr>
+<td>members</td>
+<td>成员用户</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<p><code>[root@node1~]#vim group.pp</code></p>
+<pre><code>1 group{&apos;test&apos;:
+2         ensure  =&gt; present,
+3         name    =&gt; test,
+4         gid     =&gt; 1234,
+5 }
+</code></pre><p><code>[root@node1~]#puppet apply -v --noop --test group.pp</code></p>
+<pre><code>Notice: Compiled catalog for node1.magedu.com in environment production in 0.09 seconds
+Info: Applying configuration version &apos;1511599693&apos;
+Notice: /Stage[main]/Main/Group[test]/ensure: current_value absent, should be present (noop)
+Notice: Class[Main]: Would have triggered &apos;refresh&apos; from 1 events
+Notice: Stage[main]: Would have triggered &apos;refresh&apos; from 1 events
+Info: Creating state file /var/lib/puppet/state/state.yaml
+Notice: Finished catalog run in 0.02 seconds
+</code></pre><p>####（2）user 管理用户</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>用户ID</td>
+</tr>
+<tr>
+<td>groups</td>
+<td>附加组</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>注释</td>
+</tr>
+<tr>
+<td>expiry</td>
+<td>过期时间</td>
+</tr>
+<tr>
+<td>home</td>
+<td>家目录</td>
+</tr>
+<tr>
+<td>shell</td>
+<td>shell的类型</td>
+</tr>
+<tr>
+<td>system</td>
+<td>是否为系统用户</td>
+</tr>
+<tr>
+<td>ensure</td>
+<td>目标状态 present/absent</td>
+</tr>
+<tr>
+<td>password</td>
+<td>加密后的字符串</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<p><code>[root@node1~]#vim user.pp</code></p>
+<pre><code> 1 group{&apos;test&apos;:
+ 2         ensure  =&gt; present,
+ 3         name    =&gt; &apos;test&apos;,
+ 4 }
+ 5 user{&apos;tom&apos;:
+ 6         ensure  =&gt; present,
+ 7         name    =&gt; &apos;tom&apos;,
+ 8         uid     =&gt; 2345,
+ 9         system  =&gt; false,
+10         shell   =&gt; &apos;/bin/tcsh&apos;,
+11         home    =&gt; &apos;/app/tom&apos;,
+12         groups  =&gt; &apos;test&apos;,
+13         require =&gt; Group[&apos;test&apos;],
+14 }
+</code></pre><p>####（3）package 管理安装包</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ensure</td>
+<td>目前状态；installed 、present、latest、absent、any</td>
+</tr>
+<tr>
+<td>name</td>
+<td>包名</td>
+</tr>
+<tr>
+<td>source</td>
+<td>程序来源，仅对不会自动下载相关程序包的provider有用，如rpm或dpkg</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<p><code>[root@node1~]#vim package.pp</code></p>
+<pre><code>1 package{&apos;nginx&apos;:
+2         ensure  =&gt; latest,
+3         name    =&gt; &apos;nginx&apos;,     
+4 }
+</code></pre><p>####（4）service 管理服务</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ensure</td>
+<td>目前状态 stopped/false、running/true</td>
+</tr>
+<tr>
+<td>enable</td>
+<td>是否设置为开机启动</td>
+</tr>
+<tr>
+<td>hasrestart</td>
+<td>判断此服务是否有restart命令，如果没有则先stop然后start</td>
+</tr>
+<tr>
+<td>start</td>
+<td>手动设定命令</td>
+</tr>
+<tr>
+<td>restart</td>
+<td>手动设定启动命令</td>
+</tr>
+</tbody>
+</table>
+<p><code>[root@node1~]#vim service.pp</code></p>
+<pre><code>1 service{&apos;nginx&apos;:
+2         ensure  =&gt; running,
+3         enable  =&gt; true,
+4         hasrestart      =&gt; true,
+5         restart =&gt; &apos;systemctl restart nginx.service&apos;,
+6 }
+</code></pre><p>####（5）file 管理文件</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ensure</td>
+<td>目前状态；file，类型为普通文件，其内容由contest属性生成或复制由source属性指向文件路径创建；link，类型为符号链接，必须由target属性指明其链接的目标文件；directory，类型为目录，可通过source指向的路径复制生成；recurse属性指明是否递归复制</td>
+</tr>
+<tr>
+<td>path</td>
+<td>文件路径</td>
+</tr>
+<tr>
+<td>source</td>
+<td>源文件路径</td>
+</tr>
+<tr>
+<td>context</td>
+<td>文件内容</td>
+</tr>
+<tr>
+<td>target</td>
+<td>符号链接目标文件</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>所有者</td>
+</tr>
+<tr>
+<td>group</td>
+<td>所属组</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>权限</td>
+</tr>
+<tr>
+<td>atime/ctime/mtime</td>
+<td>时间戳</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<pre><code>[root@node1~]#vim file.pp
+  1 file{&apos;test&apos;:
+  2         ensure  =&gt; file,
+  3         path    =&gt; &apos;/tmp/fstab&apos;,
+  4         source  =&gt; &apos;/etc/fstab&apos;,
+  5         owner   =&gt; tom,
+  6         group   =&gt; test,
+  7 }
+</code></pre><p>####（6）exec 执行命令</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cwd</td>
+<td>切换目录</td>
+</tr>
+<tr>
+<td>command</td>
+<td>要运行的命令</td>
+</tr>
+<tr>
+<td>creates</td>
+<td>文件路径，仅此路径表示的文件不存在时，command才执行</td>
+</tr>
+<tr>
+<td>user/group</td>
+<td>运行命令的用户身份</td>
+</tr>
+<tr>
+<td>path</td>
+<td>命令路径</td>
+</tr>
+<tr>
+<td>onlyif</td>
+<td>此属性指定一个命令，此命令正常时运行时，当前commnd才执行</td>
+</tr>
+<tr>
+<td>unless</td>
+<td>此属性指定一个命令，此命令非正常运行时，当前command才会执行</td>
+</tr>
+<tr>
+<td>refresh</td>
+<td>重新执行当前command的替代命令</td>
+</tr>
+<tr>
+<td>refreshonly</td>
+<td>仅接受到订阅的资源的通知时方才执行</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<p><code>[root@node1~]#vim exec.pp</code></p>
+<pre><code>1 exec{&apos;createuser&apos;:
+2         command =&gt; &apos;useradd test1&apos;,
+3         path    =&gt; &apos;/bin:/sbin&apos;,
+4         unless  =&gt; &apos;id test1&apos;,
+5 }
+</code></pre><p>####（7）cron 计划任务</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>command</td>
+<td>执行的任务</td>
+</tr>
+<tr>
+<td>ensure</td>
+<td>目前的状态，present/absent</td>
+</tr>
+<tr>
+<td>hour、minute、monthday、month、weekday</td>
+<td>定义时间</td>
+</tr>
+<tr>
+<td>user</td>
+<td>以哪个用户的身份运行命令</td>
+</tr>
+<tr>
+<td>target</td>
+<td>添加为哪个用户的任务</td>
+</tr>
+<tr>
+<td>name</td>
+<td>计划任务的名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<p><code>[root@node1~]#vim cron.pp</code></p>
+<pre><code>1 cron{&apos;time&apos;:
+2         command =&gt; &apos;/usr/sbin/ntpdate 172.18.0.1 &amp;&gt; /dev/null&apos;,
+3         ensure  =&gt; present,
+4         minute  =&gt; &apos;*/3&apos;,
+5         user    =&gt; &apos;root&apos;,
+6 }
+</code></pre><p>####（8）notify </p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td>信息内容</td>
+</tr>
+<tr>
+<td>name</td>
+<td>信息名称</td>
+</tr>
+</tbody>
+</table>
+<p>·[root@node1~]#vim notify.pp·</p>
+<pre><code>1 notify{&apos;hello world&apos;:
+2         message =&gt; &apos;hello everyone&apos;,
+3 }
+</code></pre><p>###3、数据类型</p>
+<ul>
+<li>布尔型：true和false，不能加引号；if语句的测试条件和比较表达式都会返回布尔型值</li>
+<li>undef：从为被声明的变量的值，直接使用不加引号的undef字符串</li>
+<li>字符型：非结构化的文本字符串，可以使用引号，也可以不使用，单引号中的变量不会替换，而双引号中的能够进行变量替换。字符型值也支持使用转义符</li>
+<li>数值型：可以为整数或浮点数。在puppet只有在数值上下文才把数据当数值型对待，其他情况下一律以字符型处理</li>
+<li>数组：数组值为中括号‘[]’中以逗号分隔项目列表；数组索引从0开始整数，也可以是用负数索引</li>
+<li>hash：外键值数据类型，键和值之间使用“=&gt;”分隔，键值对儿在{}中，彼此间以逗号分隔；</li>
+<li><p>正则表达式：属于puppet的非标准数据类型，不能赋值给变量，仅能用于有限的几个接受正则表达式的地方，即接受使用“=~”及“！~”匹配操作符的位置。</p>
+<p>  (？<enabled option="">:<pattern>)<br>  (? - <disabled option="">:<pattern>)</pattern></disabled></pattern></enabled></p>
+<pre><code>OPTIONs：
+    i：忽略字符大小写
+    m：把“.”当换行符
+    x：忽略&lt;PATTERN&gt;中的空白字符
+</code></pre></li>
+</ul>
+<p>####4、puppet变量种类</p>
+<ul>
+<li>内建变量：</li>
+</ul>
+<pre><code>- master端变量：
+    $servername $serverip $serverversion
+- agent变量：
+    $clientcert $clientversion $environment
+- parser变量
+    $module_name
+</code></pre><p>[root@node1~]#facter -p #查看内建命令</p>
+<ul>
+<li>用户自定义变量<br>  $variable_name = value</li>
+</ul>
+<p><strong>注意：不管是定义变量还是引用变量都要使用“$“引用。</strong></p>
+<p><strong>示例：</strong></p>
+<p><code>[root@node1~]#vim package2.pp</code></p>
+<pre><code>1 $pkgname = &apos;redis&apos;
+2 package{&apos;installpkg&apos;:
+3         ensure  =&gt; latest,
+4         name    =&gt; &apos;$pkgname&apos;,
+5 }
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/puppet/" rel="tag"># puppet</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/puppet类/" rel="next" title="puppet类">
+                <i class="fa fa-chevron-left"></i> puppet类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/puppet流程控制语句/" rel="prev" title="puppet流程控制语句">
+                puppet流程控制语句 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">101</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">130</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Puppet介绍"><span class="nav-number">1.</span> <span class="nav-text">一、Puppet介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、puppet工作模型"><span class="nav-number">1.1.</span> <span class="nav-text">1、puppet工作模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、puppet资源"><span class="nav-number">1.2.</span> <span class="nav-text">2、puppet资源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）puppet从三个维度对资源进行抽象："><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）puppet从三个维度对资源进行抽象：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）puppet资源定义"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）puppet资源定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）资源属性中三个特殊属性"><span class="nav-number">1.2.3.</span> <span class="nav-text">（3）资源属性中三个特殊属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）puppet查询资源"><span class="nav-number">1.2.4.</span> <span class="nav-text">（4）puppet查询资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）资源引用"><span class="nav-number">1.2.5.</span> <span class="nav-text">（5）资源引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（6）资源定义依赖关系"><span class="nav-number">1.2.6.</span> <span class="nav-text">（6）资源定义依赖关系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#依赖关系方式"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">依赖关系方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（7）资源通过关系"><span class="nav-number">1.2.7.</span> <span class="nav-text">（7）资源通过关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（8）puppet-apply介绍"><span class="nav-number">1.2.8.</span> <span class="nav-text">（8）puppet apply介绍</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -349,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/varnish/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Tomcat简单介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -368,7 +368,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/varnish/" itemprop="url">varnish</a></h1>
+                <a class="post-title-link" href="/2017/11/28/Tomcat简单介绍/" itemprop="url">Tomcat简单介绍</a></h1>
         
 
         <div class="post-meta">
@@ -403,8 +403,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/缓存服务/" itemprop="url" rel="index">
-                    <span itemprop="name">缓存服务</span>
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
                   </a>
                 </span>
 
@@ -414,8 +414,19 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/缓存服务/varnish/" itemprop="url" rel="index">
-                    <span itemprop="name">varnish</span>
+                  <a href="/categories/服务/Tomcat/" itemprop="url" rel="index">
+                    <span itemprop="name">Tomcat</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/Tomcat/Tomcat简单介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">Tomcat简单介绍</span>
                   </a>
                 </span>
 
@@ -454,18 +465,11 @@
         
           
           
-Varnish是一款高性能且开源的反向代理服务器和HTTP极速器，其采用全新的软件体系机构和现在的硬件体积紧密配合。
-一、Varnish1、varnish系统结构
-
-varnish主要运行两个进程：Manager进程和Cacher 进程
-
-Manager进程功能：
-实现应用新的配置
-编译VCL（V
+Tomcat是由Apache软件基金会下属的Jakarta项目开发的一个Servlet容器，按照Sun Microsystems提供的技术规范，实现了对Servlet和JavaServer Page（JSP）的支持，并提供了作为web服务器的一些特有功能，如Tomcat管理和控制平台、安全域管理和
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/varnish/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/Tomcat简单介绍/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -520,7 +524,7 @@ Manager进程功能：
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/sudo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/VRRP协议/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -539,7 +543,7 @@ Manager进程功能：
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/sudo/" itemprop="url">sudo</a></h1>
+                <a class="post-title-link" href="/2017/11/28/VRRP协议/" itemprop="url">VRRP协议</a></h1>
         
 
         <div class="post-meta">
@@ -574,8 +578,8 @@ Manager进程功能：
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/安全/" itemprop="url" rel="index">
-                    <span itemprop="name">安全</span>
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
                   </a>
                 </span>
 
@@ -585,8 +589,19 @@ Manager进程功能：
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/安全/sudo/" itemprop="url" rel="index">
-                    <span itemprop="name">sudo</span>
+                  <a href="/categories/服务/Keepalived/" itemprop="url" rel="index">
+                    <span itemprop="name">Keepalived</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/Keepalived/VRRP协议/" itemprop="url" rel="index">
+                    <span itemprop="name">VRRP协议</span>
                   </a>
                 </span>
 
@@ -624,11 +639,15 @@ Manager进程功能：
       
         
           
-          sudo在生产环境中，一个人的力量总是不够的，我们可以把一些任务分配别的人员协同操作，这样办事效率也提高了。但是我们又不想把所有的权限都分给小伙伴，所以sudo就解决了这样一个问题。sudo能够授权指定用户在指定主机上运行某些命令；如果未授权用户使用sudo尝试登录，会提示管理员。这样方便了我们的管
+          
+一、VRRP协议虚拟路由冗余协议（VRRP，Virtual Router Redundancy Protocol）通过把几台路由设备联合组成一台虚拟的路由设备，使用一定的机制保证当主机的下一跳路由机出现故障时，及时将业务切换到备份路由器，从而保持业务的持续性和可靠性。
+
+基本概念
+虚拟路由器（Vi
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/sudo/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/VRRP协议/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -683,7 +702,7 @@ Manager进程功能：
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/基于数据库验证vsftpd虚拟用户/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/WEB工作过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -702,7 +721,7 @@ Manager进程功能：
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/基于数据库验证vsftpd虚拟用户/" itemprop="url">基于数据库验证vsftpd虚拟用户</a></h1>
+                <a class="post-title-link" href="/2017/11/28/WEB工作过程/" itemprop="url">WEB工作过程</a></h1>
         
 
         <div class="post-meta">
@@ -737,8 +756,8 @@ Manager进程功能：
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文件管理/" itemprop="url" rel="index">
-                    <span itemprop="name">文件管理</span>
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
                   </a>
                 </span>
 
@@ -748,8 +767,8 @@ Manager进程功能：
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文件管理/FTP/" itemprop="url" rel="index">
-                    <span itemprop="name">FTP</span>
+                  <a href="/categories/服务/Apache/" itemprop="url" rel="index">
+                    <span itemprop="name">Apache</span>
                   </a>
                 </span>
 
@@ -759,8 +778,8 @@ Manager进程功能：
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文件管理/FTP/基于数据库验证vsftpd虚拟用户/" itemprop="url" rel="index">
-                    <span itemprop="name">基于数据库验证vsftpd虚拟用户</span>
+                  <a href="/categories/服务/Apache/WEB工作过程/" itemprop="url" rel="index">
+                    <span itemprop="name">WEB工作过程</span>
                   </a>
                 </span>
 
@@ -798,12 +817,15 @@ Manager进程功能：
       
         
           
-          基于数据库验证vsftpd虚拟用户CentOS7 环境
-（1）编译安装pam_mysql,提供pam_mysql.so模块[root@localhost/usr/local/src/pam_mysql-0.7RC1]#yum install -y mariadb-devel pam-devel[ro
+          Web服务请求处理过程    此图为经过的OSI模型
+
+
+（1）Client需要和Server通信，这时需要发出建立连接请求
+（2）Client与Server进行传输数据包时，需要经应用层–&gt;传输层–&gt;网络层–&gt;链路层:层层打包然后传输至Server，Server对此包进行 链路层
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/基于数据库验证vsftpd虚拟用户/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/WEB工作过程/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -858,7 +880,7 @@ Manager进程功能：
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/数据库类型/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Zabbix+Grafana/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -877,7 +899,182 @@ Manager进程功能：
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/数据库类型/" itemprop="url">数据库类型</a></h1>
+                <a class="post-title-link" href="/2017/11/28/Zabbix+Grafana/" itemprop="url">Zabbix+Grafana</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/Zabbix/" itemprop="url" rel="index">
+                    <span itemprop="name">Zabbix</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/Zabbix/Zabbix-Grafana/" itemprop="url" rel="index">
+                    <span itemprop="name">Zabbix+Grafana</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Grafana-Grafana是一款开源度量分析和可视化套件。它有良好的展示页面。它最常用与对基础设施和应用分析的时间序列数据进行可视化，如工业传感器、进程控制等等。
+Installing Grafana安装Grafana[root@localhost~]#yum install https://s
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/28/Zabbix+Grafana/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Xtrabackup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/28/Xtrabackup/" itemprop="url">Xtrabackup</a></h1>
         
 
         <div class="post-meta">
@@ -923,8 +1120,8 @@ Manager进程功能：
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/数据库类型/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库类型</span>
+                  <a href="/categories/数据库/Xtrabackup/" itemprop="url" rel="index">
+                    <span itemprop="name">Xtrabackup</span>
                   </a>
                 </span>
 
@@ -962,12 +1159,17 @@ Manager进程功能：
       
         
           
-          一、数据库1、数据库的概念数据库(Database)是按照数据结构来组织、存储和管理数据的建立在计算机存储设备上的仓库；它以一定的组织形式存于存储介质上。
-2、数据库管理系统(Database Management System)一种操纵和管理数据库的大型软件，用于建立、使用和维护数据库，简称DBM
+          xtrabackup由percona提供、开源工具，支持对InnoDB做热备，物理备份工具。
+特点：
+物理备份；速率快、可靠；
+备份完成后自动校验备份结果是否可用
+还原速度快
+
+使用格式[innobackupex [--defaults-file=#] --backup | innobackupex
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/数据库类型/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/Xtrabackup/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1022,7 +1224,7 @@ Manager进程功能：
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/编译安装httpd-2.4/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Zabbix介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -1041,7 +1243,7 @@ Manager进程功能：
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/编译安装httpd-2.4/" itemprop="url">编译安装httpd-2.4</a></h1>
+                <a class="post-title-link" href="/2017/11/28/Zabbix介绍/" itemprop="url">Zabbix介绍</a></h1>
         
 
         <div class="post-meta">
@@ -1087,8 +1289,8 @@ Manager进程功能：
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Apache/" itemprop="url" rel="index">
-                    <span itemprop="name">Apache</span>
+                  <a href="/categories/服务/Zabbix/" itemprop="url" rel="index">
+                    <span itemprop="name">Zabbix</span>
                   </a>
                 </span>
 
@@ -1098,8 +1300,8 @@ Manager进程功能：
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Apache/编译安装httpd-2-4/" itemprop="url" rel="index">
-                    <span itemprop="name">编译安装httpd-2.4</span>
+                  <a href="/categories/服务/Zabbix/Zabbix介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">Zabbix介绍</span>
                   </a>
                 </span>
 
@@ -1137,14 +1339,13 @@ Manager进程功能：
       
         
           
-          编译安装httpd-2.4（1）准备安装前环境
-[root@localhost ~]# yum groupinstall -y &quot;development tools&quot;
-（2）编译安装apr
-[root@localhost src]# tar xf apr-1.6.2.tar.gz
+          
+Zabbix是一款能够监控各种网络参数以及服务器健康性和完整性的软件。Zabbix使用灵活的通知机制，允许用户为几乎任何事件配置基于邮件告警。Zabbix提供了出色的报告和数据可视化功能。Zabbix所有的报告、统计信息和配置参数都可以通过基于Web的前端页面进行访问。
+一、Zabbix1、Zab
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/编译安装httpd-2.4/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/Zabbix介绍/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1199,7 +1400,7 @@ Manager进程功能：
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/网络防火墙/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Zabbix基于微信告警/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -1218,174 +1419,7 @@ Manager进程功能：
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/网络防火墙/" itemprop="url">网络防火墙</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
-                2017-11-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/防火墙/" itemprop="url" rel="index">
-                    <span itemprop="name">防火墙</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/防火墙/网络防火墙/" itemprop="url" rel="index">
-                    <span itemprop="name">网络防火墙</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          网络防火墙网络防火墙可以充当网关；使用filter表中的FORWARD链。如果要启用conntrack机制，建议将双方向的状态为ESTABLISHED的报文直接放行。
-
-如图所示：现在我们的需求是内网可以ping外网但是外网ping不了内网如何实现？
-环境：
-CentOS 6 192.168.4.5
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/网络防火墙/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-        
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/网站访问量计算/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Joah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/picturemy.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Joah">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/28/网站访问量计算/" itemprop="url">网站访问量计算方式</a></h1>
+                <a class="post-title-link" href="/2017/11/28/Zabbix基于微信告警/" itemprop="url">Zabbix基于微信告警</a></h1>
         
 
         <div class="post-meta">
@@ -1431,8 +1465,8 @@ CentOS 6 192.168.4.5
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Apache/" itemprop="url" rel="index">
-                    <span itemprop="name">Apache</span>
+                  <a href="/categories/服务/Zabbix/" itemprop="url" rel="index">
+                    <span itemprop="name">Zabbix</span>
                   </a>
                 </span>
 
@@ -1442,8 +1476,8 @@ CentOS 6 192.168.4.5
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Apache/网站访问量计算/" itemprop="url" rel="index">
-                    <span itemprop="name">网站访问量计算</span>
+                  <a href="/categories/服务/Zabbix/Zabbix基于微信告警/" itemprop="url" rel="index">
+                    <span itemprop="name">Zabbix基于微信告警</span>
                   </a>
                 </span>
 
@@ -1481,14 +1515,23 @@ CentOS 6 192.168.4.5
       
         
           
-          网站访问量计算方式
-IP(独立IP)：即Internet Protocol,指独立IP数。一天内来自相同客户机IP地址只计算一次，记录远程客户机IP地址的计算机访问网站的次数，是衡量网站流量的重要指标。
+          在zabbix监控中，国内越来越流行使用微信、钉钉、邮件报警，这正式结合了当下的发展趋势。接下来介绍下zabbix如何结合微信发送警报信息。一、企业微信注册企业微信注册地址：https://work.weixin.qq.com/
 
-PV(访问量)： 即Page View, 页面浏览量或点击量，用户每次刷新即被计算一次，PV反
+
+
+
+
+
+
+
+
+注意：我们需要记录以下几个值：
+Agentld
+Se
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/网站访问量计算/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/Zabbix基于微信告警/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1543,7 +1586,7 @@ PV(访问量)： 即Page View, 页面浏览量或点击量，用户每次刷新�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/集群介绍/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/ansible初级认识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -1562,7 +1605,7 @@ PV(访问量)： 即Page View, 页面浏览量或点击量，用户每次刷新�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/集群介绍/" itemprop="url">集群介绍</a></h1>
+                <a class="post-title-link" href="/2017/11/28/ansible初级认识/" itemprop="url">ansible初级认识</a></h1>
         
 
         <div class="post-meta">
@@ -1597,8 +1640,8 @@ PV(访问量)： 即Page View, 页面浏览量或点击量，用户每次刷新�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/集群/" itemprop="url" rel="index">
-                    <span itemprop="name">集群</span>
+                  <a href="/categories/自动化运维工具/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化运维工具</span>
                   </a>
                 </span>
 
@@ -1608,8 +1651,19 @@ PV(访问量)： 即Page View, 页面浏览量或点击量，用户每次刷新�
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/集群/集群介绍/" itemprop="url" rel="index">
-                    <span itemprop="name">集群介绍</span>
+                  <a href="/categories/自动化运维工具/ansible/" itemprop="url" rel="index">
+                    <span itemprop="name">ansible</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维工具/ansible/ansible初级认识/" itemprop="url" rel="index">
+                    <span itemprop="name">ansible初级认识</span>
                   </a>
                 </span>
 
@@ -1647,13 +1701,14 @@ PV(访问量)： 即Page View, 页面浏览量或点击量，用户每次刷新�
       
         
           
-          参考：
-http://www.linuxvirtualserver.org/zh/lvs1.html
-一、服务器集群系统1、对称多处理对称多处理（symmctric multi-processor，SMP）是由多个对称的处理器和通过总线共享的内存和I/O不见所组成的计算机系统。由于SMP的可扩展能力
+          一、ansible介绍1、概念ansible是自动化运维工具，基于Python开发，集合了众多的运维工具的优先，实心了批量系统配置、批量程序部署、批量运行命令等功能。
+2、特性
+模块化：调用特定的模块完成特定的任务
+基于Python语言实现，由Paramiko、PyYAML和Jinja2三个关闭模块
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/集群介绍/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/ansible初级认识/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1749,7 +1804,7 @@ http://www.linuxvirtualserver.org/zh/lvs1.html
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-count">101</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1760,7 +1815,7 @@ http://www.linuxvirtualserver.org/zh/lvs1.html
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">130</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1771,7 +1826,7 @@ http://www.linuxvirtualserver.org/zh/lvs1.html
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

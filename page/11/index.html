@@ -349,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/LNMT、LAMT环境/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/iptables简单介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -368,7 +368,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/LNMT、LAMT环境/" itemprop="url">LNMT、LAMT环境</a></h1>
+                <a class="post-title-link" href="/2017/11/28/iptables简单介绍/" itemprop="url">iptables简单介绍</a></h1>
         
 
         <div class="post-meta">
@@ -403,8 +403,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/" itemprop="url" rel="index">
-                    <span itemprop="name">服务</span>
+                  <a href="/categories/防火墙/" itemprop="url" rel="index">
+                    <span itemprop="name">防火墙</span>
                   </a>
                 </span>
 
@@ -414,19 +414,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Tomcat/" itemprop="url" rel="index">
-                    <span itemprop="name">Tomcat</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Tomcat/LNMT、LAMT环境/" itemprop="url" rel="index">
-                    <span itemprop="name">LNMT、LAMT环境</span>
+                  <a href="/categories/防火墙/iptables简单介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">iptables简单介绍</span>
                   </a>
                 </span>
 
@@ -464,18 +453,11 @@
       
         
           
-          LNMT环境搭建
-
-安装mysql数据库
-
-（1）安装mysql并配置环境
-[root@mysql ~]# yum install -y mysql-server
-[root@mysql ~]# service httpd start   #启动服务
-[root@mysql ~]# mysql_se
+          一、iptables1、iptables历史iptables的前身叫ipfirewall （内核1.x时代）,这是一个作者从freeBSD上移植过来的，能够工作在内核当中的，对数据包进行检测的一款简易访问控制工具。但是ipfirewall工作功能极其有限(它需要将所有的规则都放进内核当中，这样规则才
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/LNMT、LAMT环境/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/iptables简单介绍/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -530,7 +512,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/SSH基于密钥认证/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/memcached/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -549,7 +531,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/SSH基于密钥认证/" itemprop="url">SSH基于密钥认证</a></h1>
+                <a class="post-title-link" href="/2017/11/28/memcached/" itemprop="url">memcached</a></h1>
         
 
         <div class="post-meta">
@@ -584,8 +566,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/" itemprop="url" rel="index">
-                    <span itemprop="name">服务</span>
+                  <a href="/categories/缓存服务/" itemprop="url" rel="index">
+                    <span itemprop="name">缓存服务</span>
                   </a>
                 </span>
 
@@ -595,19 +577,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/SSH/" itemprop="url" rel="index">
-                    <span itemprop="name">SSH</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/SSH/SSH基于密钥认证/" itemprop="url" rel="index">
-                    <span itemprop="name">SSH基于密钥认证</span>
+                  <a href="/categories/缓存服务/memcached/" itemprop="url" rel="index">
+                    <span itemprop="name">memcached</span>
                   </a>
                 </span>
 
@@ -645,14 +616,13 @@
       
         
           
-          基于密钥认证1、工作机制（a）客户端在本机生成一对密钥
-（b）客户端通过密令将本机的公钥拷贝到服务器端，服务端会将客户端的公钥存在至`~/.ssh/authorized.keys`目录下
-（c）客户端再次发送请求时，包括IP、用户名；
-（d）服务端在通过上述目录查找是否有与之对应的公钥，如果查找成功
+          
+memcached是是一款开源、高性能、分布式存储内存对象缓存系统。主要目的是通过降低对Database的访问来加速web应用程序。一个基于内存的”键值对”存储用于存储数据库调用、API调用或页面引用结果的直接数据，如字符串、对象等。
+一、memcached1、memcached特点（1）简单ke
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/SSH基于密钥认证/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/memcached/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -707,7 +677,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/SSH简单介绍/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/keepalived简单介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -726,7 +696,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/SSH简单介绍/" itemprop="url">SSH简单介绍</a></h1>
+                <a class="post-title-link" href="/2017/11/28/keepalived简单介绍/" itemprop="url">keepalived简单介绍</a></h1>
         
 
         <div class="post-meta">
@@ -772,8 +742,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/SSH/" itemprop="url" rel="index">
-                    <span itemprop="name">SSH</span>
+                  <a href="/categories/服务/Keepalived/" itemprop="url" rel="index">
+                    <span itemprop="name">Keepalived</span>
                   </a>
                 </span>
 
@@ -783,8 +753,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/SSH/SSH简单介绍/" itemprop="url" rel="index">
-                    <span itemprop="name">SSH简单介绍</span>
+                  <a href="/categories/服务/Keepalived/keepalived简单介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">keepalived简单介绍</span>
                   </a>
                 </span>
 
@@ -822,12 +792,11 @@
       
         
           
-          一、SSH基本介绍1、含义：
-SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Group）所制定；SSH 为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管
+          keepalived介绍keepalived是linux下一个轻量级高可用的解决方案，主要通过VRRP实现高可用功能，作用域网络层、传输层和应用层；主要用作RealServer的健康性检查以及LoadBalance主机和Bcakup主机之间failover的实现。原生设计目的为了高可用的ipvs服务
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/SSH简单介绍/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/keepalived简单介绍/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -882,7 +851,7 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/PXE/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/ngx_http_fastcgi_module/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -901,7 +870,7 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/PXE/" itemprop="url">PXE</a></h1>
+                <a class="post-title-link" href="/2017/11/28/ngx_http_fastcgi_module/" itemprop="url">ngx_http_fastcgi_module</a></h1>
         
 
         <div class="post-meta">
@@ -936,8 +905,8 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/自动化运维/" itemprop="url" rel="index">
-                    <span itemprop="name">自动化运维</span>
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
                   </a>
                 </span>
 
@@ -947,8 +916,19 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/自动化运维/PXE/" itemprop="url" rel="index">
-                    <span itemprop="name">PXE</span>
+                  <a href="/categories/服务/Nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">Nginx</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/Nginx/ngx-http-fastcgi-module/" itemprop="url" rel="index">
+                    <span itemprop="name">ngx_http_fastcgi_module</span>
                   </a>
                 </span>
 
@@ -986,11 +966,15 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
       
         
           
-          一、PXE1、pxe概念PXE(preboot execute environment，预启动执行环境)是由Intel公司开发的最新技术，工作于Client/Server的网络模式，支持工作站通过网络从远端服务器下载映像，并由此支持通过网络启动操作系统，在启动过程中，终端要求服务器分配IP地址，再用
+          ngx_http_fastcgi_module转发请求到FastCGI服务器，不支持php模块方式
+（1）fastcgi_pass address
+address 为后端的fastcgi server的地址可用
+Syntax:    fastcgi_pass address;
+Default:   
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/PXE/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/ngx_http_fastcgi_module/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1045,7 +1029,7 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/SSH端口转发/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/ngx_http_proxy_module/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -1064,7 +1048,7 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/SSH端口转发/" itemprop="url">SSH端口转发</a></h1>
+                <a class="post-title-link" href="/2017/11/28/ngx_http_proxy_module/" itemprop="url">ngx_http_proxy_module</a></h1>
         
 
         <div class="post-meta">
@@ -1110,8 +1094,8 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/SSH/" itemprop="url" rel="index">
-                    <span itemprop="name">SSH</span>
+                  <a href="/categories/服务/Nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">Nginx</span>
                   </a>
                 </span>
 
@@ -1121,8 +1105,8 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/SSH/SSH端口转发/" itemprop="url" rel="index">
-                    <span itemprop="name">SSH端口转发</span>
+                  <a href="/categories/服务/Nginx/ngx-http-proxy-module/" itemprop="url" rel="index">
+                    <span itemprop="name">ngx_http_proxy_module</span>
                   </a>
                 </span>
 
@@ -1160,11 +1144,15 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
       
         
           
-          端口转发在日常生产中，我们常常会遇到这样的问题，在公司运行一个服务或者一些程序，想要查看其运行状态及其结果等；公司的机器只能从内部访问外网，而内部外的并不能访问内部的机器；或者公司有一台ssh服务器，不能使用telnet服务去访问内部的主机，这样我们如何解决呢？由于ssh服务加密传输数据，我们可通过
+          ngx_http_proxy_module（1）proxy_pass URL
+Syntax:    proxy_pass URL;
+Default:    —
+Context:    location, if in location, limit_except
+#    proxy_pass htt
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/SSH端口转发/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/ngx_http_proxy_module/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1219,7 +1207,7 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Zabbix+Grafana/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/ngx_http_upstream_module/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -1238,7 +1226,7 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/Zabbix+Grafana/" itemprop="url">Zabbix+Grafana</a></h1>
+                <a class="post-title-link" href="/2017/11/28/ngx_http_upstream_module/" itemprop="url">ngx_http_upstream_module</a></h1>
         
 
         <div class="post-meta">
@@ -1284,8 +1272,8 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Zabbix/" itemprop="url" rel="index">
-                    <span itemprop="name">Zabbix</span>
+                  <a href="/categories/服务/Nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">Nginx</span>
                   </a>
                 </span>
 
@@ -1295,8 +1283,8 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Zabbix/Zabbix-Grafana/" itemprop="url" rel="index">
-                    <span itemprop="name">Zabbix+Grafana</span>
+                  <a href="/categories/服务/Nginx/ngx-http-upstream-module/" itemprop="url" rel="index">
+                    <span itemprop="name">ngx_http_upstream_module</span>
                   </a>
                 </span>
 
@@ -1334,12 +1322,14 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Grou
       
         
           
-          Grafana-Grafana是一款开源度量分析和可视化套件。它有良好的展示页面。它最常用与对基础设施和应用分析的时间序列数据进行可视化，如工业传感器、进程控制等等。
-Installing Grafana安装Grafana[root@localhost~]#yum install https://s
+          ngx_http_upstream_module用于将多个服务器定义成服务器组，而由proxy_pass，fastcgi_pass等指令进行引用。
+（1）upstream name {…}
+定义后端服务器组，会引入一个新的上下文，默认调度算法为wrr。
+Syntax:    upstream nam
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/Zabbix+Grafana/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/ngx_http_upstream_module/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1394,7 +1384,7 @@ Installing Grafana安装Grafana[root@localhost~]#yum install https://s
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Zabbix介绍/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/rsyslog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -1413,7 +1403,7 @@ Installing Grafana安装Grafana[root@localhost~]#yum install https://s
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/Zabbix介绍/" itemprop="url">Zabbix介绍</a></h1>
+                <a class="post-title-link" href="/2017/11/28/rsyslog/" itemprop="url">rsyslog</a></h1>
         
 
         <div class="post-meta">
@@ -1448,8 +1438,8 @@ Installing Grafana安装Grafana[root@localhost~]#yum install https://s
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/" itemprop="url" rel="index">
-                    <span itemprop="name">服务</span>
+                  <a href="/categories/日志/" itemprop="url" rel="index">
+                    <span itemprop="name">日志</span>
                   </a>
                 </span>
 
@@ -1459,19 +1449,8 @@ Installing Grafana安装Grafana[root@localhost~]#yum install https://s
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Zabbix/" itemprop="url" rel="index">
-                    <span itemprop="name">Zabbix</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Zabbix/Zabbix介绍/" itemprop="url" rel="index">
-                    <span itemprop="name">Zabbix介绍</span>
+                  <a href="/categories/日志/rsyslog/" itemprop="url" rel="index">
+                    <span itemprop="name">rsyslog</span>
                   </a>
                 </span>
 
@@ -1509,13 +1488,12 @@ Installing Grafana安装Grafana[root@localhost~]#yum install https://s
       
         
           
-          
-Zabbix是一款能够监控各种网络参数以及服务器健康性和完整性的软件。Zabbix使用灵活的通知机制，允许用户为几乎任何事件配置基于邮件告警。Zabbix提供了出色的报告和数据可视化功能。Zabbix所有的报告、统计信息和配置参数都可以通过基于Web的前端页面进行访问。
-一、Zabbix1、Zab
+          在日常生活中如果您是一个生活有条理的人，一定会记录一下每天发生的事情，方便自己回看。CentOS系统中也是这样工作的，当我们在某时发生了错误时，这时日志就给我们起到了举足轻重的作用；我们可以查看日志并分析错误产生的原因等等。
+一、rsyslog基本介绍1、rsyslog基本概念Rsyslog是用于U
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/Zabbix介绍/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/rsyslog/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1570,7 +1548,7 @@ Zabbix是一款能够监控各种网络参数以及服务器健康性和完整�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Tomcat基于Memcached缓存session共享/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/sudo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -1589,7 +1567,7 @@ Zabbix是一款能够监控各种网络参数以及服务器健康性和完整�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/Tomcat基于Memcached缓存session共享/" itemprop="url">Tomcat基于Redis缓存session共享</a></h1>
+                <a class="post-title-link" href="/2017/11/28/sudo/" itemprop="url">sudo</a></h1>
         
 
         <div class="post-meta">
@@ -1624,8 +1602,8 @@ Zabbix是一款能够监控各种网络参数以及服务器健康性和完整�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/" itemprop="url" rel="index">
-                    <span itemprop="name">服务</span>
+                  <a href="/categories/安全/" itemprop="url" rel="index">
+                    <span itemprop="name">安全</span>
                   </a>
                 </span>
 
@@ -1635,19 +1613,8 @@ Zabbix是一款能够监控各种网络参数以及服务器健康性和完整�
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Tomcat/" itemprop="url" rel="index">
-                    <span itemprop="name">Tomcat</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Tomcat/Tomcat基于Redis缓存session共享/" itemprop="url" rel="index">
-                    <span itemprop="name">Tomcat基于Redis缓存session共享</span>
+                  <a href="/categories/安全/sudo/" itemprop="url" rel="index">
+                    <span itemprop="name">sudo</span>
                   </a>
                 </span>
 
@@ -1685,15 +1652,11 @@ Zabbix是一款能够监控各种网络参数以及服务器健康性和完整�
       
         
           
-          基于Memcached缓存session共享使用memcached服务存取session信息，应用服务器接受心情求将session信息保存于memcached中。
-缺点
-Memcached支持的数据结构比较单一
-Memcached内存必须足够大，否则会出现session从Cache中清除
-需要定期刷
+          sudo在生产环境中，一个人的力量总是不够的，我们可以把一些任务分配别的人员协同操作，这样办事效率也提高了。但是我们又不想把所有的权限都分给小伙伴，所以sudo就解决了这样一个问题。sudo能够授权指定用户在指定主机上运行某些命令；如果未授权用户使用sudo尝试登录，会提示管理员。这样方便了我们的管
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/Tomcat基于Memcached缓存session共享/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/sudo/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1789,7 +1752,7 @@ Memcached内存必须足够大，否则会出现session从Cache中清除
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-count">101</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1800,7 +1763,7 @@ Memcached内存必须足够大，否则会出现session从Cache中清除
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">130</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1811,7 +1774,7 @@ Memcached内存必须足够大，否则会出现session从Cache中清除
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
