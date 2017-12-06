@@ -356,7 +356,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/数据库类型/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/模型IO/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -375,7 +375,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/数据库类型/" itemprop="url">数据库类型</a></h1>
+                <a class="post-title-link" href="/2017/11/28/模型IO/" itemprop="url">Linux中五种I/O模型</a></h1>
         
 
         <div class="post-meta">
@@ -410,8 +410,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/I-O模型/" itemprop="url" rel="index">
+                    <span itemprop="name">I/O模型</span>
                   </a>
                 </span>
 
@@ -421,8 +421,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/数据库类型/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库类型</span>
+                  <a href="/categories/I-O模型/Linux中五种I-O模型/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux中五种I/O模型</span>
                   </a>
                 </span>
 
@@ -460,12 +460,13 @@
       
         
           
-          一、数据库1、数据库的概念数据库(Database)是按照数据结构来组织、存储和管理数据的建立在计算机存储设备上的仓库；它以一定的组织形式存于存储介质上。
-2、数据库管理系统(Database Management System)一种操纵和管理数据库的大型软件，用于建立、使用和维护数据库，简称DBM
+          linux中五种I/O模型-
+同步与异步关注的是消息通信机制
+同步（synchronous）：调用者自己主动等待被调用者返回消息，才能继续执行下面操作。异步（asynchronous）：被调用者通过状态、通知或回调机制主动通知调用者被调用者运行的状态。阻塞与非阻塞关注调用者在等待结果返回之前所处的状
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/数据库类型/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/模型IO/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1032,173 +1033,6 @@ Manager进程功能：
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/网络防火墙/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Joah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/picturemy.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Joah">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/28/网络防火墙/" itemprop="url">网络防火墙</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
-                2017-11-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/防火墙/" itemprop="url" rel="index">
-                    <span itemprop="name">防火墙</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/防火墙/网络防火墙/" itemprop="url" rel="index">
-                    <span itemprop="name">网络防火墙</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          网络防火墙网络防火墙可以充当网关；使用filter表中的FORWARD链。如果要启用conntrack机制，建议将双方向的状态为ESTABLISHED的报文直接放行。
-
-如图所示：现在我们的需求是内网可以ping外网但是外网ping不了内网如何实现？
-环境：
-CentOS 6 192.168.4.5
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/网络防火墙/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-        
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/网站访问量计算/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1322,6 +1156,173 @@ PV(访问量)： 即Page View, 页面浏览量或点击量，用户每次刷新�
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/11/28/网站访问量计算/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/网络防火墙/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/28/网络防火墙/" itemprop="url">网络防火墙</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/防火墙/" itemprop="url" rel="index">
+                    <span itemprop="name">防火墙</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/防火墙/网络防火墙/" itemprop="url" rel="index">
+                    <span itemprop="name">网络防火墙</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          网络防火墙网络防火墙可以充当网关；使用filter表中的FORWARD链。如果要启用conntrack机制，建议将双方向的状态为ESTABLISHED的报文直接放行。
+
+如图所示：现在我们的需求是内网可以ping外网但是外网ping不了内网如何实现？
+环境：
+CentOS 6 192.168.4.5
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/28/网络防火墙/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

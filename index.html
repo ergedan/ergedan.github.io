@@ -1425,7 +1425,7 @@ TCP/HTTP反向代理服务器，尤其适合于高可用性环境
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Nginx指令/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/PXE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -1444,7 +1444,7 @@ TCP/HTTP反向代理服务器，尤其适合于高可用性环境
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/Nginx指令/" itemprop="url">Nginx指令</a></h1>
+                <a class="post-title-link" href="/2017/11/28/PXE/" itemprop="url">PXE</a></h1>
         
 
         <div class="post-meta">
@@ -1479,8 +1479,8 @@ TCP/HTTP反向代理服务器，尤其适合于高可用性环境
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/" itemprop="url" rel="index">
-                    <span itemprop="name">服务</span>
+                  <a href="/categories/自动化运维/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化运维</span>
                   </a>
                 </span>
 
@@ -1490,19 +1490,8 @@ TCP/HTTP反向代理服务器，尤其适合于高可用性环境
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Nginx/" itemprop="url" rel="index">
-                    <span itemprop="name">Nginx</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Nginx/Nginx指令/" itemprop="url" rel="index">
-                    <span itemprop="name">Nginx指令</span>
+                  <a href="/categories/自动化运维/PXE/" itemprop="url" rel="index">
+                    <span itemprop="name">PXE</span>
                   </a>
                 </span>
 
@@ -1540,16 +1529,11 @@ TCP/HTTP反向代理服务器，尤其适合于高可用性环境
       
         
           
-          Nginx配置指令参考： https://nginx.org/en/docs/-
-事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。
-正常运行必备指令-
-（1）user
-指定worker进程的运行身份，如果组不指定，默认和用户名同名。
-Syntax:
+          一、PXE1、pxe概念PXE(preboot execute environment，预启动执行环境)是由Intel公司开发的最新技术，工作于Client/Server的网络模式，支持工作站通过网络从远端服务器下载映像，并由此支持通过网络启动操作系统，在启动过程中，终端要求服务器分配IP地址，再用
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/Nginx指令/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/PXE/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1604,7 +1588,7 @@ Syntax:
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/DNS简单介绍/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/DNS实战二/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -1623,7 +1607,7 @@ Syntax:
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/DNS简单介绍/" itemprop="url">DNS简单介绍</a></h1>
+                <a class="post-title-link" href="/2017/11/28/DNS实战二/" itemprop="url">DNS实战</a></h1>
         
 
         <div class="post-meta">
@@ -1680,8 +1664,8 @@ Syntax:
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/DNS/DNS简单介绍/" itemprop="url" rel="index">
-                    <span itemprop="name">DNS简单介绍</span>
+                  <a href="/categories/服务/DNS/DNS实战二/" itemprop="url" rel="index">
+                    <span itemprop="name">DNS实战二</span>
                   </a>
                 </span>
 
@@ -1719,15 +1703,17 @@ Syntax:
       
         
           
-          一、DNS1、DNS概念DNS（Domain Name System，域名系统）是互联网的一项服务。它将域名和IP地址相互映射的一个分布式数据库，能够使人方便地访问互联网。
-2、使用的端口（1）53/TCP  53/UDP
-（2）不同协议的端口作用是什么呢？
-53/UDP:提供客户端查询功能
-53/
+          实战二
+如何实现上述的拓扑图呢？先从底部网上一步一步的搭建
+（1）实现主从DNS服务器
+（a）修改主DNS服务器
+[root@localhost~]#vim /etc/named.conf    #修改主配置文件
+
+[root@localhost~]#vim /etc/named.rfc1912.z
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/DNS简单介绍/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/DNS实战二/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

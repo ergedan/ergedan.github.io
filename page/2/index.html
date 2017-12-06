@@ -533,7 +533,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/DNS实战二/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/DNS简单介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -552,7 +552,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/DNS实战二/" itemprop="url">DNS实战</a></h1>
+                <a class="post-title-link" href="/2017/11/28/DNS简单介绍/" itemprop="url">DNS简单介绍</a></h1>
         
 
         <div class="post-meta">
@@ -609,8 +609,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/DNS/DNS实战二/" itemprop="url" rel="index">
-                    <span itemprop="name">DNS实战二</span>
+                  <a href="/categories/服务/DNS/DNS简单介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">DNS简单介绍</span>
                   </a>
                 </span>
 
@@ -648,17 +648,15 @@
       
         
           
-          实战二
-如何实现上述的拓扑图呢？先从底部网上一步一步的搭建
-（1）实现主从DNS服务器
-（a）修改主DNS服务器
-[root@localhost~]#vim /etc/named.conf    #修改主配置文件
-
-[root@localhost~]#vim /etc/named.rfc1912.z
+          一、DNS1、DNS概念DNS（Domain Name System，域名系统）是互联网的一项服务。它将域名和IP地址相互映射的一个分布式数据库，能够使人方便地访问互联网。
+2、使用的端口（1）53/TCP  53/UDP
+（2）不同协议的端口作用是什么呢？
+53/UDP:提供客户端查询功能
+53/
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/DNS实战二/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/DNS简单介绍/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1215,7 +1213,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/BIND编译安装/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Bind包安装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -1234,7 +1232,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/BIND编译安装/" itemprop="url">BIND编译安装</a></h1>
+                <a class="post-title-link" href="/2017/11/28/Bind包安装/" itemprop="url">Bind包安装</a></h1>
         
 
         <div class="post-meta">
@@ -1291,8 +1289,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/DNS/BIND编译安装/" itemprop="url" rel="index">
-                    <span itemprop="name">BIND编译安装</span>
+                  <a href="/categories/服务/DNS/Bind包安装/" itemprop="url" rel="index">
+                    <span itemprop="name">Bind包安装</span>
                   </a>
                 </span>
 
@@ -1330,21 +1328,14 @@
       
         
           
-          编译安装bind
-（1）下载源码包
-
-https://www.isc.org/downloads/
-
-
-（2）解压缩源码包
-
-[root@localhost~]#mv bind-9.10.6.tar.gz /usr/src/
-[root@localhost~]#cd /usr/src/
-[root@
+          实现管理DNS1、bind安装包bind-libs.x86_64             #库包           
+bind-libs-lite.x86_64       #     
+bind-license.noarch        #认证包
+bind-utils.x86_64      
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/BIND编译安装/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/Bind包安装/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
