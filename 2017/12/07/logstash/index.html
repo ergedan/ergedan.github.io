@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="elk,logstash," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="一、Logstash开源的服务器端数据处理管道，能够同时从多个来源采集数据、转换数据，然后将数据发送到指定的存储库中。 1、Logstash功能 （1）即插即用 （2）可扩展，Logstash采用可插拔框架。 （3）可靠性，如果Logstash节点发生故障，Logstash会通过持久化队列来保证运行中的事件至少一次被送">
+<meta name="keywords" content="elk,logstash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="logstash">
+<meta property="og:url" content="http://yoursite.com/2017/12/07/logstash/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="一、Logstash开源的服务器端数据处理管道，能够同时从多个来源采集数据、转换数据，然后将数据发送到指定的存储库中。 1、Logstash功能 （1）即插即用 （2）可扩展，Logstash采用可插拔框架。 （3）可靠性，如果Logstash节点发生故障，Logstash会通过持久化队列来保证运行中的事件至少一次被送达。 （4）监控，全方位监视每个节点的部署  2、Logstash安装下载地址">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-07_095835.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-07_111036.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-07_111731.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-07_174532.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-07_174446.jpg">
+<meta property="og:updated_time" content="2017-12-07T09:46:00.590Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="logstash">
+<meta name="twitter:description" content="一、Logstash开源的服务器端数据处理管道，能够同时从多个来源采集数据、转换数据，然后将数据发送到指定的存储库中。 1、Logstash功能 （1）即插即用 （2）可扩展，Logstash采用可插拔框架。 （3）可靠性，如果Logstash节点发生故障，Logstash会通过持久化队列来保证运行中的事件至少一次被送达。 （4）监控，全方位监视每个节点的部署  2、Logstash安装下载地址">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-07_095835.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/07/logstash/"/>
+
+
+
+
+
+  <title>logstash | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/07/logstash/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">logstash</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-07T00:00:00+08:00">
+                2017-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日志管理/" itemprop="url" rel="index">
+                    <span itemprop="name">日志管理</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日志管理/ELK/" itemprop="url" rel="index">
+                    <span itemprop="name">ELK</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日志管理/ELK/logstash/" itemprop="url" rel="index">
+                    <span itemprop="name">logstash</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-07_095835.jpg" alt=""></p>
+<h1 id="一、Logstash"><a href="#一、Logstash" class="headerlink" title="一、Logstash"></a>一、Logstash</h1><p>开源的服务器端数据处理管道，能够同时从多个来源采集数据、转换数据，然后将数据发送到指定的存储库中。</p>
+<h2 id="1、Logstash功能"><a href="#1、Logstash功能" class="headerlink" title="1、Logstash功能"></a>1、Logstash功能</h2><ul>
+<li>（1）即插即用</li>
+<li>（2）可扩展，Logstash采用可插拔框架。</li>
+<li>（3）可靠性，如果Logstash节点发生故障，Logstash会通过持久化队列来保证运行中的事件至少一次被送达。</li>
+<li>（4）监控，全方位监视每个节点的部署</li>
+</ul>
+<h2 id="2、Logstash安装"><a href="#2、Logstash安装" class="headerlink" title="2、Logstash安装"></a>2、Logstash安装</h2><p>下载地址：<a href="http://owatlfstl.bkt.clouddn.com/2017-12-07_095835.jpg" target="_blank" rel="noopener">http://owatlfstl.bkt.clouddn.com/2017-12-07_095835.jpg</a></p>
+<p><code>[root@node4 ~]# yum install -y java-1.8.0-openjdk</code> #安装jdk环境</p>
+<p><code>[root@node4 ~]# java -version</code> #查案是否安装成功</p>
+<pre><code>openjdk version &quot;1.8.0_102&quot;
+OpenJDK Runtime Environment (build 1.8.0_102-b14)
+OpenJDK 64-Bit Server VM (build 25.102-b14, mixed mode)
+</code></pre><p><code>[root@node4 ~]# yum install -y logstash-6.0.0.rpm</code>    #安装Logstash</p>
+<h3 id="（1）Logstash目录介绍"><a href="#（1）Logstash目录介绍" class="headerlink" title="（1）Logstash目录介绍"></a>（1）Logstash目录介绍</h3><table>
+<thead>
+<tr>
+<th>位置</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/usr/share/logstash</code></td>
+<td>logstash安装的主目录</td>
+</tr>
+<tr>
+<td><code>/usr/share/logstash/bin</code></td>
+<td>二进制脚本位置</td>
+</tr>
+<tr>
+<td><code>/etc/logstash</code></td>
+<td>配置文件存放位置</td>
+</tr>
+<tr>
+<td><code>/etc/logstash/conf.d</code></td>
+<td>logstash管道配置文件，注意只要文件放置在此目录下都生效</td>
+</tr>
+<tr>
+<td><code>/var/log/logstash</code></td>
+<td>日志位置</td>
+</tr>
+<tr>
+<td><code>/usr/share/logstash/plugins</code></td>
+<td>插件位置</td>
+</tr>
+<tr>
+<td><code>/var/lib/logstash</code></td>
+<td>数据存放位置</td>
+</tr>
+</tbody>
+</table>
+<h3 id="（2）-etc-logstash-logstash-yml配置文件"><a href="#（2）-etc-logstash-logstash-yml配置文件" class="headerlink" title="（2）/etc/logstash/logstash.yml配置文件"></a>（2）<code>/etc/logstash/logstash.yml</code>配置文件</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node.name</td>
+<td>节点名称</td>
+</tr>
+<tr>
+<td>path.data</td>
+<td>数据路径</td>
+</tr>
+<tr>
+<td>pipeline.workers</td>
+<td>工作的并行数量</td>
+</tr>
+<tr>
+<td>pipeline.batch.size</td>
+<td>单工作线程最大事件数量</td>
+</tr>
+<tr>
+<td>path.config</td>
+<td>配置文件路径</td>
+</tr>
+<tr>
+<td>config.reload.automatic</td>
+<td>设置为true定期检查是否已更改</td>
+</tr>
+<tr>
+<td>config.reload.interval</td>
+<td>检查配置文件更改的间隔时长</td>
+</tr>
+<tr>
+<td>config.debug</td>
+<td>是否显示调试信息</td>
+</tr>
+<tr>
+<td>http.host</td>
+<td>绑定的IP地址</td>
+</tr>
+<tr>
+<td>http.port</td>
+<td>绑定的端口号</td>
+</tr>
+<tr>
+<td>log.level</td>
+<td>日志级别</td>
+</tr>
+<tr>
+<td>log.format</td>
+<td>日志格式</td>
+</tr>
+<tr>
+<td>path.logs</td>
+<td>日志路径</td>
+</tr>
+<tr>
+<td>path.plugins</td>
+<td>插件位置</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3、logstash修改配置文件"><a href="#3、logstash修改配置文件" class="headerlink" title="3、logstash修改配置文件"></a>3、logstash修改配置文件</h2><p><code>[root@node4 ~]# grep &#39;^[^#]&#39; /etc/logstash/logstash.yml</code></p>
+<pre><code>node.name: node4
+path.data: /var/lib/logstash
+path.config: /etc/logstash/conf.d/*.conf
+http.host: &quot;172.18.4.66&quot;
+http.port: 9600-9700
+path.logs: /var/log/logstash
+</code></pre><h2 id="4、输入插件"><a href="#4、输入插件" class="headerlink" title="4、输入插件"></a>4、输入插件</h2><h3 id="（1）file插件"><a href="#（1）file插件" class="headerlink" title="（1）file插件"></a>（1）file插件</h3><table>
+<thead>
+<tr>
+<th>选型</th>
+<th>输入类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>array</td>
+</tr>
+<tr>
+<td>start_position</td>
+<td>string，one of[beginning,end]</td>
+</tr>
+<tr>
+<td>exclude</td>
+<td>处理某种类型的文件</td>
+</tr>
+<tr>
+<td>max_open_files</td>
+<td>打开的最大文件数</td>
+</tr>
+<tr>
+<td>stat_interval</td>
+<td>间隔时长</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<pre><code>1 input {
+2         file {
+3                 path    =&gt; &quot;/root/test&quot;
+4                 start_position  =&gt; beginning
+5         }
+6 }
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-07_111036.jpg" alt=""></p>
+<h3 id="（2）exec"><a href="#（2）exec" class="headerlink" title="（2）exec"></a>（2）exec</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>command</td>
+<td>string</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>number</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<pre><code>1 input {
+2         exec {
+3                 command =&gt; &quot;ls -s /etc/fstab&quot;
+4                 interval        =&gt; 5
+5         }
+6 }
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-07_111731.jpg" alt=""></p>
+<h3 id="（3）http插件"><a href="#（3）http插件" class="headerlink" title="（3）http插件"></a>（3）http插件</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>string</td>
+</tr>
+<tr>
+<td>password</td>
+<td>password</td>
+</tr>
+<tr>
+<td>port</td>
+<td>number</td>
+</tr>
+<tr>
+<td>response_headers</td>
+<td>hash</td>
+</tr>
+<tr>
+<td>user</td>
+<td>string</td>
+</tr>
+<tr>
+<td>ssl</td>
+<td>boolean</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<pre><code>1 input {
+2         http {
+3                 host =&gt; &quot;127.0.0.1&quot;
+4                 port    =&gt; &quot;80&quot;
+5                 codec   =&gt; &quot;plain&quot;
+6         }
+7 }
+</code></pre><h3 id="（4）tcp插件"><a href="#（4）tcp插件" class="headerlink" title="（4）tcp插件"></a>（4）tcp插件</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>port</td>
+<td>number</td>
+</tr>
+<tr>
+<td>host</td>
+<td>string</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>string，one of [server,client]</td>
+</tr>
+<tr>
+<td>proxy_protocol</td>
+<td>boolean</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<pre><code>1 input {
+2         tcp {
+3                 port    =&gt; 80
+4                 mode    =&gt; &quot;server&quot;
+5                 ssl_enable      =&gt; false
+6         }
+7 }
+</code></pre><h3 id="（5）redis插件"><a href="#（5）redis插件" class="headerlink" title="（5）redis插件"></a>（5）redis插件</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data_type</td>
+<td>string，one of[list，channel，pattern_channel]</td>
+</tr>
+<tr>
+<td>db</td>
+<td>number，默认为0</td>
+</tr>
+<tr>
+<td>host</td>
+<td>string</td>
+</tr>
+<tr>
+<td>password</td>
+<td>password</td>
+</tr>
+<tr>
+<td>port</td>
+<td>number</td>
+</tr>
+</tbody>
+</table>
+<p>timeout|number<br>|key|stirng</p>
+<p><strong>示例：</strong></p>
+<pre><code>1 input {
+2         redis {
+3                 data_type       =&gt; &quot;list&quot;
+4                 port    =&gt; &quot;6379&quot;
+5                 db      =&gt; &quot;0&quot;
+6                 password        =&gt; &quot;centos&quot;
+7                 host    =&gt; &quot;172.18.4.66&quot;
+8         }
+9 }
+</code></pre><h2 id="5、输出插件"><a href="#5、输出插件" class="headerlink" title="5、输出插件"></a>5、输出插件</h2><h3 id="（1）stdout插件"><a href="#（1）stdout插件" class="headerlink" title="（1）stdout插件"></a>（1）stdout插件</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>codec</td>
+<td>codec，默认为plain，rubydebug、json</td>
+</tr>
+<tr>
+<td>enable_metric</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<pre><code>14 output {
+15         stdout {
+16                 codec   =&gt; rubydebug
+17         }
+18 }
+</code></pre><h3 id="（2）file插件"><a href="#（2）file插件" class="headerlink" title="（2）file插件"></a>（2）file插件</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>string</td>
+</tr>
+<tr>
+<td>gzip</td>
+<td>boolean，是否压缩</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<pre><code>14 output {
+15         file {
+16                 path    =&gt; &quot;root/test&quot;
+17                 gzip    =&gt; true
+18         }
+19 }
+</code></pre><h3 id="（3）elasticsearch插件"><a href="#（3）elasticsearch插件" class="headerlink" title="（3）elasticsearch插件"></a>（3）elasticsearch插件</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hosts</td>
+<td>主机，默认为“//127.0.0.1”</td>
+</tr>
+<tr>
+<td>password</td>
+<td>密码</td>
+</tr>
+<tr>
+<td>path</td>
+<td>路径</td>
+</tr>
+<tr>
+<td>user</td>
+<td>使用者</td>
+</tr>
+<tr>
+<td>index</td>
+<td>索引，默认为“logstash-%{+YYYY.MM.dd}”</td>
+</tr>
+<tr>
+<td>document_type</td>
+<td>文档类型</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<pre><code>14 output {
+15         elasticsearch {
+16                 hosts   =&gt; [&quot;http://192.168.4.61:9200/&quot;,&quot;http://192.168.4.62:9200/&quot;,&quot;http://192.
+   168.4.63:9200/&quot;]
+17                 index   =&gt; &quot;logstash-%{YYYY.MM.dd}&quot;
+18                 document_type   =&gt; &quot;redis_logs&quot;
+19         }
+20 }
+</code></pre><h3 id="（4）"><a href="#（4）" class="headerlink" title="（4）"></a>（4）</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data_type</td>
+<td>数据类型</td>
+</tr>
+<tr>
+<td>db</td>
+<td>数据库，默认为0</td>
+</tr>
+<tr>
+<td>host</td>
+<td>主机</td>
+</tr>
+<tr>
+<td>key</td>
+<td>关键字</td>
+</tr>
+<tr>
+<td>password</td>
+<td>密码</td>
+</tr>
+<tr>
+<td>port</td>
+<td>端口</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>超时时长</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<pre><code>14 output {
+15         redis {
+16                 data_type       =&gt; &quot;channel&quot;
+17                 key     =&gt; &quot;logstash-chan-%{+yyyy.MM.dd}&quot;
+18                 host    =&gt; &quot;172.18.4.66&quot;
+19                 password        =&gt; &quot;centos&quot;
+20         }
+21 }
+</code></pre><h2 id="6、过滤插件"><a href="#6、过滤插件" class="headerlink" title="6、过滤插件"></a>6、过滤插件</h2><h3 id="（1）grok插件"><a href="#（1）grok插件" class="headerlink" title="（1）grok插件"></a>（1）grok插件</h3><p>通过将文本模式组合成与日志匹配的东西来工作。</p>
+<p>grok模式的语法是：%{SYNTAX:SEMANTIC}</p>
+<ul>
+<li><p>选项<br>match，默认值为{}</p>
+<p>  filter {</p>
+<pre><code>match =&gt; {
+            &quot;message&quot; =&gt; &quot;%{COMBINEDAPCHEDLOG}&quot;
+}
+</code></pre><p>  }</p>
+</li>
+</ul>
+<p>removed_field，默认值为[]</p>
+<p><strong>示例：</strong></p>
+<pre><code> 4 filter {
+ 5         grok {
+ 6                 match =&gt; {
+ 7                         &quot;message&quot; =&gt; &quot;%{COMBINEDAPACHELOG}&quot;
+ 8                 }
+ 9                 remove_field    =&gt; &quot;message&quot;
+10         }
+11 }
+</code></pre><h3 id="（2）geoip插件"><a href="#（2）geoip插件" class="headerlink" title="（2）geoip插件"></a>（2）geoip插件</h3><p>GeoIP过滤器来自Maxmind GeoLite2数据库添加有关的IP地址的地址位置的信息。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source</td>
+<td>数据来源</td>
+</tr>
+<tr>
+<td>target</td>
+<td>指定logstash应该存储geoip数据的字段，默认为geoip</td>
+</tr>
+<tr>
+<td>database</td>
+<td>存放数据库的路径</td>
+</tr>
+</tbody>
+</table>
+<p>下载地址：<a href="https://dev.maxmind.com/zh-hans/geoip/geoip2/geolite2-%E5%BC%80%E6%BA%90%E6%95%B0%E6%8D%AE%E5%BA%93/" target="_blank" rel="noopener">https://dev.maxmind.com/zh-hans/geoip/geoip2/geolite2-%E5%BC%80%E6%BA%90%E6%95%B0%E6%8D%AE%E5%BA%93/</a></p>
+<p>如果我们需要使用GeoIP插件需要下载数据库</p>
+<p><strong>示例：</strong><br><code>[root@node4 logstash]#gzip -d GeoLite2-City.mmdb.gz</code>  #加压数据库到当前目录下</p>
+<pre><code> 4 filter {
+ 5         grok {
+ 6                 match =&gt; {
+ 7                         &quot;message&quot; =&gt; &quot;%{COMBINEDAPACHELOG}&quot;
+ 8                 }
+ 9                 remove_field    =&gt; &quot;message&quot;
+10         }
+11         geoip {
+12                 sourece =&gt; &quot;clientip&quot;
+13                 target  =&gt; &quot;geoip&quot;
+14                 database        =&gt; &quot;/etc/logstash/Geolite2-City.mmdb&quot;
+15         }
+16 }
+</code></pre><h3 id="（3）mutate"><a href="#（3）mutate" class="headerlink" title="（3）mutate"></a>（3）mutate</h3><p>mutate筛选器可以重命名、删除、替换和修改事件中的字段。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gsub</td>
+<td>仅对字符串字段有效</td>
+</tr>
+<tr>
+<td>split</td>
+<td>分隔</td>
+</tr>
+<tr>
+<td>join</td>
+<td>仅对数组类型有效</td>
+</tr>
+<tr>
+<td>merge</td>
+<td>合并两个数组或哈希字段</td>
+</tr>
+<tr>
+<td>rename</td>
+<td>重命名</td>
+</tr>
+<tr>
+<td>update</td>
+<td>更新某个字段</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>替代某个字段</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7、编码插件（codec）"><a href="#7、编码插件（codec）" class="headerlink" title="7、编码插件（codec）"></a>7、编码插件（codec）</h2><h3 id="采用JSON编码"><a href="#采用JSON编码" class="headerlink" title="采用JSON编码"></a>采用JSON编码</h3><p>直接输入预定义好的JSON数据，这样就可以省略掉fileter/grok配置</p>
+<p><strong>注意：</strong><br>Nginx作为一个代理服务器运行的话，访问日志里有些变量，如$upstream_response_time，可能不是一个数据，可能是一个“-”字符串，这会直接导致logstash对输入数据验证报异常。</p>
+<p>使用sed在输入之前先替换“-”为0</p>
+<h1 id="二、示例"><a href="#二、示例" class="headerlink" title="二、示例"></a>二、示例</h1><h2 id="1、把http日志发送到elasticsearch"><a href="#1、把http日志发送到elasticsearch" class="headerlink" title="1、把http日志发送到elasticsearch"></a>1、把http日志发送到elasticsearch</h2><pre><code> 1 input {
+ 2         file {
+ 3                 path    =&gt; &quot;/var/log/httpd/access_log*&quot;
+ 4                 start_position  =&gt; beginning
+ 5         }
+ 6 }
+ 7 filter {
+ 8         grok {
+ 9                 match   =&gt; {
+10                         &quot;message&quot;       =&gt; &quot;%{COMBINEDAPACHELOG}&quot;
+11                 }
+12         }
+13         geoip {
+14                 source  =&gt; &quot;clientip&quot;
+15                 database        =&gt; &quot;/etc/logstash/GeoLite2-City.mmdb&quot;
+16                 target  =&gt; &quot;geoip&quot;
+17         }
+18 }
+19 output {
+20         elasticsearch {
+21                 hosts   =&gt; [&quot;http://192.168.4.61:9200/&quot;,&quot;http://192.168.4.62:9200/&quot;,&quot;http://192.
+   168.4.63:9200/&quot;]
+22                 index   =&gt; &quot;logstash-%{+YYYY.MM.dd}&quot;
+23                 action  =&gt; &quot;index&quot;
+24                 document_type   =&gt; &quot;apache_log&quot;
+25         }
+26 }
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-07_174532.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-07_174446.jpg" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/elk/" rel="tag"># elk</a>
+          
+            <a href="/tags/logstash/" rel="tag"># logstash</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/04/ELK安装/" rel="next" title="Elasticsearch安装">
+                <i class="fa fa-chevron-left"></i> Elasticsearch安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">147</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、Logstash"><span class="nav-number">1.</span> <span class="nav-text">一、Logstash</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Logstash功能"><span class="nav-number">1.1.</span> <span class="nav-text">1、Logstash功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Logstash安装"><span class="nav-number">1.2.</span> <span class="nav-text">2、Logstash安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）Logstash目录介绍"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）Logstash目录介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）-etc-logstash-logstash-yml配置文件"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）/etc/logstash/logstash.yml配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、logstash修改配置文件"><span class="nav-number">1.3.</span> <span class="nav-text">3、logstash修改配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、输入插件"><span class="nav-number">1.4.</span> <span class="nav-text">4、输入插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）file插件"><span class="nav-number">1.4.1.</span> <span class="nav-text">（1）file插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）exec"><span class="nav-number">1.4.2.</span> <span class="nav-text">（2）exec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）http插件"><span class="nav-number">1.4.3.</span> <span class="nav-text">（3）http插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）tcp插件"><span class="nav-number">1.4.4.</span> <span class="nav-text">（4）tcp插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）redis插件"><span class="nav-number">1.4.5.</span> <span class="nav-text">（5）redis插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、输出插件"><span class="nav-number">1.5.</span> <span class="nav-text">5、输出插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）stdout插件"><span class="nav-number">1.5.1.</span> <span class="nav-text">（1）stdout插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）file插件"><span class="nav-number">1.5.2.</span> <span class="nav-text">（2）file插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）elasticsearch插件"><span class="nav-number">1.5.3.</span> <span class="nav-text">（3）elasticsearch插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）"><span class="nav-number">1.5.4.</span> <span class="nav-text">（4）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、过滤插件"><span class="nav-number">1.6.</span> <span class="nav-text">6、过滤插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）grok插件"><span class="nav-number">1.6.1.</span> <span class="nav-text">（1）grok插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）geoip插件"><span class="nav-number">1.6.2.</span> <span class="nav-text">（2）geoip插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）mutate"><span class="nav-number">1.6.3.</span> <span class="nav-text">（3）mutate</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、编码插件（codec）"><span class="nav-number">1.7.</span> <span class="nav-text">7、编码插件（codec）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#采用JSON编码"><span class="nav-number">1.7.1.</span> <span class="nav-text">采用JSON编码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、示例"><span class="nav-number">2.</span> <span class="nav-text">二、示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、把http日志发送到elasticsearch"><span class="nav-number">2.1.</span> <span class="nav-text">1、把http日志发送到elasticsearch</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="300" alpha="0.6"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+</body>
+</html>
