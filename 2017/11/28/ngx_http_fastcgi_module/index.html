@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="Joah">
 <meta property="og:description" content="ngx_http_fastcgi_module转发请求到FastCGI服务器，不支持php模块方式 （1）fastcgi_pass address address 为后端的fastcgi server的地址可用 Syntax:    fastcgi_pass address; Default:    — Context:    location, if in location （2）fastcgi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-30T02:26:11.870Z">
+<meta property="og:updated_time" content="2017-12-09T01:29:28.703Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ngx_http_fastcgi_module">
 <meta name="twitter:description" content="ngx_http_fastcgi_module转发请求到FastCGI服务器，不支持php模块方式 （1）fastcgi_pass address address 为后端的fastcgi server的地址可用 Syntax:    fastcgi_pass address; Default:    — Context:    location, if in location （2）fastcgi">
@@ -493,7 +493,10 @@ Default:    —
 Context:    http, server, location
 </code></pre><p>示例：</p>
 <p>a、在php-fpm服务器上开启以下几行</p>
-<p>b、在前端nginx服务器上进行如下配置</p>
+<pre><code>pm.status_path = /status
+ping.path = /ping
+ping.response = pong
+</code></pre><p>b、在前端nginx服务器上进行如下配置</p>
 <pre><code>location ~*\.php${
     fastcgi_pass 192.168.4.60:9000;
     fastcgi_index index.php;
@@ -561,7 +564,10 @@ http {
          location ~* \.php$ {
 
                 fastcgi_cache fcgicache; 
-                fastcgi_cache_key $request_uri; fastcgi_cache_valid 200 302 10m; fastcgi_cache_valid 301 1h; fastcgi_cache_valid any 1m;
+                fastcgi_cache_key $request_uri; 
+                fastcgi_cache_valid 200 302 10m;
+                 fastcgi_cache_valid 301 1h; 
+                fastcgi_cache_valid any 1m;
 
          }
 
@@ -607,8 +613,8 @@ http {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/28/memcached/" rel="next" title="memcached">
-                <i class="fa fa-chevron-left"></i> memcached
+              <a href="/2017/11/28/ngx_http_proxy_module/" rel="next" title="ngx_http_proxy_module">
+                <i class="fa fa-chevron-left"></i> ngx_http_proxy_module
               </a>
             
           </div>
@@ -617,8 +623,8 @@ http {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/28/ngx_http_proxy_module/" rel="prev" title="ngx_http_proxy_module">
-                ngx_http_proxy_module <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/28/iptables命令/" rel="prev" title="iptables命令">
+                iptables命令 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

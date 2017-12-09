@@ -136,18 +136,18 @@
 
 
 
-<meta name="description" content="ngx_http_proxy_module（1）proxy_pass URL Syntax:    proxy_pass URL; Default:    — Context:    location, if in location, limit_except #    proxy_pass http://localh">
+<meta name="description" content="ngx_http_proxy_module（1）proxy_pass URL Syntax:    proxy_pass URL; Default:    — Context:    location, if in location, limit_except  proxy_pass http://localhost:">
 <meta name="keywords" content="nginx，proxy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ngx_http_proxy_module">
 <meta property="og:url" content="http://yoursite.com/2017/11/28/ngx_http_proxy_module/index.html">
 <meta property="og:site_name" content="Joah">
-<meta property="og:description" content="ngx_http_proxy_module（1）proxy_pass URL Syntax:    proxy_pass URL; Default:    — Context:    location, if in location, limit_except #    proxy_pass http://localhost:8000/uri/; ####proxy_pass后面的路径不带URI时">
+<meta property="og:description" content="ngx_http_proxy_module（1）proxy_pass URL Syntax:    proxy_pass URL; Default:    — Context:    location, if in location, limit_except  proxy_pass http://localhost:8000/uri/; proxy_pass后面的路径不带URI时，其会将loca">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-29T12:07:46.749Z">
+<meta property="og:updated_time" content="2017-12-09T01:31:05.512Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ngx_http_proxy_module">
-<meta name="twitter:description" content="ngx_http_proxy_module（1）proxy_pass URL Syntax:    proxy_pass URL; Default:    — Context:    location, if in location, limit_except #    proxy_pass http://localhost:8000/uri/; ####proxy_pass后面的路径不带URI时">
+<meta name="twitter:description" content="ngx_http_proxy_module（1）proxy_pass URL Syntax:    proxy_pass URL; Default:    — Context:    location, if in location, limit_except  proxy_pass http://localhost:8000/uri/; proxy_pass后面的路径不带URI时，其会将loca">
 
 
 
@@ -477,9 +477,9 @@
 <pre><code>Syntax:    proxy_pass URL;
 Default:    —
 Context:    location, if in location, limit_except
-</code></pre><p>#<br>    proxy_pass <a href="http://localhost:8000/uri/" target="_blank" rel="noopener">http://localhost:8000/uri/</a>;</p>
-<p>####proxy_pass后面的路径不带URI时，其会将location的URI传递给后端主机</p>
-<p>即：</p>
+
+proxy_pass http://localhost:8000/uri/;
+</code></pre><h4 id="proxy-pass后面的路径不带URI时，其会将location的URI传递给后端主机"><a href="#proxy-pass后面的路径不带URI时，其会将location的URI传递给后端主机" class="headerlink" title="proxy_pass后面的路径不带URI时，其会将location的URI传递给后端主机"></a>proxy_pass后面的路径不带URI时，其会将location的URI传递给后端主机</h4><p>即：</p>
 <pre><code>server {
     server_name www.test.com; 
     location /URI/ {
@@ -495,8 +495,7 @@ Context:    location, if in location, limit_except
      }  
 }
 </code></pre><p><a href="http://HOSTNAME/uri/" target="_blank" rel="noopener">http://HOSTNAME/uri/</a> –&gt; <a href="http://host/new_uri/" target="_blank" rel="noopener">http://host/new_uri/</a></p>
-<p>####如果location定义其URI时使用了正则表达式，则proxy_pass之后必须不能使用URI；即<a href="http://host/[:port]后面不能带“/”。" target="_blank" rel="noopener">http://host/[:port]后面不能带“/”。</a></p>
-<p>（2）proxy_set_header filed value</p>
+<h4 id="如果location定义其URI时使用了正则表达式，则proxy-pass之后必须不能使用URI；即http-host-port-后面不能带“-”。"><a href="#如果location定义其URI时使用了正则表达式，则proxy-pass之后必须不能使用URI；即http-host-port-后面不能带“-”。" class="headerlink" title="如果location定义其URI时使用了正则表达式，则proxy_pass之后必须不能使用URI；即http://host/[:port]后面不能带“/”。"></a>如果location定义其URI时使用了正则表达式，则proxy_pass之后必须不能使用URI；即<a href="http://host/[:port]后面不能带“/”。" target="_blank" rel="noopener">http://host/[:port]后面不能带“/”。</a></h4><p>（2）proxy_set_header filed value</p>
 <p>设定发往后端主机的请求报文的请求首部的值</p>
 <pre><code>Syntax:    proxy_set_header field value;
 Default:    proxy_set_header Host $proxy_host;
@@ -527,14 +526,14 @@ Context:    http, server, location
 <pre><code>Syntax:    proxy_cache_key string;
 Default:    proxy_cache_key $scheme$proxy_host$request_uri;
 Context:    http, server, location
-</code></pre><p>示例：</p>
+</code></pre><p><strong>示例：</strong></p>
 <pre><code>proxy_cache_key &quot;$host$request_uri $cookie_user&quot;;
 </code></pre><p>（6）proxy_cache_valid [code…] time</p>
 <p>定义对特定响应码的响应内容的缓存时长</p>
 <pre><code>Syntax:    proxy_cache_valid [code ...] time;
 Default:    —
 Context:    http, server, location
-</code></pre><p>示例：</p>
+</code></pre><p><strong>示例：</strong></p>
 <pre><code>首先在nginx.conf配置文件中定义
 
 http{
@@ -618,8 +617,8 @@ Context:    http, server, location
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/28/ngx_http_fastcgi_module/" rel="next" title="ngx_http_fastcgi_module">
-                <i class="fa fa-chevron-left"></i> ngx_http_fastcgi_module
+              <a href="/2017/11/28/ngx_http_upstream_module/" rel="next" title="ngx_http_upstream_module">
+                <i class="fa fa-chevron-left"></i> ngx_http_upstream_module
               </a>
             
           </div>
@@ -628,8 +627,8 @@ Context:    http, server, location
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/28/puppet 主从/" rel="prev" title="puppet  master/agent">
-                puppet  master/agent <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/28/ngx_http_fastcgi_module/" rel="prev" title="ngx_http_fastcgi_module">
+                ngx_http_fastcgi_module <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -775,7 +774,7 @@ Context:    http, server, location
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-proxy-module"><span class="nav-number">1.</span> <span class="nav-text">ngx_http_proxy_module</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-proxy-module"><span class="nav-number">1.</span> <span class="nav-text">ngx_http_proxy_module</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#proxy-pass后面的路径不带URI时，其会将location的URI传递给后端主机"><span class="nav-number">1.0.1.</span> <span class="nav-text">proxy_pass后面的路径不带URI时，其会将location的URI传递给后端主机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果location定义其URI时使用了正则表达式，则proxy-pass之后必须不能使用URI；即http-host-port-后面不能带“-”。"><span class="nav-number">1.0.2.</span> <span class="nav-text">如果location定义其URI时使用了正则表达式，则proxy_pass之后必须不能使用URI；即http://host/[:port]后面不能带“/”。</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="Joah">
 <meta property="og:description" content="Nginx配置指令参考： https://nginx.org/en/docs/- 事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。 正常运行必备指令（1）user 指定worker进程的运行身份，如果组不指定，默认和用户名同名。 Syntax:    user user [group]; Default:     user nobody nobo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-09T00:57:37.999Z">
+<meta property="og:updated_time" content="2017-12-09T01:11:17.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx指令">
 <meta name="twitter:description" content="Nginx配置指令参考： https://nginx.org/en/docs/- 事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。 正常运行必备指令（1）user 指定worker进程的运行身份，如果组不指定，默认和用户名同名。 Syntax:    user user [group]; Default:     user nobody nobo">
@@ -1146,7 +1146,36 @@ location /admin {
 <pre><code>Syntax:    valid_referers none | blocked | server_names | string ...;
 Default:    —
 Context:    server, location
-</code></pre><p>#<br>|选项|说明<br>|—|—<br>|none|请求报文首部没有referer首部<br>|blocked|请求报文有referer首部，但无有效值，前段可能被代理服务器删除<br>|server_names|参数，其可以有值作为主机名或主机名模式<br>|arbitrary_string|任意字符串，但可使用*做通配符<br>|regular experssion|被指定的正则表达式模式匹配的字符串，要使用~开头</p>
+</code></pre><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>none</td>
+<td>请求报文首部没有referer首部</td>
+</tr>
+<tr>
+<td>blocked</td>
+<td>请求报文有referer首部，但无有效值，前段可能被代理服务器删除</td>
+</tr>
+<tr>
+<td>server_names</td>
+<td>参数，其可以有值作为主机名或主机名模式</td>
+</tr>
+<tr>
+<td>arbitrary_string</td>
+<td>任意字符串，但可使用*做通配符</td>
+</tr>
+<tr>
+<td>regular experssion</td>
+<td>被指定的正则表达式模式匹配的字符串，要使用~开头</td>
+</tr>
+</tbody>
+</table>
 <p>示例：</p>
 <pre><code>valid_referers none blocked server_names
            *.example.com example.* www.example.org/galleries/
@@ -1206,8 +1235,8 @@ add_header X-Cache $upstream_cache_status;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/28/MySQL日志/" rel="next" title="MySQL日志">
-                <i class="fa fa-chevron-left"></i> MySQL日志
+              <a href="/2017/11/28/DNS简单介绍/" rel="next" title="DNS简单介绍">
+                <i class="fa fa-chevron-left"></i> DNS简单介绍
               </a>
             
           </div>
@@ -1216,8 +1245,8 @@ add_header X-Cache $upstream_cache_status;
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/28/NFS/" rel="prev" title="NFS">
-                NFS <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/29/firewalld/" rel="prev" title="firewalld">
+                firewalld <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
