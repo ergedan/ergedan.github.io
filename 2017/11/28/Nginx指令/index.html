@@ -136,18 +136,18 @@
 
 
 
-<meta name="description" content="Nginx配置指令参考： https://nginx.org/en/docs/- 事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。 正常运行必备指令- （1）user 指定worker进程的运行身份，如果组不指定，默认和用户名同名。 Syntax:    user u">
+<meta name="description" content="Nginx配置指令参考： https://nginx.org/en/docs/- 事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。 正常运行必备指令（1）user 指定worker进程的运行身份，如果组不指定，默认和用户名同名。 Syntax:    user use">
 <meta name="keywords" content="nginx，指令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx指令">
 <meta property="og:url" content="http://yoursite.com/2017/11/28/Nginx指令/index.html">
 <meta property="og:site_name" content="Joah">
-<meta property="og:description" content="Nginx配置指令参考： https://nginx.org/en/docs/- 事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。 正常运行必备指令- （1）user 指定worker进程的运行身份，如果组不指定，默认和用户名同名。 Syntax:    user user [group]; Default:     user nobody no">
+<meta property="og:description" content="Nginx配置指令参考： https://nginx.org/en/docs/- 事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。 正常运行必备指令（1）user 指定worker进程的运行身份，如果组不指定，默认和用户名同名。 Syntax:    user user [group]; Default:     user nobody nobo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-29T12:11:06.491Z">
+<meta property="og:updated_time" content="2017-12-09T00:57:37.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx指令">
-<meta name="twitter:description" content="Nginx配置指令参考： https://nginx.org/en/docs/- 事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。 正常运行必备指令- （1）user 指定worker进程的运行身份，如果组不指定，默认和用户名同名。 Syntax:    user user [group]; Default:     user nobody no">
+<meta name="twitter:description" content="Nginx配置指令参考： https://nginx.org/en/docs/- 事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。 正常运行必备指令（1）user 指定worker进程的运行身份，如果组不指定，默认和用户名同名。 Syntax:    user user [group]; Default:     user nobody nobo">
 
 
 
@@ -475,8 +475,7 @@
       
         <h2 id="Nginx配置指令"><a href="#Nginx配置指令" class="headerlink" title="Nginx配置指令"></a>Nginx配置指令</h2><p>参考： <a href="https://nginx.org/en/docs/" target="_blank" rel="noopener">https://nginx.org/en/docs/</a><br>-</p>
 <p><strong>事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。</strong></p>
-<p>正常运行必备指令<br>-</p>
-<p>（1）user</p>
+<h1 id="正常运行必备指令"><a href="#正常运行必备指令" class="headerlink" title="正常运行必备指令"></a>正常运行必备指令</h1><p>（1）user</p>
 <p>指定worker进程的运行身份，如果组不指定，默认和用户名同名。</p>
 <pre><code>Syntax:    user user [group];
 Default:    
@@ -501,8 +500,7 @@ Context:    any
 Default:    —
 Context:    main
 This directive appeared in version 1.9.11. 此指令在1.9.11版本中才有
-</code></pre><p>性能优化相关指令<br>-</p>
-<p>（1）worker_process number|auto</p>
+</code></pre><h1 id="性能优化相关指令"><a href="#性能优化相关指令" class="headerlink" title="性能优化相关指令"></a>性能优化相关指令</h1><p>（1）worker_process number|auto</p>
 <p>worker进程的数量，通常应该设置为小于或等于当前主机CPU的物理核心数</p>
 <pre><code>Syntax:    worker_processes number | auto;
 Default:    
@@ -529,8 +527,7 @@ Context:    main
 <pre><code>Syntax:    worker_rlimit_nofile number;
 Default:    —
 Context:    main
-</code></pre><p>事件驱动相关指令：<br>-</p>
-<p>（1）worker_connections number</p>
+</code></pre><h1 id="事件驱动相关指令："><a href="#事件驱动相关指令：" class="headerlink" title="事件驱动相关指令："></a>事件驱动相关指令：</h1><p>（1）worker_connections number</p>
 <p>每个worker进程所能够打开的最大并发连接数量</p>
 <pre><code>Syntax:    worker_connections number;
 Default:    
@@ -549,8 +546,7 @@ off：指每个新请求的到达都会通知所有的worker进程，但只有�
 Syntax:    accept_mutex on | off;
 Default:    accept_mutex on;
 Context:    events
-</code></pre><p>调试和定位问题<br>-</p>
-<p>（1）daemon on|off</p>
+</code></pre><h1 id="调试和定位问题"><a href="#调试和定位问题" class="headerlink" title="调试和定位问题"></a>调试和定位问题</h1><p>（1）daemon on|off</p>
 <p>是否以守护进程方式运行nginx，默认为守护进程方式</p>
 <pre><code>Syntax:    daemon on | off;
 Default:   daemon on;
@@ -576,8 +572,7 @@ level:debug|info|notice|warn|error|crit|alter|emerg
 Default:    
 resolver_timeout 30s;
 Context:    mail, server
-</code></pre><p>http协议的相关指令<br>-</p>
-<p>（1）server{…}</p>
+</code></pre><h1 id="http协议的相关指令"><a href="#http协议的相关指令" class="headerlink" title="http协议的相关指令"></a>http协议的相关指令</h1><p>（1）server{…}</p>
 <p>配置一个虚拟主机</p>
 <p>（2）listen PORT|address[:port]|unix:/PATH/TO/SOCKET_FILE</p>
 <p>listen address[:port] [default_server] [ssl] [http2 | spdy] [backlog=number] [rcvbuf=size] [sndbuf=size]</p>
@@ -946,7 +941,24 @@ Context:    http, server, location
 Default:    gzip_proxied off;
 Context:    http, server, location
 </code></pre><p>nginx对于代理服务器请求的响应报文，在何种情况下启用压缩功能</p>
-<p>|<br>|off|对于被代理的请求不启用压缩<br>|expired，no-cache,no-store，private|对代理服务器请求的响应报文首部Cache-Control值任何一个，启用压缩功能</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>off</td>
+<td>对于被代理的请求不启用压缩</td>
+</tr>
+<tr>
+<td>expired，no-cache,no-store，private</td>
+<td>对代理服务器请求的响应报文首部Cache-Control值任何一个，启用压缩功能</td>
+</tr>
+</tbody>
+</table>
 <p>示例：</p>
 <pre><code>gzip            on;
 gzip_min_length 1000;
@@ -1028,7 +1040,7 @@ server {
     ssl_session_cache  shared:sslcache:20m; 
     ssl_session_timeout 10m;
 }
-</code></pre><p>##ngx_http_rewrite_module<br>将用户请求URI基于PCRE regex所描述的模式进行检查，而完成重定向替换</p>
+</code></pre><h2 id="ngx-http-rewrite-module"><a href="#ngx-http-rewrite-module" class="headerlink" title="ngx_http_rewrite_module"></a>ngx_http_rewrite_module</h2><p>将用户请求URI基于PCRE regex所描述的模式进行检查，而完成重定向替换</p>
 <p>（1）rewrite regex replacement[flag]</p>
 <p>将用户的请求的URI基于regex所描述的模式进行检查，匹配到时将其替换为replacement指定新的URI</p>
 <pre><code>Syntax:    rewrite regex replacement [flag];
@@ -1060,9 +1072,63 @@ Default:    —
 Context:    server, location, if
 </code></pre><p>（5）if(condition){…}</p>
 <p>引入新的上下文，条件满足时，执行配置块中的配置指令</p>
-<p>|<br>|==|相同<br>|！=|不相同<br>|~|模式匹配，区分字符大小写<br>|~<em>|模式匹配，不区分大小写<br>|！~和!~</em>|上述两种的否定</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>==</td>
+<td>相同</td>
+</tr>
+<tr>
+<td>！=</td>
+<td>不相同</td>
+</tr>
+<tr>
+<td>~</td>
+<td>模式匹配，区分字符大小写</td>
+</tr>
+<tr>
+<td>~*</td>
+<td>模式匹配，不区分大小写</td>
+</tr>
+<tr>
+<td>！~ 和 !~*</td>
+<td>上述两种的否定</td>
+</tr>
+</tbody>
+</table>
 <p>文件及目录存在性判断</p>
-<p>|<br>|-e，！-e|存在，不存在<br>|-f，！-f|是否为文件<br>|-d，！-d|是否为目录<br>|-x，！-x|是否可执行</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-e，！-e</td>
+<td>存在，不存在</td>
+</tr>
+<tr>
+<td>-f，！-f</td>
+<td>是否为文件</td>
+</tr>
+<tr>
+<td>-d，！-d</td>
+<td>是否为目录</td>
+</tr>
+<tr>
+<td>-x，！-x</td>
+<td>是否可执行</td>
+</tr>
+</tbody>
+</table>
 <p>####注意：如果在同一级配置块中存在多个rewrite规则，那么会自上而下逐个检查，被某条件规则替换完成后，会重新一轮的替换检查。隐含有循环机制，但不超过10次，如果超过10此，提示500响应码</p>
 <p>示例：</p>
 <pre><code>location /admin {
@@ -1080,7 +1146,7 @@ location /admin {
 <pre><code>Syntax:    valid_referers none | blocked | server_names | string ...;
 Default:    —
 Context:    server, location
-</code></pre><p>#<br>|<br>|none|请求报文首部没有referer首部<br>|blocked|请求报文有referer首部，但无有效值，前段可能被代理服务器删除<br>|server_names|参数，其可以有值作为主机名或主机名模式<br>|arbitrary_string|任意字符串，但可使用*做通配符<br>|regular experssion|被指定的正则表达式模式匹配的字符串，要使用~开头</p>
+</code></pre><p>#<br>|选项|说明<br>|—|—<br>|none|请求报文首部没有referer首部<br>|blocked|请求报文有referer首部，但无有效值，前段可能被代理服务器删除<br>|server_names|参数，其可以有值作为主机名或主机名模式<br>|arbitrary_string|任意字符串，但可使用*做通配符<br>|regular experssion|被指定的正则表达式模式匹配的字符串，要使用~开头</p>
 <p>示例：</p>
 <pre><code>valid_referers none blocked server_names
            *.example.com example.* www.example.org/galleries/
@@ -1140,8 +1206,8 @@ add_header X-Cache $upstream_cache_status;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/28/Nginx源码编译安装/" rel="next" title="Nginx源码编译安装">
-                <i class="fa fa-chevron-left"></i> Nginx源码编译安装
+              <a href="/2017/11/28/MySQL日志/" rel="next" title="MySQL日志">
+                <i class="fa fa-chevron-left"></i> MySQL日志
               </a>
             
           </div>
@@ -1297,7 +1363,7 @@ add_header X-Cache $upstream_cache_status;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx配置指令"><span class="nav-number">1.</span> <span class="nav-text">Nginx配置指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配优先级"><span class="nav-number">1.1.</span> <span class="nav-text">匹配优先级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义路径相关指令"><span class="nav-number">2.</span> <span class="nav-text">定义路径相关指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#匹配优先级从左到右降低"><span class="nav-number">2.0.1.</span> <span class="nav-text">匹配优先级从左到右降低</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alias和root指令的区别"><span class="nav-number">2.1.</span> <span class="nav-text">alias和root指令的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义客户端请求的指令"><span class="nav-number">2.2.</span> <span class="nav-text">定义客户端请求的指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对客户端进行限制的相关指令"><span class="nav-number">2.3.</span> <span class="nav-text">对客户端进行限制的相关指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件操作优化指令"><span class="nav-number">2.4.</span> <span class="nav-text">文件操作优化指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-access-module-实现基于IP访问控制功能"><span class="nav-number">3.</span> <span class="nav-text">ngx_http_access_module 实现基于IP访问控制功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-auth-basic-module实现基于用户的访问控制，使用basic机制进行用户认证"><span class="nav-number">4.</span> <span class="nav-text">ngx_http_auth_basic_module实现基于用户的访问控制，使用basic机制进行用户认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-stub-stastus-module-用于输出nginx基本状态信息"><span class="nav-number">5.</span> <span class="nav-text">ngx_http_stub_stastus_module 用于输出nginx基本状态信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-log-module指定日志格式记录请求"><span class="nav-number">6.</span> <span class="nav-text">ngx_http_log_module指定日志格式记录请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-gzip-module使用gzip方法压缩响应数据，可以节约带宽"><span class="nav-number">7.</span> <span class="nav-text">ngx_http_gzip_module使用gzip方法压缩响应数据，可以节约带宽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-ssl-module"><span class="nav-number">8.</span> <span class="nav-text">ngx_http_ssl_module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-referer-module"><span class="nav-number">9.</span> <span class="nav-text">ngx_http_referer_module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-headers-module"><span class="nav-number">10.</span> <span class="nav-text">ngx_http_headers_module</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx配置指令"><span class="nav-number">1.</span> <span class="nav-text">Nginx配置指令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正常运行必备指令"><span class="nav-number"></span> <span class="nav-text">正常运行必备指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#性能优化相关指令"><span class="nav-number"></span> <span class="nav-text">性能优化相关指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事件驱动相关指令："><span class="nav-number"></span> <span class="nav-text">事件驱动相关指令：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调试和定位问题"><span class="nav-number"></span> <span class="nav-text">调试和定位问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http协议的相关指令"><span class="nav-number"></span> <span class="nav-text">http协议的相关指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配优先级"><span class="nav-number">0.1.</span> <span class="nav-text">匹配优先级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义路径相关指令"><span class="nav-number">1.</span> <span class="nav-text">定义路径相关指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#匹配优先级从左到右降低"><span class="nav-number">1.0.1.</span> <span class="nav-text">匹配优先级从左到右降低</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alias和root指令的区别"><span class="nav-number">1.1.</span> <span class="nav-text">alias和root指令的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义客户端请求的指令"><span class="nav-number">1.2.</span> <span class="nav-text">定义客户端请求的指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对客户端进行限制的相关指令"><span class="nav-number">1.3.</span> <span class="nav-text">对客户端进行限制的相关指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件操作优化指令"><span class="nav-number">1.4.</span> <span class="nav-text">文件操作优化指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-access-module-实现基于IP访问控制功能"><span class="nav-number">2.</span> <span class="nav-text">ngx_http_access_module 实现基于IP访问控制功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-auth-basic-module实现基于用户的访问控制，使用basic机制进行用户认证"><span class="nav-number">3.</span> <span class="nav-text">ngx_http_auth_basic_module实现基于用户的访问控制，使用basic机制进行用户认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-stub-stastus-module-用于输出nginx基本状态信息"><span class="nav-number">4.</span> <span class="nav-text">ngx_http_stub_stastus_module 用于输出nginx基本状态信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-log-module指定日志格式记录请求"><span class="nav-number">5.</span> <span class="nav-text">ngx_http_log_module指定日志格式记录请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-gzip-module使用gzip方法压缩响应数据，可以节约带宽"><span class="nav-number">6.</span> <span class="nav-text">ngx_http_gzip_module使用gzip方法压缩响应数据，可以节约带宽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-ssl-module"><span class="nav-number">7.</span> <span class="nav-text">ngx_http_ssl_module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-rewrite-module"><span class="nav-number">8.</span> <span class="nav-text">ngx_http_rewrite_module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-referer-module"><span class="nav-number">9.</span> <span class="nav-text">ngx_http_referer_module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngx-http-headers-module"><span class="nav-number">10.</span> <span class="nav-text">ngx_http_headers_module</span></a></li></ol></div>
             
 
           </div>
