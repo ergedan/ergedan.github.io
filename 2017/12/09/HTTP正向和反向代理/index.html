@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="http，正向代理，反向代理," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="一、正向代理 1、概念正向代理是一个位于客户端和目标服务器之间的代理服务器。为了从原始服务器取得内容，客户端向代理服务器发送一个请求，并且指定代理服务器向目标服务器转交并获得内容返回给客户端。 2、正向代理服务器作用 访问无法访问的服务器B 加速访问服务器B Cache作用 隐藏访问者行踪  二、反向代理 1、概念反向">
+<meta name="keywords" content="http，正向代理，反向代理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP正向和反向代理">
+<meta property="og:url" content="http://yoursite.com/2017/12/09/HTTP正向和反向代理/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="一、正向代理 1、概念正向代理是一个位于客户端和目标服务器之间的代理服务器。为了从原始服务器取得内容，客户端向代理服务器发送一个请求，并且指定代理服务器向目标服务器转交并获得内容返回给客户端。 2、正向代理服务器作用 访问无法访问的服务器B 加速访问服务器B Cache作用 隐藏访问者行踪  二、反向代理 1、概念反向代理是为服务端转发请求，客户端将请求发送至反向代理服务器，反向代理服务器再将服务">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-09_160455.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-09_160748.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-09_164821.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-09_164712.jpg">
+<meta property="og:updated_time" content="2017-12-09T09:27:50.329Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP正向和反向代理">
+<meta name="twitter:description" content="一、正向代理 1、概念正向代理是一个位于客户端和目标服务器之间的代理服务器。为了从原始服务器取得内容，客户端向代理服务器发送一个请求，并且指定代理服务器向目标服务器转交并获得内容返回给客户端。 2、正向代理服务器作用 访问无法访问的服务器B 加速访问服务器B Cache作用 隐藏访问者行踪  二、反向代理 1、概念反向代理是为服务端转发请求，客户端将请求发送至反向代理服务器，反向代理服务器再将服务">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-09_160455.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/09/HTTP正向和反向代理/"/>
+
+
+
+
+
+  <title>HTTP正向和反向代理 | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/09/HTTP正向和反向代理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTTP正向和反向代理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-09T00:00:00+08:00">
+                2017-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/Apache/" itemprop="url" rel="index">
+                    <span itemprop="name">Apache</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/Apache/HTTP正向和反向代理/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP正向和反向代理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、正向代理"><a href="#一、正向代理" class="headerlink" title="一、正向代理"></a>一、正向代理</h1><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-09_160455.jpg" alt=""></p>
+<h2 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h2><p>正向代理是一个位于客户端和目标服务器之间的代理服务器。为了从原始服务器取得内容，客户端向代理服务器发送一个请求，并且指定代理服务器向目标服务器转交并获得内容返回给客户端。</p>
+<h2 id="2、正向代理服务器作用"><a href="#2、正向代理服务器作用" class="headerlink" title="2、正向代理服务器作用"></a>2、正向代理服务器作用</h2><ul>
+<li>访问无法访问的服务器B</li>
+<li>加速访问服务器B</li>
+<li>Cache作用</li>
+<li>隐藏访问者行踪</li>
+</ul>
+<h1 id="二、反向代理"><a href="#二、反向代理" class="headerlink" title="二、反向代理"></a>二、反向代理</h1><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-09_160748.jpg" alt=""></p>
+<h2 id="1、概念-1"><a href="#1、概念-1" class="headerlink" title="1、概念"></a>1、概念</h2><p>反向代理是为服务端转发请求，客户端将请求发送至反向代理服务器，反向代理服务器再将服务器请求转发给真正的服务器进行处理请求，响应时后端真正的服务器将处理结果发送给反向代理，再由反向代理构建响应并响应给客户端。</p>
+<h2 id="2-、反向代理作用"><a href="#2-、反向代理作用" class="headerlink" title="2 、反向代理作用"></a>2 、反向代理作用</h2><ul>
+<li>保护和隐藏原始资源服务器</li>
+<li>负载均衡作用</li>
+<li>加密和SSL加速</li>
+<li>缓存静态内容</li>
+<li>压缩功能</li>
+</ul>
+<h1 id="三、HTTP正向代理"><a href="#三、HTTP正向代理" class="headerlink" title="三、HTTP正向代理"></a>三、HTTP正向代理</h1><h2 id="1、ProxyRequest指令"><a href="#1、ProxyRequest指令" class="headerlink" title="1、ProxyRequest指令"></a>1、ProxyRequest指令</h2><pre><code>Description:    Enables forward (standard) proxy requests
+Syntax:    ProxyRequests On|Off
+Default:    ProxyRequests Off
+Context:    server config, virtual host
+Status:    Extension
+Module:    mod_proxy
+</code></pre><h2 id="2、ProxyVia指令"><a href="#2、ProxyVia指令" class="headerlink" title="2、ProxyVia指令"></a>2、ProxyVia指令</h2><p>是否在响应首部添加Via字段</p>
+<pre><code>Description:    Information provided in the Via HTTP response header for proxied requests
+Syntax:    ProxyVia On|Off|Full|Block
+Default:    ProxyVia Off
+Context:    server config, virtual host
+Status:    Extension
+Module:    mod_proxy
+</code></pre><p>off：将不会采取特殊处理<br>on：每个请求和应答都会对应当前主机得到一个“Via：”头<br>full：每个产生的“Via：”头都会额外加入Apache服务器的版本<br>block：每个代理请求中的所有”Via：”头行都将被删除</p>
+<p><strong>示例：</strong></p>
+<pre><code> 1 &lt;VirtualHost *:80&gt;
+ 2         ServerName www.test.com
+ 3         DocumentRoot &quot;/app/web/test&quot;
+ 4         ProxyRequests ON
+ 5         ProxyVia ON
+ 6         &lt;Directory &quot;/app/web/test&quot;&gt;
+ 7                 Require all granted
+ 8         &lt;/Directory&gt;
+ 9         &lt;Proxy *&gt;
+10                 Require all granted
+11         &lt;/Proxy&gt;
+12 &lt;/VirtualHost&gt;
+</code></pre><h4 id="设置浏览器"><a href="#设置浏览器" class="headerlink" title="设置浏览器"></a>设置浏览器</h4><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-09_164821.jpg" alt=""></p>
+<h4 id="访问www-test-com"><a href="#访问www-test-com" class="headerlink" title="访问www.test.com"></a>访问<a href="www.test.com">www.test.com</a></h4><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-09_164712.jpg" alt=""></p>
+<h1 id="四、HTTP反向代理"><a href="#四、HTTP反向代理" class="headerlink" title="四、HTTP反向代理"></a>四、HTTP反向代理</h1><h2 id="1、Proxy指令"><a href="#1、Proxy指令" class="headerlink" title="1、Proxy指令"></a>1、Proxy指令</h2><pre><code>Description:    Container for directives applied to proxied resources
+Syntax:    &lt;Proxy wildcard-url&gt; ...&lt;/Proxy&gt;
+Context:    server config, virtual host
+Status:    Extension
+Module:    mod_proxy
+</code></pre><h2 id="2、ProxyMatch指令"><a href="#2、ProxyMatch指令" class="headerlink" title="2、ProxyMatch指令"></a>2、ProxyMatch指令</h2><pre><code>Description:    Container for directives applied to regular-expression-matched proxied resources
+Syntax:    &lt;ProxyMatch regex&gt; ...&lt;/ProxyMatch&gt;
+Context:    server config, virtual host
+Status:    Extension
+Module:    mod_proxy
+</code></pre><p>可以使用正则表达式。</p>
+<h2 id="3、ProxyPass指令"><a href="#3、ProxyPass指令" class="headerlink" title="3、ProxyPass指令"></a>3、ProxyPass指令</h2><p>此指令可以防止在location容器中使用。</p>
+<pre><code>Description:    Maps remote servers into the local server URL-space
+Syntax:    ProxyPass [path] !|url [key=value [key=value ...]] [nocanon] [interpolate] [noquery]
+Context:    server config, virtual host, directory
+Status:    Extension
+Module:    mod_proxy
+Compatibility:    Unix Domain Socket (UDS) support added in 2.4.7
+</code></pre><p><strong>注意：如果第一个参数加了“/”，则URL部分也必须加“/”.</strong></p>
+<pre><code>选项：
+
+keepalive=off|on：设置后端是否发开启长连接
+lbset=N：设置优先级
+ping=N：检查将康状态的时间间隔
+retry=N：尝试时长
+status=VALUE：将节点设置为何种状态
+
+    D：禁用，不再接受任何请求
+    S：停止
+    I：忽视状态
+    H：备份节点
+    E：错误状态
+    N：drain模式
+timeout：超时时长
+</code></pre><h2 id="4、ProxyPassMatch指令"><a href="#4、ProxyPassMatch指令" class="headerlink" title="4、ProxyPassMatch指令"></a>4、ProxyPassMatch指令</h2><pre><code>Description:    Maps remote servers into the local server URL-space using regular expressions
+Syntax:    ProxyPassMatch [regex] !|url [key=value [key=value ...]]
+Context:    server config, virtual host, directory
+Status:    Extension
+Module:    mod_proxy
+</code></pre><h2 id="5、ProxyPassReverse指令"><a href="#5、ProxyPassReverse指令" class="headerlink" title="5、ProxyPassReverse指令"></a>5、ProxyPassReverse指令</h2><pre><code>Description:    Adjusts the URL in HTTP response headers sent from a reverse proxied server
+Syntax:    ProxyPassReverse [path] url [interpolate]
+Context:    server config, virtual host, directory
+Status:    Extension
+Module:    mod_proxy
+</code></pre><h2 id="6、ProxyPreserveHost指令"><a href="#6、ProxyPreserveHost指令" class="headerlink" title="6、ProxyPreserveHost指令"></a>6、ProxyPreserveHost指令</h2><pre><code>Description:    Use incoming Host HTTP request header for proxy request
+Syntax:    ProxyPreserveHost On|Off
+Default:    ProxyPreserveHost Off
+Context:    server config, virtual host, directory
+Status:    Extension
+Module:    mod_proxy
+Compatibility:    Usable in directory context in 2.3.3 and later.
+</code></pre><h2 id="7、ProxyStatus指令"><a href="#7、ProxyStatus指令" class="headerlink" title="7、ProxyStatus指令"></a>7、ProxyStatus指令</h2><p>决定是否开启proxy状态信息</p>
+<pre><code>Description:    Show Proxy LoadBalancer status in mod_status
+Syntax:    ProxyStatus Off|On|Full
+Default:    ProxyStatus Off
+Context:    server config, virtual host
+Status:    Extension
+Module:    mod_proxy
+Compatibility:    Available in version 2.2 and later
+</code></pre><h2 id="8、BalancerMember指令"><a href="#8、BalancerMember指令" class="headerlink" title="8、BalancerMember指令"></a>8、BalancerMember指令</h2><p>指定负载均衡成员</p>
+<pre><code>Description:    Add a member to a load balancing group
+Syntax:    BalancerMember [balancerurl] url [key=value [key=value ...]]
+Context:    directory
+Status:    Extension
+Module:    mod_proxy
+Compatibility:    BalancerMember is only available in Apache HTTP Server 2.2 and later.
+</code></pre><h2 id="9、ProxySet"><a href="#9、ProxySet" class="headerlink" title="9、ProxySet"></a>9、ProxySet</h2><pre><code>Description:    Set various Proxy balancer or member parameters
+Syntax:    ProxySet url key=value [key=value ...]
+Context:    directory
+Status:    Extension
+Module:    mod_proxy
+Compatibility:    ProxySet is only available in Apache HTTP Server 2.2 and later.
+</code></pre><h3 id="（1）http均衡算法"><a href="#（1）http均衡算法" class="headerlink" title="（1）http均衡算法"></a>（1）http均衡算法</h3><pre><code>byrequests：默认算法，基于请求数量计算权重
+bytraffic：基于I/O流量大小计算权重
+bybusyness：基于挂起的请求数量计算权重
+</code></pre><p><strong>示例：</strong></p>
+<pre><code> 1 &lt;VirtualHost *:80&gt;
+ 2         ServerName 192.168.4.61
+ 3         DocumentRoot &quot;/app/web/test&quot;
+ 4         ProxyRequests OFF
+ 5         ProxyPass &quot;/&quot; &quot;balancer://http&quot;
+ 6         ProxyPassReverse &quot;/&quot; &quot;balancer://http&quot;
+ 7         &lt;Directory &quot;/app/web/test&quot;&gt;
+ 8                 Require all granted
+ 9         &lt;/Directory&gt;
+10         &lt;Proxy balancer://http&gt;
+11                 BalancerMember http://192.168.4.62
+12                 BalancerMember http://192.168.4.63 
+13                 ProxySet lbmethod=byrequests
+14         &lt;/Proxy&gt;
+15 &lt;/VirtualHost&gt;
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/http，正向代理，反向代理/" rel="tag"># http，正向代理，反向代理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/07/logstash/" rel="next" title="logstash">
+                <i class="fa fa-chevron-left"></i> logstash
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/10/Docker初识/" rel="prev" title="Docker初识">
+                Docker初识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">152</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、正向代理"><span class="nav-number">1.</span> <span class="nav-text">一、正向代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、概念"><span class="nav-number">1.1.</span> <span class="nav-text">1、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、正向代理服务器作用"><span class="nav-number">1.2.</span> <span class="nav-text">2、正向代理服务器作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、反向代理"><span class="nav-number">2.</span> <span class="nav-text">二、反向代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、概念-1"><span class="nav-number">2.1.</span> <span class="nav-text">1、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-、反向代理作用"><span class="nav-number">2.2.</span> <span class="nav-text">2 、反向代理作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、HTTP正向代理"><span class="nav-number">3.</span> <span class="nav-text">三、HTTP正向代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、ProxyRequest指令"><span class="nav-number">3.1.</span> <span class="nav-text">1、ProxyRequest指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、ProxyVia指令"><span class="nav-number">3.2.</span> <span class="nav-text">2、ProxyVia指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置浏览器"><span class="nav-number">3.2.0.1.</span> <span class="nav-text">设置浏览器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问www-test-com"><span class="nav-number">3.2.0.2.</span> <span class="nav-text">访问www.test.com</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、HTTP反向代理"><span class="nav-number">4.</span> <span class="nav-text">四、HTTP反向代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Proxy指令"><span class="nav-number">4.1.</span> <span class="nav-text">1、Proxy指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、ProxyMatch指令"><span class="nav-number">4.2.</span> <span class="nav-text">2、ProxyMatch指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、ProxyPass指令"><span class="nav-number">4.3.</span> <span class="nav-text">3、ProxyPass指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、ProxyPassMatch指令"><span class="nav-number">4.4.</span> <span class="nav-text">4、ProxyPassMatch指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、ProxyPassReverse指令"><span class="nav-number">4.5.</span> <span class="nav-text">5、ProxyPassReverse指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、ProxyPreserveHost指令"><span class="nav-number">4.6.</span> <span class="nav-text">6、ProxyPreserveHost指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、ProxyStatus指令"><span class="nav-number">4.7.</span> <span class="nav-text">7、ProxyStatus指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、BalancerMember指令"><span class="nav-number">4.8.</span> <span class="nav-text">8、BalancerMember指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、ProxySet"><span class="nav-number">4.9.</span> <span class="nav-text">9、ProxySet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）http均衡算法"><span class="nav-number">4.9.1.</span> <span class="nav-text">（1）http均衡算法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="300" alpha="0.6"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+</body>
+</html>

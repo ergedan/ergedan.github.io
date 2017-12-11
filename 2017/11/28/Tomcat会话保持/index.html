@@ -164,7 +164,7 @@
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/tomcatabcde.gif">
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/tomcatabcded.gif">
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-07_211825.jpg">
-<meta property="og:updated_time" content="2017-11-29T12:34:03.997Z">
+<meta property="og:updated_time" content="2017-12-11T01:35:57.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat会话保持">
 <meta name="twitter:description" content="会话保持保证同一个用户相关的访问请求被分配到同一台服务器上。 1、会话保持的类型（1）session sticky 与调度器有关 不同调度器实现方式nginx：ip_hash haproxy：source lvs：sh （2）session cluster：delta session manager  如上图所示，就是session cluster工作原理：基于IP组播来完成session复制 T">
@@ -776,8 +776,7 @@ BalancerMember [balancerurl] url [key=value [key=value...]]
 <p>httpd:mod_jk</p>
 <p>tomcat cluster:ajp connector</p>
 <p>此种方法现在不常用就不介绍了… </p>
-<h4 id="（-4）nginx-tomcat-cluster"><a href="#（-4）nginx-tomcat-cluster" class="headerlink" title="（ 4）nginx+tomcat cluster"></a>（ 4）nginx+tomcat cluster</h4><p>#####实战</p>
-<blockquote>
+<h4 id="（-4）nginx-tomcat-cluster"><a href="#（-4）nginx-tomcat-cluster" class="headerlink" title="（ 4）nginx+tomcat cluster"></a>（ 4）nginx+tomcat cluster</h4><h5 id="实战-2"><a href="#实战-2" class="headerlink" title="实战"></a>实战</h5><blockquote>
 <p>nginx安装并设置为开机启动</p>
 </blockquote>
 <p><code>[root@httpd~]#yum install -y nginx</code></p>
@@ -832,8 +831,7 @@ BalancerMember [balancerurl] url [key=value [key=value...]]
 13                 proxy_pass http://tomsrvs;
 14         }
 15 }
-</code></pre><p>###3、tomcat session replication cluster</p>
-<blockquote>
+</code></pre><h3 id="3、tomcat-session-replication-cluster"><a href="#3、tomcat-session-replication-cluster" class="headerlink" title="3、tomcat session replication cluster"></a>3、tomcat session replication cluster</h3><blockquote>
 <p>在tomcat服务器上进行配置</p>
 </blockquote>
 <p><code>[root@tomcatB/etc/tomcat]#vi server.xml</code></p>
@@ -887,8 +885,7 @@ BalancerMember [balancerurl] url [key=value [key=value...]]
 <p><img src="http://owatlfstl.bkt.clouddn.com/tomcatcab.gif" alt=""></p>
 <p>tomcatA和tomcatB的配置相似就不累述。</p>
 <p><strong>如果修改/etc/tomcat/web.xml文件时全局配置。</strong></p>
-<p>注意的问题：<br>-</p>
-<p>（1）官方文档上面的配置文件中：</p>
+<h1 id="注意的问题："><a href="#注意的问题：" class="headerlink" title="注意的问题："></a>注意的问题：</h1><p>（1）官方文档上面的配置文件中：</p>
 <pre><code>&lt;ClusterListener className=&quot;org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener&quot;/&gt;
 &lt;ClusterListener className=&quot;org.apache.catalina.ha.session.ClusterSessionListener&quot;/&gt;
 </code></pre><p>上述少了“/”结尾，记得加上</p>
@@ -990,8 +987,7 @@ BalancerMember [balancerurl] url [key=value [key=value...]]
 <p><code>[root@memcache~]#scp /etc/tomcat/server.xml tomcatB:/etc/tomcat/server.xml</code></p>
 <p><code>[root@memcache~]#systemctl restarst tomcat</code></p>
 <p>上述创建站点及测试也相同就不累述</p>
-<p>测试<br>-</p>
-<p><img src="http://owatlfstl.bkt.clouddn.com/tomcatabcded.gif" alt=""></p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p><img src="http://owatlfstl.bkt.clouddn.com/tomcatabcded.gif" alt=""></p>
 <p><code>[root@memcache/usr/share/tomcat/lib]#memcached-tool 127.0.0.1:11211 dump</code></p>
 <p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-07_211825.jpg" alt=""></p>
 <p>在测试过程中，存在版本不兼容的情况，更换版本即可。</p>
@@ -1035,8 +1031,8 @@ BalancerMember [balancerurl] url [key=value [key=value...]]
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/28/WEB工作过程/" rel="next" title="WEB工作过程">
-                <i class="fa fa-chevron-left"></i> WEB工作过程
+              <a href="/2017/11/28/Tomcat基于Memcached缓存session共享/" rel="next" title="Tomcat基于Redis缓存session共享">
+                <i class="fa fa-chevron-left"></i> Tomcat基于Redis缓存session共享
               </a>
             
           </div>
@@ -1045,8 +1041,8 @@ BalancerMember [balancerurl] url [key=value [key=value...]]
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/28/VRRP协议/" rel="prev" title="VRRP协议">
-                VRRP协议 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/28/TCP四次挥手/" rel="prev" title="TCP四次挥手">
+                TCP四次挥手 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1128,7 +1124,7 @@ BalancerMember [balancerurl] url [key=value [key=value...]]
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">116</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1139,7 +1135,7 @@ BalancerMember [balancerurl] url [key=value [key=value...]]
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">147</span>
+                  <span class="site-state-item-count">152</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1150,7 +1146,7 @@ BalancerMember [balancerurl] url [key=value [key=value...]]
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1192,7 +1188,7 @@ BalancerMember [balancerurl] url [key=value [key=value...]]
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#会话保持"><span class="nav-number">1.</span> <span class="nav-text">会话保持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、会话保持的类型"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、会话保持的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不同调度器实现方式"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">不同调度器实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Tomcat会话复制分类："><span class="nav-number">1.0.1.1.1.</span> <span class="nav-text">Tomcat会话复制分类：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、Tomcat-Cluster（Session）"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、Tomcat Cluster（Session）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）httpd-tomcat-cluster"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">（1）httpd+tomcat cluster</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实战"><span class="nav-number">1.0.2.1.1.</span> <span class="nav-text">实战</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）httpd-tomcat-cluster"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">（2）httpd+tomcat cluster</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实战-1"><span class="nav-number">1.0.2.2.1.</span> <span class="nav-text">实战</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）httpd-tomcat-cluster"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">（3）httpd+tomcat cluster</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（-4）nginx-tomcat-cluster"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">（ 4）nginx+tomcat cluster</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、session-server"><span class="nav-number">1.0.3.</span> <span class="nav-text">4、session server</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#会话保持"><span class="nav-number">1.</span> <span class="nav-text">会话保持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、会话保持的类型"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、会话保持的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不同调度器实现方式"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">不同调度器实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Tomcat会话复制分类："><span class="nav-number">1.0.1.1.1.</span> <span class="nav-text">Tomcat会话复制分类：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、Tomcat-Cluster（Session）"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、Tomcat Cluster（Session）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）httpd-tomcat-cluster"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">（1）httpd+tomcat cluster</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实战"><span class="nav-number">1.0.2.1.1.</span> <span class="nav-text">实战</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）httpd-tomcat-cluster"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">（2）httpd+tomcat cluster</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实战-1"><span class="nav-number">1.0.2.2.1.</span> <span class="nav-text">实战</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）httpd-tomcat-cluster"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">（3）httpd+tomcat cluster</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（-4）nginx-tomcat-cluster"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">（ 4）nginx+tomcat cluster</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实战-2"><span class="nav-number">1.0.2.4.1.</span> <span class="nav-text">实战</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、tomcat-session-replication-cluster"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、tomcat session replication cluster</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意的问题："><span class="nav-number">2.</span> <span class="nav-text">注意的问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4、session-server"><span class="nav-number">2.0.1.</span> <span class="nav-text">4、session server</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试"><span class="nav-number">3.</span> <span class="nav-text">测试</span></a></li></ol></div>
             
 
           </div>

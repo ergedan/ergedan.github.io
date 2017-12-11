@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="lxc，虚拟化," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="一、LXCLinux Containers的缩写，一种操作系统层虚拟化（Operating system-level virtualization）技术，为linux内核容器功能的一个用户空间接口。它将应用软件系统打包成一个软件容器，以及所需要的操作系统核心和库。通过统一的名字空间和功用API来分配不同软件容器的可用硬">
+<meta name="keywords" content="lxc，虚拟化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LXC介绍">
+<meta property="og:url" content="http://yoursite.com/2017/12/10/LXC介绍/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="一、LXCLinux Containers的缩写，一种操作系统层虚拟化（Operating system-level virtualization）技术，为linux内核容器功能的一个用户空间接口。它将应用软件系统打包成一个软件容器，以及所需要的操作系统核心和库。通过统一的名字空间和功用API来分配不同软件容器的可用硬件资源，创造出应用程序的独立沙箱运行环境，使得linux用户可以容器的创建和管理">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-10_190453.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/872539-20160812175010437-24878092.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/872539-20160812173604500-523951321.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/872539-20160812173228312-781937108.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/872539-20160812172504843-1384235657.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/872539-20160813150906375-1848115443.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/872539-20160812165840453-2118039400.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-10_211856.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-10_213415.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-10_213859.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-10_214403.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-10_222902.jpg">
+<meta property="og:updated_time" content="2017-12-10T14:35:07.456Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LXC介绍">
+<meta name="twitter:description" content="一、LXCLinux Containers的缩写，一种操作系统层虚拟化（Operating system-level virtualization）技术，为linux内核容器功能的一个用户空间接口。它将应用软件系统打包成一个软件容器，以及所需要的操作系统核心和库。通过统一的名字空间和功用API来分配不同软件容器的可用硬件资源，创造出应用程序的独立沙箱运行环境，使得linux用户可以容器的创建和管理">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-10_190453.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/10/LXC介绍/"/>
+
+
+
+
+
+  <title>LXC介绍 | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/10/LXC介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LXC介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-10T00:00:00+08:00">
+                2017-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/云计算/" itemprop="url" rel="index">
+                    <span itemprop="name">云计算</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/云计算/LXC介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">LXC介绍</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、LXC"><a href="#一、LXC" class="headerlink" title="一、LXC"></a>一、LXC</h1><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-10_190453.jpg" alt=""><br>Linux Containers的缩写，一种操作系统层虚拟化（Operating system-level virtualization）技术，为linux内核容器功能的一个用户空间接口。它将应用软件系统打包成一个软件容器，以及所需要的操作系统核心和库。通过统一的名字空间和功用API来分配不同软件容器的可用硬件资源，创造出应用程序的独立沙箱运行环境，使得linux用户可以容器的创建和管理系统或应用容器。<br>LXC实现是基于内核中的namespace和cgroup实现。</p>
+<h2 id="1、namespace（命名空间）"><a href="#1、namespace（命名空间）" class="headerlink" title="1、namespace（命名空间）"></a>1、namespace（命名空间）</h2><p>在linux操作系统中，系统资源如：进程、用户账户、文件系统、网络都属于某个namespace。namespace的生效主要是通过clone系统调用来实现的。</p>
+<h3 id="（1）pid-namespace"><a href="#（1）pid-namespace" class="headerlink" title="（1）pid namespace"></a>（1）pid namespace</h3><p>不同用户的进程就是通过pid namespace隔离开的，且不同namespace中可以有相同的PID。</p>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>每个namespace中的pid有自己的pid=1的进程（类似/sbin/init进程）</li>
+<li>每个namespace中的进程只能影响自己的同一个namespace或子namespace中的进程</li>
+<li>/proc包含正在运行的进程，在container中的pesudo-filesystem的/proc目录只能看到自己namespace中的进程</li>
+<li>namespace允许嵌套，父namespace可以影响子namespace的进程，所以子namespace的进程可以在父namespace中看到，但是具有不同的PID</li>
+</ul>
+<p><img src="http://owatlfstl.bkt.clouddn.com/872539-20160812175010437-24878092.jpg" alt=""></p>
+<h3 id="（2）net-namespace"><a href="#（2）net-namespace" class="headerlink" title="（2）net namespace"></a>（2）net namespace</h3><p>每个net namespace有独立的network device 、ip address、ip routing tables和/proc/net目录。<br><img src="http://owatlfstl.bkt.clouddn.com/872539-20160812173604500-523951321.jpg" alt=""></p>
+<h3 id="（3）ipc-namespace"><a href="#（3）ipc-namespace" class="headerlink" title="（3）ipc namespace"></a>（3）ipc namespace</h3><p>container中进程交互还是采用linux常见的进程间交互方法，包括常见的信号量、消息队列和共享内存。但是在同一个VM不同，container的进程间交互时间上还是host上具有相同pid namespace中的进程间交互，因此需要在IPC资源申请时加入namespace信息，每个IPC资源有一个唯一的32bit ID。只有处理在同一个namespace下的进程可以进行进程间通信<br><img src="http://owatlfstl.bkt.clouddn.com/872539-20160812173228312-781937108.jpg" alt=""></p>
+<h3 id="（4）mnt-namespace"><a href="#（4）mnt-namespace" class="headerlink" title="（4）mnt namespace"></a>（4）mnt namespace</h3><p>类似chroot，将一个进程放到一个特定的目录执行。但是同chroot不同的是，每个namespace中的container在/proc/mounts的信息只包含在namespace的mount point。<br><img src="http://owatlfstl.bkt.clouddn.com/872539-20160812172504843-1384235657.jpg" alt=""></p>
+<h3 id="（5）uts-namespace"><a href="#（5）uts-namespace" class="headerlink" title="（5）uts namespace"></a>（5）uts namespace</h3><p>UTS(UNIX Time-sharing System) namespace允许每个container拥有独立的hostname的domain name，使其在网络上可以被看做一个独立的节点而非host上的一个进程。</p>
+<h3 id="（6）user-namespace"><a href="#（6）user-namespace" class="headerlink" title="（6）user namespace"></a>（6）user namespace</h3><p>每个container可以有不同的user和group id，即container内部的用户在container内部执行程序而非Host上的用户。在Guest-OS中创建的root用户会被映射到Host-OS中的普通用户中去。<br><img src="http://owatlfstl.bkt.clouddn.com/872539-20160813150906375-1848115443.jpg" alt=""></p>
+<h2 id="2、Cgroup"><a href="#2、Cgroup" class="headerlink" title="2、Cgroup"></a>2、Cgroup</h2><p>Cgroup（Control groups）是linux内核提供的一种可以限制、记录、隔离进程组所使用的物理资源（CPU、I/O、内存等）的机制。Cgroup是LXC实现虚拟化所使用的资源管理手段。</p>
+<h3 id="（1）Cgroup功能"><a href="#（1）Cgroup功能" class="headerlink" title="（1）Cgroup功能"></a>（1）Cgroup功能</h3><ul>
+<li>限制进程组可以使用的资源数量</li>
+<li>控制进程组的优先级</li>
+<li>记录进程组使用资源的数量</li>
+<li>进程组隔离</li>
+<li>进程组控制</li>
+</ul>
+<h3 id="（2）Cgroup子系统"><a href="#（2）Cgroup子系统" class="headerlink" title="（2）Cgroup子系统"></a>（2）Cgroup子系统</h3><ul>
+<li>blkio：设定输入输出控制</li>
+<li>cpu：使用调度程序对CPU的Cgroup任务访问</li>
+<li>cpuacct：自动生成Cgroup任务所使用的CPU报告</li>
+<li>cpuset：为Cgroup中的任务分配独立的CPU和内存节点</li>
+<li>devices：允许或拒绝Cgroup中的任务访问设备</li>
+<li>freezer：挂起或回复Cgroup中的任务</li>
+<li>memory：Cgroup中任务使用的内存控制</li>
+<li>net_cls：允许linux流量控制程序识别从Cgroup中生成的数据包</li>
+<li>ns：命名空间子系统</li>
+</ul>
+<h3 id="（3）Cgroup常见关键词"><a href="#（3）Cgroup常见关键词" class="headerlink" title="（3）Cgroup常见关键词"></a>（3）Cgroup常见关键词</h3><ul>
+<li>任务：任务就是系统中的一个进程</li>
+<li>控制族群：一组按某种标准划分的进程，控制族群通常按照应用划分，即与某应用相关的一组进程，被划分为一个进程组。Cgroup中资源控制都是都是以控制族群为单位实现的。</li>
+<li>层级：控制族群可以组织成层级的形式，控制族群数</li>
+<li>子系统：资源控制器。</li>
+</ul>
+<h1 id="二、LXC和KVM"><a href="#二、LXC和KVM" class="headerlink" title="二、LXC和KVM"></a>二、LXC和KVM</h1><p><img src="http://owatlfstl.bkt.clouddn.com/872539-20160812165840453-2118039400.jpg" alt=""></p>
+<p>KVM的优点时一个物理机上可以跑多个操作系统，每个操作系统运行应用，通过这种方式实现应用的隔离。</p>
+<p>LXC直接可以在宿主机的基础上实现隔离。</p>
+<p>但是如果有两个应用一个是在Windows中运行的，另一个是在Linux中运行的，这时只能在KVM技术上实现了。</p>
+<h1 id="三、LXC管理命令"><a href="#三、LXC管理命令" class="headerlink" title="三、LXC管理命令"></a>三、LXC管理命令</h1><h2 id="1、lxc-version"><a href="#1、lxc-version" class="headerlink" title="1、lxc-version"></a>1、lxc-version</h2><p>用于显示系统LXC版本号</p>
+<h2 id="2、lxc-checkconfig"><a href="#2、lxc-checkconfig" class="headerlink" title="2、lxc-checkconfig"></a>2、lxc-checkconfig</h2><p>用于判断linux内核是否支持LXC</p>
+<h2 id="3、lxc-creste"><a href="#3、lxc-creste" class="headerlink" title="3、lxc-creste"></a>3、lxc-creste</h2><p>创建一个容器</p>
+<p>用法：</p>
+<pre><code>lxc-create --name=NAME -t template [-w] [-r] [-P lxcpath]
+</code></pre><table>
+<thead>
+<tr>
+<th>选型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-n，–name=NAME</td>
+<td>容器名称</td>
+</tr>
+<tr>
+<td>-f,–config=file</td>
+<td>初始化配置文件</td>
+</tr>
+<tr>
+<td>-t，–template=t</td>
+<td>创建容器使用的容器</td>
+</tr>
+<tr>
+<td>-P，–lxcpath=PATH</td>
+<td>指定容器的安装位置，默认/var/lib/lxc目录下</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：容器命名空间是全局的，系统中不允许存在重名的容器。</strong></p>
+<h2 id="4、lxc-execute"><a href="#4、lxc-execute" class="headerlink" title="4、lxc-execute"></a>4、lxc-execute</h2><p>执行应用程序</p>
+<p>用法：</p>
+<pre><code>lxc-execute --name=NAME -- COMMAND
+</code></pre><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-n，–name=NAME</td>
+<td>指定容器的名称</td>
+</tr>
+<tr>
+<td>-f，–rcfile=FILE</td>
+<td>加载配置文件</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：</strong></p>
+<ul>
+<li>如果容器不存在，lxc-execute会自动创建一个，容器停止运行后会被自动销毁</li>
+<li>lxc-execute启用应用程序，配置文件优先级：如果指定-f选项，之前创建容器的配置文件不会被使用；执行-s选项，命令行中的配置键值对会覆盖配置文件相同配置。</li>
+</ul>
+<h2 id="5、lxc-start"><a href="#5、lxc-start" class="headerlink" title="5、lxc-start"></a>5、lxc-start</h2><p>用于在容器中执行给定的命令</p>
+<p>用法：</p>
+<pre><code>lxc-start --name=NAME -- COMMAND
+</code></pre><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d，–daemon</td>
+<td>守护方式运行</td>
+</tr>
+<tr>
+<td>-n，–name=NAME</td>
+<td>指定容器的名称</td>
+</tr>
+<tr>
+<td>-c，–console-log=FILE</td>
+<td>指定一个文件作为容器的输出，默认输出终端</td>
+</tr>
+</tbody>
+</table>
+<p><strong>lxc-start和lxc-execute都可以在容器中启动进程，区别在于lxc-start直接创建进程，lxc-execute先创建lxc-init进程，然后在lxc-init中fork一个进程来执行。</strong></p>
+<h2 id="6、lxc-stop"><a href="#6、lxc-stop" class="headerlink" title="6、lxc-stop"></a>6、lxc-stop</h2><p>停止容器中的所有进程</p>
+<p>用法：</p>
+<pre><code>lxc-stop --name=NAME
+</code></pre><h2 id="7、lxc-cgroup"><a href="#7、lxc-cgroup" class="headerlink" title="7、lxc-cgroup"></a>7、lxc-cgroup</h2><p>用户获取或调整cgroup相关的参数</p>
+<p>用法：</p>
+<pre><code>lxc-cgroup --name=NAME state-object [value]
+</code></pre><h2 id="8、lxc-info"><a href="#8、lxc-info" class="headerlink" title="8、lxc-info"></a>8、lxc-info</h2><p>获取容器的状态</p>
+<h2 id="9、lxc-monitor"><a href="#9、lxc-monitor" class="headerlink" title="9、lxc-monitor"></a>9、lxc-monitor</h2><p>监视一个容器状态变换，当一个容器的状态发生变化时，会在屏幕上打印容器的状态</p>
+<h2 id="10、lxc-top"><a href="#10、lxc-top" class="headerlink" title="10、lxc-top"></a>10、lxc-top</h2><p>监视容器统计数据</p>
+<p>用法：</p>
+<pre><code>lxc-top [--help] [--max count] [--delay delay] [--sort sortby] [--reverse]
+</code></pre><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-m，–max count</td>
+<td>限制容器数量显示</td>
+</tr>
+<tr>
+<td>-d，–delay delay</td>
+<td>设置多少时间更新</td>
+</tr>
+<tr>
+<td>-s，–sort sortby</td>
+<td>指定使用什么方式显示</td>
+</tr>
+<tr>
+<td>-r，–reverse</td>
+<td>逆序显示</td>
+</tr>
+</tbody>
+</table>
+<h2 id="11、lxc-console"><a href="#11、lxc-console" class="headerlink" title="11、lxc-console"></a>11、lxc-console</h2><p>附加至指定容器的控制台</p>
+<p>用法：</p>
+<pre><code>lxc-console {-n name} [-e escape character] [-t ttynum]
+</code></pre><h2 id="12、lxc-destory"><a href="#12、lxc-destory" class="headerlink" title="12、lxc-destory"></a>12、lxc-destory</h2><p>删除处于停机状态的容器</p>
+<h2 id="13、lxc-snapshot"><a href="#13、lxc-snapshot" class="headerlink" title="13、lxc-snapshot"></a>13、lxc-snapshot</h2><p>创建和恢复快照</p>
+<p>用法：</p>
+<pre><code>lxc-snapshot {-n, --name name} [-c, --comment file]
+lxc-snapshot {-n, --name name} {-d, -destroy snapshot-name}
+lxc-snapshot {-n, --name name} {-L, --list } [-C, --showcomments ]
+lxc-snapshot {-n, --name name} {-r, -restore snapshot-name} [ newname]
+</code></pre><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c，–comment comment_file</td>
+<td>描述信息</td>
+</tr>
+<tr>
+<td>-d，–destory snapshot-name</td>
+<td>删除快照</td>
+</tr>
+<tr>
+<td>-L，–list</td>
+<td>列出快照</td>
+</tr>
+<tr>
+<td>-C，–showcomments</td>
+<td>显示快照的描述信息</td>
+</tr>
+<tr>
+<td>-r，–restore snapshot-name</td>
+<td>创建快照</td>
+</tr>
+</tbody>
+</table>
+<h1 id="四、LXC安装"><a href="#四、LXC安装" class="headerlink" title="四、LXC安装"></a>四、LXC安装</h1><h2 id="1、安装LXC"><a href="#1、安装LXC" class="headerlink" title="1、安装LXC"></a>1、安装LXC</h2><p>LXC是存放在epel仓库中，前提需要配置epel仓库。</p>
+<p><code>[root@node4~]#yum install -y lxc lxc-template</code></p>
+<table>
+<thead>
+<tr>
+<th>安装包</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lxc</td>
+<td>LXC主程序包</td>
+</tr>
+<tr>
+<td>lxc-templates</td>
+<td>创建容器的模板</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2、LXC文件"><a href="#2、LXC文件" class="headerlink" title="2、LXC文件"></a>2、LXC文件</h2><table>
+<thead>
+<tr>
+<th>目录</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/usr/sharelxc/config</code></td>
+<td>LXC配置文件目录</td>
+</tr>
+<tr>
+<td><code>/usr/share/lxc/templates</code></td>
+<td>LXC模板文件目录</td>
+</tr>
+</tbody>
+</table>
+<h1 id="五、LXC容器"><a href="#五、LXC容器" class="headerlink" title="五、LXC容器"></a>五、LXC容器</h1><h2 id="1、LXC容器创建"><a href="#1、LXC容器创建" class="headerlink" title="1、LXC容器创建"></a>1、LXC容器创建</h2><p><strong>注意：在创建容器之前，需检查配置环境是否适合创建。</strong></p>
+<p><code>[root@node4~]#lxc-checkconfig</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-10_211856.jpg" alt=""></p>
+<p>如果所在的环境中没有互联网，可以将仓库指向本地仓库。<br><img src="http://owatlfstl.bkt.clouddn.com/2017-12-10_213415.jpg" alt=""></p>
+<p><code>[root@node4~]#lxc-create --name=centos -t /usr/share/lxc/templates/lxc-centos</code>     #创建centos容器</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-10_213859.jpg" alt=""></p>
+<p><code>[root@node4~]#cat /var/lib/lxc/centos/tmp_root_pass</code>  密码存放位置</p>
+<pre><code>Root-centos-4y1g32
+</code></pre><p><code>[root@node4~]#chroot /var/lib/lxc/centos/rootfs passwd</code>    #修改密码</p>
+<pre><code>修使用chroot切换根，然后执行密码操作
+</code></pre><h2 id="2、-var-lib-lxc-centos目录"><a href="#2、-var-lib-lxc-centos目录" class="headerlink" title="2、/var/lib/lxc/centos目录"></a>2、<code>/var/lib/lxc/centos</code>目录</h2><table>
+<thead>
+<tr>
+<th>文件或目录</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>config</td>
+<td>配置文件</td>
+</tr>
+<tr>
+<td>rootfs</td>
+<td>根文件系统</td>
+</tr>
+<tr>
+<td>rootfs.dev</td>
+<td>设备文件</td>
+</tr>
+<tr>
+<td>tem_root_pass</td>
+<td>临时密码</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3、操作命令"><a href="#3、操作命令" class="headerlink" title="3、操作命令"></a>3、操作命令</h2><h3 id="1、查看容器信息状态"><a href="#1、查看容器信息状态" class="headerlink" title="1、查看容器信息状态"></a>1、查看容器信息状态</h3><p><code>[root@node4~]#lxc-info --name centos</code>  </p>
+<pre><code>Name:           centos
+State:          STOPPED
+</code></pre><h3 id="2、启动centos容器"><a href="#2、启动centos容器" class="headerlink" title="2、启动centos容器"></a>2、启动centos容器</h3><p><code>[root@node4~]#lxc-start --name centos</code></p>
+<p><code>[root@node4~]#lxc-start -d --name centos</code> 运行在后台<br><img src="http://owatlfstl.bkt.clouddn.com/2017-12-10_214403.jpg" alt=""></p>
+<h3 id="3、查看状态信息"><a href="#3、查看状态信息" class="headerlink" title="3、查看状态信息"></a>3、查看状态信息</h3><p><code>[root@node4~]#lxc-info --name centos</code></p>
+<pre><code>Name:           centos
+State:          RUNNING
+PID:            40945
+IP:             192.168.122.155
+CPU use:        0.11 seconds
+BlkIO use:      6.92 MiB
+Memory use:     3.95 MiB
+KMem use:       0 bytes
+Link:           vethCH1SV6
+ TX bytes:      1.76 KiB
+ RX bytes:      9.75 KiB
+ Total bytes:   11.51 KiB
+</code></pre><h1 id="六、LXC-Web-Panel"><a href="#六、LXC-Web-Panel" class="headerlink" title="六、LXC-Web-Panel"></a>六、LXC-Web-Panel</h1><p>LXC Web显示<br>详细地址：<a href="[root@node4~]#lxc-start -d --name centos">[root@node4~]#lxc-start -d –name centos</a></p>
+<p><strong>注意：需要<code>/var/lib/lxc为LXC root路径</code></strong></p>
+<h2 id="1、安装LXC-Web-Panel"><a href="#1、安装LXC-Web-Panel" class="headerlink" title="1、安装LXC-Web-Panel"></a>1、安装LXC-Web-Panel</h2><p><code>[root@node4~]#git clone https://github.com/lxc-webpanel/LXC-Web-Panel.git</code></p>
+<p><code>[root@node4~/LXC-Web-Panel]#pip install --upgrade pip</code></p>
+<p><code>[root@node4~/LXC-Web-Panel]#python lwp.py</code> 此运行在前台</p>
+<p><code>[root@node4~/LXC-Web-Panel]#nuhop python lwp.py &amp;</code></p>
+<p>在地址栏中输入：<a href="https://192.168.4.64:5000" target="_blank" rel="noopener">https://192.168.4.64:5000</a>  登录的默认账户和密码都是admin<br><img src="http://owatlfstl.bkt.clouddn.com/2017-12-10_222902.jpg" alt=""></p>
+<h5 id="这样就可以在桌面管理LXC容器了。"><a href="#这样就可以在桌面管理LXC容器了。" class="headerlink" title="这样就可以在桌面管理LXC容器了。"></a>这样就可以在桌面管理LXC容器了。</h5><p>默认是使用桥接模式。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/lxc，虚拟化/" rel="tag"># lxc，虚拟化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/10/Docker初识/" rel="next" title="Docker初识">
+                <i class="fa fa-chevron-left"></i> Docker初识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">152</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、LXC"><span class="nav-number">1.</span> <span class="nav-text">一、LXC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、namespace（命名空间）"><span class="nav-number">1.1.</span> <span class="nav-text">1、namespace（命名空间）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）pid-namespace"><span class="nav-number">1.1.1.</span> <span class="nav-text">（1）pid namespace</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）net-namespace"><span class="nav-number">1.1.2.</span> <span class="nav-text">（2）net namespace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）ipc-namespace"><span class="nav-number">1.1.3.</span> <span class="nav-text">（3）ipc namespace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）mnt-namespace"><span class="nav-number">1.1.4.</span> <span class="nav-text">（4）mnt namespace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）uts-namespace"><span class="nav-number">1.1.5.</span> <span class="nav-text">（5）uts namespace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）user-namespace"><span class="nav-number">1.1.6.</span> <span class="nav-text">（6）user namespace</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Cgroup"><span class="nav-number">1.2.</span> <span class="nav-text">2、Cgroup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）Cgroup功能"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）Cgroup功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）Cgroup子系统"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）Cgroup子系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）Cgroup常见关键词"><span class="nav-number">1.2.3.</span> <span class="nav-text">（3）Cgroup常见关键词</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、LXC和KVM"><span class="nav-number">2.</span> <span class="nav-text">二、LXC和KVM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、LXC管理命令"><span class="nav-number">3.</span> <span class="nav-text">三、LXC管理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、lxc-version"><span class="nav-number">3.1.</span> <span class="nav-text">1、lxc-version</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、lxc-checkconfig"><span class="nav-number">3.2.</span> <span class="nav-text">2、lxc-checkconfig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、lxc-creste"><span class="nav-number">3.3.</span> <span class="nav-text">3、lxc-creste</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、lxc-execute"><span class="nav-number">3.4.</span> <span class="nav-text">4、lxc-execute</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、lxc-start"><span class="nav-number">3.5.</span> <span class="nav-text">5、lxc-start</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、lxc-stop"><span class="nav-number">3.6.</span> <span class="nav-text">6、lxc-stop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、lxc-cgroup"><span class="nav-number">3.7.</span> <span class="nav-text">7、lxc-cgroup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、lxc-info"><span class="nav-number">3.8.</span> <span class="nav-text">8、lxc-info</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、lxc-monitor"><span class="nav-number">3.9.</span> <span class="nav-text">9、lxc-monitor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10、lxc-top"><span class="nav-number">3.10.</span> <span class="nav-text">10、lxc-top</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11、lxc-console"><span class="nav-number">3.11.</span> <span class="nav-text">11、lxc-console</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12、lxc-destory"><span class="nav-number">3.12.</span> <span class="nav-text">12、lxc-destory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13、lxc-snapshot"><span class="nav-number">3.13.</span> <span class="nav-text">13、lxc-snapshot</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、LXC安装"><span class="nav-number">4.</span> <span class="nav-text">四、LXC安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装LXC"><span class="nav-number">4.1.</span> <span class="nav-text">1、安装LXC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、LXC文件"><span class="nav-number">4.2.</span> <span class="nav-text">2、LXC文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、LXC容器"><span class="nav-number">5.</span> <span class="nav-text">五、LXC容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、LXC容器创建"><span class="nav-number">5.1.</span> <span class="nav-text">1、LXC容器创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、-var-lib-lxc-centos目录"><span class="nav-number">5.2.</span> <span class="nav-text">2、/var/lib/lxc/centos目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、操作命令"><span class="nav-number">5.3.</span> <span class="nav-text">3、操作命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、查看容器信息状态"><span class="nav-number">5.3.1.</span> <span class="nav-text">1、查看容器信息状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、启动centos容器"><span class="nav-number">5.3.2.</span> <span class="nav-text">2、启动centos容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、查看状态信息"><span class="nav-number">5.3.3.</span> <span class="nav-text">3、查看状态信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、LXC-Web-Panel"><span class="nav-number">6.</span> <span class="nav-text">六、LXC-Web-Panel</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装LXC-Web-Panel"><span class="nav-number">6.1.</span> <span class="nav-text">1、安装LXC-Web-Panel</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#这样就可以在桌面管理LXC容器了。"><span class="nav-number">6.1.0.0.1.</span> <span class="nav-text">这样就可以在桌面管理LXC容器了。</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="300" alpha="0.6"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+</body>
+</html>

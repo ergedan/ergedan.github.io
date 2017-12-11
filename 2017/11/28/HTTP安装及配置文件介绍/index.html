@@ -174,7 +174,7 @@
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/syntax_rewritecond.png">
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/syntax_rewriterule.png">
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/rewrite_backreferences.png">
-<meta property="og:updated_time" content="2017-11-28T15:28:33.573Z">
+<meta property="og:updated_time" content="2017-12-11T01:39:55.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP安装及配置文件介绍">
 <meta name="twitter:description" content="Http安装及文件介绍1、文件类型 主配置文件   /etc/httpd/conf/httpd.conf  /etc/httpd/conf.d/*.conf  服务脚本文件   /etc/rc.d/init.d/httpd  /etc/sysconfig/httpd    #脚本配置文件  站点网页文档默认目录   /var/www/html  模块文件路径   /etc/httpd/module">
@@ -631,8 +631,7 @@ httpd -l  #查看静态加载模块
 <p>（6）DocumentRoot 定义Main server 中文档页面路径</p>
 <p>Syntax:    DocumentRoot directory-path </p>
 <p>文档路径映射：DocumentRoot指向的路径为URL路径的起始位置。</p>
-<p>示例：</p>
-<p>#</p>
+<p><strong>示例：</strong></p>
 <pre><code>http://HOST:PORT/test/index.html
                               \|/             
                      /app/data/test/index.html 
@@ -667,7 +666,6 @@ httpd -l  #查看静态加载模块
     ...
 &lt;/LocationMatch&gt;
 </code></pre><p>其上的路径都可以使用正则表达式和通配符</p>
-<p>通配符：</p>
 <table>
 <thead>
 <tr>
@@ -726,7 +724,7 @@ httpd -l  #查看静态加载模块
 </tbody>
 </table>
 <p>…</p>
-<p>示例：</p>
+<p><strong>示例：</strong></p>
 <pre><code>&lt;FilesMatch &quot;\.(gif|jpe?g|png)$&quot;&gt;
 &lt;Files “?at.*”&gt; 
 &lt;Location /status&gt;
@@ -737,7 +735,6 @@ httpd -l  #查看静态加载模块
 <li>Options</li>
 </ul>
 <p>Syntax:    Options [+|-]option [[+|-]option] …</p>
-<p>常见选项：</p>
 <table>
 <thead>
 <tr>
@@ -769,7 +766,7 @@ httpd -l  #查看静态加载模块
 </tbody>
 </table>
 <p><strong>注意：Options只对<direcotry>有效。</direcotry></strong></p>
-<p>示例：</p>
+<p><strong>示例：</strong></p>
 <p>（1）在<code>/etc/httpd/conf.d/</code>目录下创建custom.conf文件</p>
 <p><code>[root@localhost conf.d]# vim custom.conf</code></p>
 <pre><code>&lt;Directory &quot;/app/testweb&quot;&gt;
@@ -789,7 +786,6 @@ Options None    #全部禁用
 <li>AllowOverride </li>
 </ul>
 <p>与访问控制相关的的指令可以放在指定目录下.htaccess文件中，覆盖之前配置指令。</p>
-<p>常见选项：</p>
 <table>
 <thead>
 <tr>
@@ -824,9 +820,7 @@ Options None    #全部禁用
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>示例</p>
-</blockquote>
+<p><strong>示例:</strong></p>
 <p>在上面的基础上我们再<code>/app/testweb.htaccess</code>此文件</p>
 <p><code>[root@localhost testweb]# vim .htaccess</code></p>
 <pre><code>Options Indexes
@@ -996,9 +990,7 @@ deny from 20.1.0.0/16
 <p>（12）定义路径别名</p>
 <p>Syntax:    <code>Alias</code> URL-path file-path|directory-path</p>
 <p>Syntax:    <code>AliasMatch</code> regex file-path|directory-path #可以使用通配符和正则表达式</p>
-<blockquote>
-<p>示例</p>
-</blockquote>
+<p><strong>示例:</strong></p>
 <p>修改<code>custom.conf</code>文件</p>
 <pre><code>Alias /test /app/testweb
 &lt;Directory &quot;/app/testweb&quot;&gt;
@@ -1033,8 +1025,7 @@ digest：消息摘要认证，兼容性查
     Require group GrpName1 GrpName1.. #允许指定组用户登录访问
 &lt;/Directory&gt;
 </code></pre><p>（2）提供账号和密码存储的位置，一般为隐藏文件</p>
-<p>#####htpasswd命令</p>
-<p>htpasswd ：Manage user files for basic authentication</p>
+<h5 id="htpasswd命令"><a href="#htpasswd命令" class="headerlink" title="htpasswd命令"></a>htpasswd命令</h5><p>htpasswd ：Manage user files for basic authentication</p>
 <p>选项：</p>
 <pre><code>-c：自动创建文件，仅在文件不存在创建时使用
 -m：使用md5加密
@@ -1294,9 +1285,7 @@ preload：是可选参数，只有当你申请将自己的加入到浏览器内�
 <p><img src="http://owatlfstl.bkt.clouddn.com/syntax_rewritecond.png" alt=""></p>
 <p><img src="http://owatlfstl.bkt.clouddn.com/syntax_rewriterule.png" alt=""></p>
 <p><img src="http://owatlfstl.bkt.clouddn.com/rewrite_backreferences.png" alt=""></p>
-<blockquote>
-<p>示例</p>
-</blockquote>
+<p><strong>示例:</strong></p>
 <pre><code>Header always set Strict-Transport-Security &quot;max-age=15768000&quot;
 RewriteEngine on    #是否开启重启引擎
 RewriteRule ^(/.*)$    https://%{HTTP_HOST}$1 [redirect=301] 
@@ -1356,8 +1345,8 @@ RewriteRule ^(/.*)$    https://%{HTTP_HOST}$1 [redirect=301]
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/28/Httpd-2.4特性/" rel="next" title="Httpd-2.4特性">
-                <i class="fa fa-chevron-left"></i> Httpd-2.4特性
+              <a href="/2017/11/28/DNS实战一/" rel="next" title="DNS实战">
+                <i class="fa fa-chevron-left"></i> DNS实战
               </a>
             
           </div>
@@ -1366,8 +1355,8 @@ RewriteRule ^(/.*)$    https://%{HTTP_HOST}$1 [redirect=301]
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/28/HTTP的工作机制/" rel="prev" title="HTTP的工作机制">
-                HTTP的工作机制 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/28/Cobbler/" rel="prev" title="Cobbler">
+                Cobbler <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1449,7 +1438,7 @@ RewriteRule ^(/.*)$    https://%{HTTP_HOST}$1 [redirect=301]
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">116</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1460,7 +1449,7 @@ RewriteRule ^(/.*)$    https://%{HTTP_HOST}$1 [redirect=301]
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">147</span>
+                  <span class="site-state-item-count">152</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1471,7 +1460,7 @@ RewriteRule ^(/.*)$    https://%{HTTP_HOST}$1 [redirect=301]
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1513,7 +1502,7 @@ RewriteRule ^(/.*)$    https://%{HTTP_HOST}$1 [redirect=301]
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Http安装及文件介绍"><span class="nav-number">1.</span> <span class="nav-text">Http安装及文件介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、文件类型"><span class="nav-number">1.1.</span> <span class="nav-text">1、文件类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、-etc-httpd-conf-httpd-conf文件选项介绍"><span class="nav-number">1.2.</span> <span class="nav-text">2、/etc/httpd/conf/httpd.conf文件选项介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#远程客户端和用户验证的控制"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">远程客户端和用户验证的控制</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Http安装及文件介绍"><span class="nav-number">1.</span> <span class="nav-text">Http安装及文件介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、文件类型"><span class="nav-number">1.1.</span> <span class="nav-text">1、文件类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、-etc-httpd-conf-httpd-conf文件选项介绍"><span class="nav-number">1.2.</span> <span class="nav-text">2、/etc/httpd/conf/httpd.conf文件选项介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#htpasswd命令"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">htpasswd命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#远程客户端和用户验证的控制"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">远程客户端和用户验证的控制</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
