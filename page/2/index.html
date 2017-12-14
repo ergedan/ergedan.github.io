@@ -356,7 +356,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/Elasticsearch配置文件/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/07/logstash/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
@@ -375,7 +375,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/04/Elasticsearch配置文件/" itemprop="url">Elasticsearch配置文件</a></h1>
+                <a class="post-title-link" href="/2017/12/07/logstash/" itemprop="url">logstash</a></h1>
         
 
         <div class="post-meta">
@@ -387,8 +387,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T00:00:00+08:00">
-                2017-12-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-07T00:00:00+08:00">
+                2017-12-07
               </time>
             
 
@@ -432,8 +432,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日志管理/ELK/Elasticsearch配置文件/" itemprop="url" rel="index">
-                    <span itemprop="name">Elasticsearch配置文件</span>
+                  <a href="/categories/日志管理/ELK/logstash/" itemprop="url" rel="index">
+                    <span itemprop="name">logstash</span>
                   </a>
                 </span>
 
@@ -471,28 +471,16 @@
       
         
           
-          一、Elasticsearch文件1、Elasticsearch文件
-
-
-配置文件
-说明
-
-
-
-
-/usr/share/elasticsearch
-elasticsearch安装的家目录
-
-
-/usr/share/elasticsearch/bin
-二进制脚本文件目录
-
-
-/etc/elastics
+          
+一、Logstash开源的服务器端数据处理管道，能够同时从多个来源采集数据、转换数据，然后将数据发送到指定的存储库中。
+1、Logstash功能
+（1）即插即用
+（2）可扩展，Logstash采用可插拔框架。
+（3）可靠性，如果Logstash节点发生故障，Logstash会通过持久化队列来保证运
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/04/Elasticsearch配置文件/#more" rel="contents">
+            <a class="btn" href="/2017/12/07/logstash/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -722,6 +710,202 @@ elasticsearch安装的家目录
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/ELK安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/04/ELK安装/" itemprop="url">Elasticsearch安装</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T00:00:00+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日志管理/" itemprop="url" rel="index">
+                    <span itemprop="name">日志管理</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日志管理/ELK/" itemprop="url" rel="index">
+                    <span itemprop="name">ELK</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日志管理/ELK/Elasticsearch安装/" itemprop="url" rel="index">
+                    <span itemprop="name">Elasticsearch安装</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+
+
+主机名
+IP
+
+
+
+
+node1
+192.168.4.61
+
+
+node2
+192.168.4.62
+
+
+node3
+192.168.4.63
+
+
+
+一、安装ELK1、安装准备（1）同步时间（2）主机名通信（非必须）（3）基于密钥通信（非必须）（4）确保iptables和selinux关闭（非
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/04/ELK安装/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/ELK基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -850,6 +1034,197 @@ ELK是Elasticsearch、Logstash和Kibana首
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/12/04/ELK基础/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/Elasticsearch配置文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/04/Elasticsearch配置文件/" itemprop="url">Elasticsearch配置文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T00:00:00+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日志管理/" itemprop="url" rel="index">
+                    <span itemprop="name">日志管理</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日志管理/ELK/" itemprop="url" rel="index">
+                    <span itemprop="name">ELK</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日志管理/ELK/Elasticsearch配置文件/" itemprop="url" rel="index">
+                    <span itemprop="name">Elasticsearch配置文件</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          一、Elasticsearch文件1、Elasticsearch文件
+
+
+配置文件
+说明
+
+
+
+
+/usr/share/elasticsearch
+elasticsearch安装的家目录
+
+
+/usr/share/elasticsearch/bin
+二进制脚本文件目录
+
+
+/etc/elastics
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/04/Elasticsearch配置文件/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1391,350 +1766,11 @@ TCP/HTTP反向代理服务器，尤其适合于高可用性环境
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Dropbear/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Joah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/picturemy.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Joah">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/28/Dropbear/" itemprop="url">Dropbear</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
-                2017-11-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/" itemprop="url" rel="index">
-                    <span itemprop="name">服务</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/dropbear/" itemprop="url" rel="index">
-                    <span itemprop="name">dropbear</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          dropbearDropbear是一个相对较小的SSH服务器和客户端。它运行在一个基于POSIX的各种平台。 Dropbear是开源软件，在麻省理工学院式的许可证。 Dropbear是特别有用的“嵌入”式的Linux（或其他Unix）系统，如无线路由器。  &lt;摘自：百度&gt;
-1、安装dro
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/Dropbear/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-        
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Apache分析工具和日志管理工具/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Joah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/picturemy.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Joah">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/28/Apache分析工具和日志管理工具/" itemprop="url">Apache分析工具和日志管理工具</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
-                2017-11-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/" itemprop="url" rel="index">
-                    <span itemprop="name">服务</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Apache/" itemprop="url" rel="index">
-                    <span itemprop="name">Apache</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Apache/Apache分析工具和日志管理工具/" itemprop="url" rel="index">
-                    <span itemprop="name">Apache分析工具和日志管理工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          一、cronologcronolog 是一个简单的过滤程序，读取日志文件条目从标准输入和输出的每个条目并写入指定的日志文件的文件名模板和当前的日期和时间。cronolog 旨在和一个Web服务器一起使用，如Apache，分割访问日志为每天或每月的日志。
-1、cronolog特点cronolog主要和
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/Apache分析工具和日志管理工具/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-        
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1784,7 +1820,7 @@ TCP/HTTP反向代理服务器，尤其适合于高可用性环境
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1795,7 +1831,7 @@ TCP/HTTP反向代理服务器，尤其适合于高可用性环境
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">155</span>
+                  <span class="site-state-item-count">157</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1806,7 +1842,7 @@ TCP/HTTP反向代理服务器，尤其适合于高可用性环境
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">101</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
