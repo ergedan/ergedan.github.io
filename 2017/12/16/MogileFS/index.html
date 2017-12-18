@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mogilefs," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="一、分布式文件系统分布式文件系统是指文件系统管理的物理存储资源不一定直接连接在本地节点上，而是通过计算机网络与节点相连，即集群文件系统，可以支持大量的节点以及PB级的数量存储。 1、分布式文件系统类别   名称 特性     MogileFS 适用于处理海量的小文件   Ceph 一个Linux PB级别的分布式文件系">
+<meta name="keywords" content="mogilefs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MogileFS">
+<meta property="og:url" content="http://yoursite.com/2017/12/16/MogileFS/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="一、分布式文件系统分布式文件系统是指文件系统管理的物理存储资源不一定直接连接在本地节点上，而是通过计算机网络与节点相连，即集群文件系统，可以支持大量的节点以及PB级的数量存储。 1、分布式文件系统类别   名称 特性     MogileFS 适用于处理海量的小文件   Ceph 一个Linux PB级别的分布式文件系统   MooseFS 通用简便，适用于研发能力不强的公司   Taobao F">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/mogilefs.jpg">
+<meta property="og:updated_time" content="2017-12-16T13:31:26.212Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MogileFS">
+<meta name="twitter:description" content="一、分布式文件系统分布式文件系统是指文件系统管理的物理存储资源不一定直接连接在本地节点上，而是通过计算机网络与节点相连，即集群文件系统，可以支持大量的节点以及PB级的数量存储。 1、分布式文件系统类别   名称 特性     MogileFS 适用于处理海量的小文件   Ceph 一个Linux PB级别的分布式文件系统   MooseFS 通用简便，适用于研发能力不强的公司   Taobao F">
+<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/mogilefs.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/16/MogileFS/"/>
+
+
+
+
+
+  <title>MogileFS | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/16/MogileFS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MogileFS</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-16T00:00:00+08:00">
+                2017-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/分布式存储/" itemprop="url" rel="index">
+                    <span itemprop="name">分布式存储</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/分布式存储/MogileFS/" itemprop="url" rel="index">
+                    <span itemprop="name">MogileFS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、分布式文件系统"><a href="#一、分布式文件系统" class="headerlink" title="一、分布式文件系统"></a>一、分布式文件系统</h1><p>分布式文件系统是指文件系统管理的物理存储资源不一定直接连接在本地节点上，而是通过计算机网络与节点相连，即集群文件系统，可以支持大量的节点以及PB级的数量存储。</p>
+<h2 id="1、分布式文件系统类别"><a href="#1、分布式文件系统类别" class="headerlink" title="1、分布式文件系统类别"></a>1、分布式文件系统类别</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MogileFS</td>
+<td>适用于处理海量的小文件</td>
+</tr>
+<tr>
+<td>Ceph</td>
+<td>一个Linux PB级别的分布式文件系统</td>
+</tr>
+<tr>
+<td>MooseFS</td>
+<td>通用简便，适用于研发能力不强的公司</td>
+</tr>
+<tr>
+<td>Taobao Filesystem</td>
+<td>适用于处理海量小文件</td>
+</tr>
+<tr>
+<td>ClusterFS</td>
+<td>适用于处理单个大文件</td>
+</tr>
+<tr>
+<td>Google Filesystem</td>
+<td>GFS+MapReduce擅长处理单个大文件</td>
+</tr>
+<tr>
+<td>Hadoop Distributed Filesytem</td>
+<td>擅长处理单个大文件</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2、分布式文件系统特点"><a href="#2、分布式文件系统特点" class="headerlink" title="2、分布式文件系统特点"></a>2、分布式文件系统特点</h2><ul>
+<li>节点间能相互通信</li>
+<li>同一数据存储在多个节点上</li>
+<li>数据空间平衡</li>
+<li>具有容错能力</li>
+<li>文件系统支持</li>
+</ul>
+<h2 id="3、CAP理论"><a href="#3、CAP理论" class="headerlink" title="3、CAP理论"></a>3、CAP理论</h2><ul>
+<li>C（Consistency）：任何一个读写操作总是能够读取之前完成写操作</li>
+<li>A（Availability）：每一次操作总是能够在确定的时候返回，无论成功或失败都能够收到一个返回值</li>
+<li>P（Tolerance of network Parition）：在出现网络分区的情况下，仍然能够满足一致性和可用性</li>
+</ul>
+<h1 id="二、MogileFS"><a href="#二、MogileFS" class="headerlink" title="二、MogileFS"></a>二、MogileFS</h1><p>MogileFS是一款开源的分布式文件存储系统，由LiveJournal旗下的Danga Interactive公司开发。</p>
+<h2 id="1、MogileFS组成"><a href="#1、MogileFS组成" class="headerlink" title="1、MogileFS组成"></a>1、MogileFS组成</h2><ul>
+<li><p>server：主要包括mogilefsd和mogstored两个应用程序。监听端口与7001</p>
+<ul>
+<li>mogilefsd实现的是tracker，它是一个调度器；主要用于Replication，Deletion，Query，Reaper，Moinitor等，这个是基于事件父进程/消息总线来管理所有来之于客户端应用的交互，包括将请求负载平衡到多个“query workers”中，然后让MogileFS的子进程去处理。</li>
+<li>mogstored是存储节点，它其实是WebDAV服务，默认监听在7501端口，接受客户端的文件存储请求。一台存储主要都要启动一个mogstored服务，廓清就是增加这些机器，实际文件存放地方。</li>
+</ul>
+</li>
+<li><p>MySQL：用来存放MogileFS的元数据，是Tracker来操作和管理它，可以用mogdbsetup程序来初始化数据库，因为数据保存了MogileFS的所有元数据，建议做成HA结构。</p>
+</li>
+</ul>
+<p><strong>注意：在MogileFS安装完后，要运行mogadm工具将所有的存储节点注册到mogilefsd的数据库中，mogilefsd会对这些节点进行管理和监控。</strong></p>
+<ul>
+<li><p>utils（工具集）：主要是MogileFS的一些管理工具，如mogadm</p>
+</li>
+<li><p>客户端API：MogileFS的客户端API很多，例如Perl、PHP、Java等，用这些模块可以编写客户端程序，实现文件的备份管理功能等。</p>
+</li>
+</ul>
+<h2 id="2、MogileFS特性"><a href="#2、MogileFS特性" class="headerlink" title="2、MogileFS特性"></a>2、MogileFS特性</h2><ul>
+<li>支持多节点冗余</li>
+<li>可实现自动文件复制</li>
+<li>使用名称空间，每个文件通过key来确定</li>
+<li>不需要RAID，应用层可以直接实现RAID，不共享任何东西，通过“集群”接口提供服务</li>
+<li>工作于应用层，没有特殊的组件要求</li>
+<li>不共享任何数据，MogileFS不需要依靠昂贵的SAN来共享磁盘，每个汲取只用于维护好自己的磁盘。</li>
+</ul>
+<h2 id="3、MogileFS管理几个概念"><a href="#3、MogileFS管理几个概念" class="headerlink" title="3、MogileFS管理几个概念"></a>3、MogileFS管理几个概念</h2><ul>
+<li>Domain：一个MogileFS可以有多个Domain，用来存放不同文件，同一个Domain内key必须唯一，不同Domain内，key可以相同</li>
+<li>每一个存储节点称为一个主机host，一个主机可以有多个存储设备dev，每个设备都有ID号，Domain+FID用来定位文件。设备不能删除的，只能将其设备的状态的值为dead，当一个设备dead之后，就真的dead了，里面的数据也无法恢复了，且这个dead了的设备ID也不能使用了。</li>
+<li>Class：文件属性管理，定位文件存储在不同设备上的分数</li>
+</ul>
+<h2 id="4、MogileFS工作原理"><a href="#4、MogileFS工作原理" class="headerlink" title="4、MogileFS工作原理"></a>4、MogileFS工作原理</h2><p><img src="http://owatlfstl.bkt.clouddn.com/mogilefs.jpg" alt=""></p>
+<ul>
+<li>（1）应用程序请求打开一个文件，做一个“create_open”请求</li>
+<li>（2）tracker做一些负载均衡处理，决定应该去哪儿，然后给应用程序一些可能用的位置信息</li>
+<li>（3）应用程序写到其中一个位置上去</li>
+<li>（4）应用程序通过“create_close”告诉tracker文件写到哪里</li>
+<li>（5）tracker将名称和域的空间管理</li>
+<li>（6）tracker在后台开始复制文件，知道他满足该文件类别设定的复制规则</li>
+<li>（7）应用程序通过“get_path”请求domain+key文件，tracker基于每一位的I/O繁忙情况回复，该文件可用的完整URL地址列表</li>
+<li>（8）应用程序然后按顺序尝试这些URL地址</li>
+</ul>
+<h1 id="三、MogileFS安装及文件介绍"><a href="#三、MogileFS安装及文件介绍" class="headerlink" title="三、MogileFS安装及文件介绍"></a>三、MogileFS安装及文件介绍</h1><h2 id="1、MogileFS安装"><a href="#1、MogileFS安装" class="headerlink" title="1、MogileFS安装"></a>1、MogileFS安装</h2><table>
+<thead>
+<tr>
+<th>安装包</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MogileFS-Server.noarch 0:2.46-2.el7.centos</td>
+<td>核心服务                                                   </td>
+</tr>
+<tr>
+<td>MogileFS-Server-mogilefsd.noarch 0:2.46-2.el7.centos</td>
+<td>tracker节点                                        </td>
+</tr>
+<tr>
+<td>MogileFS-Server-mogstored.noarch 0:2.46-2.el7.centos</td>
+<td>存储节点                                      </td>
+</tr>
+<tr>
+<td>MogileFS-Utils.noarch 0:2.19-1.el7.centos</td>
+<td>MogileFS管理工具                                                    </td>
+</tr>
+<tr>
+<td>perl-Danga-Socket.noarch 0:1.61-1.el6.rf</td>
+<td>socket                                           </td>
+</tr>
+<tr>
+<td>perl-MogileFS-Client.noarch 0:1.14-1.el7.centos</td>
+<td>客户端                                      </td>
+</tr>
+<tr>
+<td>perl-Perlbal.noarch 0:1.78-1.el6</td>
+<td>库包</td>
+</tr>
+</tbody>
+</table>
+<p>将上述的包上传至本地安装</p>
+<p><code>[root@node1~]#yum localinstall -y *.rpm</code>   </p>
+<h2 id="2、MogileFS-Server-mogilefsd安装包文件"><a href="#2、MogileFS-Server-mogilefsd安装包文件" class="headerlink" title="2、MogileFS-Server-mogilefsd安装包文件"></a>2、MogileFS-Server-mogilefsd安装包文件</h2><table>
+<thead>
+<tr>
+<th>文件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/etc/mogilefs/mogilefsd.conf</code></td>
+<td>主配置文件</td>
+</tr>
+<tr>
+<td><code>/etc/rc.d/init.d/mogilefsd</code></td>
+<td>启动程序</td>
+</tr>
+<tr>
+<td><code>/usr/bin/mogdbsetup</code></td>
+<td>数据库初始化工具</td>
+</tr>
+</tbody>
+</table>
+<h3 id="etc-mogilefsd-conf配置文件详解"><a href="#etc-mogilefsd-conf配置文件详解" class="headerlink" title="/etc/mogilefsd.conf配置文件详解"></a><code>/etc/mogilefsd.conf</code>配置文件详解</h3><pre><code> 1 # Enable daemon mode to work in background and use syslog
+ 2 daemonize = 1   #是否启动守护进程
+ 3 # Where to store the pid of the daemon (must be the same in the init script)
+ 4 pidfile = /var/run/mogilefsd/mogilefsd.pid  #pid文件存放位置
+ 5 # Database connection information
+ 6 db_dsn = DBI:mysql:mogilefs:host=127.0.0.1  #数据库连接地址
+ 7 db_user = username  #数据库名称
+ 8 db_pass = password  #数据库密码
+ 9 # IP:PORT to listen on for mogilefs client requests
+10 listen = 127.0.0.1:7001 #监听地址及端口
+11 # Optional, if you don&apos;t define the port above.
+12 conf_port = 7001
+13 # Number of query workers to start by default.
+14 query_jobs = 10 #工作线程
+15 # Number of delete workers to start by default.
+16 delete_jobs = 1 #删除工作线程
+17 # Number of replicate workers to start by default.
+18 replicate_jobs = 5  #复制数量
+19 # Number of reaper workers to start by default.
+20 # (you don&apos;t usually need to increase this)
+21 reaper_jobs = 1
+22 # Number of fsck workers to start by default.
+23 # (these can cause a lot of load when fsck&apos;ing)
+24 #fsck_jobs = 1  #检查
+25 # Minimum amount of space to reserve in megabytes
+26 # default: 100
+27 # Consider setting this to be larger than the largest file you
+28 # would normally be uploading.
+29 #min_free_space = 200
+30 # Number of seconds to wait for a storage node to respond.
+31 # default: 2
+32 # Keep this low, so busy storage nodes are quickly ignored.
+33 #node_timeout = 2   #超时时长
+34 # Number of seconds to wait to connect to a storage node.
+35 # default: 2
+36 # Keep this low so overloaded nodes get skipped.
+37 #conn_timeout = 2   #连接超时时长
+</code></pre><h2 id="3、MogileFS-Server-mogstored安装包文件"><a href="#3、MogileFS-Server-mogstored安装包文件" class="headerlink" title="3、MogileFS-Server-mogstored安装包文件"></a>3、MogileFS-Server-mogstored安装包文件</h2><table>
+<thead>
+<tr>
+<th>文件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/etc/mogilefs/mogstored.conf</code></td>
+<td>主配置文件</td>
+</tr>
+<tr>
+<td><code>/etc/rc.d/init.d/mogstored</code></td>
+<td>启动程序</td>
+</tr>
+</tbody>
+</table>
+<h3 id="etc-mogilefs-mogstored-conf详解"><a href="#etc-mogilefs-mogstored-conf详解" class="headerlink" title="/etc/mogilefs/mogstored.conf详解"></a><code>/etc/mogilefs/mogstored.conf</code>详解</h3><pre><code>1 maxconns = 10000    #最大连接数量
+2 httplisten = 0.0.0.0:7500   #http监听的地址及端口
+3 mgmtlisten = 0.0.0.0:7501   #mogilefs管理端口
+4 docroot = /var/mogdata  #数据存放位置
+</code></pre><h2 id="4、mogdbsetup命令"><a href="#4、mogdbsetup命令" class="headerlink" title="4、mogdbsetup命令"></a>4、mogdbsetup命令</h2><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><pre><code>Usage: mogdbsetup [opts]
+</code></pre><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–dbhost</td>
+<td>localhost</td>
+<td>数据库主机IP或主机名</td>
+</tr>
+<tr>
+<td>–dbport</td>
+<td>dbd default</td>
+<td>数据库端口</td>
+</tr>
+<tr>
+<td>–dbname</td>
+<td>mogilefs</td>
+<td>数据库名称</td>
+</tr>
+<tr>
+<td>–dbrootuser</td>
+<td>root</td>
+<td>数据库用户</td>
+</tr>
+<tr>
+<td>–dbrootpass</td>
+<td><blank></blank></td>
+<td>数据库密码</td>
+</tr>
+<tr>
+<td>–dbuser</td>
+<td>mogile</td>
+<td>数据库dbname使用者</td>
+</tr>
+<tr>
+<td>–dbpass</td>
+<td><blank></blank></td>
+<td>数据库密码</td>
+</tr>
+<tr>
+<td>–type</td>
+<td>MySQL</td>
+<td>数据库类型</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5、mogstored命令"><a href="#5、mogstored命令" class="headerlink" title="5、mogstored命令"></a>5、mogstored命令</h2><h3 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h3><pre><code>Usage: mogstored [OPTS]
+</code></pre><p>|选项|描述<br>|–daemonize，-d|是否守护进行运行<br>|–config|指定配置文件，默认为<code>/etc/mogilefs/mogstored.conf</code><br>|–httplisten=<ip:port>|HTTP服务监听地址和端口<br>|–docroot|数据存储位置，默认为<code>/var/mogdata</code><br>|–maxconns|最大连接数</ip:port></p>
+<h2 id="6、mogadm命令"><a href="#6、mogadm命令" class="headerlink" title="6、mogadm命令"></a>6、mogadm命令</h2><ul>
+<li>mogadm host 管理主机节点<ul>
+<li>host add 添加主机到MogileFS</li>
+<li>host delete 删除</li>
+<li>host list 列出所有节点</li>
+<li>host mark 标记主机节点状态</li>
+<li>host modify 修改属性</li>
+</ul>
+</li>
+<li>mogadm device 管理设备<ul>
+<li>device add 添加设备到一个主机中</li>
+<li>device list 列出所有设备从每个主机中</li>
+<li>device marik 标记设备状态（alive、dead、down、drain、readonly）</li>
+<li>device modify 修改设备属性</li>
+<li>device next 显示下一个可用设备</li>
+</ul>
+</li>
+<li>mogadm domain 管理域<ul>
+<li>domain add 添加一个域</li>
+<li>domain delete 删除一个域</li>
+<li>domain list 列出所有</li>
+</ul>
+</li>
+<li>mogadm class 管理文件属性<ul>
+<li>class add 添加一个文件属性到域中</li>
+<li>class delete 删除一个属性</li>
+<li>class list 列出所有</li>
+<li>class modify 修改属性</li>
+</ul>
+</li>
+<li>mogadm fsck 检测<ul>
+<li>fsck clearlog 清除检测日志</li>
+<li>fsck printlog 显示检测日志</li>
+<li>fsck status 显示检测状态</li>
+</ul>
+</li>
+</ul>
+<h2 id="7、mogupload命令"><a href="#7、mogupload命令" class="headerlink" title="7、mogupload命令"></a>7、mogupload命令</h2><h3 id="使用方法-2"><a href="#使用方法-2" class="headerlink" title="使用方法"></a>使用方法</h3><pre><code>mogupload --trackers=host --domain=foo --class=bar  --key=&quot;/hello.jpg&quot; --file=&quot;input.jpg&quot;
+</code></pre><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–trackers=host:7001,host2:7002</td>
+<td>指定trakcers</td>
+</tr>
+<tr>
+<td>–domain</td>
+<td>指定域</td>
+</tr>
+<tr>
+<td>–key</td>
+<td>指定key</td>
+</tr>
+<tr>
+<td>–file</td>
+<td>指定文件，如果使用“-”，读文件标准输入</td>
+</tr>
+</tbody>
+</table>
+<h1 id="四、MogileFS集群构建"><a href="#四、MogileFS集群构建" class="headerlink" title="四、MogileFS集群构建"></a>四、MogileFS集群构建</h1><table>
+<thead>
+<tr>
+<th>主机名</th>
+<th>IP地址</th>
+<th>功用</th>
+<th>安装的包</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node1</td>
+<td>192.168.4.61</td>
+<td>tracker、storged、mogilefsd</td>
+<td>MogileFS-Server-2.46-2.el7.centos.noarch.rpm 、MogileFS-Server-mogilefsd-2.46-2.el7.centos.noarch.rpm、 MogileFS-Server-mogstored-2.46-2.el7.centos.noarch.rpm 、MogileFS-Utils-2.19-1.el7.centos.noarch.rpm perl-Danga-Socket-1.61-1.el6.rf.noarch.rpm、 perl-MogileFS-Client-1.14-1.el7.centos.noarch.rpm 、perl-Perlbal-1.78-1.el6.noarch.rpm</td>
+</tr>
+<tr>
+<td>node2</td>
+<td>192.168.4.62</td>
+<td>storged、mogilefsd</td>
+<td>MogileFS-Server-mogstored-2.46-2.el7.centos.noarch.rpm 、perl-Danga-Socket-1.61-1.el6.rf.noarch.rpm 、perl-MogileFS-Client-1.14-1.el7.centos.noarch.rpm 、perl-Perlbal-1.78-1.el6.noarch.rpm</td>
+</tr>
+<tr>
+<td>node3</td>
+<td>192.168.4.63</td>
+<td>storged、mogilefsd</td>
+<td>MogileFS-Server-mogstored-2.46-2.el7.centos.noarch.rpm 、perl-Danga-Socket-1.61-1.el6.rf.noarch.rpm、 perl-MogileFS-Client-1.14-1.el7.centos.noarch.rpm 、perl-Perlbal-1.78-1.el6.noarch.rpm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：一定要同步时间，否则复制时会报错。</strong></p>
+<h3 id="（1）安装所需要的包"><a href="#（1）安装所需要的包" class="headerlink" title="（1）安装所需要的包"></a>（1）安装所需要的包</h3><p><code>[root@node1~]#yum install perl-Net-Netmask perl-IO-string perl-Sys-Syslog perl-IO-AIO -y</code> 三个节点都安装</p>
+<p><code>[root@node1~]#yum localinstall -y *.rpm</code></p>
+<p><code>[root@node2~]#yum localinstall -y *.rpm</code></p>
+<p><code>[root@node3~]#yum localinstall -y *.rpm</code></p>
+<h3 id="（2）node1节点上配置MySQL"><a href="#（2）node1节点上配置MySQL" class="headerlink" title="（2）node1节点上配置MySQL"></a>（2）node1节点上配置MySQL</h3><p><code>[root@node1~]#yum install -y mariadb-server</code></p>
+<p><code>[root@node1~]#systemctl start mariadb.service</code></p>
+<h4 id="授权用户"><a href="#授权用户" class="headerlink" title="授权用户"></a>授权用户</h4><p><code>MariaDB [(none)]&gt; GRANT ALL PRIVILEGES ON *.* TO &#39;mogile&#39;@&#39;127.0.0.1&#39; IDENTIFIED BY &#39;mogile&#39; WITH GRANT OPTION;</code>  </p>
+<p><code>MariaDB [(none)]&gt; FLUSH PRIVILEGES;</code></p>
+<h4 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h4><p><code>[root@node1~]#mogdbsetup --dbhost=127.0.0.1 --dbpass=mogile</code></p>
+<pre><code>This will attempt to setup or upgrade your MogileFS database.
+It won&apos;t destroy existing data.
+Run with --help for more information.  Run with --yes to shut up these prompts. #询问是否继续
+
+Continue? [N/y]: y
+
+Create/Upgrade database name    &apos;mogilefs&apos;? [Y/n]: y    #是否创建数据库名为mogilefs
+
+Grant all privileges to user &apos;mogile&apos;, connecting from anywhere, to the mogilefs database &apos;mogilefs&apos;? [Y/n]: y  #是否所有权限给用户mogile
+</code></pre><h3 id="（3）修改mogilefsd-conf配置文件"><a href="#（3）修改mogilefsd-conf配置文件" class="headerlink" title="（3）修改mogilefsd.conf配置文件"></a>（3）修改<code>mogilefsd.conf</code>配置文件</h3><pre><code>daemonize = 1
+pidfile = /var/run/mogilefsd/mogilefsd.pid
+db_dsn = DBI:mysql:mogilefs:host=127.0.0.1  #修改数据库连接地址
+db_user = mogile    #数据库使用者
+db_pass = mogile    #数据库密码
+listen = 127.0.0.1:7001     #修改mogilefsd监听的地址和端口
+conf_port = 7001
+query_jobs = 10
+delete_jobs = 1
+replicate_jobs = 5
+reaper_jobs = 1
+</code></pre><h3 id="（4）启动mogilefsd服务"><a href="#（4）启动mogilefsd服务" class="headerlink" title="（4）启动mogilefsd服务"></a>（4）启动mogilefsd服务</h3><p><code>[root@node1~]#systemctl status mogilefsd.service</code></p>
+<h3 id="（5）启动mogstored服务"><a href="#（5）启动mogstored服务" class="headerlink" title="（5）启动mogstored服务"></a>（5）启动mogstored服务</h3><p><code>[root@node1~]#mkdir -pv /data/mogilefs/</code></p>
+<p><code>[root@node1~]#chown -R mogilefs.mogilefs /data/mogilefs</code></p>
+<p><code>[root@node1~]#vim /etc/mogilefs/mogstored.conf</code></p>
+<pre><code>1 maxconns = 10000
+2 httplisten = 0.0.0.0:7500
+3 mgmtlisten = 0.0.0.0:7501
+4 docroot = /data/mogilefs
+</code></pre><p><code>[root@node1~]#service mogstored start</code></p>
+<h3 id="（6）node2和node3安装"><a href="#（6）node2和node3安装" class="headerlink" title="（6）node2和node3安装"></a>（6）node2和node3安装</h3><p><code>[root@node3~]#mkdir -pv /data/mogilefs</code></p>
+<p><code>[root@node3~]#chown -R mogilefs.mogilefs /data/mogilefs/</code><br><code>[root@node3~]#systemctl status mogstored</code></p>
+<h1 id="五、MogileFS管理"><a href="#五、MogileFS管理" class="headerlink" title="五、MogileFS管理"></a>五、MogileFS管理</h1><p>mogstored程序启动使主机本身成为一个存储节点，mogstored的启动后，需要使用mogadm管理工具将当前的主机加入到MogileFS的系统中。</p>
+<p><strong>注意：存储节点中还需要添加设备，每个设备有一个uuiq的ID号，同样也需要使用mogadm加入到MogileFS系统中。</strong></p>
+<h2 id="1、添加主机到tracker"><a href="#1、添加主机到tracker" class="headerlink" title="1、添加主机到tracker"></a>1、添加主机到tracker</h2><p>告诉注册自己到tracker，相当于为每个主机加入MogileFS的存储系统。</p>
+<p><code>[root@node1~]#mogadm host add node1 --ip 192.168.4.61 --port=7500 --status=alive</code></p>
+<p><code>[root@node1~]#mogadm host add node2 --ip 192.168.4.62 --port=7500 --status=alive</code><br><code>[root@node1~]#mogadm host add node3 --ip 192.168.4.63 --port=7500 --status=alive</code></p>
+<p><code>[root@node1~]#mogadm host list</code>    显示所有主机</p>
+<pre><code>node1 [1]: alive
+  IP:       192.168.4.61:7500
+
+node2 [2]: alive
+  IP:       192.168.4.62:7500
+
+node3 [3]: alive
+  IP:       192.168.4.63:7500
+</code></pre><h2 id="2、MogileFS存储设备管理"><a href="#2、MogileFS存储设备管理" class="headerlink" title="2、MogileFS存储设备管理"></a>2、MogileFS存储设备管理</h2><p><strong>注意：所有系统中ID不能重复，也必须和配置文件中的路径一致。</strong></p>
+<p><code>[root@node1~]#mkdir /data/mogilefs/dev1 -pv</code><br><code>[root@node2~]#mkdir /data/mogilefs/dev2 -pv</code><br><code>[root@node3~]#mkdir -pv /data/mogilefs/dev3</code></p>
+<p><strong>注意：给相对应的块设备mount到这个点，软连接也行，不然写文件都会写到系统硬件上，其他的硬盘都是空的。</strong></p>
+<p><code>[root@node1~]#mogadm device add node1 1</code><br><code>[root@node1~]#mogadm device add node2 2</code><br><code>[root@node1~]#mogadm device add node3 3</code><br><code>[root@node1~]#mogadm device list</code></p>
+<p><strong>标记失效的设备，当硬盘坏了，设备有问题时，这时会自动在一个域内复制到最小设备的保存分数。恢复时和add操作一遍即可。</strong></p>
+<h2 id="3、MogileFS域的管理"><a href="#3、MogileFS域的管理" class="headerlink" title="3、MogileFS域的管理"></a>3、MogileFS域的管理</h2><p>当创建上述完成之后，MogileFS运行中时，建一个自己的名字空间和加入文件到存储中。</p>
+<p><code>[root@node1~]#mogadm domain add test</code><br><code>[root@node1~]#mogadm domain list</code></p>
+<p><code>[root@node1~]#mogadm class add test class1 --mindevcount=3</code>    #在域中建类，并加入最小保存分数</p>
+<p><strong>建议一个类的最小存储分数为3份；因为可以保证整个集群挂掉2台还能正常工作。在加入和修改的时候，都可以加上mindevcount、replpolicy和hashtype参数。</strong></p>
+<h2 id="4、MogileFS文件管理"><a href="#4、MogileFS文件管理" class="headerlink" title="4、MogileFS文件管理"></a>4、MogileFS文件管理</h2><p>使用如下命令需要在<code>/etc/mogilefs/mogilefs.conf</code>中指定trackers，不然就需要在命令中加<code>--trackers</code>来指定。</p>
+<p><code>[root@node1~]#mogupload --trackers=127.0.0.1:7001 --domain=test --key=fstab --file=/etc/fstab</code></p>
+<h4 id="查询信息"><a href="#查询信息" class="headerlink" title="查询信息"></a>查询信息</h4><p><code>[root@node1~]#mogfileinfo --trackers=127.0.0.1:7001 --domain=test --key=fstab</code></p>
+<pre><code>- file: fstab
+     class:              default
+  devcount:                    1
+    domain:                 test
+       fid:                    3
+       key:                fstab
+    length:                  541
+ - http://192.168.4.62:7500/dev2/0/000/000/0000000003.fid    通过此网址可以访问到数据
+</code></pre><p><code>[root@node1~]#mogfiledebug --trackers=127.0.0.1:7001 --paths=print --domain=test --key=fstab</code>   #显示更多详细信息</p>
+<p><code>[root@node1~]#mogdelete --trackers=127.0.0.1:7001 --domain=test --key=fstab</code>   #删除指定文件</p>
+<p><code>[root@node1~]#moglistkeys --trackers=127.0.0.1:7001 --domain=test</code>    #列出某个域下的文件key</p>
+<p><code>moglistfids --trackers=host --fromfid=123 --count=5000</code><br><strong>fromid是之mogileFS内部文件的ID，这个是自增的，可以指定从一个开始的位置，指定显示多杀个文件。</strong><br><code>[root@node1~]#moglistfids --trackers=127.0.0.1 --fromid=1 --count=5</code></p>
+<h2 id="5、MogileFS服务器管理"><a href="#5、MogileFS服务器管理" class="headerlink" title="5、MogileFS服务器管理"></a>5、MogileFS服务器管理</h2><p>如果需要维护一个服务器，如更新内存、升级操作系统之类的需要关机操作，操作之前先设置为“down”。</p>
+<p><code>[root@node1~]#mogadm host mark node1 down</code></p>
+<p><code>[root@node1~]#mogadm host mark node1 alive</code></p>
+<h2 id="6、MogileFS硬盘管理"><a href="#6、MogileFS硬盘管理" class="headerlink" title="6、MogileFS硬盘管理"></a>6、MogileFS硬盘管理</h2><p>添加新的硬盘设备需要给一个唯一的，增量的设备ID。如果使用一个新的硬盘来替换坏掉的硬盘，总是需要给一个新的设备ID，不能使用旧的。因为这样可以从就设备中给所有文件列表中的文件重新复制到其他的MogileFS硬盘中；不然容器引起文件复制到这个中和错误的更新，也不会重新复制旧文件。</p>
+<h2 id="7、MogileFS只读模式和耗尽模式"><a href="#7、MogileFS只读模式和耗尽模式" class="headerlink" title="7、MogileFS只读模式和耗尽模式"></a>7、MogileFS只读模式和耗尽模式</h2><p>如果想要冻结设备上的所有文件，只读模式就可以解决。这样将停掉MogileFS存放新文件到这个设备上，但它也将阻止删除文件，替代删除的操作会给这些内容放到丢列中等待为标记的’alive’和“drain”。</p>
+<p><code>[root@node1~]#mogadm device mark node2 2 readonly</code></p>
+<p><strong>注意：耗尽模式，在2.40和更高版本以上，MogileFS不会有新的文件写入设备，但是在耗尽模式，文件可能被删除，如果不希望将文件写到这个设备上，可以设置为drain模式。</strong></p>
+<h2 id="8、MogileFS复制"><a href="#8、MogileFS复制" class="headerlink" title="8、MogileFS复制"></a>8、MogileFS复制</h2><p>如果一个硬盘坏了，MogileFS可以自动的让请求不再访问这个设备，但是不会自动的重新复制这个硬盘文件，必须通过mogadm来手工标志位dead，MogileFS将开始删除设备上的文件，并试图在集群间重新复制他们到其他设备上。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mogilefs/" rel="tag"># mogilefs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/16/FastDFS/" rel="next" title="FastDFS">
+                <i class="fa fa-chevron-left"></i> FastDFS
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/17/Jumpserver/" rel="prev" title="Jumpserver">
+                Jumpserver <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">126</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">164</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、分布式文件系统"><span class="nav-number">1.</span> <span class="nav-text">一、分布式文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、分布式文件系统类别"><span class="nav-number">1.1.</span> <span class="nav-text">1、分布式文件系统类别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、分布式文件系统特点"><span class="nav-number">1.2.</span> <span class="nav-text">2、分布式文件系统特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、CAP理论"><span class="nav-number">1.3.</span> <span class="nav-text">3、CAP理论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、MogileFS"><span class="nav-number">2.</span> <span class="nav-text">二、MogileFS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、MogileFS组成"><span class="nav-number">2.1.</span> <span class="nav-text">1、MogileFS组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、MogileFS特性"><span class="nav-number">2.2.</span> <span class="nav-text">2、MogileFS特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、MogileFS管理几个概念"><span class="nav-number">2.3.</span> <span class="nav-text">3、MogileFS管理几个概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、MogileFS工作原理"><span class="nav-number">2.4.</span> <span class="nav-text">4、MogileFS工作原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、MogileFS安装及文件介绍"><span class="nav-number">3.</span> <span class="nav-text">三、MogileFS安装及文件介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、MogileFS安装"><span class="nav-number">3.1.</span> <span class="nav-text">1、MogileFS安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、MogileFS-Server-mogilefsd安装包文件"><span class="nav-number">3.2.</span> <span class="nav-text">2、MogileFS-Server-mogilefsd安装包文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-mogilefsd-conf配置文件详解"><span class="nav-number">3.2.1.</span> <span class="nav-text">/etc/mogilefsd.conf配置文件详解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、MogileFS-Server-mogstored安装包文件"><span class="nav-number">3.3.</span> <span class="nav-text">3、MogileFS-Server-mogstored安装包文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-mogilefs-mogstored-conf详解"><span class="nav-number">3.3.1.</span> <span class="nav-text">/etc/mogilefs/mogstored.conf详解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、mogdbsetup命令"><span class="nav-number">3.4.</span> <span class="nav-text">4、mogdbsetup命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方法"><span class="nav-number">3.4.1.</span> <span class="nav-text">使用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、mogstored命令"><span class="nav-number">3.5.</span> <span class="nav-text">5、mogstored命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方法-1"><span class="nav-number">3.5.1.</span> <span class="nav-text">使用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、mogadm命令"><span class="nav-number">3.6.</span> <span class="nav-text">6、mogadm命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、mogupload命令"><span class="nav-number">3.7.</span> <span class="nav-text">7、mogupload命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方法-2"><span class="nav-number">3.7.1.</span> <span class="nav-text">使用方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、MogileFS集群构建"><span class="nav-number">4.</span> <span class="nav-text">四、MogileFS集群构建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）安装所需要的包"><span class="nav-number">4.0.1.</span> <span class="nav-text">（1）安装所需要的包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）node1节点上配置MySQL"><span class="nav-number">4.0.2.</span> <span class="nav-text">（2）node1节点上配置MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#授权用户"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">授权用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化数据库"><span class="nav-number">4.0.2.2.</span> <span class="nav-text">初始化数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）修改mogilefsd-conf配置文件"><span class="nav-number">4.0.3.</span> <span class="nav-text">（3）修改mogilefsd.conf配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）启动mogilefsd服务"><span class="nav-number">4.0.4.</span> <span class="nav-text">（4）启动mogilefsd服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）启动mogstored服务"><span class="nav-number">4.0.5.</span> <span class="nav-text">（5）启动mogstored服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）node2和node3安装"><span class="nav-number">4.0.6.</span> <span class="nav-text">（6）node2和node3安装</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、MogileFS管理"><span class="nav-number">5.</span> <span class="nav-text">五、MogileFS管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、添加主机到tracker"><span class="nav-number">5.1.</span> <span class="nav-text">1、添加主机到tracker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、MogileFS存储设备管理"><span class="nav-number">5.2.</span> <span class="nav-text">2、MogileFS存储设备管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、MogileFS域的管理"><span class="nav-number">5.3.</span> <span class="nav-text">3、MogileFS域的管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、MogileFS文件管理"><span class="nav-number">5.4.</span> <span class="nav-text">4、MogileFS文件管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查询信息"><span class="nav-number">5.4.0.1.</span> <span class="nav-text">查询信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、MogileFS服务器管理"><span class="nav-number">5.5.</span> <span class="nav-text">5、MogileFS服务器管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、MogileFS硬盘管理"><span class="nav-number">5.6.</span> <span class="nav-text">6、MogileFS硬盘管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、MogileFS只读模式和耗尽模式"><span class="nav-number">5.7.</span> <span class="nav-text">7、MogileFS只读模式和耗尽模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、MogileFS复制"><span class="nav-number">5.8.</span> <span class="nav-text">8、MogileFS复制</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="300" alpha="0.6"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+</body>
+</html>
