@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="rpm," />
+
+
+
+
+
+  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="一、RPM制作RPM Package Manager简称RPM。 1、配置环境打包相关的配置保存在宏文件（macrofiles）中，默认使用$home/rpmbuild目录，用户配置文件保存在$HOME/.rpmmacros；而制作包的操作实际都在topdir指定的目录下。 （1）查看所有配置文件顺序[root@nod">
+<meta name="keywords" content="rpm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RPM包制作">
+<meta property="og:url" content="http://yoursite.com/2017/12/19/RPM包制作/index.html">
+<meta property="og:site_name" content="Joah">
+<meta property="og:description" content="一、RPM制作RPM Package Manager简称RPM。 1、配置环境打包相关的配置保存在宏文件（macrofiles）中，默认使用$home/rpmbuild目录，用户配置文件保存在$HOME/.rpmmacros；而制作包的操作实际都在topdir指定的目录下。 （1）查看所有配置文件顺序[root@node1~]#rpmbuild --showrc |grep macros Macr">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-19T15:32:23.941Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RPM包制作">
+<meta name="twitter:description" content="一、RPM制作RPM Package Manager简称RPM。 1、配置环境打包相关的配置保存在宏文件（macrofiles）中，默认使用$home/rpmbuild目录，用户配置文件保存在$HOME/.rpmmacros；而制作包的操作实际都在topdir指定的目录下。 （1）查看所有配置文件顺序[root@node1~]#rpmbuild --showrc |grep macros Macr">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/19/RPM包制作/"/>
+
+
+
+
+
+  <title>RPM包制作 | Joah</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joah</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/19/RPM包制作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/picturemy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RPM包制作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-19T00:00:00+08:00">
+                2017-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件包管理/" itemprop="url" rel="index">
+                    <span itemprop="name">软件包管理</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件包管理/RPM制作/" itemprop="url" rel="index">
+                    <span itemprop="name">RPM制作</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、RPM制作"><a href="#一、RPM制作" class="headerlink" title="一、RPM制作"></a>一、RPM制作</h1><p>RPM Package Manager简称RPM。</p>
+<h2 id="1、配置环境"><a href="#1、配置环境" class="headerlink" title="1、配置环境"></a>1、配置环境</h2><p>打包相关的配置保存在宏文件（macrofiles）中，默认使用<code>$home/rpmbuild</code>目录，用户配置文件保存在<code>$HOME/.rpmmacros</code>；而制作包的操作实际都在<code>topdir</code>指定的目录下。</p>
+<h3 id="（1）查看所有配置文件顺序"><a href="#（1）查看所有配置文件顺序" class="headerlink" title="（1）查看所有配置文件顺序"></a>（1）查看所有配置文件顺序</h3><p><code>[root@node1~]#rpmbuild --showrc |grep macros</code></p>
+<pre><code>Macro path: /usr/lib/rpm/macros:/usr/lib/rpm/macros.d/macros.*:/usr/lib/rpm/platform/%{_target}/macros:/usr/lib/rpm/fileattrs/*.attr:/usr/lib/rpm/redhat/macros:/etc/rpm/macros.*:/etc/rpm/macros:/etc/rpm/%{_target}/macros:~/.rpmmacros
+</code></pre><h3 id="（2）查看根工作目录"><a href="#（2）查看根工作目录" class="headerlink" title="（2）查看根工作目录"></a>（2）查看根工作目录</h3><p><code>[root@node1~]#rpmbuild --showrc |grep topdir</code></p>
+<pre><code>-14: _builddir    %{_topdir}/BUILD
+-14: _buildrootdir    %{_topdir}/BUILDROOT
+-14: _rpmdir    %{_topdir}/RPMS
+-14: _sourcedir    %{_topdir}/SOURCES
+-14: _specdir    %{_topdir}/SPECS
+-14: _srcrpmdir    %{_topdir}/SRPMS
+-14: _topdir    %{getenv:HOME}/rpmbuild
+</code></pre><h3 id="（3）根目录介绍"><a href="#（3）根目录介绍" class="headerlink" title="（3）根目录介绍"></a>（3）根目录介绍</h3><table>
+<thead>
+<tr>
+<th>目录</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-14: _builddir    %{_topdir}/BUILD</td>
+<td>编译rpm包的临时目录</td>
+</tr>
+<tr>
+<td>-14: _buildrootdir    %{_topdir}/  BUILDROOT</td>
+<td>编译后生成的软件临时安装目录</td>
+</tr>
+<tr>
+<td>-14: _rpmdir    %{_topdir}/RPMS</td>
+<td>最终生成的可安装rpm包的所在目录</td>
+</tr>
+<tr>
+<td>-14: _sourcedir    %{_topdir}/SOURCES</td>
+<td>所有源代码和补丁文件的存放目录</td>
+</tr>
+<tr>
+<td>-14: _specdir    %{_topdir}/SPECS</td>
+<td>存放SPEC文件的目录 <strong>重要</strong></td>
+</tr>
+<tr>
+<td>-14: _srcrpmdir    %{_topdir}/SRPMS</td>
+<td>软件最终的rpm源码格式存放路径</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2、rpmbuild命令"><a href="#2、rpmbuild命令" class="headerlink" title="2、rpmbuild命令"></a>2、rpmbuild命令</h2><p>构建rpm包的命令</p>
+<h3 id="使用语法"><a href="#使用语法" class="headerlink" title="使用语法"></a>使用语法</h3><pre><code>rpmbuild {-ba|-bb|-bp|-bc|-bi|-bl|-bs} [rpmbuild-options] SPECFILE ...
+</code></pre><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-bb</td>
+<td>制作成二进制rpm包</td>
+</tr>
+<tr>
+<td>-bs</td>
+<td>制作源码的rpm包</td>
+</tr>
+<tr>
+<td>-ba</td>
+<td>源码和二进制两种形式的rpm包</td>
+</tr>
+<tr>
+<td>-bl</td>
+<td>检测BUILDROOT没有包含的rpm包中的文件</td>
+</tr>
+<tr>
+<td>-bp</td>
+<td>执行到pre段</td>
+</tr>
+<tr>
+<td>-bc</td>
+<td>执行到build段</td>
+</tr>
+<tr>
+<td>-bi</td>
+<td>执行到install段</td>
+</tr>
+<tr>
+<td>–rebuild</td>
+<td>重新编译</td>
+</tr>
+<tr>
+<td>–define</td>
+<td>编译时指定参数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>一般来说，执行的顺序为<code>rpmbuild -bp</code> –&gt; <code>rpmbuild -bc</code> –&gt; <code>rpmbuild -bi</code> –&gt;<code>rpmbuild -bb</code>或<code>rpmbuild -ba</code></strong></p>
+<h1 id="二、SPEC文件"><a href="#二、SPEC文件" class="headerlink" title="二、SPEC文件"></a>二、SPEC文件</h1><p>SPEC文件是整个包制作的核心，它的作用如同编译程序时的Makefile文件一样。</p>
+<p><strong>注意：spec文件必须由普通用户创建。</strong></p>
+<h2 id="1、SPEC结构"><a href="#1、SPEC结构" class="headerlink" title="1、SPEC结构"></a>1、SPEC结构</h2><h3 id="（1）自定义宏段，方便后续引用"><a href="#（1）自定义宏段，方便后续引用" class="headerlink" title="（1）自定义宏段，方便后续引用"></a>（1）自定义宏段，方便后续引用</h3><pre><code>%define VARIABLE_NAME value
+</code></pre><h3 id="（2）介绍区域段"><a href="#（2）介绍区域段" class="headerlink" title="（2）介绍区域段"></a>（2）介绍区域段</h3><pre><code>Name:    ##rpm包的名字
+Version:        ##rpm包的版本号，建议和源码包的名称保持一致
+Release:     1%{?dist }  ##rpm本身的版本号，使用默认值即可
+Summary:    ##rpm的一些介绍
+
+Group:      ##表示软件包所属类型
+License:        ##授权类型
+URL:        ##软件地址，一般为软件的地址
+Source0:    ##源码包名称，可以使用URL，可以使用sourceN指定多个，如配置文件等  。注意source0必须要填写，而且填写的名字必须和下载源码包名称要一致。而且源码包为tar.gz格式。
+BuildRoot： %_topdir /BUILDROOT  ##会打包该目录下文件，可查看安装后文件路径
+
+BuildRequires:  ##制作过程中用到的软件包
+Requires:    ##安装时所需软件包
+
+prefix:%{_prefix}这个主要为了解决今后安装rpm包时，并不一定把软件安装到rpm中打包的目录。因此，必须在这里定义该标识，并在编写%install脚本的时候引用，才能实现rpm安装时重新制定位置的功能
+prefix:%{_sysconfig}，由于%{_prefix}指/usr，而对于其他文件，例如/etc下的配置文件，则需要用%{_sysconfig}标识。
+
+%description    ##定义关于rpm包的描述信息
+</code></pre><h3 id="（3）准备阶段"><a href="#（3）准备阶段" class="headerlink" title="（3）准备阶段"></a>（3）准备阶段</h3><p>此阶段主要解压源码，并切换源码目录下</p>
+<pre><code>%prep   安装前操作
+%setup -q   ##静默模式解压并切换到目录
+</code></pre><h3 id="（4）编译阶段"><a href="#（4）编译阶段" class="headerlink" title="（4）编译阶段"></a>（4）编译阶段</h3><pre><code>%build  ##定义编译软件包时的操作
+%configure
+make %{?_smp_mflags}    ##多核则并行编译
+</code></pre><h3 id="（5）安装阶段"><a href="#（5）安装阶段" class="headerlink" title="（5）安装阶段"></a>（5）安装阶段</h3><pre><code>%install    ##定义安装软件包，使用默认即可
+make install DESTDIR=%{buildroot}
+        buildroot定义安装或编译时使用的虚拟目录，建议使用默认值。
+</code></pre><h3 id="（6）脚本端"><a href="#（6）脚本端" class="headerlink" title="（6）脚本端"></a>（6）脚本端</h3><pre><code>%pre    ##安装前执行脚本
+%post   ##安装后执行脚本
+%preun  ##rpm包卸载前执行脚本
+%postun ##rpm包卸载后执行脚本
+</code></pre><h3 id="（7）打包时包含的文件"><a href="#（7）打包时包含的文件" class="headerlink" title="（7）打包时包含的文件"></a>（7）打包时包含的文件</h3><pre><code>%files  ##定义rpm包安装时创建的相关目录及文件
+%defattr (-,root,root,0755) ##设置默认权限
+%doc    ##文档
+</code></pre><h3 id="（8）记录SPEC修改日志段"><a href="#（8）记录SPEC修改日志段" class="headerlink" title="（8）记录SPEC修改日志段"></a>（8）记录SPEC修改日志段</h3><pre><code>%changelog  ##记录SPEC修改日志段；一定要以“*”开头，以“-”结尾。星期和月一定使用英文，并且是简写，否则会报错。
+</code></pre><p><strong>rpm包信息中最重要的是name、version、release，最后生成rpm名称形式为name-version-release.rpm</strong></p>
+<p><strong>%config(noreplace)表示配置文件，且不能覆盖，新安装时如果配置文件存在则会将原文件保存为<code>*.rpmsave</code>,升级时则不会覆盖原文件，直接将包中的文件命名为<code>*.rpmnew</code>。</strong></p>
+<h1 id="三、补充"><a href="#三、补充" class="headerlink" title="三、补充"></a>三、补充</h1><h3 id="（1）补充说明"><a href="#（1）补充说明" class="headerlink" title="（1）补充说明"></a>（1）补充说明</h3><p>|引用|描述<br>|%setup |仅将软件包打开<br>|%setup -n newdir|将软件包解压在newdir目录下<br>|%setup -c|解压缩之前先产生目录<br>|%setup -b num|将第num个source文件解压缩<br>|%setup -T |不使用default解压缩操作<br>|%setup -T -b 0|将第0个源代码文件解压缩<br>|%setup -D |解压前不删除目录<br>|%path 0|使用第0个补丁文件<br>|%path -s|不显示打补丁时的信息<br>|%path -T |将所有打补丁产生的输出文件删除</p>
+<h3 id="（2）systemd脚本配置"><a href="#（2）systemd脚本配置" class="headerlink" title="（2）systemd脚本配置"></a>（2）systemd脚本配置</h3><h4 id="安装结束后，实际执行systemctl-preset"><a href="#安装结束后，实际执行systemctl-preset" class="headerlink" title="安装结束后，实际执行systemctl preset"></a>安装结束后，实际执行systemctl preset</h4><pre><code>%systemd_post SERVER.service
+</code></pre><h4 id="执行卸载前-systemctl-disable"><a href="#执行卸载前-systemctl-disable" class="headerlink" title="执行卸载前 systemctl disable"></a>执行卸载前 systemctl disable</h4><pre><code>%systemd_preun SERVER.service
+</code></pre><h4 id="卸载后执行重启操作，daemon-reloaded-try-restart"><a href="#卸载后执行重启操作，daemon-reloaded-try-restart" class="headerlink" title="卸载后执行重启操作，daemon-reloaded+try-restart"></a>卸载后执行重启操作，daemon-reloaded+try-restart</h4><pre><code>%systemd_postun_with_restart SERVER.service
+</code></pre><h4 id="如果不需要启动，执行systemctl-daemon-reload"><a href="#如果不需要启动，执行systemctl-daemon-reload" class="headerlink" title="如果不需要启动，执行systemctl  daemon-reload"></a>如果不需要启动，执行systemctl  daemon-reload</h4><pre><code>%systemd_postun SERVER.service
+</code></pre><h3 id="（3）define和global区别"><a href="#（3）define和global区别" class="headerlink" title="（3）define和global区别"></a>（3）define和global区别</h3><ul>
+<li>define用来定义宏，global用来定义变量</li>
+<li>如果定义带参数的宏，必须使用define</li>
+<li>在<code>%{}</code>内部，必须要使用global而非define</li>
+<li>define在使用时计算其值，而global则在定义时就计算其值</li>
+</ul>
+<h3 id="（4）变量使用"><a href="#（4）变量使用" class="headerlink" title="（4）变量使用"></a>（4）变量使用</h3><p>define定义的变量类似于局部变量，只在<code>%{!?foo:...}</code>区间有效，不过SPEC并不会自动清除该变量，只有再次遇到<code>%{}</code>时才会清除。</p>
+<p>如果在命令行汇总通过<code>--define &#39;with_ssl bundled&#39;</code>进行定义，在SPEC脚本中，使用<code>%{?with_ssl:}</code>处理上述参数，或者通过<code>%{!?with_ssl:}</code>处理未定义参数时的情况。</p>
+<p>在RPM中，‘？’用于条件检测，默认如果对应的变量值不存在，那么RPM会原样保留字符串，如果不存在则删除。</p>
+<h3 id="（5）初始宏定义"><a href="#（5）初始宏定义" class="headerlink" title="（5）初始宏定义"></a>（5）初始宏定义</h3><p>在定义文件的安装路径时，通常会使用类似<code>%_</code>的宏，这些宏一般会在<code>/usr/lib/rpm/macros</code>中定义。</p>
+<p>很多的宏存放在<code>/etc/rpm</code>目录下定义的。</p>
+<h3 id="（6）配置文件"><a href="#（6）配置文件" class="headerlink" title="（6）配置文件"></a>（6）配置文件</h3><table>
+<thead>
+<tr>
+<th>配置文件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/usr/share/doc/rpm-VERSION/GROUPS</td>
+<td>rpm软件包系统的标准分组</td>
+</tr>
+<tr>
+<td>/usr/lib/rpm/macros</td>
+<td>各种宏定义</td>
+</tr>
+<tr>
+<td>/var/lib/rpm</td>
+<td>已经安装rpm包数据库</td>
+</tr>
+</tbody>
+</table>
+<p><strong>参考</strong>：<br><a href="https://jin-yang.github.io/post/linux-create-rpm-package.html" target="_blank" rel="noopener">https://jin-yang.github.io/post/linux-create-rpm-package.html</a></p>
+<p><a href="http://blog.51cto.com/laoguang/1103628" target="_blank" rel="noopener">http://blog.51cto.com/laoguang/1103628</a></p>
+<p><a href="http://hlee.iteye.com/blog/343499" target="_blank" rel="noopener">http://hlee.iteye.com/blog/343499</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+                -------------本文结束
+                <i class="fa fa-paw"></i>
+                感谢您的阅读-------------
+            </div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/rpm/" rel="tag"># rpm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/17/Jumpserver/" rel="next" title="Jumpserver">
+                <i class="fa fa-chevron-left"></i> Jumpserver
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/picturemy.jpg"
+                alt="Joah" />
+            
+              <p class="site-author-name" itemprop="name">Joah</p>
+              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://blog.51cto.com/merit" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、RPM制作"><span class="nav-number">1.</span> <span class="nav-text">一、RPM制作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、配置环境"><span class="nav-number">1.1.</span> <span class="nav-text">1、配置环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）查看所有配置文件顺序"><span class="nav-number">1.1.1.</span> <span class="nav-text">（1）查看所有配置文件顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）查看根工作目录"><span class="nav-number">1.1.2.</span> <span class="nav-text">（2）查看根工作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）根目录介绍"><span class="nav-number">1.1.3.</span> <span class="nav-text">（3）根目录介绍</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、rpmbuild命令"><span class="nav-number">1.2.</span> <span class="nav-text">2、rpmbuild命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用语法"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用语法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、SPEC文件"><span class="nav-number">2.</span> <span class="nav-text">二、SPEC文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、SPEC结构"><span class="nav-number">2.1.</span> <span class="nav-text">1、SPEC结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）自定义宏段，方便后续引用"><span class="nav-number">2.1.1.</span> <span class="nav-text">（1）自定义宏段，方便后续引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）介绍区域段"><span class="nav-number">2.1.2.</span> <span class="nav-text">（2）介绍区域段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）准备阶段"><span class="nav-number">2.1.3.</span> <span class="nav-text">（3）准备阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）编译阶段"><span class="nav-number">2.1.4.</span> <span class="nav-text">（4）编译阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）安装阶段"><span class="nav-number">2.1.5.</span> <span class="nav-text">（5）安装阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）脚本端"><span class="nav-number">2.1.6.</span> <span class="nav-text">（6）脚本端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（7）打包时包含的文件"><span class="nav-number">2.1.7.</span> <span class="nav-text">（7）打包时包含的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（8）记录SPEC修改日志段"><span class="nav-number">2.1.8.</span> <span class="nav-text">（8）记录SPEC修改日志段</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、补充"><span class="nav-number">3.</span> <span class="nav-text">三、补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）补充说明"><span class="nav-number">3.0.1.</span> <span class="nav-text">（1）补充说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）systemd脚本配置"><span class="nav-number">3.0.2.</span> <span class="nav-text">（2）systemd脚本配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装结束后，实际执行systemctl-preset"><span class="nav-number">3.0.2.1.</span> <span class="nav-text">安装结束后，实际执行systemctl preset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行卸载前-systemctl-disable"><span class="nav-number">3.0.2.2.</span> <span class="nav-text">执行卸载前 systemctl disable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卸载后执行重启操作，daemon-reloaded-try-restart"><span class="nav-number">3.0.2.3.</span> <span class="nav-text">卸载后执行重启操作，daemon-reloaded+try-restart</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果不需要启动，执行systemctl-daemon-reload"><span class="nav-number">3.0.2.4.</span> <span class="nav-text">如果不需要启动，执行systemctl  daemon-reload</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）define和global区别"><span class="nav-number">3.0.3.</span> <span class="nav-text">（3）define和global区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）变量使用"><span class="nav-number">3.0.4.</span> <span class="nav-text">（4）变量使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）初始宏定义"><span class="nav-number">3.0.5.</span> <span class="nav-text">（5）初始宏定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）配置文件"><span class="nav-number">3.0.6.</span> <span class="nav-text">（6）配置文件</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joah</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="300" alpha="0.6"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+</body>
+</html>
