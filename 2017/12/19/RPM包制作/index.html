@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="Joah">
 <meta property="og:description" content="一、RPM制作RPM Package Manager简称RPM。 1、配置环境打包相关的配置保存在宏文件（macrofiles）中，默认使用$home/rpmbuild目录，用户配置文件保存在$HOME/.rpmmacros；而制作包的操作实际都在topdir指定的目录下。 （1）查看所有配置文件顺序[root@node1~]#rpmbuild --showrc |grep macros Macr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-19T15:32:23.941Z">
+<meta property="og:updated_time" content="2017-12-20T03:27:43.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RPM包制作">
 <meta name="twitter:description" content="一、RPM制作RPM Package Manager简称RPM。 1、配置环境打包相关的配置保存在宏文件（macrofiles）中，默认使用$home/rpmbuild目录，用户配置文件保存在$HOME/.rpmmacros；而制作包的操作实际都在topdir指定的目录下。 （1）查看所有配置文件顺序[root@node1~]#rpmbuild --showrc |grep macros Macr">
@@ -635,6 +635,210 @@ make install DESTDIR=%{buildroot}
 </tr>
 </tbody>
 </table>
+<h1 id="四、示例"><a href="#四、示例" class="headerlink" title="四、示例"></a>四、示例</h1><h2 id="（1）使用普通用户"><a href="#（1）使用普通用户" class="headerlink" title="（1）使用普通用户"></a>（1）使用普通用户</h2><p><code>[root@node1~]#useradd rpmbuild</code><br><code>[root@node1~]#su - rpmbuild</code></p>
+<h2 id="（2）创建所需目录"><a href="#（2）创建所需目录" class="headerlink" title="（2）创建所需目录"></a>（2）创建所需目录</h2><p><code>[rpmbuild@node1~/rpmbuild]$rpmbuild --showrc |grep topdir</code></p>
+<pre><code>-14: _builddir    %{_topdir}/BUILD
+-14: _buildrootdir    %{_topdir}/BUILDROOT
+-14: _rpmdir    %{_topdir}/RPMS
+-14: _sourcedir    %{_topdir}/SOURCES
+-14: _specdir    %{_topdir}/SPECS
+-14: _srcrpmdir    %{_topdir}/SRPMS
+</code></pre><p><code>[rpmbuild@node1~]$mkdir rpmbuild/{SPECS,SOURCES,BUILD,RPMS,SRPMS} -pv</code></p>
+<h2 id="（3）上传所要制作的包"><a href="#（3）上传所要制作的包" class="headerlink" title="（3）上传所要制作的包"></a>（3）上传所要制作的包</h2><p><code>[rpmbuild@node1~/rpmbuild]$tree</code></p>
+<pre><code>.
+├── BUILD
+├── RPMS
+├── SOURCES
+│   └── nginx-1.12.2.tar.gz
+├── SPECS
+└── SRPMS
+</code></pre><h2 id="（4）构建SPEC文件"><a href="#（4）构建SPEC文件" class="headerlink" title="（4）构建SPEC文件"></a>（4）构建SPEC文件</h2><p><strong>注意：使用<code>.spec</code>后缀，编辑文件会自动生成模板文件。</strong></p>
+<p><code>[rpmbuild@node1~/rpmbuild/SPECS]$vim nginx.spec</code></p>
+<pre><code> %define realname nginx
+%define realver  1.4.2
+%define srcext   tar.gz
+
+%define page_speed_commit cd80e92
+%define psolver           1.6.29.3
+
+%if 0%{?suse_version}
+%define USER   wwwrun
+%define GROUP  www
+%define PREFIX /srv/www
+%define WEB_USER_HOME /var/lib/lighttpd
+%else
+%define USER   apache
+%define GROUP  apache
+%define PREFIX /var/www
+%define WEB_USER_HOME /var/www
+%endif
+
+%define CONF_FILE %{_sysconfdir}/%{name}/%{name}.conf
+
+# Common info
+Name:          %{realname}
+Version:       %{realver}
+Release:       16.1
+License:       BSD-2-Clause
+Group:         Productivity/Networking/Web/Servers
+URL:           http://nginx.org/
+Summary:       HTTP and reverse proxy server, as well as a mail proxy server
+
+# Install-time parameters
+Provides:      httpd http_daemon webserver %{?suse_version:suse_help_viewer}
+Requires:      logrotate
+
+# Build-time parameters
+BuildRequires: gcc-c++ libstdc++-devel
+BuildRequires: dos2unix
+BuildRequires: zlib-devel openssl-devel pcre-devel
+BuildRequires: libxml2-devel libxslt-devel gd-devel libGeoIP-devel
+%if 0%{?suse_version} || 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version} &gt;= 600
+BuildRequires: libaio-devel
+%endif
+BuildRoot:     %{_tmppath}/%{name}-root
+Source0:       http://nginx.org/download/%{realname}-%{realver}%{?extraver}.%{srcext}
+Source1:       nginx.logrotate
+Source2:       nginx.init
+Source3:       nginx.sysconfig
+Source91:      https://github.com/pagespeed/ngx_pagespeed/tarball/%{page_speed_commit}/pagespeed-ngx_pagespeed-%{page_speed_commit}.tar.gz
+Source92:      https://dl.google.com/dl/page-speed/psol/%{psolver}.tar.gz
+Patch:         nginx-memset_zero.patch
+
+#!BuildIgnore: freetype2
+
+%description
+nginx [engine x] is a HTTP and reverse proxy server, as well as a mail proxy server
+
+This nginx package built with Google PageSpeed
+
+# Preparation step (unpackung and patching if necessary)
+%prep
+%setup -q -n %{realname}-%{realver}%{?extraver} -a91
+%{__tar} -zxf %{S:92} -C pagespeed-ngx_pagespeed-%{page_speed_commit}
+%patch -p1
+
+%build
+./configure \
+ --prefix=%{PREFIX} \
+ --sbin-path=%{_sbindir}/%{name} \
+ --conf-path=%{CONF_FILE} \
+ --error-log-path=%{_localstatedir}/log/%{name}/error.log \
+ --http-log-path=%{_localstatedir}/log/%{name}/access.log \
+ --pid-path=%{_localstatedir}/run/%{name}.pid \
+ --lock-path=%{_localstatedir}/lock/%{name}.lock \
+ --user=%{USER} \
+ --group=%{GROUP} \
+ \
+ --http-client-body-temp-path=%{_localstatedir}/cache/%{name}/client_body_temp \
+ --http-proxy-temp-path=%{_localstatedir}/cache/%{name}/proxy_temp \
+ --http-fastcgi-temp-path=%{_localstatedir}/cache/%{name}/fastcgi_temp \
+ --http-uwsgi-temp-path=%{_localstatedir}/cache/%{name}/uwsgi_temp \
+ --http-scgi-temp-path=%{_localstatedir}/cache/%{name}/scgi_temp \
+%if 0%{?suse_version} || 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version} &gt;= 600
+ --with-file-aio \
+%endif
+ --with-ipv6 \
+ \
+ --with-http_ssl_module \
+ --with-http_spdy_module \
+ --with-http_realip_module \
+ --with-http_addition_module \
+ --with-http_xslt_module \
+ --with-http_image_filter_module \
+ --with-http_geoip_module \
+ --with-http_sub_module \
+ --with-http_dav_module \
+ --with-http_flv_module \
+ --with-http_mp4_module \
+ --with-http_gzip_static_module \
+ --with-http_random_index_module \
+ --with-http_secure_link_module \
+ --with-http_degradation_module \
+ --with-http_stub_status_module \
+ \
+ --with-mail \
+ --with-mail_ssl_module \
+ \
+ --with-cc-opt=&quot;%{optflags}&quot; \
+ --with-ld-opt=&quot;-Wl,--as-needed -Wl,--strip-all&quot; \
+ \
+ --with-pcre \
+ --with-pcre-jit \
+ --add-module=%{_builddir}/%{realname}-%{realver}%{?extraver}/pagespeed-ngx_pagespeed-%{page_speed_commit}
+%__make %{?_smp_mflags}
+
+%install
+%__make install DESTDIR=%{buildroot}
+iconv -f koi8-r CHANGES.ru &gt; c &amp;&amp; %__mv -f c CHANGES.ru
+%__install -D -m644 man/nginx.8 %{buildroot}%{_mandir}/man8/nginx.8
+%__install -D -m644 %{S:1} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
+%__install -d -m755 %{buildroot}%{_initrddir}
+sed -r &apos;s|##PREFIX##|%{PREFIX}|; s|##CONF_FILE##|%{CONF_FILE}|&apos; %{S:2} &gt; %{buildroot}%{_initrddir}/%{name}
+%__rm -f %{buildroot}%{PREFIX}/html/index.html
+%if %{expand:%_vendor == &quot;suse&quot;}
+%__mv %{buildroot}%{PREFIX}/html %{buildroot}%{PREFIX}/htdocs
+%__install -d -m755 %{buildroot}/var/adm/fillup-templates
+sed -r &apos;s|##PREFIX##|%{PREFIX}|; s|##CONF_FILE##|%{CONF_FILE}|&apos; %{S:3} &gt; %{buildroot}/var/adm/fillup-templates/sysconfig.%{name}
+%__ln_s -f %{_initrddir}/%{name} %{buildroot}%{_sbindir}/rc%{name}
+dos2unix contrib/geo2nginx.pl
+%__install -D -m755 contrib/geo2nginx.pl %{buildroot}%{_bindir}/geo2nginx.pl
+%else
+%__install -d -m755 %{buildroot}/%{_sysconfdir}/sysconfig
+sed -r &apos;s|##PREFIX##|%{PREFIX}|; s|##CONF_FILE##|%{CONF_FILE}|&apos; %{S:3} &gt; %{buildroot}/%{_sysconfdir}/sysconfig/%{name}
+%endif
+%__install -d -m755 %{buildroot}%{_localstatedir}/cache/%{name}
+
+%clean
+[ &quot;%{buildroot}&quot; != &quot;/&quot; ] &amp;&amp; rm -rf %{buildroot}
+
+%files
+%defattr(-,root,root)
+%doc CHANGES CHANGES.ru LICENSE README
+%dir %{_sysconfdir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}/*
+%config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
+%{_sbindir}/nginx
+%attr(0755,root,root) %{_initrddir}/%{name}
+%dir %attr(0755,%{USER},%{GROUP}) %{_localstatedir}/log/%{name}
+%if %{expand:%_vendor == &quot;suse&quot;}
+%{_bindir}/geo2nginx.pl
+%{_sbindir}/rcnginx
+%{PREFIX}/htdocs/*
+/var/adm/fillup-templates/sysconfig.%{name}
+%else
+%{PREFIX}/html/*
+%config(noreplace) %{_sysconfdir}/sysconfig/%{name}
+%endif
+%doc %{_mandir}/man8/*
+%dir %attr(0755,%{USER},%{GROUP}) %{_localstatedir}/cache/%{name}
+
+%pre
+/usr/sbin/groupadd -r %{GROUP} &amp;&gt;/dev/null ||:
+/usr/sbin/useradd  -g %{GROUP} -s /bin/false -r -c &quot;Web-server&quot; -d %{WEB_USER_HOME} %{USER} &amp;&gt;/dev/null ||:
+
+%if 0%{?suse_version}
+
+%post
+%{fillup_and_insserv %{name}}
+
+%preun
+%{stop_on_removal %{name}}
+rm -rf %{_localstatedir}/cache/%{name}/*
+
+%postun
+%{restart_on_update %{name}}
+%{insserv_cleanup}
+
+%else
+
+%preun
+rm -rf %{_localstatedir}/cache/%{name}/*
+
+%endif
+
+%changelog
+</code></pre><h2 id="（5）生成rpm测试"><a href="#（5）生成rpm测试" class="headerlink" title="（5）生成rpm测试"></a>（5）生成rpm测试</h2><p><code>[rpmbuild@node1~/rpmbuild/SPECS]$rpmbuild -bb nginx.spec</code></p>
 <p><strong>参考</strong>：<br><a href="https://jin-yang.github.io/post/linux-create-rpm-package.html" target="_blank" rel="noopener">https://jin-yang.github.io/post/linux-create-rpm-package.html</a></p>
 <p><a href="http://blog.51cto.com/laoguang/1103628" target="_blank" rel="noopener">http://blog.51cto.com/laoguang/1103628</a></p>
 <p><a href="http://hlee.iteye.com/blog/343499" target="_blank" rel="noopener">http://hlee.iteye.com/blog/343499</a></p>
@@ -831,7 +1035,7 @@ make install DESTDIR=%{buildroot}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、RPM制作"><span class="nav-number">1.</span> <span class="nav-text">一、RPM制作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、配置环境"><span class="nav-number">1.1.</span> <span class="nav-text">1、配置环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）查看所有配置文件顺序"><span class="nav-number">1.1.1.</span> <span class="nav-text">（1）查看所有配置文件顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）查看根工作目录"><span class="nav-number">1.1.2.</span> <span class="nav-text">（2）查看根工作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）根目录介绍"><span class="nav-number">1.1.3.</span> <span class="nav-text">（3）根目录介绍</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、rpmbuild命令"><span class="nav-number">1.2.</span> <span class="nav-text">2、rpmbuild命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用语法"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用语法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、SPEC文件"><span class="nav-number">2.</span> <span class="nav-text">二、SPEC文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、SPEC结构"><span class="nav-number">2.1.</span> <span class="nav-text">1、SPEC结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）自定义宏段，方便后续引用"><span class="nav-number">2.1.1.</span> <span class="nav-text">（1）自定义宏段，方便后续引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）介绍区域段"><span class="nav-number">2.1.2.</span> <span class="nav-text">（2）介绍区域段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）准备阶段"><span class="nav-number">2.1.3.</span> <span class="nav-text">（3）准备阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）编译阶段"><span class="nav-number">2.1.4.</span> <span class="nav-text">（4）编译阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）安装阶段"><span class="nav-number">2.1.5.</span> <span class="nav-text">（5）安装阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）脚本端"><span class="nav-number">2.1.6.</span> <span class="nav-text">（6）脚本端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（7）打包时包含的文件"><span class="nav-number">2.1.7.</span> <span class="nav-text">（7）打包时包含的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（8）记录SPEC修改日志段"><span class="nav-number">2.1.8.</span> <span class="nav-text">（8）记录SPEC修改日志段</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、补充"><span class="nav-number">3.</span> <span class="nav-text">三、补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）补充说明"><span class="nav-number">3.0.1.</span> <span class="nav-text">（1）补充说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）systemd脚本配置"><span class="nav-number">3.0.2.</span> <span class="nav-text">（2）systemd脚本配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装结束后，实际执行systemctl-preset"><span class="nav-number">3.0.2.1.</span> <span class="nav-text">安装结束后，实际执行systemctl preset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行卸载前-systemctl-disable"><span class="nav-number">3.0.2.2.</span> <span class="nav-text">执行卸载前 systemctl disable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卸载后执行重启操作，daemon-reloaded-try-restart"><span class="nav-number">3.0.2.3.</span> <span class="nav-text">卸载后执行重启操作，daemon-reloaded+try-restart</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果不需要启动，执行systemctl-daemon-reload"><span class="nav-number">3.0.2.4.</span> <span class="nav-text">如果不需要启动，执行systemctl  daemon-reload</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）define和global区别"><span class="nav-number">3.0.3.</span> <span class="nav-text">（3）define和global区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）变量使用"><span class="nav-number">3.0.4.</span> <span class="nav-text">（4）变量使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）初始宏定义"><span class="nav-number">3.0.5.</span> <span class="nav-text">（5）初始宏定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）配置文件"><span class="nav-number">3.0.6.</span> <span class="nav-text">（6）配置文件</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、RPM制作"><span class="nav-number">1.</span> <span class="nav-text">一、RPM制作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、配置环境"><span class="nav-number">1.1.</span> <span class="nav-text">1、配置环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）查看所有配置文件顺序"><span class="nav-number">1.1.1.</span> <span class="nav-text">（1）查看所有配置文件顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）查看根工作目录"><span class="nav-number">1.1.2.</span> <span class="nav-text">（2）查看根工作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）根目录介绍"><span class="nav-number">1.1.3.</span> <span class="nav-text">（3）根目录介绍</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、rpmbuild命令"><span class="nav-number">1.2.</span> <span class="nav-text">2、rpmbuild命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用语法"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用语法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、SPEC文件"><span class="nav-number">2.</span> <span class="nav-text">二、SPEC文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、SPEC结构"><span class="nav-number">2.1.</span> <span class="nav-text">1、SPEC结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）自定义宏段，方便后续引用"><span class="nav-number">2.1.1.</span> <span class="nav-text">（1）自定义宏段，方便后续引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）介绍区域段"><span class="nav-number">2.1.2.</span> <span class="nav-text">（2）介绍区域段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）准备阶段"><span class="nav-number">2.1.3.</span> <span class="nav-text">（3）准备阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）编译阶段"><span class="nav-number">2.1.4.</span> <span class="nav-text">（4）编译阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）安装阶段"><span class="nav-number">2.1.5.</span> <span class="nav-text">（5）安装阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）脚本端"><span class="nav-number">2.1.6.</span> <span class="nav-text">（6）脚本端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（7）打包时包含的文件"><span class="nav-number">2.1.7.</span> <span class="nav-text">（7）打包时包含的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（8）记录SPEC修改日志段"><span class="nav-number">2.1.8.</span> <span class="nav-text">（8）记录SPEC修改日志段</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、补充"><span class="nav-number">3.</span> <span class="nav-text">三、补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）补充说明"><span class="nav-number">3.0.1.</span> <span class="nav-text">（1）补充说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）systemd脚本配置"><span class="nav-number">3.0.2.</span> <span class="nav-text">（2）systemd脚本配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装结束后，实际执行systemctl-preset"><span class="nav-number">3.0.2.1.</span> <span class="nav-text">安装结束后，实际执行systemctl preset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行卸载前-systemctl-disable"><span class="nav-number">3.0.2.2.</span> <span class="nav-text">执行卸载前 systemctl disable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卸载后执行重启操作，daemon-reloaded-try-restart"><span class="nav-number">3.0.2.3.</span> <span class="nav-text">卸载后执行重启操作，daemon-reloaded+try-restart</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果不需要启动，执行systemctl-daemon-reload"><span class="nav-number">3.0.2.4.</span> <span class="nav-text">如果不需要启动，执行systemctl  daemon-reload</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）define和global区别"><span class="nav-number">3.0.3.</span> <span class="nav-text">（3）define和global区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）变量使用"><span class="nav-number">3.0.4.</span> <span class="nav-text">（4）变量使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）初始宏定义"><span class="nav-number">3.0.5.</span> <span class="nav-text">（5）初始宏定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）配置文件"><span class="nav-number">3.0.6.</span> <span class="nav-text">（6）配置文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、示例"><span class="nav-number">4.</span> <span class="nav-text">四、示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（1）使用普通用户"><span class="nav-number">4.1.</span> <span class="nav-text">（1）使用普通用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（2）创建所需目录"><span class="nav-number">4.2.</span> <span class="nav-text">（2）创建所需目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（3）上传所要制作的包"><span class="nav-number">4.3.</span> <span class="nav-text">（3）上传所要制作的包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（4）构建SPEC文件"><span class="nav-number">4.4.</span> <span class="nav-text">（4）构建SPEC文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（5）生成rpm测试"><span class="nav-number">4.5.</span> <span class="nav-text">（5）生成rpm测试</span></a></li></ol></li></ol></div>
             
 
           </div>
