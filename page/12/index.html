@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -120,10 +120,14 @@
   <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
 
 
 
-  <meta name="keywords" content="Hexo, Key" />
+  <meta name="keywords" content="Hello !" />
 
 
 
@@ -153,9 +157,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '',
-    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -289,6 +293,36 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -356,12 +390,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/TCP四次挥手/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Redis集群/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/picturemy.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -375,7 +409,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/TCP四次挥手/" itemprop="url">TCP四次挥手</a></h1>
+                <a class="post-title-link" href="/2017/11/28/Redis集群/" itemprop="url">Redis集群</a></h1>
         
 
         <div class="post-meta">
@@ -410,8 +444,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/" itemprop="url" rel="index">
-                    <span itemprop="name">服务</span>
+                  <a href="/categories/缓存服务/" itemprop="url" rel="index">
+                    <span itemprop="name">缓存服务</span>
                   </a>
                 </span>
 
@@ -421,8 +455,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/TCP/" itemprop="url" rel="index">
-                    <span itemprop="name">TCP</span>
+                  <a href="/categories/缓存服务/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
                   </a>
                 </span>
 
@@ -432,8 +466,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/TCP/四次挥手/" itemprop="url" rel="index">
-                    <span itemprop="name">四次挥手</span>
+                  <a href="/categories/缓存服务/Redis/Redis集群/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis集群</span>
                   </a>
                 </span>
 
@@ -444,6 +478,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/28/Redis集群/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/28/Redis集群/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -471,18 +516,16 @@
       
         
           
-          TCP四次挥手的过程
-第一步
+          redis集群同步时间主机名互相解析确保firewalld和iptables关闭1、配置三个节点[root@node3~]#yum install -y redis
+2、修改配置文件
+node1配置：
 
-Client和Server相互传送完包以后，Client主动向Server发送关闭连接的信息：FIN=1，seq=u；此时进入FIN_WAIT状态
-
-第二步
-
-Server接收到Client请求之后，假如他们过程中还有一些包传输没有完成，这就Server向Client
+[root@node1~]#vim /etc/redis.conf
+bind 192.168.4
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/TCP四次挥手/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/Redis集群/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -537,12 +580,12 @@ Server接收到Client请求之后，假如他们过程中还有一些包传输�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Xtrabackup/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/VRRP协议/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/picturemy.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -556,176 +599,7 @@ Server接收到Client请求之后，假如他们过程中还有一些包传输�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/Xtrabackup/" itemprop="url">Xtrabackup</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
-                2017-11-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/Xtrabackup/" itemprop="url" rel="index">
-                    <span itemprop="name">Xtrabackup</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          xtrabackup由percona提供、开源工具，支持对InnoDB做热备，物理备份工具。
-特点：
-物理备份；速率快、可靠；
-备份完成后自动校验备份结果是否可用
-还原速度快
-
-使用格式[innobackupex [--defaults-file=#] --backup | innobackupex
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/Xtrabackup/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-        
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/WEB工作过程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Joah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/picturemy.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Joah">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/28/WEB工作过程/" itemprop="url">WEB工作过程</a></h1>
+                <a class="post-title-link" href="/2017/11/28/VRRP协议/" itemprop="url">VRRP协议</a></h1>
         
 
         <div class="post-meta">
@@ -771,8 +645,8 @@ Server接收到Client请求之后，假如他们过程中还有一些包传输�
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Apache/" itemprop="url" rel="index">
-                    <span itemprop="name">Apache</span>
+                  <a href="/categories/服务/Keepalived/" itemprop="url" rel="index">
+                    <span itemprop="name">Keepalived</span>
                   </a>
                 </span>
 
@@ -782,8 +656,8 @@ Server接收到Client请求之后，假如他们过程中还有一些包传输�
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Apache/WEB工作过程/" itemprop="url" rel="index">
-                    <span itemprop="name">WEB工作过程</span>
+                  <a href="/categories/服务/Keepalived/VRRP协议/" itemprop="url" rel="index">
+                    <span itemprop="name">VRRP协议</span>
                   </a>
                 </span>
 
@@ -794,6 +668,17 @@ Server接收到Client请求之后，假如他们过程中还有一些包传输�
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/28/VRRP协议/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/28/VRRP协议/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -821,201 +706,15 @@ Server接收到Client请求之后，假如他们过程中还有一些包传输�
       
         
           
-          Web服务请求处理过程    此图为经过的OSI模型
+          
+一、VRRP协议虚拟路由冗余协议（VRRP，Virtual Router Redundancy Protocol）通过把几台路由设备联合组成一台虚拟的路由设备，使用一定的机制保证当主机的下一跳路由机出现故障时，及时将业务切换到备份路由器，从而保持业务的持续性和可靠性。
 
-
-（1）Client需要和Server通信，这时需要发出建立连接请求
-（2）Client与Server进行传输数据包时，需要经应用层–&gt;传输层–&gt;网络层–&gt;链路层:层层打包然后传输至Server，Server对此包进行 链路层
+基本概念
+虚拟路由器（Vi
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/WEB工作过程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-        
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Zabbix基于微信告警/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Joah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/picturemy.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Joah">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/28/Zabbix基于微信告警/" itemprop="url">Zabbix基于微信告警</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
-                2017-11-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/" itemprop="url" rel="index">
-                    <span itemprop="name">服务</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Zabbix/" itemprop="url" rel="index">
-                    <span itemprop="name">Zabbix</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务/Zabbix/Zabbix基于微信告警/" itemprop="url" rel="index">
-                    <span itemprop="name">Zabbix基于微信告警</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          在zabbix监控中，国内越来越流行使用微信、钉钉、邮件报警，这正式结合了当下的发展趋势。接下来介绍下zabbix如何结合微信发送警报信息。一、企业微信注册企业微信注册地址：https://work.weixin.qq.com/
-
-
-
-
-
-
-
-
-
-注意：我们需要记录以下几个值：
-Agentld
-Se
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/Zabbix基于微信告警/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/VRRP协议/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1075,7 +774,7 @@ Se
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/picturemy.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1158,6 +857,17 @@ Se
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/28/ansible模块/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/28/ansible模块/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1260,12 +970,199 @@ creates
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/ansible示例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/28/ansible示例/" itemprop="url">ansible示例</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维工具/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化运维工具</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维工具/ansible/" itemprop="url" rel="index">
+                    <span itemprop="name">ansible</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维工具/ansible/ansible示例/" itemprop="url" rel="index">
+                    <span itemprop="name">ansible示例</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/28/ansible示例/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/28/ansible示例/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          完整示例-安装httpd并配置（1）方式一：
+创建目录[root@localhost/etc/ansible/roles]#mkdir -pv http/{tasks,templates,files,handlers,vars,meta,default}
+创建task文件[root@localhos
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/28/ansible示例/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/ansible初级认识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/picturemy.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1348,6 +1245,17 @@ creates
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/28/ansible初级认识/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/28/ansible初级认识/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1437,12 +1345,12 @@ creates
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/FTP简单介绍/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/HTTP安装及配置文件介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/picturemy.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1456,7 +1364,7 @@ creates
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/FTP简单介绍/" itemprop="url">FTP简单介绍</a></h1>
+                <a class="post-title-link" href="/2017/11/28/HTTP安装及配置文件介绍/" itemprop="url">HTTP安装及配置文件介绍</a></h1>
         
 
         <div class="post-meta">
@@ -1491,8 +1399,8 @@ creates
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文件管理/" itemprop="url" rel="index">
-                    <span itemprop="name">文件管理</span>
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
                   </a>
                 </span>
 
@@ -1502,8 +1410,8 @@ creates
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文件管理/FTP/" itemprop="url" rel="index">
-                    <span itemprop="name">FTP</span>
+                  <a href="/categories/服务/Apache/" itemprop="url" rel="index">
+                    <span itemprop="name">Apache</span>
                   </a>
                 </span>
 
@@ -1513,8 +1421,8 @@ creates
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文件管理/FTP/FTP简单介绍/" itemprop="url" rel="index">
-                    <span itemprop="name">FTP简单介绍</span>
+                  <a href="/categories/服务/Apache/HTTP安装及配置文件介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP安装及配置文件介绍</span>
                   </a>
                 </span>
 
@@ -1525,6 +1433,17 @@ creates
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/28/HTTP安装及配置文件介绍/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/28/HTTP安装及配置文件介绍/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1552,11 +1471,18 @@ creates
       
         
           
-          一、FTP1、FTP介绍用于Internet上的控制文件的双向传输。同时，它也是一个应用程序（Application）。基于不同的操作系统有不同的FTP应用程序，而所有这些应用程序都遵守同一种协议以传输文件。在FTP的使用当中，用户经常遇到两个概念：”下载”（Download）和”上传”（Uploa
+          Http安装及文件介绍1、文件类型
+主配置文件
+  /etc/httpd/conf/httpd.conf  /etc/httpd/conf.d/*.conf
+
+服务脚本文件
+  /etc/rc.d/init.d/httpd  /etc/sysconfig/httpd    #脚本配置文件
+
+站点网页
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/FTP简单介绍/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/HTTP安装及配置文件介绍/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1611,12 +1537,12 @@ creates
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/axel/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Zabbix基于微信告警/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/picturemy.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1630,7 +1556,7 @@ creates
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/axel/" itemprop="url">axel</a></h1>
+                <a class="post-title-link" href="/2017/11/28/Zabbix基于微信告警/" itemprop="url">Zabbix基于微信告警</a></h1>
         
 
         <div class="post-meta">
@@ -1665,8 +1591,8 @@ creates
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/命令/" itemprop="url" rel="index">
-                    <span itemprop="name">命令</span>
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
                   </a>
                 </span>
 
@@ -1676,8 +1602,19 @@ creates
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/命令/axel/" itemprop="url" rel="index">
-                    <span itemprop="name">axel</span>
+                  <a href="/categories/服务/Zabbix/" itemprop="url" rel="index">
+                    <span itemprop="name">Zabbix</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/Zabbix/Zabbix基于微信告警/" itemprop="url" rel="index">
+                    <span itemprop="name">Zabbix基于微信告警</span>
                   </a>
                 </span>
 
@@ -1688,6 +1625,17 @@ creates
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/28/Zabbix基于微信告警/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/28/Zabbix基于微信告警/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1715,13 +1663,211 @@ creates
       
         
           
-          axelaxel是 Linux 下一个不错的HTTP/FTP高速下载工具。支持多线程下载、断点续传，且可以从多个地址或者从一个地址的多个连接来下载同一个文件。适合网速不给力时多线程下载提高下载速度
---max-speed=x        -s x    最大速度（字节/秒）
---num-conne
+          在zabbix监控中，国内越来越流行使用微信、钉钉、邮件报警，这正式结合了当下的发展趋势。接下来介绍下zabbix如何结合微信发送警报信息。一、企业微信注册企业微信注册地址：https://work.weixin.qq.com/
+
+
+
+
+
+
+
+
+
+注意：我们需要记录以下几个值：
+Agentld
+Se
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/axel/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/Zabbix基于微信告警/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+        
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/Bind包安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joah">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/28/Bind包安装/" itemprop="url">Bind包安装</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/" itemprop="url" rel="index">
+                    <span itemprop="name">服务</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/DNS/" itemprop="url" rel="index">
+                    <span itemprop="name">DNS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务/DNS/Bind包安装/" itemprop="url" rel="index">
+                    <span itemprop="name">Bind包安装</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/28/Bind包安装/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/28/Bind包安装/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          实现管理DNS1、bind安装包bind-libs.x86_64             #库包           
+bind-libs-lite.x86_64       #     
+bind-license.noarch        #认证包
+bind-utils.x86_64      
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/28/Bind包安装/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1802,10 +1948,6 @@ creates
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/picturemy.jpg"
-                alt="Joah" />
-            
               <p class="site-author-name" itemprop="name">Joah</p>
               <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
           </div>
@@ -1817,7 +1959,7 @@ creates
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">128</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1828,7 +1970,7 @@ creates
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-count">167</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1839,7 +1981,7 @@ creates
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">110</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1874,6 +2016,13 @@ creates
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -1885,7 +2034,7 @@ creates
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1935,11 +2084,6 @@ creates
     </footer>
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
 
     
 
@@ -1964,10 +2108,6 @@ creates
   
 
 
-  
-
-
-
 
 
 
@@ -1975,6 +2115,9 @@ creates
 
 
   
+  
+
+
 
 
 
@@ -2010,12 +2153,12 @@ creates
 
   
   
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
   
 
   
   
-    <script id="ribbon" type="text/javascript" size="300" alpha="0.6"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
   
 
 
@@ -2049,6 +2192,14 @@ creates
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
 
   
 
@@ -2418,9 +2569,6 @@ creates
 
   
 
-
-<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
-</script>
 
 </body>
 </html>

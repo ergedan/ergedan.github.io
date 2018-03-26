@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -120,6 +120,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
 
 
 
@@ -147,7 +151,8 @@
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-17_181102.jpg">
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/jumpserver.png">
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-17_191426.jpg">
-<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-17_202239.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-21_101037.jpg">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-21_101204.jpg">
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-17_202320.jpg">
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-17_202453.jpg">
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-17_202710.jpg">
@@ -161,8 +166,8 @@
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-18_092611.jpg">
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-18_091840.jpg">
 <meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-18_094926.jpg">
-<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-18_095126.jpg">
-<meta property="og:updated_time" content="2017-12-18T01:52:41.732Z">
+<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-12-21_101642.jpg">
+<meta property="og:updated_time" content="2017-12-21T02:17:17.222Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jumpserver">
 <meta name="twitter:description" content="一、JumpserverJumpserver是一款实用Python，Django开发的开源跳板机系统，为互联网提供了认证、授权、审计、自动化运维等功能。基于ssh协议来管理，客户端无需安装agent。 1、Jumpserver工作原理  （1）运维人员在操作过程中首先连接到堡垒机，然后向堡垒机提交操作请求 （2）请求通过堡垒机的授权检查后，堡垒机的应用代理模块将替代用户连接到目标主机完成操作，之">
@@ -174,9 +179,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '',
-    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -309,6 +314,36 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -381,7 +416,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joah">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/picturemy.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -452,6 +487,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/17/Jumpserver/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/12/17/Jumpserver/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -520,7 +566,8 @@
 Switched to a new branch &apos;master&apos;
 </code></pre><p><strong>注意：执行完此条命令需退出重新切换进去。</strong></p>
 <p><code>[root@node1~/jumpserver/install]#python install.py</code>   #安装<br><img src="http://owatlfstl.bkt.clouddn.com/2017-12-17_191426.jpg" alt=""></p>
-<p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-17_202239.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-21_101037.jpg" alt=""></p>
+<h4 id="登录邮箱查看是否收到邮件"><a href="#登录邮箱查看是否收到邮件" class="headerlink" title="登录邮箱查看是否收到邮件"></a>登录邮箱查看是否收到邮件</h4><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-21_101204.jpg" alt=""></p>
 <p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-17_202320.jpg" alt=""></p>
 <h2 id="2、登录"><a href="#2、登录" class="headerlink" title="2、登录"></a>2、登录</h2><p>地址栏输入：<a href="http://192.168.4.61:8000" target="_blank" rel="noopener">http://192.168.4.61:8000</a></p>
 <p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-17_202453.jpg" alt=""></p>
@@ -535,7 +582,7 @@ Switched to a new branch &apos;master&apos;
 <p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-18_092611.jpg" alt=""></p>
 <h3 id="（5）机房管理"><a href="#（5）机房管理" class="headerlink" title="（5）机房管理"></a>（5）机房管理</h3><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-18_091840.jpg" alt=""></p>
 <h2 id="（6）系统用户"><a href="#（6）系统用户" class="headerlink" title="（6）系统用户"></a>（6）系统用户</h2><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-18_094926.jpg" alt=""></p>
-<h2 id="（7）授权规则"><a href="#（7）授权规则" class="headerlink" title="（7）授权规则"></a>（7）授权规则</h2><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-18_095126.jpg" alt=""></p>
+<h2 id="（7）授权规则"><a href="#（7）授权规则" class="headerlink" title="（7）授权规则"></a>（7）授权规则</h2><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-21_101642.jpg" alt=""></p>
 
       
     </div>
@@ -576,8 +623,8 @@ Switched to a new branch &apos;master&apos;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/16/MogileFS/" rel="next" title="MogileFS">
-                <i class="fa fa-chevron-left"></i> MogileFS
+              <a href="/2017/12/16/FastDFS/" rel="next" title="FastDFS">
+                <i class="fa fa-chevron-left"></i> FastDFS
               </a>
             
           </div>
@@ -607,6 +654,12 @@ Switched to a new branch &apos;master&apos;
 
     <div class="post-spread">
       
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
     </div>
   </div>
 
@@ -616,6 +669,16 @@ Switched to a new branch &apos;master&apos;
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
 
   
 
@@ -654,10 +717,6 @@ Switched to a new branch &apos;master&apos;
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/picturemy.jpg"
-                alt="Joah" />
-            
               <p class="site-author-name" itemprop="name">Joah</p>
               <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
           </div>
@@ -669,7 +728,7 @@ Switched to a new branch &apos;master&apos;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">128</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -680,7 +739,7 @@ Switched to a new branch &apos;master&apos;
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-count">167</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -691,7 +750,7 @@ Switched to a new branch &apos;master&apos;
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">110</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -733,7 +792,7 @@ Switched to a new branch &apos;master&apos;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、Jumpserver"><span class="nav-number">1.</span> <span class="nav-text">一、Jumpserver</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Jumpserver工作原理"><span class="nav-number">1.1.</span> <span class="nav-text">1、Jumpserver工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Jumpserver特点"><span class="nav-number">1.2.</span> <span class="nav-text">2、Jumpserver特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、Jumpserver名词解释"><span class="nav-number">1.3.</span> <span class="nav-text">3、Jumpserver名词解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、Jumpserver安装及文件详解"><span class="nav-number">2.</span> <span class="nav-text">二、Jumpserver安装及文件详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Jumpserver安装"><span class="nav-number">2.1.</span> <span class="nav-text">1、Jumpserver安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、登录"><span class="nav-number">2.2.</span> <span class="nav-text">2、登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、简单介绍"><span class="nav-number">2.3.</span> <span class="nav-text">3、简单介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）添加用户组"><span class="nav-number">2.3.1.</span> <span class="nav-text">（1）添加用户组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）添加用户"><span class="nav-number">2.3.2.</span> <span class="nav-text">（2）添加用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）资产组"><span class="nav-number">2.3.3.</span> <span class="nav-text">（3）资产组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）资产管理"><span class="nav-number">2.3.4.</span> <span class="nav-text">（4）资产管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）机房管理"><span class="nav-number">2.3.5.</span> <span class="nav-text">（5）机房管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（6）系统用户"><span class="nav-number">2.4.</span> <span class="nav-text">（6）系统用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（7）授权规则"><span class="nav-number">2.5.</span> <span class="nav-text">（7）授权规则</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、Jumpserver"><span class="nav-number">1.</span> <span class="nav-text">一、Jumpserver</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Jumpserver工作原理"><span class="nav-number">1.1.</span> <span class="nav-text">1、Jumpserver工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Jumpserver特点"><span class="nav-number">1.2.</span> <span class="nav-text">2、Jumpserver特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、Jumpserver名词解释"><span class="nav-number">1.3.</span> <span class="nav-text">3、Jumpserver名词解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、Jumpserver安装及文件详解"><span class="nav-number">2.</span> <span class="nav-text">二、Jumpserver安装及文件详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Jumpserver安装"><span class="nav-number">2.1.</span> <span class="nav-text">1、Jumpserver安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#登录邮箱查看是否收到邮件"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">登录邮箱查看是否收到邮件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、登录"><span class="nav-number">2.2.</span> <span class="nav-text">2、登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、简单介绍"><span class="nav-number">2.3.</span> <span class="nav-text">3、简单介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）添加用户组"><span class="nav-number">2.3.1.</span> <span class="nav-text">（1）添加用户组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）添加用户"><span class="nav-number">2.3.2.</span> <span class="nav-text">（2）添加用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）资产组"><span class="nav-number">2.3.3.</span> <span class="nav-text">（3）资产组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）资产管理"><span class="nav-number">2.3.4.</span> <span class="nav-text">（4）资产管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）机房管理"><span class="nav-number">2.3.5.</span> <span class="nav-text">（5）机房管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（6）系统用户"><span class="nav-number">2.4.</span> <span class="nav-text">（6）系统用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（7）授权规则"><span class="nav-number">2.5.</span> <span class="nav-text">（7）授权规则</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -741,6 +800,13 @@ Switched to a new branch &apos;master&apos;
       <!--/noindex-->
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -753,7 +819,7 @@ Switched to a new branch &apos;master&apos;
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -803,11 +869,6 @@ Switched to a new branch &apos;master&apos;
     </footer>
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
 
     
 
@@ -832,10 +893,6 @@ Switched to a new branch &apos;master&apos;
   
 
 
-  
-
-
-
 
 
 
@@ -843,6 +900,9 @@ Switched to a new branch &apos;master&apos;
 
 
   
+  
+
+
 
 
 
@@ -878,12 +938,12 @@ Switched to a new branch &apos;master&apos;
 
   
   
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
   
 
   
   
-    <script id="ribbon" type="text/javascript" size="300" alpha="0.6"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
   
 
 
@@ -924,6 +984,26 @@ Switched to a new branch &apos;master&apos;
 
   
 
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/12/17/Jumpserver/';
+          this.page.identifier = '2017/12/17/Jumpserver/';
+          this.page.title = 'Jumpserver';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -939,6 +1019,17 @@ Switched to a new branch &apos;master&apos;
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1290,9 +1381,6 @@ Switched to a new branch &apos;master&apos;
 
   
 
-
-<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
-</script>
 
 </body>
 </html>
