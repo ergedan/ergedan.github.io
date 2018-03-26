@@ -19,7 +19,7 @@
     
     
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2" rel="stylesheet">
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -211,6 +211,11 @@
 
 
 </head>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
 
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -480,17 +485,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/28/MySQL日志/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/28/MySQL日志/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -503,6 +497,37 @@
             </span>
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -703,8 +728,8 @@ sync_binlog={1|0}：是否同步到磁盘中，binlogs先缓冲在内存中，�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/28/MySQL用户管理/" rel="next" title="MySQL用户管理">
-                <i class="fa fa-chevron-left"></i> MySQL用户管理
+              <a href="/2017/11/28/MySQL工作方式/" rel="next" title="MySQL工作方式">
+                <i class="fa fa-chevron-left"></i> MySQL工作方式
               </a>
             
           </div>
@@ -713,8 +738,8 @@ sync_binlog={1|0}：是否同步到磁盘中，binlogs先缓冲在内存中，�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/28/MySQL主从复制/" rel="prev" title="MySQL主从复制">
-                MySQL主从复制 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/28/MySQL引擎/" rel="prev" title="MySQL引擎">
+                MySQL引擎 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -752,12 +777,7 @@ sync_binlog={1|0}：是否同步到磁盘中，binlogs先缓冲在内存中，�
 
   
     <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTIyMC8xMTc1Ng=="></div>
     </div>
 
   
@@ -1061,26 +1081,6 @@ sync_binlog={1|0}：是否同步到磁盘中，binlogs先缓冲在内存中，�
 
   
 
-
-  
-
-    
-      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/11/28/MySQL日志/';
-          this.page.identifier = '2017/11/28/MySQL日志/';
-          this.page.title = 'MySQL日志';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
 
   
 

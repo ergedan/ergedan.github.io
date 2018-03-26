@@ -19,7 +19,7 @@
     
     
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2" rel="stylesheet">
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -219,6 +219,11 @@
 
 
 </head>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
 
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -499,17 +504,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/28/DNS实战一/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/28/DNS实战一/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -522,6 +516,37 @@
             </span>
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -716,8 +741,8 @@ www           CNAME   webserver
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/28/GitLab/" rel="next" title="Gitlab安装及使用">
-                <i class="fa fa-chevron-left"></i> Gitlab安装及使用
+              <a href="/2017/11/28/KVM图形化管理工具/" rel="next" title="KVM图形化管理工具">
+                <i class="fa fa-chevron-left"></i> KVM图形化管理工具
               </a>
             
           </div>
@@ -726,8 +751,8 @@ www           CNAME   webserver
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/28/Apache分析工具和日志管理工具/" rel="prev" title="Apache分析工具和日志管理工具">
-                Apache分析工具和日志管理工具 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/28/Httpd相关概念/" rel="prev" title="HTTP介绍">
+                HTTP介绍 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -765,12 +790,7 @@ www           CNAME   webserver
 
   
     <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTIyMC8xMTc1Ng=="></div>
     </div>
 
   
@@ -1074,26 +1094,6 @@ www           CNAME   webserver
 
   
 
-
-  
-
-    
-      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/11/28/DNS实战一/';
-          this.page.identifier = '2017/11/28/DNS实战一/';
-          this.page.title = 'DNS实战';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
 
   
 
