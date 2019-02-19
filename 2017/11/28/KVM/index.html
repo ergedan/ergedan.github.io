@@ -1,556 +1,379 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<html lang="zh-CN">
 
 
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
+    <meta charset="utf-8">
+    <meta name="keywords" content="KVM基础, 运维小李">
+    <meta name="description" content="KVM（Kernel-based Virtual Machine）是一种用于Linux内核中的虚拟化的基础设施，可以将Linux内核转换为一个hypervisor（虚拟机器监视器，virtual machine monitor，VMM）。K">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>KVM基础 | 运维小李</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
+<body>
 
-  
-  
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">运维小李</span>
+                    </a>
+                </div>
+                
+
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
     
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
     
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
     
-  
-  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
     
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
     
-  
-
-  
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
     
-      
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
     
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        </a>
+    </li>
 
-    
-  
+</ul>
 
-  
+<div class="side-nav" id="mobile-nav">
 
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-  
-
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
-
-
-  <link rel="manifest" href="/images/manifest.json">
-
-
-  <meta name="msapplication-config" content="/images/browserconfig.xml" />
-
-
-
-  <meta name="keywords" content="kvm，virsh，qemu-kvm," />
-
-
-
-
-
-  <link rel="alternate" href="http://blog.51cto.com/merit" title="Joah" type="application/atom+xml" />
-
-
-
-
-
-
-<meta name="description" content="KVM（Kernel-based Virtual Machine）是一种用于Linux内核中的虚拟化的基础设施，可以将Linux内核转换为一个hypervisor（虚拟机器监视器，virtual machine monitor，VMM）。KVM在具备Intel VT或AMD-V功能的X86平台上运行。它包含一个为处理器">
-<meta name="keywords" content="kvm，virsh，qemu-kvm">
-<meta property="og:type" content="article">
-<meta property="og:title" content="KVM基础">
-<meta property="og:url" content="http://yoursite.com/2017/11/28/KVM/index.html">
-<meta property="og:site_name" content="Joah">
-<meta property="og:description" content="KVM（Kernel-based Virtual Machine）是一种用于Linux内核中的虚拟化的基础设施，可以将Linux内核转换为一个hypervisor（虚拟机器监视器，virtual machine monitor，VMM）。KVM在具备Intel VT或AMD-V功能的X86平台上运行。它包含一个为处理器提供底层虚拟化可加载的核心模块kvm.ko。 一、KVM1、Hypervisor">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/VMM-Type1.JPG">
-<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/VMM-Type2.JPG">
-<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/Hyperviseur.png">
-<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-30_203741.jpg">
-<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-30_211636.jpg">
-<meta property="og:image" content="http://owatlfstl.bkt.clouddn.com/2017-11-30_234950.jpg">
-<meta property="og:updated_time" content="2017-12-03T02:55:07.788Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KVM基础">
-<meta name="twitter:description" content="KVM（Kernel-based Virtual Machine）是一种用于Linux内核中的虚拟化的基础设施，可以将Linux内核转换为一个hypervisor（虚拟机器监视器，virtual machine monitor，VMM）。KVM在具备Intel VT或AMD-V功能的X86平台上运行。它包含一个为处理器提供底层虚拟化可加载的核心模块kvm.ko。 一、KVM1、Hypervisor">
-<meta name="twitter:image" content="http://owatlfstl.bkt.clouddn.com/VMM-Type1.JPG">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '',
-    sidebar: {"position":"left","display":"hide","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2017/11/28/KVM/"/>
-
-
-
-
-
-  <title>KVM基础 | Joah</title>
-  
-
-
-
-
-
-
-
-
-</head>
-
-
-   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
-   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-   <script type="text/javascript" src="/js/src/fireworks.js"></script>
-
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-	<a href="https://github.com/ergedan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Joah</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+    <div class="mobile-head bg-color">
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+        <div class="logo-name">运维小李</div>
+        <div class="logo-desc">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            Never really desperate, only the lost of the soul.
             
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-schedule">
-          <a href="/schedule/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
-            
-            日程表
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
-            
-            站点地图
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
-            
-            公益404
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/KVM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Joah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Joah">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">KVM基础</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
-                2017-11-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/虚拟化/" itemprop="url" rel="index">
-                    <span itemprop="name">虚拟化</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/虚拟化/KVM/" itemprop="url" rel="index">
-                    <span itemprop="name">KVM</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/虚拟化/KVM/KVM基础/" itemprop="url" rel="index">
-                    <span itemprop="name">KVM基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读数
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
-            </span>
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3,551 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  16 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
         </div>
-      </header>
-    
+    </div>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
 
-      
-      
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/ergedan/" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>fork me
+            </a>
+        </li>
+        
+    </ul>
 
-      
-        <p>KVM（Kernel-based Virtual Machine）是一种用于Linux内核中的虚拟化的基础设施，可以将Linux内核转换为一个hypervisor（虚拟机器监视器，virtual machine monitor，VMM）。KVM在具备Intel VT或AMD-V功能的X86平台上运行。它包含一个为处理器提供底层虚拟化可加载的核心模块kvm.ko。</p>
+    <div class="social-link">
+    <a href="https://github.com/ergedan/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:473823554@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=473823554" class="tooltipped" data-tooltip="QQ联系我: 473823554" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+        <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/ergedan/" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="fork me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        KVM基础
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/kvm，virsh，qemu-kvm/" target="_blank">
+                                <span class="chip bg-color">kvm，virsh，qemu-kvm</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/虚拟化/" class="post-category" target="_blank">
+                                虚拟化
+                            </a>
+                        
+                            <a href="/categories/虚拟化/KVM/" class="post-category" target="_blank">
+                                KVM
+                            </a>
+                        
+                            <a href="/categories/虚拟化/KVM/KVM基础/" class="post-category" target="_blank">
+                                KVM基础
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2017-11-28
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        3,551
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        16 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>KVM（Kernel-based Virtual Machine）是一种用于Linux内核中的虚拟化的基础设施，可以将Linux内核转换为一个hypervisor（虚拟机器监视器，virtual machine monitor，VMM）。KVM在具备Intel VT或AMD-V功能的X86平台上运行。它包含一个为处理器提供底层虚拟化可加载的核心模块kvm.ko。</p>
 <h1 id="一、KVM"><a href="#一、KVM" class="headerlink" title="一、KVM"></a>一、KVM</h1><h2 id="1、Hypervisor类型"><a href="#1、Hypervisor类型" class="headerlink" title="1、Hypervisor类型"></a>1、Hypervisor类型</h2><h3 id="（1）本地或逻辑"><a href="#（1）本地或逻辑" class="headerlink" title="（1）本地或逻辑"></a>（1）本地或逻辑</h3><p>直接运行在主机的硬件来控制和管理客体操作系统上。</p>
 <p><img src="http://owatlfstl.bkt.clouddn.com/VMM-Type1.JPG" alt=""></p>
 <h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
@@ -726,7 +549,7 @@ br0             8000.000000000000       no
 <li>可选择AES加密</li>
 </ul>
 <h3 id="准备虚拟磁盘文件"><a href="#准备虚拟磁盘文件" class="headerlink" title="准备虚拟磁盘文件"></a>准备虚拟磁盘文件</h3><p><code>[root@node3/app/test]#qemu-img create -o preallocation=metadata -f qcow2 /app/test/linux.qcow2 20G</code></p>
-<pre><code>Formatting &apos;/app/test/linux.qcow2&apos;, fmt=qcow2 size=21474836480 encryption=off cluster_size=65536 preallocation=&apos;metadata&apos; lazy_refcounts=off  
+<pre><code>Formatting &#39;/app/test/linux.qcow2&#39;, fmt=qcow2 size=21474836480 encryption=off cluster_size=65536 preallocation=&#39;metadata&#39; lazy_refcounts=off  
 </code></pre><p>官网下载镜像文件</p>
 <p><a href="https://launchpad.net/cirros/" target="_blank" rel="noopener">https://launchpad.net/cirros/</a></p>
 <h3 id="创建虚拟机"><a href="#创建虚拟机" class="headerlink" title="创建虚拟机"></a>创建虚拟机</h3><p><code>[root@node3/app/test]#qemu-kvm -cpu host -smp 1 -name linux.test -m 64 -drive file=/app/test/linux.qcow2,if=ide,media=disk,format=qcow2 -drive file=/root/cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso,media=cdrom -boot dc -vnc :2</code></p>
@@ -858,874 +681,396 @@ br0             8000.000000000000       no
 <p><code>[root@node3~]#virt-install --name=c6 -r 64 --vcpus=2 -f /root/cirros-0.3.0-x86_64-disk.img  --cdrom=/root/kubuntu-17.10-desktop-amd64.iso --graphics vnc,listen=0.0.0.0,port=5930 --network bridge=br0</code></p>
 <p>安装完以后会生成xml配置文件。<code>/etc/libvirt/qemu</code>目录下存放。</p>
 <p><code>[root@node3/etc/libvirt/qemu]#vim c5.xml</code></p>
-<pre><code>1 &lt;!--
- 2 WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
- 3 OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
- 4   virsh edit c5
- 5 or other application using the libvirt API.
- 6 --&gt;
- 7 
- 8 &lt;domain type=&apos;kvm&apos;&gt;
- 9   &lt;name&gt;c5&lt;/name&gt;
-10   &lt;uuid&gt;e656a4fe-de06-4fb2-8592-5130ef3a2c7c&lt;/uuid&gt;
-11   &lt;memory unit=&apos;KiB&apos;&gt;65536&lt;/memory&gt;
-12   &lt;currentMemory unit=&apos;KiB&apos;&gt;65536&lt;/currentMemory&gt;
-13   &lt;vcpu placement=&apos;static&apos;&gt;2&lt;/vcpu&gt;
-14   &lt;os&gt;
-15     &lt;type arch=&apos;x86_64&apos; machine=&apos;pc-i440fx-rhel7.0.0&apos;&gt;hvm&lt;/type&gt;
-16     &lt;boot dev=&apos;hd&apos;/&gt;
-17   &lt;/os&gt;
-18   &lt;features&gt;
-19     &lt;acpi/&gt;
-20     &lt;apic/&gt;
-21   &lt;/features&gt;
-22   &lt;cpu mode=&apos;custom&apos; match=&apos;exact&apos; check=&apos;partial&apos;&gt;
-23     &lt;model fallback=&apos;allow&apos;&gt;Haswell-noTSX&lt;/model&gt;
-26     &lt;timer name=&apos;rtc&apos; tickpolicy=&apos;catchup&apos;/&gt;
-27     &lt;timer name=&apos;pit&apos; tickpolicy=&apos;delay&apos;/&gt;
-28     &lt;timer name=&apos;hpet&apos; present=&apos;no&apos;/&gt;
-29   &lt;/clock&gt;
-30   &lt;on_poweroff&gt;destroy&lt;/on_poweroff&gt;
-31   &lt;on_reboot&gt;restart&lt;/on_reboot&gt;
-32   &lt;on_crash&gt;destroy&lt;/on_crash&gt;
-33   &lt;pm&gt;
-34     &lt;suspend-to-mem enabled=&apos;no&apos;/&gt;
-35     &lt;suspend-to-disk enabled=&apos;no&apos;/&gt;
-36   &lt;/pm&gt;
-37   &lt;devices&gt;
-38     &lt;emulator&gt;/usr/libexec/qemu-kvm&lt;/emulator&gt;
-39     &lt;disk type=&apos;file&apos; device=&apos;disk&apos;&gt;
-40       &lt;driver name=&apos;qemu&apos; type=&apos;qcow2&apos;/&gt;
-41       &lt;source file=&apos;/root/centos.img&apos;/&gt;
-42       &lt;target dev=&apos;hda&apos; bus=&apos;ide&apos;/&gt;
-43       &lt;address type=&apos;drive&apos; controller=&apos;0&apos; bus=&apos;0&apos; target=&apos;0&apos; unit=&apos;0&apos;/&gt;
-44     &lt;/disk&gt;
-45     &lt;disk type=&apos;file&apos; device=&apos;cdrom&apos;&gt;
-46       &lt;driver name=&apos;qemu&apos; type=&apos;raw&apos;/&gt;
-47       &lt;target dev=&apos;hdb&apos; bus=&apos;ide&apos;/&gt;
-48       &lt;readonly/&gt;
-49       &lt;address type=&apos;drive&apos; controller=&apos;0&apos; bus=&apos;0&apos; target=&apos;0&apos; unit=&apos;1&apos;/&gt;
-50     &lt;/disk&gt;
-51     &lt;controller type=&apos;usb&apos; index=&apos;0&apos; model=&apos;ich9-ehci1&apos;&gt;
-52       &lt;address type=&apos;pci&apos; domain=&apos;0x0000&apos; bus=&apos;0x00&apos; slot=&apos;0x04&apos; function=&apos;0x7&apos;/&gt;
-53     &lt;/controller&gt;
-54     &lt;controller type=&apos;usb&apos; index=&apos;0&apos; model=&apos;ich9-uhci1&apos;&gt;
-55       &lt;master startport=&apos;0&apos;/&gt;
-57     &lt;/controller&gt;
-58     &lt;controller type=&apos;usb&apos; index=&apos;0&apos; model=&apos;ich9-uhci2&apos;&gt;
-59       &lt;master startport=&apos;2&apos;/&gt;
-60       &lt;address type=&apos;pci&apos; domain=&apos;0x0000&apos; bus=&apos;0x00&apos; slot=&apos;0x04&apos; function=&apos;0x1&apos;/&gt;
-61     &lt;/controller&gt;
-62     &lt;controller type=&apos;usb&apos; index=&apos;0&apos; model=&apos;ich9-uhci3&apos;&gt;
-63       &lt;master startport=&apos;4&apos;/&gt;
-64       &lt;address type=&apos;pci&apos; domain=&apos;0x0000&apos; bus=&apos;0x00&apos; slot=&apos;0x04&apos; function=&apos;0x2&apos;/&gt;
-65     &lt;/controller&gt;
-66     &lt;controller type=&apos;pci&apos; index=&apos;0&apos; model=&apos;pci-root&apos;/&gt;
-67     &lt;controller type=&apos;ide&apos; index=&apos;0&apos;&gt;
-68       &lt;address type=&apos;pci&apos; domain=&apos;0x0000&apos; bus=&apos;0x00&apos; slot=&apos;0x01&apos; function=&apos;0x1&apos;/&gt;
-69     &lt;/controller&gt;
-70     &lt;interface type=&apos;bridge&apos;&gt;
-71       &lt;mac address=&apos;52:54:00:3c:ed:ab&apos;/&gt;
-72       &lt;source bridge=&apos;br0&apos;/&gt;
-73       &lt;model type=&apos;rtl8139&apos;/&gt;
-74       &lt;address type=&apos;pci&apos; domain=&apos;0x0000&apos; bus=&apos;0x00&apos; slot=&apos;0x03&apos; function=&apos;0x0&apos;/&gt;
-75     &lt;/interface&gt;
-76     &lt;serial type=&apos;pty&apos;&gt;
-77       &lt;target port=&apos;0&apos;/&gt;
-78     &lt;/serial&gt;
-79     &lt;console type=&apos;pty&apos;&gt;
-80       &lt;target type=&apos;serial&apos; port=&apos;0&apos;/&gt;
-81     &lt;/console&gt;
-82     &lt;input type=&apos;mouse&apos; bus=&apos;ps2&apos;/&gt;
-83     &lt;input type=&apos;keyboard&apos; bus=&apos;ps2&apos;/&gt;
-84     &lt;graphics type=&apos;vnc&apos; port=&apos;5920&apos; autoport=&apos;no&apos; listen=&apos;0.0.0.0&apos;&gt;
-85       &lt;listen type=&apos;address&apos; address=&apos;0.0.0.0&apos;/&gt;
-86     &lt;/graphics&gt;
-87     &lt;video&gt;
-88       &lt;model type=&apos;cirrus&apos; vram=&apos;16384&apos; heads=&apos;1&apos; primary=&apos;yes&apos;/&gt;
-89       &lt;address type=&apos;pci&apos; domain=&apos;0x0000&apos; bus=&apos;0x00&apos; slot=&apos;0x02&apos; function=&apos;0x0&apos;/&gt;
-90     &lt;/video&gt;
-91     &lt;memballoon model=&apos;virtio&apos;&gt;
-92       &lt;address type=&apos;pci&apos; domain=&apos;0x0000&apos; bus=&apos;0x00&apos; slot=&apos;0x05&apos; function=&apos;0x0&apos;/&gt;
-93     &lt;/memballoon&gt;
-94   &lt;/devices&gt;
-95 &lt;/domain&gt;
+<pre><code> 1 &lt;!--
+  2 WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+  3 OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  4   virsh edit c5
+  5 or other application using the libvirt API.
+  6 --&gt;
+  7 
+  8 &lt;domain type=&#39;kvm&#39;&gt;
+  9   &lt;name&gt;c5&lt;/name&gt;
+ 10   &lt;uuid&gt;e656a4fe-de06-4fb2-8592-5130ef3a2c7c&lt;/uuid&gt;
+ 11   &lt;memory unit=&#39;KiB&#39;&gt;65536&lt;/memory&gt;
+ 12   &lt;currentMemory unit=&#39;KiB&#39;&gt;65536&lt;/currentMemory&gt;
+ 13   &lt;vcpu placement=&#39;static&#39;&gt;2&lt;/vcpu&gt;
+ 14   &lt;os&gt;
+ 15     &lt;type arch=&#39;x86_64&#39; machine=&#39;pc-i440fx-rhel7.0.0&#39;&gt;hvm&lt;/type&gt;
+ 16     &lt;boot dev=&#39;hd&#39;/&gt;
+ 17   &lt;/os&gt;
+ 18   &lt;features&gt;
+ 19     &lt;acpi/&gt;
+ 20     &lt;apic/&gt;
+ 21   &lt;/features&gt;
+ 22   &lt;cpu mode=&#39;custom&#39; match=&#39;exact&#39; check=&#39;partial&#39;&gt;
+ 23     &lt;model fallback=&#39;allow&#39;&gt;Haswell-noTSX&lt;/model&gt;
+ 26     &lt;timer name=&#39;rtc&#39; tickpolicy=&#39;catchup&#39;/&gt;
+ 27     &lt;timer name=&#39;pit&#39; tickpolicy=&#39;delay&#39;/&gt;
+ 28     &lt;timer name=&#39;hpet&#39; present=&#39;no&#39;/&gt;
+ 29   &lt;/clock&gt;
+ 30   &lt;on_poweroff&gt;destroy&lt;/on_poweroff&gt;
+ 31   &lt;on_reboot&gt;restart&lt;/on_reboot&gt;
+ 32   &lt;on_crash&gt;destroy&lt;/on_crash&gt;
+ 33   &lt;pm&gt;
+ 34     &lt;suspend-to-mem enabled=&#39;no&#39;/&gt;
+ 35     &lt;suspend-to-disk enabled=&#39;no&#39;/&gt;
+ 36   &lt;/pm&gt;
+ 37   &lt;devices&gt;
+ 38     &lt;emulator&gt;/usr/libexec/qemu-kvm&lt;/emulator&gt;
+ 39     &lt;disk type=&#39;file&#39; device=&#39;disk&#39;&gt;
+ 40       &lt;driver name=&#39;qemu&#39; type=&#39;qcow2&#39;/&gt;
+ 41       &lt;source file=&#39;/root/centos.img&#39;/&gt;
+ 42       &lt;target dev=&#39;hda&#39; bus=&#39;ide&#39;/&gt;
+ 43       &lt;address type=&#39;drive&#39; controller=&#39;0&#39; bus=&#39;0&#39; target=&#39;0&#39; unit=&#39;0&#39;/&gt;
+ 44     &lt;/disk&gt;
+ 45     &lt;disk type=&#39;file&#39; device=&#39;cdrom&#39;&gt;
+ 46       &lt;driver name=&#39;qemu&#39; type=&#39;raw&#39;/&gt;
+ 47       &lt;target dev=&#39;hdb&#39; bus=&#39;ide&#39;/&gt;
+ 48       &lt;readonly/&gt;
+ 49       &lt;address type=&#39;drive&#39; controller=&#39;0&#39; bus=&#39;0&#39; target=&#39;0&#39; unit=&#39;1&#39;/&gt;
+ 50     &lt;/disk&gt;
+ 51     &lt;controller type=&#39;usb&#39; index=&#39;0&#39; model=&#39;ich9-ehci1&#39;&gt;
+ 52       &lt;address type=&#39;pci&#39; domain=&#39;0x0000&#39; bus=&#39;0x00&#39; slot=&#39;0x04&#39; function=&#39;0x7&#39;/&gt;
+ 53     &lt;/controller&gt;
+ 54     &lt;controller type=&#39;usb&#39; index=&#39;0&#39; model=&#39;ich9-uhci1&#39;&gt;
+ 55       &lt;master startport=&#39;0&#39;/&gt;
+ 57     &lt;/controller&gt;
+ 58     &lt;controller type=&#39;usb&#39; index=&#39;0&#39; model=&#39;ich9-uhci2&#39;&gt;
+ 59       &lt;master startport=&#39;2&#39;/&gt;
+ 60       &lt;address type=&#39;pci&#39; domain=&#39;0x0000&#39; bus=&#39;0x00&#39; slot=&#39;0x04&#39; function=&#39;0x1&#39;/&gt;
+ 61     &lt;/controller&gt;
+ 62     &lt;controller type=&#39;usb&#39; index=&#39;0&#39; model=&#39;ich9-uhci3&#39;&gt;
+ 63       &lt;master startport=&#39;4&#39;/&gt;
+ 64       &lt;address type=&#39;pci&#39; domain=&#39;0x0000&#39; bus=&#39;0x00&#39; slot=&#39;0x04&#39; function=&#39;0x2&#39;/&gt;
+ 65     &lt;/controller&gt;
+ 66     &lt;controller type=&#39;pci&#39; index=&#39;0&#39; model=&#39;pci-root&#39;/&gt;
+ 67     &lt;controller type=&#39;ide&#39; index=&#39;0&#39;&gt;
+ 68       &lt;address type=&#39;pci&#39; domain=&#39;0x0000&#39; bus=&#39;0x00&#39; slot=&#39;0x01&#39; function=&#39;0x1&#39;/&gt;
+ 69     &lt;/controller&gt;
+ 70     &lt;interface type=&#39;bridge&#39;&gt;
+ 71       &lt;mac address=&#39;52:54:00:3c:ed:ab&#39;/&gt;
+ 72       &lt;source bridge=&#39;br0&#39;/&gt;
+ 73       &lt;model type=&#39;rtl8139&#39;/&gt;
+ 74       &lt;address type=&#39;pci&#39; domain=&#39;0x0000&#39; bus=&#39;0x00&#39; slot=&#39;0x03&#39; function=&#39;0x0&#39;/&gt;
+ 75     &lt;/interface&gt;
+ 76     &lt;serial type=&#39;pty&#39;&gt;
+ 77       &lt;target port=&#39;0&#39;/&gt;
+ 78     &lt;/serial&gt;
+ 79     &lt;console type=&#39;pty&#39;&gt;
+ 80       &lt;target type=&#39;serial&#39; port=&#39;0&#39;/&gt;
+ 81     &lt;/console&gt;
+ 82     &lt;input type=&#39;mouse&#39; bus=&#39;ps2&#39;/&gt;
+ 83     &lt;input type=&#39;keyboard&#39; bus=&#39;ps2&#39;/&gt;
+ 84     &lt;graphics type=&#39;vnc&#39; port=&#39;5920&#39; autoport=&#39;no&#39; listen=&#39;0.0.0.0&#39;&gt;
+ 85       &lt;listen type=&#39;address&#39; address=&#39;0.0.0.0&#39;/&gt;
+ 86     &lt;/graphics&gt;
+ 87     &lt;video&gt;
+ 88       &lt;model type=&#39;cirrus&#39; vram=&#39;16384&#39; heads=&#39;1&#39; primary=&#39;yes&#39;/&gt;
+ 89       &lt;address type=&#39;pci&#39; domain=&#39;0x0000&#39; bus=&#39;0x00&#39; slot=&#39;0x02&#39; function=&#39;0x0&#39;/&gt;
+ 90     &lt;/video&gt;
+ 91     &lt;memballoon model=&#39;virtio&#39;&gt;
+ 92       &lt;address type=&#39;pci&#39; domain=&#39;0x0000&#39; bus=&#39;0x00&#39; slot=&#39;0x05&#39; function=&#39;0x0&#39;/&gt;
+ 93     &lt;/memballoon&gt;
+ 94   &lt;/devices&gt;
+ 95 &lt;/domain&gt;
 </code></pre><p>可以通过修改这个文件直接启动一个新的虚拟机。</p>
 <p><strong>注意：修改配置文件需必须修改name、UUID、mac、port，其他的按需修改。</strong></p>
 <p><code>[root@node3/etc/libvirt/qemu]#virsh define c7.xmk</code> #使其配置文件生效</p>
 <p><code>[root@node3/etc/libvirt/qemu]#virsh start c7</code>  #启动虚拟机</p>
 
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-        
-            <div style="text-align:center;color: #ccc;font-size:14px;">
-                -------------本文结束
-                <i class="fa fa-paw"></i>
-                感谢您的阅读-------------
             </div>
-        
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="www.lmfe.org" class="b-link-green">运维小李</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2017/11/28/KVM/" class="b-link-green">KVM基础</a>
+                </p>
+            </div>
+        </div>
     </div>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/kvm，virsh，qemu-kvm/" rel="tag"># kvm，virsh，qemu-kvm</a>
-          
-        </div>
-      
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
 
-      
-      
-      
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/11/28/DNS实战一/" rel="next" title="DNS实战">
-                <i class="fa fa-chevron-left"></i> DNS实战
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/28/Httpd相关概念/" rel="prev" title="HTTP介绍">
-                HTTP介绍 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        
+<script src="/libs/gitalk/gitalk.min.js"></script>
 <script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+    let gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: null,
+        id: '2017-11-28T00-00-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
 </script>
-
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-    <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTIyMC8xMTc1Ng=="></div>
-    </div>
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
     
-    <div class="sidebar-inner">
 
-      
+    
+        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/css/gitment.css">
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
+<div class="gitment-card card" data-aos="fade-up">
+    <div id="gitment-content" class="card-content"></div>
+</div>
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Joah</p>
-              <p class="site-description motion-element" itemprop="description">Enjoy the little things,for one day you may look back and realize they were the big.</p>
-          </div>
+<script src="/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Tue Nov 28 2017 00:00:00 GMT+0800',
+    owner: '',
+    repo: '',
+    oauth: {
+        client_id: '',
+        client_secret: ''
+    }
+});
 
-          <nav class="site-state motion-element">
+gitment.render('gitment-content');
+</script>
+    
 
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">128</span>
-                  <span class="site-state-item-name">日志</span>
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2017/11/28/DHCP/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="DHCP">
+                        
+                        <span class="card-title">DHCP</span>
+                    </div>
                 </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">167</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">110</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-            <div class="feed-link motion-element">
-              <a href="http://blog.51cto.com/merit" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
+                <div class="card-content article-content">
+                    <div class="summary">一、DHCP服务1、DHCP概念DHCP（Dynamic Host Configuration Protocol，动态主机配置协议）是一个局域网的网络协议，使用UDP协议工作， 主要有两个用途：给内部网络或网络服务供应商自动分配IP地址，给</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/服务/" class="post-category" target="_blank">
+                                    服务
+                                </a>
+                            
+                            <a href="/categories/服务/DHCP/" class="post-category" target="_blank">
+                                    DHCP
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/dhcp/" target="_blank">
+                        <span class="chip bg-color">dhcp</span>
+                    </a>
+                    
+                </div>
+                
             </div>
-          
-
-          <div class="links-of-author motion-element">
-            
-          </div>
-
-          
-          
-
-          
-          
-
-          
-
         </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、KVM"><span class="nav-number">1.</span> <span class="nav-text">一、KVM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Hypervisor类型"><span class="nav-number">1.1.</span> <span class="nav-text">1、Hypervisor类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）本地或逻辑"><span class="nav-number">1.1.1.</span> <span class="nav-text">（1）本地或逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）主机类型"><span class="nav-number">1.1.2.</span> <span class="nav-text">（2）主机类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点-1"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两种类型对比"><span class="nav-number">1.1.3.</span> <span class="nav-text">两种类型对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、KVM架构"><span class="nav-number">1.2.</span> <span class="nav-text">2、KVM架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）KVM组成"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）KVM组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）KVM功能"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）KVM功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）KVM工具"><span class="nav-number">1.2.3.</span> <span class="nav-text">（3）KVM工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）KVM组件"><span class="nav-number">1.2.4.</span> <span class="nav-text">（4）KVM组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）KVM模块加载到内存中，运行模式"><span class="nav-number">1.2.5.</span> <span class="nav-text">（5）KVM模块加载到内存中，运行模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、CentOS上安装KVM功能模块步骤"><span class="nav-number">2.</span> <span class="nav-text">二、CentOS上安装KVM功能模块步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、KVM需要有CPU的支持，安装KVM之前检查CPU是否支持虚拟技术。"><span class="nav-number">2.1.</span> <span class="nav-text">1、KVM需要有CPU的支持，安装KVM之前检查CPU是否支持虚拟技术。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、安装与启动"><span class="nav-number">2.2.</span> <span class="nav-text">2、安装与启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、qemu-kvm命令"><span class="nav-number">2.3.</span> <span class="nav-text">3、qemu-kvm命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标准选项"><span class="nav-number">2.3.1.</span> <span class="nav-text">标准选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块设备相关的选项"><span class="nav-number">2.3.2.</span> <span class="nav-text">块设备相关的选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示选项："><span class="nav-number">2.3.3.</span> <span class="nav-text">显示选项：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络选项"><span class="nav-number">2.3.4.</span> <span class="nav-text">网络选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、qemu-img命令"><span class="nav-number">2.4.</span> <span class="nav-text">4、qemu-img命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、brctl命令"><span class="nav-number">2.5.</span> <span class="nav-text">5、brctl命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、建立虚拟机"><span class="nav-number">2.6.</span> <span class="nav-text">6、建立虚拟机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、使用qemu-kvm命令创建虚拟机"><span class="nav-number">2.7.</span> <span class="nav-text">6、使用qemu-kvm命令创建虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）创建网桥"><span class="nav-number">2.7.1.</span> <span class="nav-text">（1）创建网桥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置br0地址"><span class="nav-number">2.7.2.</span> <span class="nav-text">配置br0地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raw和qcow2"><span class="nav-number">2.7.3.</span> <span class="nav-text">raw和qcow2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备虚拟磁盘文件"><span class="nav-number">2.7.4.</span> <span class="nav-text">准备虚拟磁盘文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建虚拟机"><span class="nav-number">2.7.5.</span> <span class="nav-text">创建虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动cirrors虚拟机系统"><span class="nav-number">2.7.5.1.</span> <span class="nav-text">启动cirrors虚拟机系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装vnc远程管理工具"><span class="nav-number">2.7.6.</span> <span class="nav-text">安装vnc远程管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接"><span class="nav-number">2.7.7.</span> <span class="nav-text">连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动虚拟机将网卡桥接到桥接设备上"><span class="nav-number">2.7.8.</span> <span class="nav-text">启动虚拟机将网卡桥接到桥接设备上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭虚拟机后自动将网卡从桥接设备上移除"><span class="nav-number">2.7.9.</span> <span class="nav-text">关闭虚拟机后自动将网卡从桥接设备上移除</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、-virsh"><span class="nav-number">3.</span> <span class="nav-text">二、 virsh</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、virt-install命令"><span class="nav-number">3.1.</span> <span class="nav-text">1、virt-install命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一般选项"><span class="nav-number">3.1.1.</span> <span class="nav-text">一般选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装方法"><span class="nav-number">3.1.2.</span> <span class="nav-text">安装方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储配置"><span class="nav-number">3.1.3.</span> <span class="nav-text">存储配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络配置"><span class="nav-number">3.1.4.</span> <span class="nav-text">网络配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图形配置"><span class="nav-number">3.1.5.</span> <span class="nav-text">图形配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设备选项"><span class="nav-number">3.1.6.</span> <span class="nav-text">设备选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟化平台选项"><span class="nav-number">3.1.7.</span> <span class="nav-text">虚拟化平台选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#virsh命令"><span class="nav-number">3.2.</span> <span class="nav-text">virsh命令</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-          
-            <span id="scrollpercent"><span>0</span>%</span>
-          
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2017/11/28/KVM图形化管理工具/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="KVM图形化管理工具">
+                        
+                        <span class="card-title">KVM图形化管理工具</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">由于在使用virsh、qemu-kvm工具创建虚拟机时，命令繁琐，操作不易，因此推荐一款WEB UI的工具。
+一、图形管理工具二、图形化工具介绍1、WokWok基于cherrypy的web框架，可以通过一些插件来进行扩展，例如：虚拟化管理、</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/虚拟化/" class="post-category" target="_blank">
+                                    虚拟化
+                                </a>
+                            
+                            <a href="/categories/虚拟化/KVM/" class="post-category" target="_blank">
+                                    KVM
+                                </a>
+                            
+                            <a href="/categories/虚拟化/KVM/图形化管理工具/" class="post-category" target="_blank">
+                                    图形化管理工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/kimchi，wok/" target="_blank">
+                        <span class="chip bg-color">kimchi，wok</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
         </div>
-      
-
+        
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Joah</span>
-
-  
+</article>
 </div>
 
 
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">178.2k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/ergedan/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
 
 
 
+    <a href="mailto:473823554@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
 
 
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=473823554" class="tooltipped" data-tooltip="QQ联系我: 473823554" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
 
-        
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i> 访问人数
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
-  
 
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i> 总访问量
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
-    </span>
-  
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
 </div>
 
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-
-    
-
-  </div>
-
-  
-
+<script src="/js/search.js"></script>
 <script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
 </script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
 
 
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
 
 
 
 
-
-
-  
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/three.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v="></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v="></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v="></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
-<script type="text/javascript" src="/js/src/post-details.js?v="></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>
