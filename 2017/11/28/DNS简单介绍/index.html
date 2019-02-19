@@ -457,6 +457,123 @@
             <hr/>
 
             
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
+
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
 
             <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
 
@@ -506,28 +623,6 @@
     
 
     
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Tue Nov 28 2017 00:00:00 GMT+0800',
-    owner: '',
-    repo: '',
-    oauth: {
-        client_id: '',
-        client_secret: ''
-    }
-});
-
-gitment.render('gitment-content');
-</script>
-    
 
     
 
@@ -544,59 +639,6 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/PHP工作方式/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="PHP工作方式">
-                        
-                        <span class="card-title">PHP工作方式</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">CGI和FastCGI1、CGICGI（Common Gateway Interface，通用网关接口），HTTP服务器与你的货其他机器上的程序进行交谈的工具，其程序一般运行在网络服务器上。CGI可以用任何一种语言编写，只要这种语言具有标准</div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
-                                </a>
-                            
-                            <a href="/categories/服务/LAMP/" class="post-category" target="_blank">
-                                    LAMP
-                                </a>
-                            
-                            <a href="/categories/服务/LAMP/PHP工作方式/" class="post-category" target="_blank">
-                                    PHP工作方式
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/lphp，工作模式/" target="_blank">
-                        <span class="chip bg-color">lphp，工作模式</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/2017/11/28/PXE/">
                     <div class="card-image">
                         
@@ -609,9 +651,9 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary">一、PXE1、pxe概念PXE(preboot execute environment，预启动执行环境)是由Intel公司开发的最新技术，工作于Client/Server的网络模式，支持工作站通过网络从远端服务器下载映像，并由此支持通过网络</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -633,6 +675,61 @@ gitment.render('gitment-content');
                     
                     <a href="/tags/cobbler，自动化安装/" target="_blank">
                         <span class="chip bg-color">cobbler，自动化安装</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2017/11/28/Redis主从复制/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Redis主从复制">
+                        
+                        <span class="card-title">Redis主从复制</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">redis主从复制一个master可以有多个slave主机，支持链式复制；master以非阻塞方式同步数据值slave主机。
+修改方式：
+redis-cli&gt; SLAVEOF &lt;MASTER_IP&gt; &lt;MASTER_</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/缓存服务/" class="post-category" target="_blank">
+                                    缓存服务
+                                </a>
+                            
+                            <a href="/categories/缓存服务/Redis/" class="post-category" target="_blank">
+                                    Redis
+                                </a>
+                            
+                            <a href="/categories/缓存服务/Redis/Redis主从复制/" class="post-category" target="_blank">
+                                    Redis主从复制
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/memcached/" target="_blank">
+                        <span class="chip bg-color">memcached</span>
                     </a>
                     
                 </div>

@@ -478,6 +478,123 @@ MariaDB [(none)]&gt; SHOW SESSION STATUS LIKE &#39;Uptime&#39;;  #显示当前�
             <hr/>
 
             
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
+
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
 
             <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
 
@@ -527,28 +644,6 @@ MariaDB [(none)]&gt; SHOW SESSION STATUS LIKE &#39;Uptime&#39;;  #显示当前�
     
 
     
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Tue Nov 28 2017 00:00:00 GMT+0800',
-    owner: '',
-    repo: '',
-    oauth: {
-        client_id: '',
-        client_secret: ''
-    }
-});
-
-gitment.render('gitment-content');
-</script>
-    
 
     
 
@@ -565,22 +660,19 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/MySQL备份与恢复/">
+                <a href="/2017/11/28/MySQL用户管理/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="MySQL备份与恢复">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="MySQL用户管理">
                         
-                        <span class="card-title">MySQL备份与恢复</span>
+                        <span class="card-title">MySQL用户管理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">mysql备份和恢复（数据）：备份存储的数据副本；原始数据：持续改变。
-备份原因：灾难恢复：硬件故障（冗余）、软件故障（bug）、自然灾害、黑客攻击、误操作等等。
-备份时应注意事项
-能容忍最多丢失多少数据
-恢复数据需要在多长时间内完成
-需要</div>
+                    <div class="summary">用户管理1、新建普通用户（1）使用CREATE USER语句创建新用户
+使用格式：
+CREATE USER  &#39;user&#39;@&#39;host&#39; [IDENTIFIED BY [PASSWORD] &#39;pass</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -593,8 +685,8 @@ gitment.render('gitment-content');
                                     数据库
                                 </a>
                             
-                            <a href="/categories/数据库/MySQL备份与恢复/" class="post-category" target="_blank">
-                                    MySQL备份与恢复
+                            <a href="/categories/数据库/MySQL用户管理/" class="post-category" target="_blank">
+                                    MySQL用户管理
                                 </a>
                             
                             
@@ -604,8 +696,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/备份与恢复，mysql/" target="_blank">
-                        <span class="chip bg-color">备份与恢复，mysql</span>
+                    <a href="/tags/用户管理，mysql/" target="_blank">
+                        <span class="chip bg-color">用户管理，mysql</span>
                     </a>
                     
                 </div>
@@ -619,20 +711,21 @@ gitment.render('gitment-content');
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/MySQL引擎/">
+                <a href="/2017/11/28/MySQL索引/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="MySQL引擎">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="MySQL索引">
                         
-                        <span class="card-title">MySQL引擎</span>
+                        <span class="card-title">MySQL索引</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">ACID测试
-A：AUTOMICITY ，原子性；整个事物中的所有操作要么全部成功执行，要么全部失败后回滚
-C：CONSISTENY,一致性；数据库总是应该从一个一致性状态转为另一个一致性状态
-I：ISOLATION：隔离性；一个数据所作出</div>
+                    <div class="summary">mysql索引提取索引的创建在的表上字段中的数据，构建出一个独特的数据结构。
+索引的作用加速查询操作；副作用：降低些操作性能
+表中数据子集：把表中某个或某些字段的数据提取出来另存为一个特定数据结构组织的数据。
+
+    某个字段或某些字段：</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -645,8 +738,8 @@ I：ISOLATION：隔离性；一个数据所作出</div>
                                     数据库
                                 </a>
                             
-                            <a href="/categories/数据库/MySQL引擎/" class="post-category" target="_blank">
-                                    MySQL引擎
+                            <a href="/categories/数据库/MySQL索引/" class="post-category" target="_blank">
+                                    MySQL索引
                                 </a>
                             
                             
@@ -656,8 +749,8 @@ I：ISOLATION：隔离性；一个数据所作出</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/引擎/" target="_blank">
-                        <span class="chip bg-color">引擎</span>
+                    <a href="/tags/索引，mysql/" target="_blank">
+                        <span class="chip bg-color">索引，mysql</span>
                     </a>
                     
                 </div>
