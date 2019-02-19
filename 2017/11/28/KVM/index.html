@@ -37,7 +37,7 @@
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -113,7 +113,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -311,8 +311,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/kvm，virsh，qemu-kvm/" target="_blank">
-                                <span class="chip bg-color">kvm，virsh，qemu-kvm</span>
+                            <a href="/tags/kvm/" target="_blank">
+                                <span class="chip bg-color">kvm</span>
                             </a>
                         
                     </div>
@@ -331,10 +331,6 @@
                                 KVM
                             </a>
                         
-                            <a href="/categories/虚拟化/KVM/KVM基础/" class="post-category" target="_blank">
-                                KVM基础
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -350,14 +346,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        3,551
+                        3,967
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        16 分
+                        18 分
                     </div>
                     
                 
@@ -777,7 +773,36 @@ br0             8000.000000000000       no
 <p><strong>注意：修改配置文件需必须修改name、UUID、mac、port，其他的按需修改。</strong></p>
 <p><code>[root@node3/etc/libvirt/qemu]#virsh define c7.xmk</code> #使其配置文件生效</p>
 <p><code>[root@node3/etc/libvirt/qemu]#virsh start c7</code>  #启动虚拟机</p>
+<p><hr></p>
+<blockquote>
+<p>由于在使用virsh、qemu-kvm工具创建虚拟机时，命令繁琐，操作不易，因此推荐一款WEB UI的工具。</p>
+<h1 id="一、图形管理工具"><a href="#一、图形管理工具" class="headerlink" title="一、图形管理工具"></a>一、图形管理工具</h1></blockquote>
+<h2 id="二、图形化工具介绍"><a href="#二、图形化工具介绍" class="headerlink" title="二、图形化工具介绍"></a>二、图形化工具介绍</h2><h3 id="1、Wok"><a href="#1、Wok" class="headerlink" title="1、Wok"></a>1、Wok</h3><p>Wok基于cherrypy的web框架，可以通过一些插件来进行扩展，例如：虚拟化管理、主机管理、系统管理。</p>
+<h3 id="2、Kimchi"><a href="#2、Kimchi" class="headerlink" title="2、Kimchi"></a>2、Kimchi</h3><p>一个基于HTML5的KVM管理工具，是Wok的一个插件，通过Kimchi可以更方便的管理KVM。Kimchi是Wok个一个插件。</p>
+<h2 id="三、安装并启动"><a href="#三、安装并启动" class="headerlink" title="三、安装并启动"></a>三、安装并启动</h2><p>确保已经在VMware虚拟机上开启了虚拟化</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-03_110708.jpg" alt=""></p>
+<p><code>[root@node1~]#grep -i -E &#39;(vmx|svm|lm)&#39; /proc/cpuinfo</code></p>
+<h3 id="1、建议依赖关系相关的包"><a href="#1、建议依赖关系相关的包" class="headerlink" title="1、建议依赖关系相关的包"></a>1、建议依赖关系相关的包</h3><pre><code>[root@node3~]#yum install gcc make autoconf automake gettext-devel git rpm-build \
+&gt;                     libxslt
+</code></pre><h3 id="2、安装运行时相关的包"><a href="#2、安装运行时相关的包" class="headerlink" title="2、安装运行时相关的包"></a>2、安装运行时相关的包</h3><pre><code>[root@node3~]#yum install libvirt-python libvirt libvirt-daemon-config-network \
+&gt;                     qemu-kvm python-ethtool sos python-ipaddr nfs-utils \
+&gt;                     iscsi-initiator-utils pyparted python-libguestfs \
+&gt;                     libguestfs-tools novnc spice-html5 \
+&gt;                     python-configobj python-magic python-paramiko \
+&gt;                     python-pillow
+</code></pre><h3 id="3、UI开发所需要的软件包"><a href="#3、UI开发所需要的软件包" class="headerlink" title="3、UI开发所需要的软件包"></a>3、UI开发所需要的软件包</h3><pre><code>[root@node3~]#yum install gcc-c++ python-devel python-pip
 
+[root@node3~]#pip install cython libsass
+</code></pre><p><strong>注意：上述三部也可以不直接这样安装，当安装Wok，Kimchi是自动安装依赖的包。</strong></p>
+<h3 id="4、下载kimchi包"><a href="#4、下载kimchi包" class="headerlink" title="4、下载kimchi包"></a>4、下载kimchi包</h3><p>下载地址：<a href="https://github.com/kimchi-project/kimchi/releases/tag/2.5.0" target="_blank" rel="noopener">https://github.com/kimchi-project/kimchi/releases/tag/2.5.0</a></p>
+<p><code>[root@node3~]#yum install -y wok-2.5.0-0.el7.centos.noarch.rpm</code></p>
+<p><code>[root@node3~]#yum install -y kimchi-2.5.0-0.el7.centos.noarch.rpm</code></p>
+<p><strong>注意：需先安装Wok再安装Kimchi，因为Kimchi是Wok的一个插件。</strong></p>
+<h4 id="5、启动wok服务"><a href="#5、启动wok服务" class="headerlink" title="5、启动wok服务"></a>5、启动wok服务</h4><p><code>[root@node3/etc/wok]#systemctl daemon-reload</code><br><code>[root@node3/etc/wok]#systemctl start wokd</code><br><code>[root@node3/etc/wok]#systemctl status wokd</code></p>
+<p>网页地址输入：<a href="https://192.168.4.63:8001/login.html" target="_blank" rel="noopener">https://192.168.4.63:8001/login.html</a></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-02_113539.jpg" alt=""></p>
+<h5 id="在管理界面就可以直接创建，管理虚拟机了。"><a href="#在管理界面就可以直接创建，管理虚拟机了。" class="headerlink" title="在管理界面就可以直接创建，管理虚拟机了。"></a>在管理界面就可以直接创建，管理虚拟机了。</h5><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-03_111623.jpg" alt=""></p>
+<h5 id="管理界面"><a href="#管理界面" class="headerlink" title="管理界面"></a>管理界面</h5>
             </div>
             <hr/>
 
@@ -964,17 +989,17 @@ br0             8000.000000000000       no
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/Httpd相关概念/">
+                <a href="/2017/11/28/Dropbear/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="HTTP介绍">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Dropbear">
                         
-                        <span class="card-title">HTTP介绍</span>
+                        <span class="card-title">Dropbear</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">HTTP概念及相关术语1、概念HTTP协议（HyperText Transfer Protocol，超文本传输协议）是用于从WWW服务器传输超文本到本地浏览器的传输协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输</div>
+                    <div class="summary">dropbearDropbear是一个相对较小的SSH服务器和客户端。它运行在一个基于POSIX的各种平台。 Dropbear是开源软件，在麻省理工学院式的许可证。 Dropbear是特别有用的“嵌入”式的Linux（或其他Unix）系统，</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -983,16 +1008,12 @@ br0             8000.000000000000       no
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
+                            <a href="/categories/命令/" class="post-category" target="_blank">
+                                    命令
                                 </a>
                             
-                            <a href="/categories/服务/Apache/" class="post-category" target="_blank">
-                                    Apache
-                                </a>
-                            
-                            <a href="/categories/服务/Apache/Httpd/" class="post-category" target="_blank">
-                                    Httpd
+                            <a href="/categories/命令/dropbear/" class="post-category" target="_blank">
+                                    dropbear
                                 </a>
                             
                             
@@ -1002,8 +1023,8 @@ br0             8000.000000000000       no
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/HTTP，https，web/" target="_blank">
-                        <span class="chip bg-color">HTTP，https，web</span>
+                    <a href="/tags/dropbear/" target="_blank">
+                        <span class="chip bg-color">dropbear</span>
                     </a>
                     
                 </div>
@@ -1017,17 +1038,18 @@ br0             8000.000000000000       no
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/DHCP/">
+                <a href="/2017/11/28/LAMP/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="DHCP">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="LAMP">
                         
-                        <span class="card-title">DHCP</span>
+                        <span class="card-title">LAMP</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">一、DHCP服务1、DHCP概念DHCP（Dynamic Host Configuration Protocol，动态主机配置协议）是一个局域网的网络协议，使用UDP协议工作， 主要有两个用途：给内部网络或网络服务供应商自动分配IP地址，给</div>
+                    <div class="summary">一、LAMP1、概念LAMP指的Linux（操作系统）、ApacheHTTP 服务器，MySQL（有时也指MariaDB，数据库软件） 和PHP（有时也是指Perl或Python） 的第一个字母，一般用来建立web应用平台。
+2、web资源</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -1036,12 +1058,12 @@ br0             8000.000000000000       no
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
-                            <a href="/categories/服务/DHCP/" class="post-category" target="_blank">
-                                    DHCP
+                            <a href="/categories/常用服务/LAMP/" class="post-category" target="_blank">
+                                    LAMP
                                 </a>
                             
                             
@@ -1051,8 +1073,8 @@ br0             8000.000000000000       no
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/dhcp/" target="_blank">
-                        <span class="chip bg-color">dhcp</span>
+                    <a href="/tags/LAMP/" target="_blank">
+                        <span class="chip bg-color">LAMP</span>
                     </a>
                     
                 </div>
@@ -1079,7 +1101,7 @@ br0             8000.000000000000       no
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

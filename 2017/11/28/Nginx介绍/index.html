@@ -40,7 +40,7 @@ Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（I
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -116,7 +116,7 @@ Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（I
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -314,8 +314,8 @@ Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（I
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/nginx，文件/" target="_blank">
-                                <span class="chip bg-color">nginx，文件</span>
+                            <a href="/tags/nginx/" target="_blank">
+                                <span class="chip bg-color">nginx</span>
                             </a>
                         
                     </div>
@@ -326,16 +326,12 @@ Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（I
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                服务
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                常用服务
                             </a>
                         
-                            <a href="/categories/服务/Nginx/" class="post-category" target="_blank">
+                            <a href="/categories/常用服务/Nginx/" class="post-category" target="_blank">
                                 Nginx
-                            </a>
-                        
-                            <a href="/categories/服务/Nginx/Nginx介绍/" class="post-category" target="_blank">
-                                Nginx介绍
                             </a>
                         
                     </div>
@@ -353,14 +349,14 @@ Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（I
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        573
+                        1,194
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        5 分
                     </div>
                     
                 
@@ -446,6 +442,102 @@ Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（I
 </code></pre><p><strong>注意：</strong></p>
 <p><strong>1、配置指令都要以“；”结尾。</strong></p>
 <p><strong>2、支持使用配置变量：内置变量，模块提供的内建变量；自定义变量，set var_name value </strong></p>
+<h1 id="二、nginx源码编译安装"><a href="#二、nginx源码编译安装" class="headerlink" title="二、nginx源码编译安装"></a>二、nginx源码编译安装</h1><p><a href="https://nginx.org/en/download.html" target="_blank" rel="noopener">https://nginx.org/en/download.html</a>  源码包下载地址<br>-</p>
+<h2 id="1、源码编译nginx选项介绍"><a href="#1、源码编译nginx选项介绍" class="headerlink" title="1、源码编译nginx选项介绍"></a>1、源码编译nginx选项介绍</h2><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–prefix=/path/</td>
+<td>指定nginx安装路径</td>
+</tr>
+<tr>
+<td>–sbin-path=/path</td>
+<td>指明nginx程序文件安装路径</td>
+</tr>
+<tr>
+<td>–conf-path=/path</td>
+<td>主配置文件安装路径</td>
+</tr>
+<tr>
+<td>–error-log-path=/path</td>
+<td>错误日志文件安装位置</td>
+</tr>
+<tr>
+<td>–http-log-path=/path</td>
+<td>访问日志文件安装路径</td>
+</tr>
+<tr>
+<td>–pid-path=/path</td>
+<td>指明pid文件安装位置</td>
+</tr>
+<tr>
+<td>–lock-path=/path</td>
+<td>锁文件安装路径</td>
+</tr>
+<tr>
+<td>–http-client-body-temp-path=/path</td>
+<td>客户端body部分的临时文件存放路径，如果服务器允许客户端使用put方法提交大数据时，临时存放的磁盘路径</td>
+</tr>
+<tr>
+<td>–http-proxy-temp-path=/path</td>
+<td>作为代理服务器，服务器响应报文临时文件存放路径</td>
+</tr>
+<tr>
+<td>–http-fastcgi-temp-path=/path</td>
+<td>作为fastcgi代理服务器，服务器响应报文的临时文件存放路径</td>
+</tr>
+<tr>
+<td>–http-uwsgi-temp-path=/path</td>
+<td>作为uwsgi代理服务器，服务器响应报文临时文件存放的路径</td>
+</tr>
+<tr>
+<td>–http-scgi-temp-path=/path</td>
+<td>作为scgi反代理服务器，服务器响应报文的临时文件存放的路径</td>
+</tr>
+<tr>
+<td>–user=USERNAME</td>
+<td>指明以哪个身份运行worker进程，主控进程一般由root运行</td>
+</tr>
+<tr>
+<td>–group=GROUPNAME</td>
+<td>指明组</td>
+</tr>
+<tr>
+<td>–with-http_ssl_module</td>
+<td>是否编译ssl模块</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2、nginx编译过程"><a href="#2、nginx编译过程" class="headerlink" title="2、nginx编译过程"></a>2、nginx编译过程</h2><p>（1）源码下载并加压缩</p>
+<p><code>[root@localhost/usr/local/src]#tar xf nginx-1.12.2.tar.gz</code></p>
+<p><code>[root@localhost/usr/local/src]#cd nginx-1.12.2/</code></p>
+<p>（2）安装编译环境</p>
+<p><code>[root@localhost/usr/local/src/nginx-1.12.2]#yum groupinstall -y &quot;development tools&quot;</code></p>
+<p><code>[root@localhost/usr/local/src/nginx-1.12.2]#yum install -y pcre-devel openssl-devel zlib-devel</code></p>
+<p>（3）源码编译安装</p>
+<p><code>[root@localhost/usr/local/src/nginx-1.12.2]#./configure --prefix=/usr/local/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx/nginx.lock --user=nginx --group=nginx --with-http_ssl_module --with-http_v2_module --with-http_dav_module --with-http_stub_status_module --with-threads --with-file-aio</code>  #根据自己所需的要求添加模块</p>
+<p><code>[root@localhost/usr/local/src/nginx-1.12.2]#make &amp;&amp; make install</code></p>
+<p>如果想自定义版本名，设置如下行</p>
+<p>nginx服务运行时显示</p>
+<p><code>[root@localhost/usr/local/src/nginx-1.12.2/src/core]#vim nginx.h</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-28_205121.jpg" alt=""></p>
+<p>nginx服务停止时显示</p>
+<p><code>[root@localhost/usr/local/src/nginx-1.12.2/src/http]#vim ngx_http_header_filter_module.c</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-28_205632.jpg" alt=""></p>
+<p>（4）修改环境变量</p>
+<p><code>[root@localhost~]#vim /etc/profile.d/nginx.sh</code></p>
+<pre><code>1 PATH=/usr/local/nginx/sbin:$PATH
+</code></pre><p><code>[root@localhost~]#source /etc/profile.d/nginx.sh</code></p>
+<p>（5）测试是否可以启动</p>
+<p><code>[root@localhost~]#nginx</code></p>
+<p><code>[root@localhost~]#ss -tnlp</code></p>
+<pre><code>LISTEN     0      128             *:80                          *:*                   users:((&quot;nginx&quot;,pid=57986,fd=6),(&quot;nginx&quot;,pid=57985,fd=6))
+</code></pre><p>至此源码编译nginx安装成功。</p>
 
             </div>
             <hr/>
@@ -633,31 +725,31 @@ Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（I
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/NFS/">
+                <a href="/2017/11/29/firewalld/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="NFS">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="firewalld">
                         
-                        <span class="card-title">NFS</span>
+                        <span class="card-title">firewalld</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">一、NFS介绍1、NFS简介NFS （Network File System，网络文件系统），通过网络让不同的机器、不同的操作系统能够彼此分享个别的数据，让应用程序在客户端通过网络访问位于服务器磁盘中的数据，是在类Unix系统间实现磁盘文件</div>
+                    <div class="summary">firewalldfirewalld是CentOS 7新退出的管理netfilter的工具。firewalld 提供了支持网络 / 防火墙区域 (zone) 定义网络链接以及接口安全等级的动态防火墙管理工具。它支持 IPv4, IPv6 防</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-29
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/文件管理/" class="post-category" target="_blank">
-                                    文件管理
+                            <a href="/categories/防火墙/" class="post-category" target="_blank">
+                                    防火墙
                                 </a>
                             
-                            <a href="/categories/文件管理/NFS/" class="post-category" target="_blank">
-                                    NFS
+                            <a href="/categories/防火墙/firewalld/" class="post-category" target="_blank">
+                                    firewalld
                                 </a>
                             
                             
@@ -667,8 +759,8 @@ Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（I
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/nfs/" target="_blank">
-                        <span class="chip bg-color">nfs</span>
+                    <a href="/tags/firewalld/" target="_blank">
+                        <span class="chip bg-color">firewalld</span>
                     </a>
                     
                 </div>
@@ -682,20 +774,18 @@ Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（I
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/Nginx指令/">
+                <a href="/2017/11/28/DNS实战一/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Nginx指令">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="DNS实战">
                         
-                        <span class="card-title">Nginx指令</span>
+                        <span class="card-title">DNS实战</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Nginx配置指令参考： https://nginx.org/en/docs/-
-事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。
-正常运行必备指令（1）user
-指定worker进程的运</div>
+                    <div class="summary">实战（1）搭建主DNS服务器（a）[root@localhost ~]# yum install -y bind   #安装包（b）[root@localhost ~]# vim /etc/named.conf   #修改主配置文件
+方式一</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -704,16 +794,12 @@ Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（I
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
-                            <a href="/categories/服务/Nginx/" class="post-category" target="_blank">
-                                    Nginx
-                                </a>
-                            
-                            <a href="/categories/服务/Nginx/Nginx指令/" class="post-category" target="_blank">
-                                    Nginx指令
+                            <a href="/categories/常用服务/DNS/" class="post-category" target="_blank">
+                                    DNS
                                 </a>
                             
                             
@@ -723,8 +809,8 @@ Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（I
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/nginx，指令/" target="_blank">
-                        <span class="chip bg-color">nginx，指令</span>
+                    <a href="/tags/DNS/" target="_blank">
+                        <span class="chip bg-color">DNS</span>
                     </a>
                     
                 </div>
@@ -751,7 +837,7 @@ Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（I
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

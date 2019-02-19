@@ -4,11 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="puppet类, 运维小李">
-    <meta name="description" content="类Class是用于通用目标或目的的一组资源，因此，它是命名的代码块，在某未知创建之后可在puppet全局使用。类似于其他编程语言中类的功能，puppet的类可以继承，也可以包含子类。
-格式：
-class my_class {
-    ...">
+    <meta name="keywords" content="puppet类和模块, 运维小李">
+    <meta name="description" content="一、puppet模块模块是一个按约定的、预定义的结构存放了多个文件或子目录的目录，目录里的这些文件或子目录必须遵循其命名规范。puppet会按此规范在特定位置查找所需的模块文件，不过，这些特定目录也可以通过puppet的配置参数module">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +13,7 @@ class my_class {
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>puppet类 | 运维小李</title>
+    <title>puppet类和模块 | 运维小李</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -40,7 +37,7 @@ class my_class {
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -116,7 +113,7 @@ class my_class {
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -286,13 +283,13 @@ class my_class {
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        puppet类
+                        puppet类和模块
                     </div>
                 </div>
             </div>
@@ -314,8 +311,8 @@ class my_class {
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/puppet，类，模板/" target="_blank">
-                                <span class="chip bg-color">puppet，类，模板</span>
+                            <a href="/tags/puppet/" target="_blank">
+                                <span class="chip bg-color">puppet</span>
                             </a>
                         
                     </div>
@@ -326,16 +323,12 @@ class my_class {
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/自动化运维工具/" class="post-category" target="_blank">
-                                自动化运维工具
+                            <a href="/categories/自动化/" class="post-category" target="_blank">
+                                自动化
                             </a>
                         
-                            <a href="/categories/自动化运维工具/puppet/" class="post-category" target="_blank">
+                            <a href="/categories/自动化/puppet/" class="post-category" target="_blank">
                                 puppet
-                            </a>
-                        
-                            <a href="/categories/自动化运维工具/puppet/puppet类/" class="post-category" target="_blank">
-                                puppet类
                             </a>
                         
                     </div>
@@ -353,14 +346,14 @@ class my_class {
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        496
+                        1,034
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        4 分
                     </div>
                     
                 
@@ -376,7 +369,35 @@ class my_class {
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>Class是用于通用目标或目的的一组资源，因此，它是命名的代码块，在某未知创建之后可在puppet全局使用。类似于其他编程语言中类的功能，puppet的类可以继承，也可以包含子类。</p>
+                <h2 id="一、puppet模块"><a href="#一、puppet模块" class="headerlink" title="一、puppet模块"></a>一、puppet模块</h2><p>模块是一个按约定的、预定义的结构存放了多个文件或子目录的目录，目录里的这些文件或子目录必须遵循其命名规范。puppet会按此规范在特定位置查找所需的模块文件，不过，这些特定目录也可以通过puppet的配置参数modulepath定义。</p>
+<h3 id="1、模块目录的结构"><a href="#1、模块目录的结构" class="headerlink" title="1、模块目录的结构"></a>1、模块目录的结构</h3><p>在puppet中，模块本身用一个目录表示，其需要存放于puppet的modulepath参数所定义的目录中。</p>
+<pre><code>MODULE_NAME
+    manifests
+        init.pp
+    files
+    templates
+    lib
+    tests
+    spec
+</code></pre><h3 id="2、木块目录结构介绍"><a href="#2、木块目录结构介绍" class="headerlink" title="2、木块目录结构介绍"></a>2、木块目录结构介绍</h3><ul>
+<li>MODULE_NAME：模块名称，即模块目录名；模块名称只能以小写字母开头，可以包含小写字母、数字和下划线，但不能使用“main”和“setttins”作为模块名。</li>
+<li><p>manifests目录：包含当前模块的所有清单文件；每个清单文件包含一个类或一个定义的类型，此文件访问路径格式为“MODELE_NAME::[SubDirectoryName::]ManifestFileName”</p>
+<ul>
+<li>init.pp：只能包含一个单独的类定义，且类的名称必须与模块名称相同。</li>
+</ul>
+</li>
+<li><p>files目录：包含了一组静态文件，这些文件可被节点下载使用；每个文件的访问路径遵循puppet:///modules/MODULE_NAME/filename路径格式</p>
+</li>
+<li>lib目录：插件目录，常用自定义fact及自定义资源类型等</li>
+<li>templates目录：存储了manifest用到的模板文件，其访问路径遵循template(‘ModuleName/TemplateName’)格式</li>
+<li>test目录：当前模块的使用帮助或使用范例文件，类似如何声明当前模块中的类及定义的类型等说明</li>
+<li>spec目录：类似于tests目录的功能，其实为lib目录中的各插件提供使用范例说明。</li>
+</ul>
+<p><strong>注意：</strong></p>
+<p><strong>1、puppet3.8版本以后，资源清单文件的文件名需与文件子类名保持一致，例如某子类名为“base_class::child_class”，其文件名应该为child_class.pp；</strong></p>
+<p><strong>2、无需再资源清单文件中使用import语句；</strong></p>
+<p><strong>manifests目录下可存放多个清单文件，每个清单文件包含一个类，其文件名同类名。</strong></p>
+<h2 id="二、类"><a href="#二、类" class="headerlink" title="二、类"></a>二、类</h2><p>Class是用于通用目标或目的的一组资源，因此，它是命名的代码块，在某未知创建之后可在puppet全局使用。类似于其他编程语言中类的功能，puppet的类可以继承，也可以包含子类。</p>
 <p>格式：</p>
 <pre><code>class my_class {
     ...puppet code ...
@@ -588,7 +609,7 @@ class my_class {
                     </span>
                     <a href="www.lmfe.org" class="b-link-green">运维小李</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2017/11/28/puppet类/" class="b-link-green">puppet类</a>
+                    <a href="/2017/11/28/puppet类/" class="b-link-green">puppet类和模块</a>
                 </p>
             </div>
         </div>
@@ -635,27 +656,17 @@ class my_class {
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/puppet流程控制语句/">
+                <a href="/2017/11/28/keepalived/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="puppet流程控制语句">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="keepalived简单介绍">
                         
-                        <span class="card-title">puppet流程控制语句</span>
+                        <span class="card-title">keepalived简单介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">puppet流程控制语句（1）if语句格式：
-if CONDITION {
-        ...
-}  elsif CONDTION {
-        ...
-} else{
-        ...
-}
-CONDITION类型
-变量
-比</div>
+                    <div class="summary">keepalived介绍keepalived是linux下一个轻量级高可用的解决方案，主要通过VRRP实现高可用功能，作用域网络层、传输层和应用层；主要用作RealServer的健康性检查以及LoadBalance主机和Bcakup主机之间</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -664,16 +675,12 @@ CONDITION类型
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/自动化运维工具/" class="post-category" target="_blank">
-                                    自动化运维工具
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
-                            <a href="/categories/自动化运维工具/puppet/" class="post-category" target="_blank">
-                                    puppet
-                                </a>
-                            
-                            <a href="/categories/自动化运维工具/puppet/puppet流程控制语句/" class="post-category" target="_blank">
-                                    puppet流程控制语句
+                            <a href="/categories/常用服务/Keepalived/" class="post-category" target="_blank">
+                                    Keepalived
                                 </a>
                             
                             
@@ -683,8 +690,8 @@ CONDITION类型
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/puppet，if，case，selector/" target="_blank">
-                        <span class="chip bg-color">puppet，if，case，selector</span>
+                    <a href="/tags/Keepalived/" target="_blank">
+                        <span class="chip bg-color">Keepalived</span>
                     </a>
                     
                 </div>
@@ -698,20 +705,21 @@ CONDITION类型
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/puppet资源/">
+                <a href="/2017/11/28/puppet 主从/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="puppet资源">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="puppet  master/agent">
                         
-                        <span class="card-title">puppet资源</span>
+                        <span class="card-title">puppet  master/agent</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-puppet是一种多系统集中配置管理工具，使用自有的puppet描述语言，可管理配置文件、用户、cron、任务等。puppet设计目的是简化对这些资源的管理以及妥善处理资源间的依赖关系。
-一、Puppet介绍1、puppet工作模型
-单机</div>
+                    <div class="summary">一、master/slaveagent每个30分钟到master端请求与自己相关的catalog。
+1、定义master ‘node_name’ {
+    ...puppet code ...
+}
+2、部署master：安装程序包：fac</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -720,16 +728,12 @@ puppet是一种多系统集中配置管理工具，使用自有的puppet描述�
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/自动化运维工具/" class="post-category" target="_blank">
-                                    自动化运维工具
+                            <a href="/categories/自动化/" class="post-category" target="_blank">
+                                    自动化
                                 </a>
                             
-                            <a href="/categories/自动化运维工具/puppet/" class="post-category" target="_blank">
+                            <a href="/categories/自动化/puppet/" class="post-category" target="_blank">
                                     puppet
-                                </a>
-                            
-                            <a href="/categories/自动化运维工具/puppet/puppet资源/" class="post-category" target="_blank">
-                                    puppet资源
                                 </a>
                             
                             
@@ -767,7 +771,7 @@ puppet是一种多系统集中配置管理工具，使用自有的puppet描述�
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

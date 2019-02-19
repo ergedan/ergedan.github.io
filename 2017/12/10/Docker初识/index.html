@@ -40,7 +40,7 @@
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -116,7 +116,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -314,8 +314,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/docker，虚拟化，镜像，仓库/" target="_blank">
-                                <span class="chip bg-color">docker，虚拟化，镜像，仓库</span>
+                            <a href="/tags/docker/" target="_blank">
+                                <span class="chip bg-color">docker</span>
                             </a>
                         
                     </div>
@@ -326,16 +326,12 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/云计算/" class="post-category" target="_blank">
-                                云计算
+                            <a href="/categories/虚拟化/" class="post-category" target="_blank">
+                                虚拟化
                             </a>
                         
-                            <a href="/categories/云计算/Docker/" class="post-category" target="_blank">
+                            <a href="/categories/虚拟化/Docker/" class="post-category" target="_blank">
                                 Docker
-                            </a>
-                        
-                            <a href="/categories/云计算/Docker/Docker初识/" class="post-category" target="_blank">
-                                Docker初识
                             </a>
                         
                     </div>
@@ -353,14 +349,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1,245
+                        1,731
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        7 分
                     </div>
                     
                 
@@ -432,7 +428,108 @@
 <li>变更管理：容器文件系统的变更可以提交到新的映像中，并可重复使用以创建更多的容器</li>
 <li>交互式shell：Docker可以分配一个虚拟终端并关联到任何容器的标准输出上。</li>
 </ul>
+<h1 id="二、Docker安装"><a href="#二、Docker安装" class="headerlink" title="二、Docker安装"></a>二、Docker安装</h1><p><img src="http://owatlfstl.bkt.clouddn.com/Whale%20Logo332@2x_5.png" alt=""></p>
+<h2 id="1、extra仓库安装"><a href="#1、extra仓库安装" class="headerlink" title="1、extra仓库安装"></a>1、extra仓库安装</h2><p>这里我配置的是CentOS仓库，选择使用阿里云镜像。</p>
+<p><code>[root@node3~]#vim /etc/yum.repos.d/base.repo</code></p>
+<pre><code>  [extra]
+  name=extra
+  baseurl=https://mirrors.aliyun.com/centos/7/extras/x86_64/
+  gpgcheck=0
+</code></pre><p><img src="http://owatlfstl.bkt.clouddn.com/2017-12-11_194830.jpg" alt=""></p>
+<p><code>[root@node3~]#yum install -y docker</code></p>
+<p><code>[root@node3~]#systemctl restart docker.service</code>    #启动服务</p>
+<blockquote>
+<p>查看版本信息</p>
+</blockquote>
+<p><code>[root@node3~]#docker version</code></p>
+<pre><code>Client:
+ Version:         1.12.6
+ API version:     1.24
+ Package version: docker-1.12.6-61.git85d7426.el7.centos.x86_64
+ Go version:      go1.8.3
+ Git commit:      85d7426/1.12.6
+ Built:           Tue Oct 24 15:40:21 2017
+ OS/Arch:         linux/amd64
 
+Server:
+ Version:         1.12.6
+ API version:     1.24
+ Package version: docker-1.12.6-61.git85d7426.el7.centos.x86_64
+ Go version:      go1.8.3
+ Git commit:      85d7426/1.12.6
+ Built:           Tue Oct 24 15:40:21 2017
+ OS/Arch:         linux/amd64
+</code></pre><h2 id="2、官方仓库安装"><a href="#2、官方仓库安装" class="headerlink" title="2、官方仓库安装"></a>2、官方仓库安装</h2><blockquote>
+<p>安装仓库</p>
+</blockquote>
+<p><code>[root@node3~]#yum-config-manager     --add-repo     https://download.docker.com/linux/centos/docker-ce.repo</code></p>
+<blockquote>
+<p>查看是否安装成功</p>
+</blockquote>
+<p><code>[root@node3~]#ls /etc/yum.repos.d/</code></p>
+<pre><code>backup  base.repo  docker-ce.repo
+</code></pre><blockquote>
+<p>安装docker</p>
+</blockquote>
+<p><strong>注意：如果之前安装过docker，需要执行如下命令删除原有文件，否则会报错。</strong><br><img src="http://owatlfstl.bkt.clouddn.com/2017-12-11_201154.jpg" alt=""></p>
+<p><code>[root@node3~]#yum remove docker docker-common docker-selinux docker-engine</code></p>
+<p><code>[root@node3~]#yum install -y docker-ce</code></p>
+<blockquote>
+<p>启动服务</p>
+</blockquote>
+<p><code>[root@node3~]#systemctl start docker.service</code></p>
+<blockquote>
+<p>查看是否启动成功</p>
+</blockquote>
+<p><code>[root@node3~]#docker version</code></p>
+<pre><code>Client:
+ Version:      17.09.1-ce
+ API version:  1.32
+ Go version:   go1.8.3
+ Git commit:   19e2cf6
+ Built:        Thu Dec  7 22:23:40 2017
+ OS/Arch:      linux/amd64
+
+Server:
+ Version:      17.09.1-ce
+ API version:  1.32 (minimum version 1.12)
+ Go version:   go1.8.3
+ Git commit:   19e2cf6
+ Built:        Thu Dec  7 22:25:03 2017
+ OS/Arch:      linux/amd64
+ Experimental: false
+</code></pre><h2 id="3、rpm安装包安装"><a href="#3、rpm安装包安装" class="headerlink" title="3、rpm安装包安装"></a>3、rpm安装包安装</h2><p>下载地址：<a href="https://download.docker.com/linux/centos/7/x86_64/stable/Packages/" target="_blank" rel="noopener">https://download.docker.com/linux/centos/7/x86_64/stable/Packages/</a></p>
+<p><code>[root@node3~]#yum install -y docker-ce-17.09.1.ce-1.el7.centos.x86_64.rpm docker-ce-selinux-17.03.2.ce-1.el7.centos.noarch.rpm</code></p>
+<h1 id="二、Docker目录"><a href="#二、Docker目录" class="headerlink" title="二、Docker目录"></a>二、Docker目录</h1><h2 id="1、Docker数据目录"><a href="#1、Docker数据目录" class="headerlink" title="1、Docker数据目录"></a>1、Docker数据目录</h2><p><code>[root@node3/var/lib/docker]#tree</code></p>
+<pre><code>.
+├── builder
+│   └── fscache.db
+├── containers  用来存储容器信息
+├── image
+│   └── overlay
+│       ├── distribution
+│       ├── imagedb
+│       │   ├── content
+│       │   │   └── sha256
+│       │   └── metadata
+│       │       └── sha256
+│       ├── layerdb
+│       └── repositories.json
+├── network docker网络目录
+│   └── files
+│       └── local-kv.db
+├── overlay
+├── plugins docker插件目录
+│   ├── storage
+│   │   └── blobs
+│   │       └── tmp
+│   └── tmp
+├── swarm
+├── tmp docker临时目录
+├── trust   docker信任目录
+└── volumes docker卷目录
+    └── metadata.db 卷元数据数据库
+</code></pre>
             </div>
             <hr/>
 
@@ -658,16 +755,12 @@ docker命令选项列表
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/云计算/" class="post-category" target="_blank">
-                                    云计算
+                            <a href="/categories/虚拟化/" class="post-category" target="_blank">
+                                    虚拟化
                                 </a>
                             
-                            <a href="/categories/云计算/Docker/" class="post-category" target="_blank">
+                            <a href="/categories/虚拟化/Docker/" class="post-category" target="_blank">
                                     Docker
-                                </a>
-                            
-                            <a href="/categories/云计算/Docker/Docker-命令/" class="post-category" target="_blank">
-                                    Docker 命令
                                 </a>
                             
                             
@@ -677,8 +770,8 @@ docker命令选项列表
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/docker，虚拟化，命令/" target="_blank">
-                        <span class="chip bg-color">docker，虚拟化，命令</span>
+                    <a href="/tags/docker/" target="_blank">
+                        <span class="chip bg-color">docker</span>
                     </a>
                     
                 </div>
@@ -711,12 +804,12 @@ docker命令选项列表
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/云计算/" class="post-category" target="_blank">
-                                    云计算
+                            <a href="/categories/虚拟化/" class="post-category" target="_blank">
+                                    虚拟化
                                 </a>
                             
-                            <a href="/categories/云计算/LXC介绍/" class="post-category" target="_blank">
-                                    LXC介绍
+                            <a href="/categories/虚拟化/LXC/" class="post-category" target="_blank">
+                                    LXC
                                 </a>
                             
                             
@@ -726,8 +819,8 @@ docker命令选项列表
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/lxc，虚拟化/" target="_blank">
-                        <span class="chip bg-color">lxc，虚拟化</span>
+                    <a href="/tags/LXC/" target="_blank">
+                        <span class="chip bg-color">LXC</span>
                     </a>
                     
                 </div>
@@ -754,7 +847,7 @@ docker命令选项列表
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

@@ -43,7 +43,7 @@
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -119,7 +119,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -329,16 +329,12 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                服务
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                常用服务
                             </a>
                         
-                            <a href="/categories/服务/Tomcat/" class="post-category" target="_blank">
-                                Tomcat
-                            </a>
-                        
-                            <a href="/categories/服务/Tomcat/LNMT、LAMT环境/" class="post-category" target="_blank">
-                                LNMT、LAMT环境
+                            <a href="/categories/常用服务/LNMT/" class="post-category" target="_blank">
+                                LNMT
                             </a>
                         
                     </div>
@@ -356,14 +352,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        859
+                        1,496
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        7 分
                     </div>
                     
                 
@@ -512,6 +508,81 @@ mysql&gt; GRANT ALL ON tomcat.* TO &#39;joah&#39;@&#39;192.168.4.61&#39; IDENTIF
 </code></pre><p>重启服务测试</p>
 <p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-04_202353.jpg" alt=""></p>
 <p>后续的安装和LNMT的安装方法一样，就不再累述。</p>
+<h3 id="二、LNMT实现Jsprun论坛"><a href="#二、LNMT实现Jsprun论坛" class="headerlink" title="二、LNMT实现Jsprun论坛"></a>二、LNMT实现Jsprun论坛</h3><p>mariadb<br>-</p>
+<p><code>[root@mysql~]#yum install -y mariadb-server</code> #安装mariadb服务</p>
+<p><code>[root@mysql~]#systemctl enable mariadb.service</code>    #设置为开机启动</p>
+<p><code>[root@mysql~]#systemctl start mariadb</code> #启动服务</p>
+<p><code>[root@mysql~]#mysql_secure_installation</code>   #安全初始化</p>
+<p><code>[root@mysql~]#mysql -uroot -p</code> #创建使用的数据库</p>
+<pre><code>MariaDB [(none)]&gt; CREATE DATABASE jsprun;
+
+MariaDB [(none)]&gt; GRANT ALL ON jsprun.* TO joah@&#39;192.168.4.63&#39; IDENTIFIED By &#39;123456&#39;;
+</code></pre><blockquote>
+<p>tomcat</p>
+</blockquote>
+<p><code>[root@tomcat~]#yum install -y java-1.8.0-openjdk</code>  #安装java运行环境</p>
+<p><code>[root@tomcat~]#java -version</code>  #查看是否安装成功</p>
+<p><code>[root@tomcat~]#yum install -y tomcat tomcat-admin-webapp tomcat-docs-webapp tomcat-lib tomcat-webapps</code> #安装所需要的包</p>
+<p><code>[root@tomcat~]#unzip JspRun\!_6.0.0_Source_UTF8.zip</code>  #解压此包</p>
+<p><code>[root@tomcat~]#cp JspRun\!_6.0.0_Source_UTF8/source/WebRoot/ /usr/share/tomcat/webapps/jsprun -a</code>  #将此目录下的文件复制到指定目录下</p>
+<p><code>[root@tomcat/usr/share/tomcat/webapps/jsprun]#vim config.properties</code>  #修改数据库信息</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-06_200852.jpg" alt=""></p>
+<p><code>[root@tomcat/etc/tomcat]#vim server.xml</code>  #修改server.xml文件</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-06_201437.jpg" alt=""></p>
+<p><code>[root@tomcat/etc/tomcat]#vim tomcat-users.xml</code> #开启管理功能</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-06_201656.jpg" alt=""></p>
+<p><code>[root@tomcat/etc/tomcat]#systemctl enable tomcat.service</code>  #设置为开机启动</p>
+<p><code>[root@tomcat/etc/tomcat]#systemctl start tomcat.service</code>   #启动tomcat服务</p>
+<blockquote>
+<p>nginx</p>
+</blockquote>
+<p>安装并启动服务</p>
+<p><code>[root@nginx~]#yum install -y nginx</code>    </p>
+<p><code>[root@nginx~]#systemctl enable nginx</code></p>
+<p><code>[root@nginx~]#systemctl start nginx</code></p>
+<p>修改配置文件</p>
+<p><code>[root@nginx/etc/nginx/conf.d]#vim nginx-tomcat.conf</code></p>
+<pre><code>  1 server {
+  2         listen 80;
+  3         server_name www.test.com;
+  4         root /usr/share/tomcat/webapps/jsprun;
+  5         location / {
+  6                 index index.jsp;
+  7                 proxy_pass http://192.168.4.63:8080;
+  8         }
+  9         location ~* \.(jsp|do)$ {
+ 10                 proxy_pass http://192.168.4.63:8080;
+ 11         }
+ 12 }
+</code></pre><p><code>[root@nginx/etc/nginx/conf.d]#nginx -t</code>    #语法检测</p>
+<p>重启服务测试</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-06_203818.jpg" alt=""></p>
+<p>点击下一步等 会出现图中红框的内容表示不可写</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-06_204116.jpg" alt=""></p>
+<p>修改配置文件并使其文件有写权限和执行权限</p>
+<p><code>[root@tomcat/usr/share/tomcat/webapps/jsprun]#chmod 777 config.properties templates/ attachments/ customavatars/ forumdata/ -R</code> </p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-06_204401.jpg" alt=""></p>
+<p>图中显示数据库的内容我们已经在<code>config.properties</code>配置文件中修改了，所以这里不需要修改了，如果安装之前没有修改此内容要正确填写即可，点击下一步安装完成</p>
+<p>我们去数据库查看生成的表</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-06_204726.jpg" alt=""></p>
+<p><strong>如何实现动静分离呢？</strong></p>
+<p><code>[root@nginx/etc/nginx/conf.d]#vim nginx-tomcat.conf</code>  </p>
+<pre><code>  1 server {
+  2         listen 80;
+  3         server_name www.test.com;
+  4         root /usr/share/tomcat/webapps/jsprun;
+  5         location ~* \.(gif|png|jpeg|bmp|jpg|html|htm)$ {
+  6                 proxy_pass http://192.168.4.65:80;
+  7         }
+  8         location ~* \.(jsp|do)$ {
+  9                 proxy_pass http://192.168.4.63:8080;
+ 10         }
+ 11 }
+</code></pre><p><code>[root@nginx/etc/nginx/conf.d]#systemctl restart nginx.service</code></p>
+<p>将jsprun中image拷贝到apache中<code>/var/www/html</code>目录下</p>
+<p><code>[root@tomcat/usr/share/tomcat/webapps/jsprun]#scp -pr images/* 192.168.4.65:/var/www/html</code></p>
+<p>测试  </p>
+<p><strong>这里的动静分离其实是将图片和html等结尾的文件专门存放在apache服务器上，而不是实现真正的分离。</strong></p>
 
             </div>
             <hr/>
@@ -699,21 +770,18 @@ mysql&gt; GRANT ALL ON tomcat.* TO &#39;joah&#39;@&#39;192.168.4.61&#39; IDENTIF
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/LAMP源码编译安装/">
+                <a href="/2017/11/28/LAMP/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="LAMP源码编译安装">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="LAMP">
                         
-                        <span class="card-title">LAMP源码编译安装</span>
+                        <span class="card-title">LAMP</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">编译安装LAMP环境在实际环境中我们经常根据自己所处的公司环境进行配置，适合自己公司的配置。下面我们来介绍如何进行编译安装
-安装前提在CentOS7 系统:
-关闭iptables
-将selinux设置为disabled
-apr-1.6.2.</div>
+                    <div class="summary">一、LAMP1、概念LAMP指的Linux（操作系统）、ApacheHTTP 服务器，MySQL（有时也指MariaDB，数据库软件） 和PHP（有时也是指Perl或Python） 的第一个字母，一般用来建立web应用平台。
+2、web资源</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -722,16 +790,12 @@ apr-1.6.2.</div>
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
-                            <a href="/categories/服务/LAMP/" class="post-category" target="_blank">
+                            <a href="/categories/常用服务/LAMP/" class="post-category" target="_blank">
                                     LAMP
-                                </a>
-                            
-                            <a href="/categories/服务/LAMP/LAMP源码编译安装/" class="post-category" target="_blank">
-                                    LAMP源码编译安装
                                 </a>
                             
                             
@@ -741,8 +805,8 @@ apr-1.6.2.</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/LAMP，lamp，php，php-fpm，源码编译安装/" target="_blank">
-                        <span class="chip bg-color">LAMP，lamp，php，php-fpm，源码编译安装</span>
+                    <a href="/tags/LAMP/" target="_blank">
+                        <span class="chip bg-color">LAMP</span>
                     </a>
                     
                 </div>
@@ -756,18 +820,39 @@ apr-1.6.2.</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/LAMP简单介绍/">
+                <a href="/2017/11/28/MHA+Keepalived+MySQL主从/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="LAMP简单介绍">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="MHA+Keepalived+MySQL主从">
                         
-                        <span class="card-title">LAMP简单介绍</span>
+                        <span class="card-title">MHA+Keepalived+MySQL主从</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">一、LAMP1、概念LAMP指的Linux（操作系统）、ApacheHTTP 服务器，MySQL（有时也指MariaDB，数据库软件） 和PHP（有时也是指Perl或Python） 的第一个字母，一般用来建立web应用平台。
-2、web资源</div>
+                    <div class="summary">MHA+Keepalived+mysql主从
+
+
+
+主机名
+mysql
+keepalived
+MHA
+IP
+
+
+
+
+manager
+—
+—
+master-0.56
+192.168.4.64
+
+
+master
+mariadb-5.5.56
+√</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -776,16 +861,12 @@ apr-1.6.2.</div>
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
+                            <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
                                 </a>
                             
-                            <a href="/categories/服务/LAMP/" class="post-category" target="_blank">
-                                    LAMP
-                                </a>
-                            
-                            <a href="/categories/服务/LAMP/LAMP简单介绍/" class="post-category" target="_blank">
-                                    LAMP简单介绍
+                            <a href="/categories/数据库/MHA-Keepalived-MySQL主从/" class="post-category" target="_blank">
+                                    MHA+Keepalived+MySQL主从
                                 </a>
                             
                             
@@ -795,8 +876,8 @@ apr-1.6.2.</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/LAMP，lamp，php，php-fpm/" target="_blank">
-                        <span class="chip bg-color">LAMP，lamp，php，php-fpm</span>
+                    <a href="/tags/keepalived，mha，mysql/" target="_blank">
+                        <span class="chip bg-color">keepalived，mha，mysql</span>
                     </a>
                     
                 </div>
@@ -823,7 +904,7 @@ apr-1.6.2.</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

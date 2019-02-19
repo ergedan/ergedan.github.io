@@ -41,7 +41,7 @@
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -117,7 +117,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -652,21 +652,19 @@ MariaDB [student]&gt; EXPLAIN SELECT name,age FROM students WHERE age &gt; (SELE
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/MySQL工作方式/">
+                <a href="/2017/11/28/MySQL用户管理/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MySQL工作方式">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="MySQL用户管理">
                         
-                        <span class="card-title">MySQL工作方式</span>
+                        <span class="card-title">MySQL用户管理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-##1、mysql读取配置文件次序
-###my_print_defaultsdisplay options from option files
-使用方法：
-my_print_defaults [options] option_group </div>
+                    <div class="summary">用户管理1、新建普通用户（1）使用CREATE USER语句创建新用户
+使用格式：
+CREATE USER  &#39;user&#39;@&#39;host&#39; [IDENTIFIED BY [PASSWORD] &#39;pass</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -679,8 +677,8 @@ my_print_defaults [options] option_group </div>
                                     数据库
                                 </a>
                             
-                            <a href="/categories/数据库/MySQL工作方式/" class="post-category" target="_blank">
-                                    MySQL工作方式
+                            <a href="/categories/数据库/MySQL用户管理/" class="post-category" target="_blank">
+                                    MySQL用户管理
                                 </a>
                             
                             
@@ -690,8 +688,8 @@ my_print_defaults [options] option_group </div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/mysql工作方式/" target="_blank">
-                        <span class="chip bg-color">mysql工作方式</span>
+                    <a href="/tags/用户管理，mysql/" target="_blank">
+                        <span class="chip bg-color">用户管理，mysql</span>
                     </a>
                     
                 </div>
@@ -705,17 +703,21 @@ my_print_defaults [options] option_group </div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/Apache分析工具和日志管理工具/">
+                <a href="/2017/11/28/MySQL表分区/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Apache分析工具和日志管理工具">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="MySQL表分区">
                         
-                        <span class="card-title">Apache分析工具和日志管理工具</span>
+                        <span class="card-title">MySQL表分区</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">一、cronologcronolog 是一个简单的过滤程序，读取日志文件条目从标准输入和输出的每个条目并写入指定的日志文件的文件名模板和当前的日期和时间。cronolog 旨在和一个Web服务器一起使用，如Apache，分割访问日志为每天或</div>
+                    <div class="summary">MySQL表分区MySQL表分区有两种切分方法：
+垂直切分：切库，把一个库中的多个表分组后放置于不同的物理服务器上。
+水平切分：切表，分散其行至多个表中存放（table partitions）。
+
+partition_options:PAR</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -724,16 +726,12 @@ my_print_defaults [options] option_group </div>
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
+                            <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
                                 </a>
                             
-                            <a href="/categories/服务/Apache/" class="post-category" target="_blank">
-                                    Apache
-                                </a>
-                            
-                            <a href="/categories/服务/Apache/Apache分析工具和日志管理工具/" class="post-category" target="_blank">
-                                    Apache分析工具和日志管理工具
+                            <a href="/categories/数据库/MySQL表分区/" class="post-category" target="_blank">
+                                    MySQL表分区
                                 </a>
                             
                             
@@ -743,8 +741,8 @@ my_print_defaults [options] option_group </div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/tomcat/" target="_blank">
-                        <span class="chip bg-color">tomcat</span>
+                    <a href="/tags/分表，mysql/" target="_blank">
+                        <span class="chip bg-color">分表，mysql</span>
                     </a>
                     
                 </div>
@@ -771,7 +769,7 @@ my_print_defaults [options] option_group </div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

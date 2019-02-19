@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="www.lmfe.org/"/>
-  <updated>2017-12-20T16:04:25.631Z</updated>
+  <updated>2019-02-19T07:45:05.952Z</updated>
   <id>www.lmfe.org/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="www.lmfe.org/2017/12/20/Glances/"/>
     <id>www.lmfe.org/2017/12/20/Glances/</id>
     <published>2017-12-19T16:00:00.000Z</published>
-    <updated>2017-12-20T16:04:25.631Z</updated>
+    <updated>2019-02-19T07:45:05.952Z</updated>
     
     <summary type="html">
     
@@ -35,9 +35,9 @@
     
     </summary>
     
-      <category term="监控工具" scheme="www.lmfe.org/categories/%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7/"/>
+      <category term="命令" scheme="www.lmfe.org/categories/%E5%91%BD%E4%BB%A4/"/>
     
-      <category term="Glances" scheme="www.lmfe.org/categories/%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7/Glances/"/>
+      <category term="Glances" scheme="www.lmfe.org/categories/%E5%91%BD%E4%BB%A4/Glances/"/>
     
     
       <category term="glances" scheme="www.lmfe.org/tags/glances/"/>
@@ -45,11 +45,11 @@
   </entry>
   
   <entry>
-    <title>RPM包制作</title>
+    <title>RPM</title>
     <link href="www.lmfe.org/2017/12/19/RPM%E5%8C%85%E5%88%B6%E4%BD%9C/"/>
     <id>www.lmfe.org/2017/12/19/RPM包制作/</id>
     <published>2017-12-18T16:00:00.000Z</published>
-    <updated>2017-12-20T03:27:43.028Z</updated>
+    <updated>2019-02-19T08:20:25.805Z</updated>
     
     <summary type="html">
     
@@ -64,9 +64,9 @@
     
     </summary>
     
-      <category term="软件包管理" scheme="www.lmfe.org/categories/%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86/"/>
+      <category term="命令" scheme="www.lmfe.org/categories/%E5%91%BD%E4%BB%A4/"/>
     
-      <category term="RPM制作" scheme="www.lmfe.org/categories/%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86/RPM%E5%88%B6%E4%BD%9C/"/>
+      <category term="RPM" scheme="www.lmfe.org/categories/%E5%91%BD%E4%BB%A4/RPM/"/>
     
     
       <category term="rpm" scheme="www.lmfe.org/tags/rpm/"/>
@@ -78,7 +78,7 @@
     <link href="www.lmfe.org/2017/12/17/Jumpserver/"/>
     <id>www.lmfe.org/2017/12/17/Jumpserver/</id>
     <published>2017-12-16T16:00:00.000Z</published>
-    <updated>2017-12-21T02:17:17.222Z</updated>
+    <updated>2019-02-19T07:51:24.287Z</updated>
     
     <summary type="html">
     
@@ -98,35 +98,7 @@
       <category term="Jumpserver" scheme="www.lmfe.org/categories/%E8%B7%B3%E6%9D%BF%E6%9C%BA/Jumpserver/"/>
     
     
-      <category term="跳板机，jumpserver" scheme="www.lmfe.org/tags/%E8%B7%B3%E6%9D%BF%E6%9C%BA%EF%BC%8Cjumpserver/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MogileFS</title>
-    <link href="www.lmfe.org/2017/12/16/MogileFS/"/>
-    <id>www.lmfe.org/2017/12/16/MogileFS/</id>
-    <published>2017-12-15T16:00:00.000Z</published>
-    <updated>2017-12-16T13:31:26.212Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;一、分布式文件系统&quot;&gt;&lt;a href=&quot;#一、分布式文件系统&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="分布式存储" scheme="www.lmfe.org/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8/"/>
-    
-      <category term="MogileFS" scheme="www.lmfe.org/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8/MogileFS/"/>
-    
-    
-      <category term="mogilefs" scheme="www.lmfe.org/tags/mogilefs/"/>
+      <category term="jumpserver" scheme="www.lmfe.org/tags/jumpserver/"/>
     
   </entry>
   
@@ -135,7 +107,7 @@
     <link href="www.lmfe.org/2017/12/16/FastDFS/"/>
     <id>www.lmfe.org/2017/12/16/FastDFS/</id>
     <published>2017-12-15T16:00:00.000Z</published>
-    <updated>2017-12-17T09:53:12.153Z</updated>
+    <updated>2019-02-19T07:43:00.408Z</updated>
     
     <summary type="html">
     
@@ -149,12 +121,40 @@
     
     </summary>
     
-      <category term="分布式存储" scheme="www.lmfe.org/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8/"/>
+      <category term="存储" scheme="www.lmfe.org/categories/%E5%AD%98%E5%82%A8/"/>
     
-      <category term="FastDFS" scheme="www.lmfe.org/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8/FastDFS/"/>
+      <category term="FastDFS" scheme="www.lmfe.org/categories/%E5%AD%98%E5%82%A8/FastDFS/"/>
     
     
       <category term="fastdfs" scheme="www.lmfe.org/tags/fastdfs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MogileFS</title>
+    <link href="www.lmfe.org/2017/12/16/MogileFS/"/>
+    <id>www.lmfe.org/2017/12/16/MogileFS/</id>
+    <published>2017-12-15T16:00:00.000Z</published>
+    <updated>2019-02-19T08:07:34.848Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、分布式文件系统&quot;&gt;&lt;a href=&quot;#一、分布式文件系统&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="存储" scheme="www.lmfe.org/categories/%E5%AD%98%E5%82%A8/"/>
+    
+      <category term="MogileFS" scheme="www.lmfe.org/categories/%E5%AD%98%E5%82%A8/MogileFS/"/>
+    
+    
+      <category term="mogilefs" scheme="www.lmfe.org/tags/mogilefs/"/>
     
   </entry>
   
@@ -163,7 +163,7 @@
     <link href="www.lmfe.org/2017/12/14/Harbor/"/>
     <id>www.lmfe.org/2017/12/14/Harbor/</id>
     <published>2017-12-13T16:00:00.000Z</published>
-    <updated>2017-12-14T12:32:24.214Z</updated>
+    <updated>2019-02-19T07:45:56.941Z</updated>
     
     <summary type="html">
     
@@ -178,14 +178,42 @@
     
     </summary>
     
-      <category term="云计算" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+      <category term="虚拟化" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
-      <category term="Docker" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/"/>
+      <category term="Docker" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/Docker/"/>
     
-      <category term="Harbor" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/Harbor/"/>
+      <category term="Harbor" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/Docker/Harbor/"/>
     
     
-      <category term="docker，harbor" scheme="www.lmfe.org/tags/docker%EF%BC%8Charbor/"/>
+      <category term="harbor" scheme="www.lmfe.org/tags/harbor/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dockerfile指令</title>
+    <link href="www.lmfe.org/2017/12/13/Dockerfile%E6%8C%87%E4%BB%A4%E8%AF%A6%E8%A7%A3/"/>
+    <id>www.lmfe.org/2017/12/13/Dockerfile指令详解/</id>
+    <published>2017-12-12T16:00:00.000Z</published>
+    <updated>2019-02-19T07:34:39.861Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、Dockerfile&quot;&gt;&lt;a href=&quot;#一、Dockerfile&quot; class=&quot;headerlink&quot; title=&quot;一、Dockerfile&quot;&gt;&lt;/a&gt;一、Dockerfile&lt;/h1&gt;&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="虚拟化" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
+    
+      <category term="Docker" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/Docker/"/>
+    
+    
+      <category term="docker，dockerfile" scheme="www.lmfe.org/tags/docker%EF%BC%8Cdockerfile/"/>
     
   </entry>
   
@@ -194,7 +222,7 @@
     <link href="www.lmfe.org/2017/12/13/Docker%20Compose/"/>
     <id>www.lmfe.org/2017/12/13/Docker Compose/</id>
     <published>2017-12-12T16:00:00.000Z</published>
-    <updated>2017-12-14T11:02:04.058Z</updated>
+    <updated>2019-02-19T07:33:45.935Z</updated>
     
     <summary type="html">
     
@@ -209,53 +237,21 @@
     
     </summary>
     
-      <category term="云计算" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+      <category term="虚拟化" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
-      <category term="Docker" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/"/>
-    
-      <category term="Docker Compose" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/Docker-Compose/"/>
+      <category term="Docker" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/Docker/"/>
     
     
-      <category term="docker，compose" scheme="www.lmfe.org/tags/docker%EF%BC%8Ccompose/"/>
+      <category term="docker" scheme="www.lmfe.org/tags/docker/"/>
     
   </entry>
   
   <entry>
-    <title>Dockerfile指令详解</title>
-    <link href="www.lmfe.org/2017/12/13/Dockerfile%E6%8C%87%E4%BB%A4%E8%AF%A6%E8%A7%A3/"/>
-    <id>www.lmfe.org/2017/12/13/Dockerfile指令详解/</id>
-    <published>2017-12-12T16:00:00.000Z</published>
-    <updated>2017-12-14T03:47:52.139Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;一、Dockerfile&quot;&gt;&lt;a href=&quot;#一、Dockerfile&quot; class=&quot;headerlink&quot; title=&quot;一、Dockerfile&quot;&gt;&lt;/a&gt;一、Dockerfile&lt;/h1&gt;&lt;p&gt;&lt;img
-        
-      
-    
-    </summary>
-    
-      <category term="云计算" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
-    
-      <category term="Docker" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/"/>
-    
-      <category term="Dockerfile指令详解" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/Dockerfile%E6%8C%87%E4%BB%A4%E8%AF%A6%E8%A7%A3/"/>
-    
-    
-      <category term="docker，dockerfile" scheme="www.lmfe.org/tags/docker%EF%BC%8Cdockerfile/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker 卷</title>
-    <link href="www.lmfe.org/2017/12/12/Docker%E5%8D%B7/"/>
-    <id>www.lmfe.org/2017/12/12/Docker卷/</id>
+    <title>Docker存储</title>
+    <link href="www.lmfe.org/2017/12/12/Docker%E5%AD%98%E5%82%A8/"/>
+    <id>www.lmfe.org/2017/12/12/Docker存储/</id>
     <published>2017-12-11T16:00:00.000Z</published>
-    <updated>2017-12-12T12:54:52.979Z</updated>
+    <updated>2019-02-19T07:36:45.341Z</updated>
     
     <summary type="html">
     
@@ -269,53 +265,21 @@
     
     </summary>
     
-      <category term="云计算" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+      <category term="虚拟化" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
-      <category term="Docker" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/"/>
-    
-      <category term="Docker卷" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/Docker%E5%8D%B7/"/>
+      <category term="Docker" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/Docker/"/>
     
     
-      <category term="docker，虚拟化，卷" scheme="www.lmfe.org/tags/docker%EF%BC%8C%E8%99%9A%E6%8B%9F%E5%8C%96%EF%BC%8C%E5%8D%B7/"/>
+      <category term="docker" scheme="www.lmfe.org/tags/docker/"/>
     
   </entry>
   
   <entry>
-    <title>Docker安装</title>
-    <link href="www.lmfe.org/2017/12/11/Docker%E5%AE%89%E8%A3%85/"/>
-    <id>www.lmfe.org/2017/12/11/Docker安装/</id>
-    <published>2017-12-10T16:00:00.000Z</published>
-    <updated>2017-12-12T03:19:50.324Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;一、Docker安装&quot;&gt;&lt;a href=&quot;#一、Docker安装&quot; class=&quot;headerlink&quot; title=&quot;一、Docker安装&quot;&gt;&lt;/a&gt;一、Docker安装&lt;/h1&gt;&lt;p&gt;&lt;img
-        
-      
-    
-    </summary>
-    
-      <category term="云计算" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
-    
-      <category term="Docker" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/"/>
-    
-      <category term="Docker安装" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/Docker%E5%AE%89%E8%A3%85/"/>
-    
-    
-      <category term="docker，虚拟化，安装" scheme="www.lmfe.org/tags/docker%EF%BC%8C%E8%99%9A%E6%8B%9F%E5%8C%96%EF%BC%8C%E5%AE%89%E8%A3%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker 四种网络模式</title>
+    <title>Docker四种网络模式</title>
     <link href="www.lmfe.org/2017/12/11/Docker%20%E5%9B%9B%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/"/>
     <id>www.lmfe.org/2017/12/11/Docker 四种网络模式/</id>
     <published>2017-12-10T16:00:00.000Z</published>
-    <updated>2017-12-13T14:00:08.549Z</updated>
+    <updated>2019-02-19T07:34:24.191Z</updated>
     
     <summary type="html">
     
@@ -329,14 +293,12 @@
     
     </summary>
     
-      <category term="云计算" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+      <category term="虚拟化" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
-      <category term="Docker" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/"/>
-    
-      <category term="Docker 四种网络模式" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/Docker-%E5%9B%9B%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/"/>
+      <category term="Docker" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/Docker/"/>
     
     
-      <category term="docker，虚拟化，网络" scheme="www.lmfe.org/tags/docker%EF%BC%8C%E8%99%9A%E6%8B%9F%E5%8C%96%EF%BC%8C%E7%BD%91%E7%BB%9C/"/>
+      <category term="docker" scheme="www.lmfe.org/tags/docker/"/>
     
   </entry>
   
@@ -345,7 +307,7 @@
     <link href="www.lmfe.org/2017/12/11/Docker%E5%91%BD%E4%BB%A4/"/>
     <id>www.lmfe.org/2017/12/11/Docker命令/</id>
     <published>2017-12-10T16:00:00.000Z</published>
-    <updated>2017-12-12T12:53:42.125Z</updated>
+    <updated>2019-02-19T07:37:12.649Z</updated>
     
     <summary type="html">
     
@@ -359,14 +321,12 @@
     
     </summary>
     
-      <category term="云计算" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+      <category term="虚拟化" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
-      <category term="Docker" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/"/>
-    
-      <category term="Docker 命令" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/Docker-%E5%91%BD%E4%BB%A4/"/>
+      <category term="Docker" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/Docker/"/>
     
     
-      <category term="docker，虚拟化，命令" scheme="www.lmfe.org/tags/docker%EF%BC%8C%E8%99%9A%E6%8B%9F%E5%8C%96%EF%BC%8C%E5%91%BD%E4%BB%A4/"/>
+      <category term="docker" scheme="www.lmfe.org/tags/docker/"/>
     
   </entry>
   
@@ -375,7 +335,7 @@
     <link href="www.lmfe.org/2017/12/10/Docker%E5%88%9D%E8%AF%86/"/>
     <id>www.lmfe.org/2017/12/10/Docker初识/</id>
     <published>2017-12-09T16:00:00.000Z</published>
-    <updated>2017-12-12T03:20:21.416Z</updated>
+    <updated>2019-02-19T07:35:33.161Z</updated>
     
     <summary type="html">
     
@@ -389,14 +349,12 @@
     
     </summary>
     
-      <category term="云计算" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+      <category term="虚拟化" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
-      <category term="Docker" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/"/>
-    
-      <category term="Docker初识" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/Docker/Docker%E5%88%9D%E8%AF%86/"/>
+      <category term="Docker" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/Docker/"/>
     
     
-      <category term="docker，虚拟化，镜像，仓库" scheme="www.lmfe.org/tags/docker%EF%BC%8C%E8%99%9A%E6%8B%9F%E5%8C%96%EF%BC%8C%E9%95%9C%E5%83%8F%EF%BC%8C%E4%BB%93%E5%BA%93/"/>
+      <category term="docker" scheme="www.lmfe.org/tags/docker/"/>
     
   </entry>
   
@@ -405,7 +363,7 @@
     <link href="www.lmfe.org/2017/12/10/LXC%E4%BB%8B%E7%BB%8D/"/>
     <id>www.lmfe.org/2017/12/10/LXC介绍/</id>
     <published>2017-12-09T16:00:00.000Z</published>
-    <updated>2017-12-10T14:35:07.456Z</updated>
+    <updated>2019-02-19T08:06:38.957Z</updated>
     
     <summary type="html">
     
@@ -419,12 +377,12 @@
     
     </summary>
     
-      <category term="云计算" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+      <category term="虚拟化" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
-      <category term="LXC介绍" scheme="www.lmfe.org/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/LXC%E4%BB%8B%E7%BB%8D/"/>
+      <category term="LXC" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/LXC/"/>
     
     
-      <category term="lxc，虚拟化" scheme="www.lmfe.org/tags/lxc%EF%BC%8C%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
+      <category term="LXC" scheme="www.lmfe.org/tags/LXC/"/>
     
   </entry>
   
@@ -433,7 +391,7 @@
     <link href="www.lmfe.org/2017/12/09/HTTP%E6%AD%A3%E5%90%91%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/"/>
     <id>www.lmfe.org/2017/12/09/HTTP正向和反向代理/</id>
     <published>2017-12-08T16:00:00.000Z</published>
-    <updated>2017-12-09T09:27:50.329Z</updated>
+    <updated>2019-02-19T07:50:09.733Z</updated>
     
     <summary type="html">
     
@@ -447,14 +405,14 @@
     
     </summary>
     
-      <category term="服务" scheme="www.lmfe.org/categories/%E6%9C%8D%E5%8A%A1/"/>
+      <category term="常用服务" scheme="www.lmfe.org/categories/%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1/"/>
     
-      <category term="Apache" scheme="www.lmfe.org/categories/%E6%9C%8D%E5%8A%A1/Apache/"/>
-    
-      <category term="HTTP正向和反向代理" scheme="www.lmfe.org/categories/%E6%9C%8D%E5%8A%A1/Apache/HTTP%E6%AD%A3%E5%90%91%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/"/>
+      <category term="Apache" scheme="www.lmfe.org/categories/%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1/Apache/"/>
     
     
-      <category term="http，正向代理，反向代理" scheme="www.lmfe.org/tags/http%EF%BC%8C%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/"/>
+      <category term="HTTP" scheme="www.lmfe.org/tags/HTTP/"/>
+    
+      <category term="Apache" scheme="www.lmfe.org/tags/Apache/"/>
     
   </entry>
   
@@ -463,7 +421,7 @@
     <link href="www.lmfe.org/2017/12/07/logstash/"/>
     <id>www.lmfe.org/2017/12/07/logstash/</id>
     <published>2017-12-06T16:00:00.000Z</published>
-    <updated>2017-12-07T09:46:00.590Z</updated>
+    <updated>2019-02-19T08:02:48.958Z</updated>
     
     <summary type="html">
     
@@ -478,14 +436,10 @@
     
     </summary>
     
-      <category term="日志管理" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/"/>
+      <category term="日志系统" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/"/>
     
-      <category term="ELK" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/ELK/"/>
+      <category term="logstash" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/logstash/"/>
     
-      <category term="logstash" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/ELK/logstash/"/>
-    
-    
-      <category term="elk" scheme="www.lmfe.org/tags/elk/"/>
     
       <category term="logstash" scheme="www.lmfe.org/tags/logstash/"/>
     
@@ -496,7 +450,7 @@
     <link href="www.lmfe.org/2017/12/04/Kibana/"/>
     <id>www.lmfe.org/2017/12/04/Kibana/</id>
     <published>2017-12-03T16:00:00.000Z</published>
-    <updated>2017-12-07T10:12:46.294Z</updated>
+    <updated>2019-02-19T07:55:47.531Z</updated>
     
     <summary type="html">
     
@@ -510,99 +464,21 @@
     
     </summary>
     
-      <category term="日志管理" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/"/>
+      <category term="日志系统" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/"/>
     
-      <category term="ELK" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/ELK/"/>
-    
-      <category term="Kibana" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/ELK/Kibana/"/>
+      <category term="Elasticsearch" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/Elasticsearch/"/>
     
     
       <category term="kibana" scheme="www.lmfe.org/tags/kibana/"/>
     
-      <category term="elk" scheme="www.lmfe.org/tags/elk/"/>
-    
   </entry>
   
   <entry>
-    <title>Elasticsearch配置文件</title>
-    <link href="www.lmfe.org/2017/12/04/Elasticsearch%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
-    <id>www.lmfe.org/2017/12/04/Elasticsearch配置文件/</id>
+    <title>Elasticsearch</title>
+    <link href="www.lmfe.org/2017/12/04/Elasticsearch/"/>
+    <id>www.lmfe.org/2017/12/04/Elasticsearch/</id>
     <published>2017-12-03T16:00:00.000Z</published>
-    <updated>2017-12-04T13:21:26.615Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;一、Elasticsearch文件&quot;&gt;&lt;a href=&quot;#一、Elasticsearch文件&quot; class=&quot;headerlink&quot; title=&quot;一、Elasticsearch文件&quot;&gt;&lt;/a&gt;一、Elasticsearch文件&lt;/h1&gt;&lt;h2
-        
-      
-    
-    </summary>
-    
-      <category term="日志管理" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/"/>
-    
-      <category term="ELK" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/ELK/"/>
-    
-      <category term="Elasticsearch配置文件" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/ELK/Elasticsearch%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
-    
-    
-      <category term="elk，elasticsearch，文件" scheme="www.lmfe.org/tags/elk%EF%BC%8Celasticsearch%EF%BC%8C%E6%96%87%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Elasticsearch安装</title>
-    <link href="www.lmfe.org/2017/12/04/ELK%E5%AE%89%E8%A3%85/"/>
-    <id>www.lmfe.org/2017/12/04/ELK安装/</id>
-    <published>2017-12-03T16:00:00.000Z</published>
-    <updated>2017-12-04T09:46:31.332Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;主机名&lt;/th&gt;
-&lt;th&gt;IP&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;node1&lt;/td&gt;
-&lt;td&gt;192.168.4.61&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;node2&lt;/td&gt;
-&lt;td
-        
-      
-    
-    </summary>
-    
-      <category term="日志管理" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/"/>
-    
-      <category term="ELK" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/ELK/"/>
-    
-      <category term="Elasticsearch安装" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/ELK/Elasticsearch%E5%AE%89%E8%A3%85/"/>
-    
-    
-      <category term="elk，安装" scheme="www.lmfe.org/tags/elk%EF%BC%8C%E5%AE%89%E8%A3%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ELK基础</title>
-    <link href="www.lmfe.org/2017/12/04/ELK%E5%9F%BA%E7%A1%80/"/>
-    <id>www.lmfe.org/2017/12/04/ELK基础/</id>
-    <published>2017-12-03T16:00:00.000Z</published>
-    <updated>2017-12-04T06:42:44.646Z</updated>
+    <updated>2019-02-19T07:42:01.702Z</updated>
     
     <summary type="html">
     
@@ -616,14 +492,98 @@
     
     </summary>
     
-      <category term="日志管理" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/"/>
+      <category term="日志系统" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/"/>
     
-      <category term="ELK" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/ELK/"/>
-    
-      <category term="ELK基础" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/ELK/ELK%E5%9F%BA%E7%A1%80/"/>
+      <category term="Elasticsearch" scheme="www.lmfe.org/categories/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/Elasticsearch/"/>
     
     
-      <category term="logstash，分片，集群，elk" scheme="www.lmfe.org/tags/logstash%EF%BC%8C%E5%88%86%E7%89%87%EF%BC%8C%E9%9B%86%E7%BE%A4%EF%BC%8Celk/"/>
+      <category term="Elasticsearch" scheme="www.lmfe.org/tags/Elasticsearch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git</title>
+    <link href="www.lmfe.org/2017/12/03/git%E5%9F%BA%E7%A1%80/"/>
+    <id>www.lmfe.org/2017/12/03/git基础/</id>
+    <published>2017-12-02T16:00:00.000Z</published>
+    <updated>2019-02-19T07:44:48.678Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Git是一个分布式版本控制软件。用于敏捷高效地处理任何大小项目。&lt;/p&gt;
+&lt;h2 id=&quot;一、Git三种状态&quot;&gt;&lt;a href=&quot;#一、Git三种状态&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Git" scheme="www.lmfe.org/categories/Git/"/>
+    
+      <category term="Git" scheme="www.lmfe.org/categories/Git/Git/"/>
+    
+    
+      <category term="git" scheme="www.lmfe.org/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HAProxy</title>
+    <link href="www.lmfe.org/2017/11/29/HAproxy/"/>
+    <id>www.lmfe.org/2017/11/29/HAproxy/</id>
+    <published>2017-11-28T16:00:00.000Z</published>
+    <updated>2019-02-19T07:45:30.644Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;http://owatlfstl.bkt.clouddn.com/2017-10-31_200948.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;一、HAProxy&quot;&gt;&lt;a href=&quot;#一、HAProxy&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常用服务" scheme="www.lmfe.org/categories/%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="HAproxy" scheme="www.lmfe.org/categories/%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1/HAproxy/"/>
+    
+    
+      <category term="HAProxy" scheme="www.lmfe.org/tags/HAProxy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>firewalld</title>
+    <link href="www.lmfe.org/2017/11/29/firewalld/"/>
+    <id>www.lmfe.org/2017/11/29/firewalld/</id>
+    <published>2017-11-28T16:00:00.000Z</published>
+    <updated>2017-11-29T08:29:43.438Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;firewalld&quot;&gt;&lt;a href=&quot;#firewalld&quot; class=&quot;headerlink&quot; title=&quot;firewalld&quot;&gt;&lt;/a&gt;firewalld&lt;/h1&gt;&lt;p&gt;firewalld是CentOS
+        
+      
+    
+    </summary>
+    
+      <category term="防火墙" scheme="www.lmfe.org/categories/%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    
+      <category term="firewalld" scheme="www.lmfe.org/categories/%E9%98%B2%E7%81%AB%E5%A2%99/firewalld/"/>
+    
+    
+      <category term="firewalld" scheme="www.lmfe.org/tags/firewalld/"/>
     
   </entry>
   

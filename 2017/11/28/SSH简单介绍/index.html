@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SSH简单介绍, 运维小李">
+    <meta name="keywords" content="SSH, 运维小李">
     <meta name="description" content="一、SSH基本介绍1、含义：
     SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Group）所制定；SSH 为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>SSH简单介绍 | 运维小李</title>
+    <title>SSH | 运维小李</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -38,7 +38,7 @@
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -114,7 +114,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -284,13 +284,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        SSH简单介绍
+                        SSH
                     </div>
                 </div>
             </div>
@@ -312,8 +312,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/ssh/" target="_blank">
-                                <span class="chip bg-color">ssh</span>
+                            <a href="/tags/SSH/" target="_blank">
+                                <span class="chip bg-color">SSH</span>
                             </a>
                         
                     </div>
@@ -324,16 +324,12 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                服务
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                常用服务
                             </a>
                         
-                            <a href="/categories/服务/SSH/" class="post-category" target="_blank">
+                            <a href="/categories/常用服务/SSH/" class="post-category" target="_blank">
                                 SSH
-                            </a>
-                        
-                            <a href="/categories/服务/SSH/SSH简单介绍/" class="post-category" target="_blank">
-                                SSH简单介绍
                             </a>
                         
                     </div>
@@ -351,14 +347,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1,804
+                        2,889
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        8 分
+                        12 分
                     </div>
                     
                 
@@ -616,6 +612,80 @@ openssh-client-VERSION.rpm 客户端安装包
 </tr>
 </tbody>
 </table>
+<h2 id="二、基于密钥认证"><a href="#二、基于密钥认证" class="headerlink" title="二、基于密钥认证"></a>二、基于密钥认证</h2><h3 id="1、工作机制"><a href="#1、工作机制" class="headerlink" title="1、工作机制"></a>1、工作机制</h3><pre><code>（a）客户端在本机生成一对密钥
+（b）客户端通过密令将本机的公钥拷贝到服务器端，服务端会将客户端的公钥存在至`~/.ssh/authorized.keys`目录下
+（c）客户端再次发送请求时，包括IP、用户名；
+（d）服务端在通过上述目录查找是否有与之对应的公钥，如果查找成功响应IP和用户名，会随机生成一个字符串
+（e）服务端将使用客户端的公钥进行加密，然后发送给客户端
+（f）客户端得到服务端发来的消息后，客户端使用私钥进行解密，将解密的字符串发送给服务端
+（g）服务端接受客户端发来的字符串后，跟之前对比，如果一致，允许登录，反之亦然。
+</code></pre><h3 id="2、生成密钥对命令的介绍"><a href="#2、生成密钥对命令的介绍" class="headerlink" title="2、生成密钥对命令的介绍"></a>2、生成密钥对命令的介绍</h3><pre><code>ssh-keygen:authentication key generation, management and conversion
+格式：
+    ssh-keygen [-q] [-b bits] -t type [-N new_passphrase] [-C comment]   [-f output_keyfile]
+
+
+选项：
+    -t 加密的类型
+    -P 是否对生成的私钥加密
+    -f 指定的文件名
+ssh-copy-id :install  your  public  key  in a remote machine’s authorized_keys
+格式：
+    ssh-copy-id [-i [identity_file]] [user@]machine
+
+选项：
+    -i 指定公钥存放的位置
+</code></pre><h3 id="3、基于key的过程"><a href="#3、基于key的过程" class="headerlink" title="3、基于key的过程"></a>3、基于key的过程</h3><p>（a）在客户端生CentOS 7在一对密钥</p>
+<pre><code>[root@localhost~]#ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): #密钥存放的位置
+Enter passphrase (empty for no passphrase): #是否对密钥加密，建议加密，这里相当于选项-P
+Enter same passphrase again:  
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:  
+f5:f9:21:08:dd:2a:8d:f7:9f:88:4e:88:53:3e:45:a3 root@localhost.localdomain
+The key&#39;s randomart image is:
++--[ RSA 2048]----+
+|                 |
+|         . .     |
+|        . = .    |
+|         B = .   |
+|        E * + .  |
+|       + = . o . |
+|      o + . . .  |
+|       . o . o . |
+|         .o . o  |
++-----------------+
+</code></pre><p>（b）使用命令将公钥拷贝到服务端CentOS 6主机上</p>
+<pre><code>[root@localhost~]#ssh-copy-id -i .ssh/id_rsa.pub root@192.168.10.100
+[root@centos6~]#ls .ssh/authorized_keys 查看是否在服务端生成目录`authorized.keys`
+.ssh/authorized_keys
+</code></pre><p>（c）测试</p>
+<pre><code>[root@localhost~]#ssh 192.168.10.100
+Last login: Thu Sep  7 18:39:01 2017 from 192.168.159.1  #登录成功
+</code></pre><p><strong>如果我们私钥加密需要验证多台，如果我们一台一台的验证，这样显然不是我们想要的方法，下面就很好的解决了我们这个问题</strong></p>
+<h4 id="ssh-agent命令介绍"><a href="#ssh-agent命令介绍" class="headerlink" title="ssh-agent命令介绍"></a>ssh-agent命令介绍</h4><pre><code>ssh-agent是个长时间持续运行的守护进程（daemon），设计它的唯一目的就是对解密的专用密钥进行高速缓存，这是一个一次性的过程，如果终端退出即消失。
+</code></pre><h4 id="工作机制"><a href="#工作机制" class="headerlink" title="工作机制"></a>工作机制</h4><pre><code>  如果执行这条命令，会启动后台一个子进程。代理一开始并没有私钥文件，私钥文件是通过命令`ssh-add`添加。并且把文件~/.ssh/id_rsa, ~/.ssh/id_dsa, ~/.ssh/id_ecdsa, ~/.ssh/id_ed25519 and
+ ~/.ssh/identity添加到代理中。通过使用环境变量能定位和验证。SSH_AUTH_SOCK和SSH_AGENT_PID环境变量。
+</code></pre><h4 id="实现代理的方法"><a href="#实现代理的方法" class="headerlink" title="实现代理的方法"></a>实现代理的方法</h4><pre><code>（a）ssh-agent xterm &amp;  利用内含的export命令执行环境使环境变量可用
+（b）eval `ssh-agent -s`
+            -s sh ksh
+            -c csh
+</code></pre><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>（a）对上述生成的密钥加密</p>
+<pre><code> [root@localhost~]#ssh-keygen -p  #-p 修改密码
+Enter file in which the key is (/root/.ssh/id_rsa): 
+Key has comment &#39;/root/.ssh/id_rsa&#39;
+Enter new passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Pass phrases do not match.  Try again.
+</code></pre><p>（b）启动代理</p>
+<pre><code>[root@localhost~]#ssh-agent bash #启动一个bash子进程
+</code></pre><p>（c）将私钥文件添加至代理中</p>
+<pre><code>[root@localhost~]#ssh-add
+Identity added: /root/.ssh/id_rsa (/root/.ssh/id_rsa)
+</code></pre><p>（d）测试<br>    [root@localhost~]#ssh 192.168.10.102<br>    Last login: Sun Sep 10 17:46:13 2017 from 192.168.10.101<br>登录成功，这样提高了我们的工作效率。</p>
+<h3 id="4、利用xshell基于key连接"><a href="#4、利用xshell基于key连接" class="headerlink" title="4、利用xshell基于key连接"></a>4、利用xshell基于key连接</h3><pre><code> 在xshell中工具--&gt;新建用户密钥生成向导--&gt;选择密钥类型和密钥长度--&gt;给密钥名称命名并给密钥加密--&gt;选择公钥格式--&gt;保存公钥文件至指定目录下--&gt;将公钥复制到需要远程连接的主机上~/.ssh/authorized.keys目录下，如果没有文件需要创建此目录，并修改权限。
+</code></pre><p>在生成密钥是选择不合适的公钥格式，可以使用密令修改：<br><code>[root@centos6~]#ssh-keygen -i -f PUBLIK.key &gt;&gt;~/.ssh/authorized.keys</code><br>        -i 读取不加密的私钥和公钥非OpenSSH兼容输出</p>
 
             </div>
             <hr/>
@@ -756,7 +826,7 @@ openssh-client-VERSION.rpm 客户端安装包
                     </span>
                     <a href="www.lmfe.org" class="b-link-green">运维小李</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2017/11/28/SSH简单介绍/" class="b-link-green">SSH简单介绍</a>
+                    <a href="/2017/11/28/SSH简单介绍/" class="b-link-green">SSH</a>
                 </p>
             </div>
         </div>
@@ -803,17 +873,17 @@ openssh-client-VERSION.rpm 客户端安装包
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/SSH端口转发/">
+                <a href="/2017/11/28/TCP_wrappers/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="SSH端口转发">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="TCP_wrappers">
                         
-                        <span class="card-title">SSH端口转发</span>
+                        <span class="card-title">TCP_wrappers</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">端口转发在日常生产中，我们常常会遇到这样的问题，在公司运行一个服务或者一些程序，想要查看其运行状态及其结果等；公司的机器只能从内部访问外网，而内部外的并不能访问内部的机器；或者公司有一台ssh服务器，不能使用telnet服务去访问内部的主机</div>
+                    <div class="summary">tcp_wrappers1、概念Transmission Control Protocol (TCP) Wrappers 为由 inetd 生成的服务提供了增强的安全性。TCP Wrappers 是一种对使用 /etc/inetd.sec </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -822,16 +892,12 @@ openssh-client-VERSION.rpm 客户端安装包
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
+                            <a href="/categories/安全/" class="post-category" target="_blank">
+                                    安全
                                 </a>
                             
-                            <a href="/categories/服务/SSH/" class="post-category" target="_blank">
-                                    SSH
-                                </a>
-                            
-                            <a href="/categories/服务/SSH/SSH端口转发/" class="post-category" target="_blank">
-                                    SSH端口转发
+                            <a href="/categories/安全/TCP-wrappers/" class="post-category" target="_blank">
+                                    TCP_wrappers
                                 </a>
                             
                             
@@ -841,8 +907,8 @@ openssh-client-VERSION.rpm 客户端安装包
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/nginx，proxy/" target="_blank">
-                        <span class="chip bg-color">nginx，proxy</span>
+                    <a href="/tags/tcp-wrappers/" target="_blank">
+                        <span class="chip bg-color">tcp_wrappers</span>
                     </a>
                     
                 </div>
@@ -856,17 +922,21 @@ openssh-client-VERSION.rpm 客户端安装包
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/Samba/">
+                <a href="/2017/11/28/Redis集群/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Samba">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Redis集群">
                         
-                        <span class="card-title">Samba</span>
+                        <span class="card-title">Redis集群</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，基于C/S架构。SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印</div>
+                    <div class="summary">redis集群同步时间主机名互相解析确保firewalld和iptables关闭1、配置三个节点[root@node3~]#yum install -y redis
+2、修改配置文件
+node1配置：
+
+[root@node1~]#vim </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -875,12 +945,12 @@ openssh-client-VERSION.rpm 客户端安装包
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/文件管理/" class="post-category" target="_blank">
-                                    文件管理
+                            <a href="/categories/缓存/" class="post-category" target="_blank">
+                                    缓存
                                 </a>
                             
-                            <a href="/categories/文件管理/Samba/" class="post-category" target="_blank">
-                                    Samba
+                            <a href="/categories/缓存/Redis/" class="post-category" target="_blank">
+                                    Redis
                                 </a>
                             
                             
@@ -890,8 +960,8 @@ openssh-client-VERSION.rpm 客户端安装包
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/samba/" target="_blank">
-                        <span class="chip bg-color">samba</span>
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
                     </a>
                     
                 </div>
@@ -918,7 +988,7 @@ openssh-client-VERSION.rpm 客户端安装包
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

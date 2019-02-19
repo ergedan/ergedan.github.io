@@ -42,7 +42,7 @@ node1为主，node2为从
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -118,7 +118,7 @@ node1为主，node2为从
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -584,23 +584,18 @@ MariaDB [(none)]&gt; SHOW SLAVE STATUS\G;  #查看从服务器状态
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/DNS实战二/">
+                <a href="/2017/11/28/LVS简单介绍/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="DNS实战">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="LVS">
                         
-                        <span class="card-title">DNS实战</span>
+                        <span class="card-title">LVS</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">实战二
-如何实现上述的拓扑图呢？先从底部网上一步一步的搭建
-（1）实现主从DNS服务器
-（a）修改主DNS服务器
-[root@localhost~]#vim /etc/named.conf    #修改主配置文件
-
-[root@localh</div>
+                    <div class="summary">一、LVS1、lvs（Linux Virtual Server）概念
+将一组服务器通过高速的局域网地理分布的广域网相互连接，在他们前段有一个负载调度器（Load Balancer），将网络请求调度到真实的服务器上，客户访问集群系统提供的网络</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -609,16 +604,12 @@ MariaDB [(none)]&gt; SHOW SLAVE STATUS\G;  #查看从服务器状态
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
-                            <a href="/categories/服务/DNS/" class="post-category" target="_blank">
-                                    DNS
-                                </a>
-                            
-                            <a href="/categories/服务/DNS/DNS实战二/" class="post-category" target="_blank">
-                                    DNS实战二
+                            <a href="/categories/常用服务/LVS/" class="post-category" target="_blank">
+                                    LVS
                                 </a>
                             
                             
@@ -628,8 +619,8 @@ MariaDB [(none)]&gt; SHOW SLAVE STATUS\G;  #查看从服务器状态
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/主从，转发，子域和父域/" target="_blank">
-                        <span class="chip bg-color">主从，转发，子域和父域</span>
+                    <a href="/tags/lvs/" target="_blank">
+                        <span class="chip bg-color">lvs</span>
                     </a>
                     
                 </div>
@@ -709,7 +700,7 @@ master和slave时间同步[root@master~]#ntpdate 172.18.0.1
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

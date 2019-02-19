@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="LVS简单介绍, 运维小李">
-    <meta name="description" content="LVS1、lvs（Linux Virtual Server）概念
-将一组服务器通过高速的局域网地理分布的广域网相互连接，在他们前段有一个负载调度器（Load Balancer），将网络请求调度到真实的服务器上，客户访问集群系统提供的网络服务">
+    <meta name="keywords" content="LVS, 运维小李">
+    <meta name="description" content="一、LVS1、lvs（Linux Virtual Server）概念
+将一组服务器通过高速的局域网地理分布的广域网相互连接，在他们前段有一个负载调度器（Load Balancer），将网络请求调度到真实的服务器上，客户访问集群系统提供的网络">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>LVS简单介绍 | 运维小李</title>
+    <title>LVS | 运维小李</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -38,7 +38,7 @@
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -114,7 +114,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -284,13 +284,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        LVS简单介绍
+                        LVS
                     </div>
                 </div>
             </div>
@@ -324,12 +324,12 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/调度器/" class="post-category" target="_blank">
-                                调度器
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                常用服务
                             </a>
                         
-                            <a href="/categories/调度器/LVS简单介绍/" class="post-category" target="_blank">
-                                LVS简单介绍
+                            <a href="/categories/常用服务/LVS/" class="post-category" target="_blank">
+                                LVS
                             </a>
                         
                     </div>
@@ -347,14 +347,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2,230
+                        4,008
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        8 分
+                        15 分
                     </div>
                     
                 
@@ -370,7 +370,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="LVS"><a href="#LVS" class="headerlink" title="LVS"></a>LVS</h1><h2 id="1、lvs（Linux-Virtual-Server）概念"><a href="#1、lvs（Linux-Virtual-Server）概念" class="headerlink" title="1、lvs（Linux Virtual Server）概念"></a>1、lvs（Linux Virtual Server）概念</h2><p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-22_104933.jpg" alt=""></p>
+                <h1 id="一、LVS"><a href="#一、LVS" class="headerlink" title="一、LVS"></a>一、LVS</h1><h2 id="1、lvs（Linux-Virtual-Server）概念"><a href="#1、lvs（Linux-Virtual-Server）概念" class="headerlink" title="1、lvs（Linux Virtual Server）概念"></a>1、lvs（Linux Virtual Server）概念</h2><p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-22_104933.jpg" alt=""></p>
 <p>将一组服务器通过高速的局域网地理分布的广域网相互连接，在他们前段有一个负载调度器（Load Balancer），将网络请求调度到真实的服务器上，客户访问集群系统提供的网络服务就像一台高性能、高可用的服务器一样。</p>
 <p><strong>工作原理</strong></p>
 <p>VS根据请求报文的目标IP、目标协议和端口将其调度转发至某RS，根据调度算法来挑选RS。</p>
@@ -600,6 +600,166 @@
 <p>ipvsadm-restore &lt; /PATH/FROM/IPVSADM_FILE</p>
 <p>ipvsadm -R &lt; /PATH/FROM/IPVSADM_FILE</p>
 <p>systemctl restart ipvsadm.service</p>
+<h1 id="二、LVS集群类型"><a href="#二、LVS集群类型" class="headerlink" title="二、LVS集群类型"></a>二、LVS集群类型</h1><h2 id="1、lvs-nat模式"><a href="#1、lvs-nat模式" class="headerlink" title="1、lvs-nat模式"></a>1、lvs-nat模式</h2><p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-22_172746.jpg" alt=""></p>
+<p>本质是多目标IP 的DNAT，通过将请求报文中的目标地址和目标端口修改为某跳出的RS的RIP和PORT实现转发。</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/lvs-nat1.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/lvs-nat2.jpg" alt=""><br><strong>小结</strong></p>
+<p>（1）RIP和DIP不一定在同一个IP网络,如果VS和RS中间是相连的路由器，RS的网关需指向路由器的网关；如果VS和RS中间是相连的是交换机，RS的网关要指向DIP。应该使用私网IP（也可以使用公网IP）</p>
+<p>（2）请求报文和响应报文都必须经由Director 转发，Director容易成为系统瓶颈。</p>
+<p>（3）支持端口映射，可以修改请求报文的目标端口</p>
+<p>（4）VS必须是Linux系统，RS可以是任意OS系统</p>
+<h2 id="2、lvs-dr模式"><a href="#2、lvs-dr模式" class="headerlink" title="2、lvs-dr模式"></a>2、lvs-dr模式</h2><p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-22_174525.jpg" alt=""></p>
+<p>lvs-dr：Director Routing，直接路由，LVS默认模式应用最广泛，通过为请求报文重新封装一个MAC首部进行转发，源MAC是DIP所在的接口MAC，目标MAC是某挑选出的RS的RIP所在接口的MAC地址；源IP/PORT，以及目标IP/PORT均保持不变。</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/lvs-dr1.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/lvs-dr2.jpg" alt=""></p>
+<h3 id="lvs-dr模式，各主机上均需要配置VIP，解决地址冲突的方式有三种："><a href="#lvs-dr模式，各主机上均需要配置VIP，解决地址冲突的方式有三种：" class="headerlink" title="lvs-dr模式，各主机上均需要配置VIP，解决地址冲突的方式有三种："></a>lvs-dr模式，各主机上均需要配置VIP，解决地址冲突的方式有三种：</h3><ul>
+<li>在前段网关做静态绑定，这种方法的弊端是如果后端OS坏掉，重新静态绑定</li>
+<li><p>在各RS使用arptables</p>
+<p>  arptables -A IN -d $VIP -j DROP</p>
+<p>  arptables -A OUT -s $VIP -j mangle –mangle-ip-s $RIP</p>
+</li>
+<li><p>在各RS修改内核参数，来限制arp响应和通告的级别</p>
+</li>
+</ul>
+<blockquote>
+<p>限制响应级别：arp_ignore</p>
+</blockquote>
+<pre><code>0：默认值，表示可使用本地任意接口上配置的任意地址进行响应
+1：仅在请求的目标IP配置在本地主机的接收到请求报文的接口上时，才给予响应
+</code></pre><blockquote>
+<p>限制通告级别：arp_announce</p>
+</blockquote>
+<pre><code>0：默认值，把本机所有接口的所有信息向每个接口的网络进行通告
+1：尽量避免将接口信息向非直接连接网络进行通告
+2：必须避免将接口信息向非本网络进行通告
+</code></pre><p><strong>小结</strong></p>
+<p>（1）确保前段路由器将目标IP为VIP的请求报文发往Director。在前段网关做静态绑定VIP和DIrector的MAC地址</p>
+<p>（2）RS的RIP可以使用私网地址，也可以使用公网地址；RIP的网关不能指向DIP，以确保响应报文不会经由Director。RIP与DIP可以不再同一个IP网络</p>
+<p>（3）RS和Director如果中间是路由相连，要在同一个物理网络，逻辑上可以不再一个网段。路由器可以转发。</p>
+<p>（4）请求报文要经由Director，但响应报文不经由Director，而由RS直接发往Client</p>
+<p>（5）不支持端口映射</p>
+<p>（6）RS可以使用大多数OS系统</p>
+<p><strong>注意：RS必须配置VIP地址，如果不配置CIP接收到的响应报文不是自己目标的响应报文，拒收。</strong></p>
+<h2 id="3、lvs-tun模式"><a href="#3、lvs-tun模式" class="headerlink" title="3、lvs-tun模式"></a>3、lvs-tun模式</h2><p>不修改请求报文的IP首部（源IP为CIP，目标IP为VIP），而在源IP报文之外再封装一个IP首部（源IP是DIP，目标IP是RIP），将报文发往挑选出的目标RS；RS直接响应给客户端（源IP是VIP，目标IP是CIP）。支持源距离通信。</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-22_174456.jpg" alt=""></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/lvs-tun.jpg" alt=""></p>
+<p><strong>小结</strong></p>
+<p>（1）DIP、VIP、RIP都应该是公网地址，也可以是私网地址（如果拉的是专线）</p>
+<p>（2）RS的网关不能指向DIP</p>
+<p>（3）请求报文要经由DIrector，但响应报文不能经由Director</p>
+<p>（4）不支持端口映射</p>
+<p>（5）RS的OS 系统必须支持隧道功能</p>
+<h1 id="三、Firewall-Mark"><a href="#三、Firewall-Mark" class="headerlink" title="三、Firewall Mark"></a>三、Firewall Mark</h1><p>借助于防火墙类分类报文，而后基于标记定义集群服务；可将多个不同应用使用同一个集群服务进行调度</p>
+<p>步骤：</p>
+<p>（1）在Director主机打标记：</p>
+<pre><code>iptables -t mangle -A PREROUTING -d $vip -p $proto –m multiport --dports $port1,$port2,… -j MARK --set-mark NUMBER
+</code></pre><p>（2）在Director主机基于标记定义集群服务</p>
+<pre><code>ipvsadm -A -f NUMBER [options]
+ipvsadm -a -f NUMBER -r RIP -m
+</code></pre><h1 id="持久连接"><a href="#持久连接" class="headerlink" title="持久连接"></a>持久连接</h1><p>session绑定：对共享同一组RS的多个集群服务，需要统一进行绑定，lvs中sh算法无法实现。</p>
+<p>持久连接：实现无论使用任何调度算法，在一段时间内（默认360s），能够实现将来自同一个地址的请求始终发往同一个RS。</p>
+<pre><code>ipvsadm -A|E -t|u|f service-address [-s scheduler] [-p [timeout]]
+</code></pre><p><strong>持久连接实现方式</strong></p>
+<ul>
+<li>每端口持久（PPC ）：每个端口对应定义为一个集群服务，每集群服务单独调度</li>
+<li>每防火墙标记持久（PFWMC）:基于防火墙标记定义集群服务；可实现将多个端口上的应用同一调度，即所谓port affinity</li>
+<li>每客户端持久（PCC）：基于0端口（表示所有服务）定义集群服务，即将客户端对所有应用的请求都调度至后端主机，必须定义为持久模式</li>
+</ul>
+<h1 id="LVS高可用性"><a href="#LVS高可用性" class="headerlink" title="LVS高可用性"></a>LVS高可用性</h1><p>如果Director不可用，整个系统将不可用，SPOF（单点故障）；如果RS不可用时，Director依然会调度请求到RS上。</p>
+<p>解决方案：由Director对个RS健康状态进行检查，失败时禁用，成功时启用。</p>
+<p>检查方式：</p>
+<p>（1）网络层检测，icmp</p>
+<p>（2）传输层检查：端口探测</p>
+<p>（3）应用层检测：请求某关键资源</p>
+<p>如果RS全不能使用时，back server，sorry server</p>
+<h2 id="ldirector：监控远程服务和控制LVS"><a href="#ldirector：监控远程服务和控制LVS" class="headerlink" title="ldirector：监控远程服务和控制LVS"></a>ldirector：监控远程服务和控制LVS</h2><p>主配置文件</p>
+<pre><code>/etc/ha.d/ldirectord.cf 
+</code></pre><p>配置模版</p>
+<pre><code> /usr/share/doc/ldirectord-3.9.6/ldirectord.cf 
+</code></pre><p> 服务</p>
+<pre><code> /usr/lib/systemd/system/ldirectord.service
+</code></pre><p> 主程序</p>
+<pre><code>/usr/sbin/ldirectord  
+</code></pre><p>日志</p>
+<pre><code>/var/log/ldirectord.log 
+</code></pre><p>pid文件</p>
+<pre><code>/var/run/ldirectord.ldirectord.pid 
+</code></pre><p><strong>ldirectord配置文件</strong></p>
+<p><code>[root@localhost~]#cp /usr/share/doc/ldirectord-3.9.5/ldirectord.cf /etc/ha.d/</code></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>checktimeout</td>
+<td>判断RS出错的时间间隔</td>
+</tr>
+<tr>
+<td>checkinterval</td>
+<td>指定ldirectord在每次检查之间的间隔时间</td>
+</tr>
+<tr>
+<td>fallback</td>
+<td>当所有的RS不能工作时，web服务重定向的地址</td>
+</tr>
+<tr>
+<td>autoreload</td>
+<td>是否自动重载配置文件</td>
+</tr>
+<tr>
+<td>logfile</td>
+<td>指定ldirectord日志文件路径</td>
+</tr>
+<tr>
+<td>quiescent（静态）</td>
+<td>当选择no时，如果一个节点在checktimeout设置的时间周期内没有响应，ldirectord将会从LVS的路由表中移除RS，将终端现有的客户端连接，并是LVS丢掉所有的链接跟中记录和持续连接模板；如果选择yes，当某个RS失效时，ldirectord将失效节点的权值设置为0，新的链接不能到达，但是并不从LVS路由表清除此节点，同时连接跟踪记录和持久连接模板仍然保留在Director上。</td>
+</tr>
+<tr>
+<td>virtual</td>
+<td>指定虚拟的IP和端口号必须在行后面指定RS和端口号同时设置LVS工作模式</td>
+</tr>
+<tr>
+<td>real</td>
+<td>指定RS</td>
+</tr>
+<tr>
+<td>service</td>
+<td>指定服务的类型</td>
+</tr>
+<tr>
+<td>request</td>
+<td>ldirectord将根据指定的RS结合该选项给出的请求路径，发送访问请求，检查RS上的服务是否正常运行；确保这里给出的页面地址是可访问的，不然ldirectord会误从此节点已经失效，发生错误监控现象</td>
+</tr>
+<tr>
+<td>receive</td>
+<td>指定请求和应答字串</td>
+</tr>
+<tr>
+<td>scheduler</td>
+<td>指定调度算法</td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>指定协议类型</td>
+</tr>
+<tr>
+<td>checktype</td>
+<td>指定ldirectord的检测类型，默认为negotiate</td>
+</tr>
+<tr>
+<td>checkport</td>
+<td>指定监控的端口号</td>
+</tr>
+<tr>
+<td>virtualhost</td>
+<td>虚拟服务器的名称</td>
+</tr>
+</tbody>
+</table>
 
             </div>
             <hr/>
@@ -740,7 +900,7 @@
                     </span>
                     <a href="www.lmfe.org" class="b-link-green">运维小李</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2017/11/28/LVS简单介绍/" class="b-link-green">LVS简单介绍</a>
+                    <a href="/2017/11/28/LVS简单介绍/" class="b-link-green">LVS</a>
                 </p>
             </div>
         </div>
@@ -787,25 +947,20 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/LVS实战/">
+                <a href="/2017/11/28/MPM工作模式/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="LVS实战">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="MPM工作模式">
                         
-                        <span class="card-title">LVS实战</span>
+                        <span class="card-title">MPM工作模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">实例lvs-nat模型实现http负载集群（VS和RS之间直连）-
-（1）构建网络拓扑
+                    <div class="summary">MPM（MultiProcess Modules ）工作模式
+prefork
 
-（2）搭建网络环境
-
-配置路由器
-
-[root@VS~]#vim /etc/sysctl.conf #开启路由转发功能
- 11 net.ipv4.ip</div>
+多进程I/O模型，每个进程响应一个请求，默认模型一个主进程生成N个子进程，创建套接字，每个子进程响应一个请求；而主进程不响应请求，只负责管理接受请求。系统初始化</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -814,12 +969,16 @@
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/调度器/" class="post-category" target="_blank">
-                                    调度器
+                            <a href="/categories/服务/" class="post-category" target="_blank">
+                                    服务
                                 </a>
                             
-                            <a href="/categories/调度器/LVS实战/" class="post-category" target="_blank">
-                                    LVS实战
+                            <a href="/categories/服务/Apache/" class="post-category" target="_blank">
+                                    Apache
+                                </a>
+                            
+                            <a href="/categories/服务/Apache/MPM（MultiProcess-Modules-）工作模式/" class="post-category" target="_blank">
+                                    MPM（MultiProcess Modules ）工作模式
                                 </a>
                             
                             
@@ -829,8 +988,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/lvs，实战/" target="_blank">
-                        <span class="chip bg-color">lvs，实战</span>
+                    <a href="/tags/WEB/" target="_blank">
+                        <span class="chip bg-color">WEB</span>
                     </a>
                     
                 </div>
@@ -844,20 +1003,22 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/LVS简单介绍二/">
+                <a href="/2017/11/28/MySQL主从复制/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="LVS简单介绍二">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="MySQL主从复制">
                         
-                        <span class="card-title">LVS简单介绍二</span>
+                        <span class="card-title">MySQL主从复制</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Firewall Mark借助于防火墙类分类报文，而后基于标记定义集群服务；可将多个不同应用使用同一个集群服务进行调度
-步骤：
-（1）在Director主机打标记：
-iptables -t mangle -A PREROUTING -d $</div>
+                    <div class="summary">实战：实现主从复制
+node1为主，node2为从
+在node1操作[root@node1~]#vim /etc/my.cnf.d/server.cnf
+
+[root@node1~]#systemctl start mariadb
+在nod</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -866,12 +1027,12 @@ iptables -t mangle -A PREROUTING -d $</div>
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/调度器/" class="post-category" target="_blank">
-                                    调度器
+                            <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
                                 </a>
                             
-                            <a href="/categories/调度器/LVS简单介绍二/" class="post-category" target="_blank">
-                                    LVS简单介绍二
+                            <a href="/categories/数据库/MySQL主从复制/" class="post-category" target="_blank">
+                                    MySQL主从复制
                                 </a>
                             
                             
@@ -881,8 +1042,8 @@ iptables -t mangle -A PREROUTING -d $</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/lvs，firewall-mark，持久连接/" target="_blank">
-                        <span class="chip bg-color">lvs，firewall mark，持久连接</span>
+                    <a href="/tags/主从复制，mysql/" target="_blank">
+                        <span class="chip bg-color">主从复制，mysql</span>
                     </a>
                     
                 </div>
@@ -909,7 +1070,7 @@ iptables -t mangle -A PREROUTING -d $</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

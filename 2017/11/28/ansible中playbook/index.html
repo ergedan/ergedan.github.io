@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ansible中playbook, 运维小李">
-    <meta name="description" content="Playbook1、Playbook核心元素
+    <meta name="keywords" content="ansible之playbook, 运维小李">
+    <meta name="description" content="一、Playbook1、Playbook核心元素
 Hosts：运行指定任务的目标主机
 remote_user：在远程主机上执行任务的用户
 sudo_user：切换用户
@@ -14,7 +14,7 @@ sudo_user：切换用户
 Tasks：任务列表
 
 格式：
-  （1）action：module a">
+  （1）action：module">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +22,7 @@ Tasks：任务列表
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ansible中playbook | 运维小李</title>
+    <title>ansible之playbook | 运维小李</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -46,7 +46,7 @@ Tasks：任务列表
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -122,7 +122,7 @@ Tasks：任务列表
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -292,13 +292,13 @@ Tasks：任务列表
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        ansible中playbook
+                        ansible之playbook
                     </div>
                 </div>
             </div>
@@ -340,16 +340,12 @@ Tasks：任务列表
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/自动化运维工具/" class="post-category" target="_blank">
-                                自动化运维工具
+                            <a href="/categories/自动化/" class="post-category" target="_blank">
+                                自动化
                             </a>
                         
-                            <a href="/categories/自动化运维工具/ansible/" class="post-category" target="_blank">
+                            <a href="/categories/自动化/ansible/" class="post-category" target="_blank">
                                 ansible
-                            </a>
-                        
-                            <a href="/categories/自动化运维工具/ansible/ansible中playbook/" class="post-category" target="_blank">
-                                ansible中playbook
                             </a>
                         
                     </div>
@@ -367,14 +363,14 @@ Tasks：任务列表
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        662
+                        2,862
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        15 分
                     </div>
                     
                 
@@ -390,7 +386,7 @@ Tasks：任务列表
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Playbook"><a href="#Playbook" class="headerlink" title="Playbook"></a>Playbook</h2><h3 id="1、Playbook核心元素"><a href="#1、Playbook核心元素" class="headerlink" title="1、Playbook核心元素"></a>1、Playbook核心元素</h3><ul>
+                <h2 id="一、Playbook"><a href="#一、Playbook" class="headerlink" title="一、Playbook"></a>一、Playbook</h2><h3 id="1、Playbook核心元素"><a href="#1、Playbook核心元素" class="headerlink" title="1、Playbook核心元素"></a>1、Playbook核心元素</h3><ul>
 <li>Hosts：运行指定任务的目标主机</li>
 <li>remote_user：在远程主机上执行任务的用户<ul>
 <li>sudo_user：切换用户</li>
@@ -502,7 +498,442 @@ Tasks：任务列表
 </li>
 </ul>
 <p>键role用于指定角色名称，后续的k/v用于传递变量给角色</p>
-
+<h2 id="二、完整示例"><a href="#二、完整示例" class="headerlink" title="二、完整示例"></a>二、完整示例</h2><blockquote>
+<p>安装httpd并配置</p>
+</blockquote>
+<p>（1）方式一：</p>
+<h3 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h3><p><code>[root@localhost/etc/ansible/roles]#mkdir -pv http/{tasks,templates,files,handlers,vars,meta,default}</code></p>
+<h3 id="创建task文件"><a href="#创建task文件" class="headerlink" title="创建task文件"></a>创建task文件</h3><p><code>[root@localhost/etc/ansible/roles/http]#vim tasks/main.yml</code></p>
+<pre><code>  1 - name: install package httpd
+  2   yum: name=nginx state=latest
+  3 - name: create webdoc
+  4   file: path={{ http_doc_root }} state=directory
+  5 - name: service httpd service
+  6   service: name=nginx state=started
+  7 - name: configure httpd conf
+  8   template: src=httpd.conf.j2 dest=/etc/httpd/conf.d/
+  9   tags: httpconf 
+ 10   notify: reload httpd
+</code></pre><h3 id="创建handler文件"><a href="#创建handler文件" class="headerlink" title="创建handler文件"></a>创建handler文件</h3><p><code>[root@localhost/etc/ansible/roles/http]#vim handlers/main.yml</code></p>
+<pre><code>  1 - name: relad httpd
+  2   service: name=httpd state=reloaded
+</code></pre><h3 id="创建vars文件"><a href="#创建vars文件" class="headerlink" title="创建vars文件"></a>创建vars文件</h3><p><code>[root@localhost/etc/ansible/roles/http]#vim vars/main.yml</code></p>
+<pre><code>  1 http_server_port: 8080
+  2 http_server_name: www.test.com
+  3 http_doc_root: /webdate
+</code></pre><h3 id="创建template文件"><a href="#创建template文件" class="headerlink" title="创建template文件"></a>创建template文件</h3><p><code>[root@localhost/etc/ansible/roles/http]#vim templates/httpd.conf.j2</code></p>
+<pre><code>  1 listen {{ http_server_port }}
+  2 ServerName {{ http_server_name }}
+  3 DocumentRoot {{ http_doc_root }}
+  4 &lt;Directory {{ http_doc_root }}&gt; 
+  5     Require all granted
+  6 &lt;/Directory&gt;
+</code></pre><h3 id="创建剧本"><a href="#创建剧本" class="headerlink" title="创建剧本"></a>创建剧本</h3><p><code>[root@localhost/etc/ansible]#vim http.yml</code></p>
+<pre><code>  1 - hosts: websrvs
+  2   remote_user: root
+  3   roles:
+  4   - http
+</code></pre><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p><code>[root@localhost~]#ansible-playbook   /etc/ansible/http.yml</code></p>
+<p>实战：基于msm的tomcat集群<br>-</p>
+<h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><table>
+<thead>
+<tr>
+<th>主机名</th>
+<th>IP</th>
+<th>安装的包</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node1</td>
+<td>192.168.4.61</td>
+<td>nginx、keepalived</td>
+</tr>
+<tr>
+<td>node2</td>
+<td>192.168.4.62</td>
+<td>nginx、keepalived</td>
+</tr>
+<tr>
+<td>node3</td>
+<td>192.168.4.63</td>
+<td>tomcat、tomcat-docs-webapp、tomcat-webapps、tomcat-adim-webapps、java-1.8.0-openjdk、memcached-session-manager-2.1.1.jar  、memcached-session-manager-tc7-2.1.1.jar、spymemcached-2.12.3.jar  、msm-javolution-serializer-2.1.1.jar 、javolution-5.4.3.1</td>
+</tr>
+<tr>
+<td>node4</td>
+<td>192.168.4.64</td>
+<td>tomcat、tomcat-docs-webapp、tomcat-webapps、tomcat-adim-webapps、java-1.8.0-openjdk、memcached-session-manager-2.1.1.jar  、memcached-session-manager-tc7-2.1.1.jar、spymemcached-2.12.3.jar  、msm-javolution-serializer-2.1.1.jar 、javolution-5.4.3.1</td>
+</tr>
+<tr>
+<td>node5</td>
+<td>192.168.4.65</td>
+<td>ansible、memcached</td>
+</tr>
+</tbody>
+</table>
+<h3 id="基于ssh密钥认证"><a href="#基于ssh密钥认证" class="headerlink" title="基于ssh密钥认证"></a>基于ssh密钥认证</h3><p><code>[root@node5~]#vim ssh.sh</code></p>
+<pre><code>  1 #!/bin/bash
+  2 [ ! -f /root/.ssh/id_rsa.pub ] &amp;&amp; ssh-keygen -t rsa -P &#39;&#39; &amp;&gt; /dev/null
+  3 while read line;do
+  4 expect &lt;&lt; EOF
+  5     spawn ssh-copy-id -i /root/.ssh/id_rsa.pub root@$line
+  6     expect {
+  7         &quot;yes/no&quot; { send &quot;yes\n&quot;;exp_continue }
+  8         &quot;password&quot; { send &quot;magedu\n&quot; }
+  9     }
+ 10     expect eof
+ 11 EOF
+ 12 
+ 13 done &lt; /root/ip.txt
+</code></pre><p><code>[root@node5~]#vim ip.txt</code></p>
+<pre><code>  1 192.168.4.61
+  2 192.168.4.62
+  3 192.168.4.63
+  4 192.168.4.64
+  5 192.168.4.65
+</code></pre><p><code>[root@node5~]#chmod +x ssh.sh</code></p>
+<h3 id="ansible中修改主机库文件"><a href="#ansible中修改主机库文件" class="headerlink" title="ansible中修改主机库文件"></a>ansible中修改主机库文件</h3><p><code>[root@node5~]#vim /etc/ansible/hosts</code></p>
+<pre><code> 25 [nginx-keep]
+ 26 192.168.4.61
+ 27 192.168.4.62
+ 28 [tomcat-cluster]
+ 29 192.168.4.63
+ 30 192.168.4.64
+ 31 [memcached]
+ 32 192.168.4.65
+</code></pre><h3 id="同步时间"><a href="#同步时间" class="headerlink" title="同步时间"></a>同步时间</h3><p><code>[root@node5/etc/ansible]#vim ntp.yml</code></p>
+<pre><code>  1 - hosts: all
+  2   remote_user: root
+  3   tasks:
+  4   - name: sync time
+  5     command: ntpdate 172.18.0.1
+  6   - name: chrony conf
+  7     file: src=/etc/chrony.conf dest=/etc/chrony.conf
+  8     tags: chrony
+  9     notify: restart chronyd.service
+ 10   - name: start chrony
+ 11     service: name=chronyd state=started
+ 12   handlers:
+ 13   - name: restart chronyd.service
+ 14     service: name=chronyd state=restarted
+</code></pre><p><code>[root@node5~]#vim /etc/chrony.conf</code></p>
+<pre><code>  7 server 172.18.0.1 iburst
+</code></pre><p><code>[root@node5/etc/ansible]#ansible-playbook --syntax-check ntp.yml</code> #检测语法是否正确</p>
+<h2 id="注意：由于yaml格式对于初学者来说有一定的坑，需要严格按照格式写。"><a href="#注意：由于yaml格式对于初学者来说有一定的坑，需要严格按照格式写。" class="headerlink" title="注意：由于yaml格式对于初学者来说有一定的坑，需要严格按照格式写。"></a>注意：由于yaml格式对于初学者来说有一定的坑，需要严格按照格式写。</h2><p><code>[root@node5/etc/ansible]#ansible-playbook ntp.yml</code> #语法检测没有问题后，执行剧本</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-11-19_184804.jpg" alt=""></p>
+<h5 id="温馨提示：为了以后不必要的错误，建议没此执行完以后，都要确认是否执行正确后再进行下一步"><a href="#温馨提示：为了以后不必要的错误，建议没此执行完以后，都要确认是否执行正确后再进行下一步" class="headerlink" title="温馨提示：为了以后不必要的错误，建议没此执行完以后，都要确认是否执行正确后再进行下一步"></a>温馨提示：为了以后不必要的错误，建议没此执行完以后，都要确认是否执行正确后再进行下一步</h5><h3 id="基于主机名解析"><a href="#基于主机名解析" class="headerlink" title="基于主机名解析"></a>基于主机名解析</h3><p><code>[root@node5/etc/ansible]#ansible all  -m copy -a &quot;src=/etc/hosts dest=/etc/hosts&quot;</code></p>
+<h3 id="挂载光盘"><a href="#挂载光盘" class="headerlink" title="挂载光盘"></a>挂载光盘</h3><p><code>[root@node5~]#ansible all -m mount -a &quot;name=/media/cdrom src=/dev/sr0 state=mounted fstype=iso9660&quot;</code></p>
+<h3 id="配置nginx角色"><a href="#配置nginx角色" class="headerlink" title="配置nginx角色"></a>配置nginx角色</h3><blockquote>
+<p>创建所需要的目录</p>
+</blockquote>
+<p><code>[root@node5/etc/ansible/roles]#mkdir haproxy/{tasks,handler,files,templates,vars,default,meta} -pv</code></p>
+<blockquote>
+<p>创建任务文件</p>
+</blockquote>
+<p><code>[root@node5/etc/ansible/roles/haproxy]#vim tasks/main.yml</code> </p>
+<pre><code>  1 - name: install haproxy package
+  2   yum: name=haproxy state=latest
+  3 - name: modify haproxy conf
+  4   template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
+  5   tags: haproxy
+  6   notify: haproxy restart
+  7 - name: start haproxy service
+  8   service: name=haproxy state=started
+  9 handlers:
+ 10 - name: haproxy restart 
+ 11   service: name=haproxy state=restarted
+</code></pre><blockquote>
+<p>创建模板文件</p>
+</blockquote>
+<p><code>[root@node5/etc/ansible/roles/haproxy]#cp /etc/haproxy/haproxy.cfg templates/haproxy.cfg.j2</code></p>
+<pre><code> 42 defaults
+ 43     mode                    http
+ 44     log                     global
+ 45     option                  httplog
+ 46     option                  dontlognull
+ 47     option http-server-close
+ 48     option forwardfor       except 127.0.0.0/8
+ 43     mode                    http
+ 44     log                     global
+ 45     option                  httplog
+ 46     option                  dontlognull
+ 47     option http-server-close
+ 48     option forwardfor       except 127.0.0.0/8
+ 49     option                  redispatch
+ 50     retries                 3
+ 51     timeout http-request    10s
+ 52     timeout queue           1m
+ 53     timeout connect         10s
+ 54     timeout client          1m
+ 55     timeout server          1m
+ 56     timeout http-keep-alive 10s
+ 57     timeout check           10s
+ 58     maxconn                 3000
+ 59 
+ 60 frontend tomcat  #定义前段并指定名称
+ 61    bind 172.18.4.60:{{ tomcat_server_port }}    #绑定地址和端口
+ 62 
+ 63 backend tomcat-cluster  #定义后端服务
+ 64    balance roundrobin
+ 65    server node3 192.168.4.63 check
+ 66    server node4 192.168.4.64 check
+ 67 listen      #定义管理界面
+ 68    bind 127.0.0.1:9000
+ 69    stats enable
+ 70    stats uri /stats
+ 71    stats auth joah:centos
+ 72    stats relam &quot;tomcat&quot;
+ 73    stats hide-version
+ 74    stats refresh 10s
+ 75    stats admin if TRUE
+</code></pre><p><strong>注意：模板文件必须以“j2”结尾。</strong>  </p>
+<blockquote>
+<p>创建变量文件</p>
+</blockquote>
+<p><code>[root@node5/etc/ansible/roles/haproxy]#vim vars/main.yml</code></p>
+<pre><code>  1 tomcat_server_port: 80
+</code></pre><blockquote>
+<p>创建触发文件</p>
+</blockquote>
+<p><code>[root@node5/etc/ansible/roles/haproxy]#vim handlers/main.yml</code></p>
+<pre><code>  1 - name: haproxy restart
+  2   service: name=haproxy state=restarted
+</code></pre><p><strong>注意：创建tasks、templates、vars文件时必须以main.yml文件为入口，如果定义别的文件使用include指定即可。</strong></p>
+<h3 id="添加IP"><a href="#添加IP" class="headerlink" title="添加IP"></a>添加IP</h3><p><code>[root@node5/etc/ansible/roles/haproxy]#ansible tomcat-cluster -m shell -a  &quot;ip addr add 192.168.4.60/24 dev eth0 &quot;</code></p>
+<h3 id="创建keepalived角色"><a href="#创建keepalived角色" class="headerlink" title="创建keepalived角色"></a>创建keepalived角色</h3><blockquote>
+<p>创建所需目录</p>
+</blockquote>
+<p><code>[root@node5/etc/ansible/roles]#mkdir keepalived/{tasks,handler,files,templates,vars,default,meta} -pv</code></p>
+<blockquote>
+<p>创建任务文件</p>
+</blockquote>
+<p><code>[root@node5/etc/ansible/roles/keepalived]#vim tasks/main.yml</code></p>
+<pre><code>  1 - name: install keepalived package
+  2   yum: name=keepalived state=latest
+  3 - name: modify keepalived conf
+  4   template: src=keepalived.conf.j2 dest=/etc/keepalived/keepalived.conf
+  5   when: ansible_hostname == &quot;node1&quot;
+  6   notify: keepalived reloaded
+  7   tags: keepalived
+  8 - name: modify keepalived conf
+  9   template: src=keepalived.conf.j2 dest=/etc/keepalived/keepalived.conf
+ 10   when: ansible_hostname == &quot;node2&quot;
+ 11   notify: keepalived reloaded
+ 12   tags: keepalived
+ 13 - name: start keepalived
+ 14   service: name=keepalived state=started
+</code></pre><blockquote>
+<p>创建触发文件</p>
+</blockquote>
+<p><code>[root@node5/etc/ansible/roles/keepalived]#vim handlers/main.yml</code></p>
+<pre><code>  1 - name: keepalived reloaded
+  2   service: name=keepalived state=reloaded
+</code></pre><blockquote>
+<p>创建模板文件</p>
+</blockquote>
+<p><code>[root@node5/etc/ansible/roles/keepalived]#vim templates/keepalived.conf.j2</code>   #创建master</p>
+<pre><code>  1 ! Configuration File for keepalived
+  2 
+  3 global_defs {
+  4    notification_email {
+  5      locahost@qq.com
+  6    }
+  7    notification_email_from haproxy@qq.com
+  8    smtp_server 127.0.0.1
+  9    smtp_connect_timeout 30
+ 10    router_id node3
+ 11    route_mcast_group4 224.0.100.4
+ 12    vrrp_strict chk_haproxy {
+ 13         script &quot;killall -0 haporxy&quot;
+ 14         interval 3
+ 15         weight -15
+ 16    }
+ 17 }  
+ 18 
+ 19 vrrp_instance VI_1 {
+ 20     state MASTER
+ 21     interface eth0
+ 22     virtual_router_id 4
+ 23     priority 100
+ 24     advert_int 1
+ 25     authentication {
+ 26         auth_type PASS
+ 27         auth_pass 152369
+ 28     }   
+ 29     virtual_ipaddress {
+                172.18.4.60/16
+ 32     }
+ 33     track_script {
+ 34         chk_haproxy
+ 35     }
+ 36 }
+</code></pre><p><code>[root@node5/etc/ansible/roles/keepalived]#cp templates/keepalived.conf.j2 templates/keepalived.conf2.j2</code> 创建backup</p>
+<pre><code>  1 ! Configuration File for keepalived
+  2 
+  3 global_defs {
+  4    notification_email {
+  5      locahost@qq.com
+  6    }
+  7    notification_email_from haproxy@qq.com
+  8    smtp_server 127.0.0.1
+  9    smtp_connect_timeout 30
+ 10    router_id node2
+ 11    route_mcast_group4 224.0.100.4
+ 12    vrrp_strict chk_haproxy {
+ 13         script &quot;killall -0 haporxy&quot;
+ 14         interval 3
+ 15         weight -15
+ 16    }
+ 17 }
+ 18 
+ 19 vrrp_instance VI_1 {
+ 20     state BACKUP
+ 21     interface eth0
+ 22     virtual_router_id 4
+ 23     priority 90
+ 24     advert_int 1
+ 25     authentication {
+ 26         auth_type PASS
+ 27         auth_pass 152369
+ 28     }
+ 29     virtual_ipaddress {
+              172.18.4.60/16
+ 32     }
+ 33     track_script {
+ 34         chk_haproxy
+ 35     }
+ 36 }
+</code></pre><p><strong>注意：</strong></p>
+<p><strong>（1）master和backup中<code>priority</code>、<code>state</code>需要修改，其他的配置不需要修改。</strong></p>
+<p><strong>（2）如果使用<code>auth_type</code>认证，需要双方<code>auth_pass</code>必须相同</strong></p>
+<p><strong>（3）如果你想使用脚本检测，<code>vrrp_script</code>可以指定脚本位置/PATH/TO/SCRIPT.sh</strong></p>
+<h3 id="创建tomcat角色"><a href="#创建tomcat角色" class="headerlink" title="创建tomcat角色"></a>创建tomcat角色</h3><blockquote>
+<p>创建所需要的目录</p>
+</blockquote>
+<p><code>[root@node5/etc/ansible/roles]#mkdir tomcat/{tasks,handlers,files,templates,vars,default,meta} -pv</code></p>
+<blockquote>
+<p>创建tomcat任务</p>
+</blockquote>
+<p><code>[root@node5/etc/ansible/roles/tomcat]#vim tasks/main.yml</code></p>
+<pre><code> 1 - name: install tomcat package
+  2   yum: name={{ item }} state=latest
+  3   with_items:
+  4   - java-1.8.0-openjdk
+  5   - tomcat
+  6   - tomcat-docs-webapp
+  7   - tomcat-admin-webapps
+  8   - tomcat-webapps
+  9   - memcached
+ 10 - name: modify tomcat conf
+ 11   template: src=server.xml.j2 dest=/etc/tomcat/server.xml
+ 12   notify: tomcat reload
+ 13   tags: tomcat
+ 14 - name: kryo jar
+ 15   copy: src=/root/{{ item }}.jar dest=/usr/share/tomcat/lib/
+ 16   with_items:
+ 17   - asm-6.0
+ 18   - kryo-4.0.1
+ 19   - kryo-serializers-0.42
+ 20   - memcached-session-manager-2.1.1
+ 21   - memcached-session-manager-tc7-2.1.1
+ 22   - minlog-1.3.0
+ 23   - msm-kryo-serializer-2.1.1
+ 24   - objenesis-2.6
+ 25   - reflectasm-1.11.3
+ 26   - spymemcached-2.12.3
+ 27 - name: start tomcat
+ 28   service: name=tomcat state=started
+ 29 - name: mkdir directory
+ 30   file: path=/usr/share/tomcat/webapps/test state=directory
+ 31 - name: touch file
+ 32   file: path=/usr/share/tomcat/webapps/test/{{ item }} state=touch
+ 33   with_items:
+ 34   - WEB-INF
+ 35   - classes
+ 36   - lib 
+ 37 - name: copy index.jsp
+ 38   copy: src=index.jsp.j2 dest=/usr/share/tomcat/webapps/index.jsp
+ 39   when: ansible_hostname == &quot;node3&quot;
+ 40   notify: tomcat reload
+ 41   tags: tomcat
+ 42 - name: copy index.jsp
+ 43   copy: src=index2.jsp.j2 dest=/usr/share/tomcat/webapps/index.jsp
+ 44   when: ansible_hostname == &quot;node4&quot;
+ 45   notify: tomcat reload
+ 46   tags: tomcat
+</code></pre><blockquote>
+<p>创建模板文件</p>
+</blockquote>
+<p><code>[root@node5/etc/ansible/roles/tomcat/templates]#vim server.xml.j2</code></p>
+<pre><code>126       &lt;Host name=&quot;localhost&quot;  appBase=&quot;webapps&quot;
+127             unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+128         &lt;Context path=&quot;&quot; docBase=&quot;test&quot; reloadable=&quot;&quot; /&gt;
+129 &lt;Context&gt;
+130   &lt;Manager className=&quot;de.javakaffee.web.msm.MemcachedBackupSessionManager&quot;
+131     memcachedNodes=&quot;n1:192.168.4.63:11211,n2:192.168.4.64:11211&quot;    #指定位置
+132     failoverNodes=&quot;n1&quot;
+133     requestUriIgnorePattern=&quot;.*\.(ico|png|gif|jpg|css|js)$&quot;
+134     transcoderFactoryClass=&quot;de.javakaffee.web.msm.serializer.kryo.KryoTranscoderFactory&quot;
+135     /&gt;
+136 &lt;/Context&gt;
+</code></pre><p><code>[root@node5/etc/ansible/roles/tomcat/templates]#vim index.jsp.j2</code></p>
+<pre><code>  1 &lt;%@ page language=&quot;java&quot; %&gt;
+  2 &lt;html&gt;
+  3         &lt;head&gt;&lt;title&gt;TomcatA&lt;/title&gt;&lt;/head&gt;
+  4         &lt;body&gt;
+  5                 &lt;h1&gt;&lt;font color=&quot;red&quot;&gt;TomcatA.test.com&lt;/font&gt;&lt;/h1&gt;
+  6                 &lt;table align=&quot;centre&quot; border=&quot;1&quot;&gt;
+  7                         &lt;tr&gt;
+  8                                 &lt;td&gt;Session ID&lt;/td&gt;
+  9                         &lt;% session.setAttribute(&quot;test.com&quot;,&quot;test.com&quot;); %&gt;
+ 10                                 &lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt;
+ 11                         &lt;/tr&gt;
+ 12                         &lt;tr&gt;
+ 13                                 &lt;td&gt;Created on&lt;/td&gt;
+ 14                                 &lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt;
+ 15                         &lt;/tr&gt;
+ 16                 &lt;/table&gt;
+ 17         &lt;/body&gt;
+ 18 &lt;/html&gt;
+</code></pre><p><code>[root@node5/etc/ansible/roles/tomcat/templates]#vim index2.jsp.j2</code></p>
+<pre><code>  1 &lt;%@ page language=&quot;java&quot; %&gt;
+  2 &lt;html&gt;
+  3         &lt;head&gt;&lt;title&gt;TomcatB&lt;/title&gt;&lt;/head&gt;
+  4                 &lt;body&gt;
+  5                 &lt;h1&gt;&lt;font color=&quot;blue&quot;&gt;TomcatB.test.com&lt;/font&gt;&lt;/h1&gt;
+  6                 &lt;table align=&quot;centre&quot; border=&quot;1&quot;&gt;
+  7                         &lt;tr&gt;
+  8                                 &lt;td&gt;Session ID&lt;/td&gt;
+  9                         &lt;% session.setAttribute(&quot;test.com&quot;,&quot;test.com&quot;); %&gt;
+ 10                                 &lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt;
+ 11                         &lt;/tr&gt;
+ 12                         &lt;tr&gt;
+ 13                                 &lt;td&gt;Created on&lt;/td&gt;
+ 14                                 &lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt;
+ 15                         &lt;/tr&gt;
+ 16                 &lt;/table&gt;
+ 17                 &lt;/body&gt;
+ 18 &lt;/html&gt;
+</code></pre><blockquote>
+<p>编辑触发文件</p>
+</blockquote>
+<p><code>[root@node5/etc/ansible/roles/tomcat]#vim handlers/main.yml</code></p>
+<pre><code>  1 - name: tomcat reload
+  2   service: name=tomcat state=reloaded
+</code></pre><blockquote>
+<p>编辑剧本</p>
+</blockquote>
+<p><code>[root@node5/etc/ansible]#vim tomcat.yml</code></p>
+<pre><code>  1 - hosts: nginx-keep
+  2   remote_user: root
+  3   roles:
+  4   - keepalived
+  5   - haproxy
+  6 - hosts: tomcat-cluster
+  7   remote_user: root
+  8   roles:
+  9   - tomcat
+</code></pre>
             </div>
             <hr/>
 
@@ -642,7 +1073,7 @@ Tasks：任务列表
                     </span>
                     <a href="www.lmfe.org" class="b-link-green">运维小李</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2017/11/28/ansible中playbook/" class="b-link-green">ansible中playbook</a>
+                    <a href="/2017/11/28/ansible中playbook/" class="b-link-green">ansible之playbook</a>
                 </p>
             </div>
         </div>
@@ -689,23 +1120,17 @@ Tasks：任务列表
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/Zabbix基于微信告警/">
+                <a href="/2017/11/28/AIDE/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Zabbix基于微信告警">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="AIDE">
                         
-                        <span class="card-title">Zabbix基于微信告警</span>
+                        <span class="card-title">AIDE</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">在zabbix监控中，国内越来越流行使用微信、钉钉、邮件报警，这正式结合了当下的发展趋势。接下来介绍下zabbix如何结合微信发送警报信息。一、企业微信注册企业微信注册地址：https://work.weixin.qq.com/
-
-
-
-
-
-</div>
+                    <div class="summary">一、AIDE当一个入侵者进入了你的系统并且种植了木马，通常会想办法来隐蔽这个木马（除了木马自身的一些隐蔽特性外，他会尽量给你检查系统的过程设置障碍），通常入侵者会修改一些文件，比如管理员通常用ps -aux来查看系统进程，那么入侵者很可能用</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -714,16 +1139,12 @@ Tasks：任务列表
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
+                            <a href="/categories/安全/" class="post-category" target="_blank">
+                                    安全
                                 </a>
                             
-                            <a href="/categories/服务/Zabbix/" class="post-category" target="_blank">
-                                    Zabbix
-                                </a>
-                            
-                            <a href="/categories/服务/Zabbix/Zabbix基于微信告警/" class="post-category" target="_blank">
-                                    Zabbix基于微信告警
+                            <a href="/categories/安全/AIDE/" class="post-category" target="_blank">
+                                    AIDE
                                 </a>
                             
                             
@@ -733,8 +1154,8 @@ Tasks：任务列表
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/zabbix，微信/" target="_blank">
-                        <span class="chip bg-color">zabbix，微信</span>
+                    <a href="/tags/AIDE/" target="_blank">
+                        <span class="chip bg-color">AIDE</span>
                     </a>
                     
                 </div>
@@ -748,20 +1169,17 @@ Tasks：任务列表
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/ansible初级认识/">
+                <a href="/2017/11/28/FTP简单介绍/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="ansible初级认识">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="FTP简单介绍">
                         
-                        <span class="card-title">ansible初级认识</span>
+                        <span class="card-title">FTP简单介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">一、ansible介绍1、概念ansible是自动化运维工具，基于Python开发，集合了众多的运维工具的优先，实心了批量系统配置、批量程序部署、批量运行命令等功能。
-2、特性
-模块化：调用特定的模块完成特定的任务
-基于Python语言实现</div>
+                    <div class="summary">一、FTP1、FTP介绍用于Internet上的控制文件的双向传输。同时，它也是一个应用程序（Application）。基于不同的操作系统有不同的FTP应用程序，而所有这些应用程序都遵守同一种协议以传输文件。在FTP的使用当中，用户经常遇到</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -770,16 +1188,12 @@ Tasks：任务列表
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/自动化运维工具/" class="post-category" target="_blank">
-                                    自动化运维工具
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
-                            <a href="/categories/自动化运维工具/ansible/" class="post-category" target="_blank">
-                                    ansible
-                                </a>
-                            
-                            <a href="/categories/自动化运维工具/ansible/ansible初级认识/" class="post-category" target="_blank">
-                                    ansible初级认识
+                            <a href="/categories/常用服务/FTP/" class="post-category" target="_blank">
+                                    FTP
                                 </a>
                             
                             
@@ -789,16 +1203,8 @@ Tasks：任务列表
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ansible/" target="_blank">
-                        <span class="chip bg-color">ansible</span>
-                    </a>
-                    
-                    <a href="/tags/playbook/" target="_blank">
-                        <span class="chip bg-color">playbook</span>
-                    </a>
-                    
-                    <a href="/tags/自动化/" target="_blank">
-                        <span class="chip bg-color">自动化</span>
+                    <a href="/tags/ftp/" target="_blank">
+                        <span class="chip bg-color">ftp</span>
                     </a>
                     
                 </div>
@@ -825,7 +1231,7 @@ Tasks：任务列表
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

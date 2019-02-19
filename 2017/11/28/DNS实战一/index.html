@@ -38,7 +38,7 @@
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -114,7 +114,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -312,8 +312,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/主从，转发，子域和父域/" target="_blank">
-                                <span class="chip bg-color">主从，转发，子域和父域</span>
+                            <a href="/tags/DNS/" target="_blank">
+                                <span class="chip bg-color">DNS</span>
                             </a>
                         
                     </div>
@@ -324,16 +324,12 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                服务
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                常用服务
                             </a>
                         
-                            <a href="/categories/服务/DNS/" class="post-category" target="_blank">
+                            <a href="/categories/常用服务/DNS/" class="post-category" target="_blank">
                                 DNS
-                            </a>
-                        
-                            <a href="/categories/服务/DNS/DNS实战一/" class="post-category" target="_blank">
-                                DNS实战一
                             </a>
                         
                     </div>
@@ -351,14 +347,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1,359
+                        2,054
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        6 分
+                        9 分
                     </div>
                     
                 
@@ -511,6 +507,104 @@ dns1    A       192.168.4.132
 <p><strong>注意：通过以上几个实验总结出需要注意的一些地方</strong></p>
 <p>1、在做实验过程中一定要关闭dnssec功能；</p>
 <p>2、复制文件<code>/var/named/named.localhost</code>做模板时，一定要加选项“-a”或“-p”选项。复制完成后一定看所有者、所属组和权限。</p>
+<h2 id="实战二"><a href="#实战二" class="headerlink" title="实战二"></a>实战二</h2><p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_193605.png" alt=""></p>
+<p>如何实现上述的拓扑图呢？先从底部网上一步一步的搭建</p>
+<p>（1）实现主从DNS服务器</p>
+<p>（a）修改主DNS服务器</p>
+<p><code>[root@localhost~]#vim /etc/named.conf</code>    #修改主配置文件</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_181534.png" alt=""></p>
+<p><code>[root@localhost~]#vim /etc/named.rfc1912.zones</code>    #创建zone</p>
+<pre><code>zone &quot;test.com&quot; IN {
+         type master;
+         file &quot;test.com.zone&quot;;
+ };
+</code></pre><p><code>[root@localhost ~]# vim /var/named/test.com.zone</code>  #创建解析库文件</p>
+<pre><code>$TTL 1D
+@       IN SOA  dns1 test.com. (
+                                        2       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        IN      NS      dns1
+dns1    A       192.168.4.132
+webserver       IN      A       192.168.4.132
+www     IN      CNAME   webserver
+</code></pre><p><code>[root@localhost~]#vim /var/named/named.ca</code>    #修改根服务器文件</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_195721.png" alt=""></p>
+<p><code>[root@localhost ~]# service named restart</code> #重启bind服务</p>
+<p>（b）配置从DNS服务器</p>
+<p>主配置文件和配置从服务器一样，这里就不再阐述<br><code>[root@localhost~]#vim /etc/named.rfc1912.zones</code></p>
+<pre><code> zone &quot;localhost&quot; IN {
+         type master;
+         file &quot;named.localhost&quot;;
+         allow-update { none; };
+ };
+</code></pre><p><code>[root@localhost~]#systemctl restart named</code>#重启服务<br><code>[root@localhost~]#ll /var/named/slaves/test.com.slave.zone</code>   #查看是否成功</p>
+<p>（2）配置子域</p>
+<p><code>[root@localhost~]#vim /etc/named.rfc1912.zones</code>   #创建zone</p>
+<pre><code>zone &quot;com&quot; {
+         type master;
+       file &quot;com.zone&quot;;
+ }; 
+</code></pre><p><code>[root@localhost~]#vim /var/named/com.zone</code> #创建解析库</p>
+<pre><code>  $TTL 1D
+ @       IN SOA  dns1 rname.invalid. (
+                                         0       ; serial
+                                         1D      ; refresh
+                                         1H      ; retry
+                                         1W      ; expire
+                                        3H )    ; minimum
+         NS      dns1
+ test    NS      dns2
+ dns1    A       192.168.4.147
+ dns2    A       192.168.4.132
+ www     A       192.168.4.66
+</code></pre><p><code>[root@localhost~]#systemctl restart named</code> #重启bind服务</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_212355.png" alt=""></p>
+<p>（3）根</p>
+<p> <code>[root@localhost~]#vim /etc/named.rfc1912.zones</code></p>
+<pre><code> zone &quot;.&quot; IN {
+          type master;
+         file &quot;root.zone&quot;;
+ };
+</code></pre><p>删除配置文件中<code>/etc/named.conf</code>如下内容<br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_204827.png" alt=""></p>
+<p><code>[root@localhost/var/named]#vim root.zone</code> #创建解析库</p>
+<pre><code>   $TTL 1D
+   @       IN SOA  dns1 rname.invalid. (
+                                           0       ; serial
+                                           1D      ; refresh
+                                           1H      ; retry
+                                           1W      ; expire
+                                           3H )    ; minimum
+           NS      dns1
+   com     NS      dns2
+  dns1    A       192.168.4.146
+  dns2    A       192.168.4.147
+</code></pre><p><code>[root@localhost/var/named]#systemctl restart named</code>重启服务</p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-20_212932.png" alt=""></p>
+<p>这样我们搭建完成了。是否是很有成就感呢？哈哈。当大家看到这里的时候是不是发现我们没有对从DNS服务器做设置呢？如果主DNS挂了，那么从DNS能工作么？下面我们就来说道说道。</p>
+<blockquote>
+<p>假设主DNS服务器down（IP 192.168.4.132 ）</p>
+</blockquote>
+<p><code>[root@localhost ~]# ifconfig eth0 down</code>    #将主DNS服务器down掉</p>
+<p><code>[root@localhost ~]# rndc flush</code>    #清除主DNS服务器的缓存</p>
+<blockquote>
+<p>在Client客户机测试 （IP 192.168.4.149）</p>
+</blockquote>
+<p><code>[root@localhost~]#dig www.test.com @192.168.4.147</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-09-21_194440.png" alt=""></p>
+<p>如图所示，没有解析成功，说明我们的从DNS服务器没有起作用，没有实现负载均衡作用。有没有想过为什么出现这种情况呢？因为我们没有在<strong>com域</strong>中没有添加这条域，下面我们在<strong>com域</strong>中添加此<strong>从DNS服务器</strong>的dns记录测试</p>
+<blockquote>
+<p>在com域中添加如下记录</p>
+</blockquote>
+<p><code>[root@localhost/var/named]#vim com.zone</code><br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-21_194536.png" alt=""></p>
+<p><code>[root@localhost/var/named]#rndc flush</code> #清除缓存</p>
+<blockquote>
+<p>在client客户机上测试</p>
+</blockquote>
+<p><code>[root@localhost~]#dig www.test.com @192.168.4.148</code><br><img src="http://owatlfstl.bkt.clouddn.com/2017-09-21_195643.png" alt=""></p>
+<p>这样说明我们从DNS服务器起到了，达到了容错功能。是不是有点小小的成就感呢？</p>
 
             </div>
             <hr/>
@@ -698,18 +792,20 @@ dns1    A       192.168.4.132
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/KVM图形化管理工具/">
+                <a href="/2017/11/28/Nginx介绍/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="KVM图形化管理工具">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Nginx介绍">
                         
-                        <span class="card-title">KVM图形化管理工具</span>
+                        <span class="card-title">Nginx介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">由于在使用virsh、qemu-kvm工具创建虚拟机时，命令繁琐，操作不易，因此推荐一款WEB UI的工具。
-一、图形管理工具二、图形化工具介绍1、WokWok基于cherrypy的web框架，可以通过一些插件来进行扩展，例如：虚拟化管理、</div>
+                    <div class="summary">
+Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个BSD-like 协议下发行。其特点是占有内存少，并发能力强。
+一、Nginx介绍
+1、Nginx程序架构Nginx程序架构：mas</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -718,16 +814,12 @@ dns1    A       192.168.4.132
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/虚拟化/" class="post-category" target="_blank">
-                                    虚拟化
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
-                            <a href="/categories/虚拟化/KVM/" class="post-category" target="_blank">
-                                    KVM
-                                </a>
-                            
-                            <a href="/categories/虚拟化/KVM/图形化管理工具/" class="post-category" target="_blank">
-                                    图形化管理工具
+                            <a href="/categories/常用服务/Nginx/" class="post-category" target="_blank">
+                                    Nginx
                                 </a>
                             
                             
@@ -737,8 +829,8 @@ dns1    A       192.168.4.132
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/kimchi，wok/" target="_blank">
-                        <span class="chip bg-color">kimchi，wok</span>
+                    <a href="/tags/nginx/" target="_blank">
+                        <span class="chip bg-color">nginx</span>
                     </a>
                     
                 </div>
@@ -752,21 +844,17 @@ dns1    A       192.168.4.132
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/LAMP源码编译安装/">
+                <a href="/2017/11/28/Httpd相关概念/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="LAMP源码编译安装">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="HTTP介绍">
                         
-                        <span class="card-title">LAMP源码编译安装</span>
+                        <span class="card-title">HTTP介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">编译安装LAMP环境在实际环境中我们经常根据自己所处的公司环境进行配置，适合自己公司的配置。下面我们来介绍如何进行编译安装
-安装前提在CentOS7 系统:
-关闭iptables
-将selinux设置为disabled
-apr-1.6.2.</div>
+                    <div class="summary">一、HTTP概念及相关术语1、概念HTTP协议（HyperText Transfer Protocol，超文本传输协议）是用于从WWW服务器传输超文本到本地浏览器的传输协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -779,12 +867,12 @@ apr-1.6.2.</div>
                                     服务
                                 </a>
                             
-                            <a href="/categories/服务/LAMP/" class="post-category" target="_blank">
-                                    LAMP
+                            <a href="/categories/服务/Apache/" class="post-category" target="_blank">
+                                    Apache
                                 </a>
                             
-                            <a href="/categories/服务/LAMP/LAMP源码编译安装/" class="post-category" target="_blank">
-                                    LAMP源码编译安装
+                            <a href="/categories/服务/Apache/Httpd/" class="post-category" target="_blank">
+                                    Httpd
                                 </a>
                             
                             
@@ -794,8 +882,8 @@ apr-1.6.2.</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/LAMP，lamp，php，php-fpm，源码编译安装/" target="_blank">
-                        <span class="chip bg-color">LAMP，lamp，php，php-fpm，源码编译安装</span>
+                    <a href="/tags/Apache，HTTP/" target="_blank">
+                        <span class="chip bg-color">Apache，HTTP</span>
                     </a>
                     
                 </div>
@@ -822,7 +910,7 @@ apr-1.6.2.</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

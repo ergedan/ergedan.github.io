@@ -43,7 +43,7 @@ lvs：sh
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -119,7 +119,7 @@ lvs：sh
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -317,8 +317,8 @@ lvs：sh
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/tomcat，cluster，memcached/" target="_blank">
-                                <span class="chip bg-color">tomcat，cluster，memcached</span>
+                            <a href="/tags/Tomcat/" target="_blank">
+                                <span class="chip bg-color">Tomcat</span>
                             </a>
                         
                     </div>
@@ -329,16 +329,12 @@ lvs：sh
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                服务
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                常用服务
                             </a>
                         
-                            <a href="/categories/服务/Tomcat/" class="post-category" target="_blank">
+                            <a href="/categories/常用服务/Tomcat/" class="post-category" target="_blank">
                                 Tomcat
-                            </a>
-                        
-                            <a href="/categories/服务/Tomcat/Tomcat会话保持/" class="post-category" target="_blank">
-                                Tomcat会话保持
                             </a>
                         
                     </div>
@@ -1063,24 +1059,18 @@ BalancerMember [balancerurl] url [key=value [key=value...]]
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/TCP四次挥手/">
+                <a href="/2017/11/28/VRRP协议/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="TCP四次挥手">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="VRRP协议">
                         
-                        <span class="card-title">TCP四次挥手</span>
+                        <span class="card-title">VRRP协议</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">TCP四次挥手的过程
-第一步
-
-Client和Server相互传送完包以后，Client主动向Server发送关闭连接的信息：FIN=1，seq=u；此时进入FIN_WAIT状态
-
-第二步
-
-Server接收到Client请求之后，假如他们</div>
+                    <div class="summary">
+一、VRRP协议虚拟路由冗余协议（VRRP，Virtual Router Redundancy Protocol）通过把几台路由设备联合组成一台虚拟的路由设备，使用一定的机制保证当主机的下一跳路由机出现故障时，及时将业务切换到备份路由器，</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -1089,16 +1079,12 @@ Server接收到Client请求之后，假如他们</div>
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
-                            <a href="/categories/服务/TCP/" class="post-category" target="_blank">
-                                    TCP
-                                </a>
-                            
-                            <a href="/categories/服务/TCP/四次挥手/" class="post-category" target="_blank">
-                                    四次挥手
+                            <a href="/categories/常用服务/Keepalived/" class="post-category" target="_blank">
+                                    Keepalived
                                 </a>
                             
                             
@@ -1108,8 +1094,8 @@ Server接收到Client请求之后，假如他们</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/TCP/" target="_blank">
-                        <span class="chip bg-color">TCP</span>
+                    <a href="/tags/VRRP协议/" target="_blank">
+                        <span class="chip bg-color">VRRP协议</span>
                     </a>
                     
                 </div>
@@ -1123,20 +1109,18 @@ Server接收到Client请求之后，假如他们</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/Tomcat基于Memcached缓存session共享/">
+                <a href="/2017/11/28/Tomcat简单介绍/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Tomcat基于Redis缓存session共享">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Tomcat简单介绍">
                         
-                        <span class="card-title">Tomcat基于Redis缓存session共享</span>
+                        <span class="card-title">Tomcat简单介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">基于Memcached缓存session共享使用memcached服务存取session信息，应用服务器接受心情求将session信息保存于memcached中。
-缺点
-Memcached支持的数据结构比较单一
-Memcached内存必须足</div>
+                    <div class="summary">
+Tomcat是由Apache软件基金会下属的Jakarta项目开发的一个Servlet容器，按照Sun Microsystems提供的技术规范，实现了对Servlet和JavaServer Page（JSP）的支持，并提供了作为web服务</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -1145,16 +1129,12 @@ Memcached内存必须足</div>
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
-                            <a href="/categories/服务/Tomcat/" class="post-category" target="_blank">
+                            <a href="/categories/常用服务/Tomcat/" class="post-category" target="_blank">
                                     Tomcat
-                                </a>
-                            
-                            <a href="/categories/服务/Tomcat/Tomcat基于Redis缓存session共享/" class="post-category" target="_blank">
-                                    Tomcat基于Redis缓存session共享
                                 </a>
                             
                             
@@ -1164,8 +1144,8 @@ Memcached内存必须足</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/tomcat/" target="_blank">
-                        <span class="chip bg-color">tomcat</span>
+                    <a href="/tags/Tomcat/" target="_blank">
+                        <span class="chip bg-color">Tomcat</span>
                     </a>
                     
                 </div>
@@ -1192,7 +1172,7 @@ Memcached内存必须足</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

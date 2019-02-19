@@ -37,7 +37,7 @@
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -113,7 +113,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -323,16 +323,12 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/文件管理/" class="post-category" target="_blank">
-                                文件管理
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                常用服务
                             </a>
                         
-                            <a href="/categories/文件管理/FTP/" class="post-category" target="_blank">
+                            <a href="/categories/常用服务/FTP/" class="post-category" target="_blank">
                                 FTP
-                            </a>
-                        
-                            <a href="/categories/文件管理/FTP/FTP简单介绍/" class="post-category" target="_blank">
-                                FTP简单介绍
                             </a>
                         
                     </div>
@@ -767,18 +763,26 @@ Login failed.
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/DNS访问控制和智能DNS/">
+                <a href="/2017/11/28/ansible中playbook/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="DNS访问控制和智能DNS">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="ansible之playbook">
                         
-                        <span class="card-title">DNS访问控制和智能DNS</span>
+                        <span class="card-title">ansible之playbook</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">DNS的管理功能你是不是有这样的想法，只想让某个IP或者某个IP端的地址进行访问，实现访问控制功能。DNS服务给我们提供了很好的解决方法。
-1、选项||allow-query {}；|  允许查询的主机，相当于白名单|allow-trans</div>
+                    <div class="summary">一、Playbook1、Playbook核心元素
+Hosts：运行指定任务的目标主机
+remote_user：在远程主机上执行任务的用户
+sudo_user：切换用户
+
+
+Tasks：任务列表
+
+格式：
+  （1）action：module</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -787,16 +791,12 @@ Login failed.
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
+                            <a href="/categories/自动化/" class="post-category" target="_blank">
+                                    自动化
                                 </a>
                             
-                            <a href="/categories/服务/DNS/" class="post-category" target="_blank">
-                                    DNS
-                                </a>
-                            
-                            <a href="/categories/服务/DNS/DNS访问控制和智能DNS/" class="post-category" target="_blank">
-                                    DNS访问控制和智能DNS
+                            <a href="/categories/自动化/ansible/" class="post-category" target="_blank">
+                                    ansible
                                 </a>
                             
                             
@@ -806,8 +806,16 @@ Login failed.
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/acl，view，智能DNS/" target="_blank">
-                        <span class="chip bg-color">acl，view，智能DNS</span>
+                    <a href="/tags/ansible/" target="_blank">
+                        <span class="chip bg-color">ansible</span>
+                    </a>
+                    
+                    <a href="/tags/playbook/" target="_blank">
+                        <span class="chip bg-color">playbook</span>
+                    </a>
+                    
+                    <a href="/tags/自动化/" target="_blank">
+                        <span class="chip bg-color">自动化</span>
                     </a>
                     
                 </div>
@@ -821,18 +829,20 @@ Login failed.
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/iptables命令/">
+                <a href="/2017/11/28/dig、nslookup等工具/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="iptables命令">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="dig和nslookup命令">
                         
-                        <span class="card-title">iptables命令</span>
+                        <span class="card-title">dig和nslookup命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">iptables命令格式：
-iptables [-t table] SUBCOMMAND chain [-m ] matchname [per-match-options]] -j targetname [per-target-option</div>
+                    <div class="summary">管理命令1、dig命令作用：只能用于测试DNS系统，不会查询hosts文件进行解析。
+格式：
+dig [@server] [-b address] [-c class] [-f filename] [-k filename] [-m]
+  </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -841,12 +851,12 @@ iptables [-t table] SUBCOMMAND chain [-m ] matchname [per-match-options]] -j tar
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/防火墙/" class="post-category" target="_blank">
-                                    防火墙
+                            <a href="/categories/命令/" class="post-category" target="_blank">
+                                    命令
                                 </a>
                             
-                            <a href="/categories/防火墙/iptables命令/" class="post-category" target="_blank">
-                                    iptables命令
+                            <a href="/categories/命令/dig和nslookup/" class="post-category" target="_blank">
+                                    dig和nslookup
                                 </a>
                             
                             
@@ -856,8 +866,8 @@ iptables [-t table] SUBCOMMAND chain [-m ] matchname [per-match-options]] -j tar
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/iptables命令，四表五链/" target="_blank">
-                        <span class="chip bg-color">iptables命令，四表五链</span>
+                    <a href="/tags/dig，nslookup/" target="_blank">
+                        <span class="chip bg-color">dig，nslookup</span>
                     </a>
                     
                 </div>
@@ -884,7 +894,7 @@ iptables [-t table] SUBCOMMAND chain [-m ] matchname [per-match-options]] -j tar
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

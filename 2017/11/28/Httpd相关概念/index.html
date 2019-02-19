@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="HTTP介绍, 运维小李">
-    <meta name="description" content="HTTP概念及相关术语1、概念HTTP协议（HyperText Transfer Protocol，超文本传输协议）是用于从WWW服务器传输超文本到本地浏览器的传输协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输">
+    <meta name="description" content="一、HTTP概念及相关术语1、概念HTTP协议（HyperText Transfer Protocol，超文本传输协议）是用于从WWW服务器传输超文本到本地浏览器的传输协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -37,7 +37,7 @@
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -113,7 +113,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -311,8 +311,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/HTTP，https，web/" target="_blank">
-                                <span class="chip bg-color">HTTP，https，web</span>
+                            <a href="/tags/Apache，HTTP/" target="_blank">
+                                <span class="chip bg-color">Apache，HTTP</span>
                             </a>
                         
                     </div>
@@ -350,14 +350,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2,029
+                        3,819
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        8 分
+                        15 分
                     </div>
                     
                 
@@ -373,7 +373,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="HTTP概念及相关术语"><a href="#HTTP概念及相关术语" class="headerlink" title="HTTP概念及相关术语"></a>HTTP概念及相关术语</h2><h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><pre><code>HTTP协议（HyperText Transfer Protocol，超文本传输协议）是用于从WWW服务器传输超文本到本地浏览器的传输协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。
+                <h2 id="一、HTTP概念及相关术语"><a href="#一、HTTP概念及相关术语" class="headerlink" title="一、HTTP概念及相关术语"></a>一、HTTP概念及相关术语</h2><h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><pre><code>HTTP协议（HyperText Transfer Protocol，超文本传输协议）是用于从WWW服务器传输超文本到本地浏览器的传输协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。
 </code></pre><h3 id="2、HTTP协议介绍"><a href="#2、HTTP协议介绍" class="headerlink" title="2、HTTP协议介绍"></a>2、HTTP协议介绍</h3><blockquote>
 <p>http/0.9</p>
 </blockquote>
@@ -619,7 +619,170 @@ http://wwwtest.com/bbs/hello;gender=f/send;type=title
 https://list.jd.com/list.html?cat=670,671,672&amp;ev=149
 _2992&amp;sort=sort_totalsales15_desc&amp;trans=1
 http://apache.org/index.html#projects-list
-</code></pre>
+</code></pre><h2 id="二、HTTP的工作机制"><a href="#二、HTTP的工作机制" class="headerlink" title="二、HTTP的工作机制"></a>二、HTTP的工作机制</h2><p>当我们去访问一个网站是一个网页并不是单单的一个资源，是由多个资源展示出来；每个资源都要单独的请求。</p>
+<p>现在我们需要区分两个概念静态文件和动态文件</p>
+<pre><code>静态文件：无需服务端做出额外处理，说白了就是写死的，任何人访问此资源时，都显示同一个页面内容。文件后缀：.jpg .html  .txt .js .css .mp3 .avi
+动态文件：服务端执行程序之后，返回执行结果。说白了就是不同的人、不同时候访问此页面，显示的内容可能不同。文件后缀：.asp .php .jsp
+</code></pre><blockquote>
+<p>非持久连接和持久连接</p>
+</blockquote>
+<p>非持久连接：一个请求与服务器连接传输完成之后，端口。如果下一个请求过来，再建立连接。</p>
+<blockquote>
+<p>缺点</p>
+</blockquote>
+<p>(1)客户为每个待请求的对象建立并维护一个新得连接。对于每个这个的连接，TCP必须同时在客户端和服务器端分配TCP缓冲区，并维护TCP变量。对于有可能同时为来自数百个不同客户的请求提供服务的Web服务器来说，这会严重增加服务器的负担；</p>
+<p>(2)对每个对象请求都有2个RTT(Round-Trip Time 往返时延)的响应延迟：一个RTT用于建立TCP连接，另一个RTT用于请求和接收对象；<a href="http://blog.csdn.net/jackywangjia/article/details/27643379" target="_blank" rel="noopener">http://blog.csdn.net/jackywangjia/article/details/27643379</a></p>
+<p>(3)每个对象都要经历 TCP 缓启动，因为每个TCP连接都要起始于slow start 阶段。并行TCP连接的使用能够部分减轻RTT延迟和缓启动的影响。</p>
+<p>持久连接：当完成一次请求之后，服务器在发出响应后让TCP连接继续打开着。同一对客户/服务器之间的后续请求和响应可以通过这个连接发送。</p>
+<p>缺点：服务器送出一个对象后开始等待下一个请求，而这个新请求却不能马上到达。这段时间服务器资源便闲置了。</p>
+<blockquote>
+<p>如何提高HTTP连接性能呢？</p>
+</blockquote>
+<ul>
+<li>并行连接：通过多条TCP连接发起并发的HTTP请求</li>
+</ul>
+<p><img src="http://owatlfstl.bkt.clouddn.com/rr.jpg" alt=""></p>
+<ul>
+<li>持久连接：keep-alive,长连接，重用TCP连接，以消除连接和关闭的时延,以事务个数和时间来决定是否关闭连接</li>
+</ul>
+<p><img src="http://owatlfstl.bkt.clouddn.com/dd.jpg" alt=""></p>
+<ul>
+<li>管道化连接：通过共享TCP连接发起并发的HTTP请求</li>
+</ul>
+<p><img src="http://owatlfstl.bkt.clouddn.com/eew.jpg" alt=""></p>
+<ul>
+<li>复用的连接：交替传送请求和响应报文（实验阶段）</li>
+</ul>
+<blockquote>
+<p>Web响应模型介绍</p>
+</blockquote>
+<ul>
+<li><p>单进程I/O模型：启动一个进程处理用户请求，而且一次只处理一个，当发出多个请求时，被串联响应。<br><img src="http://owatlfstl.bkt.clouddn.com/aaqq.jpg" alt=""></p>
+</li>
+<li><p>多进程I/O模型：并行启动多个进程，每个进程响应一个连接请求。<br><img src="http://owatlfstl.bkt.clouddn.com/aae.jpg" alt=""></p>
+</li>
+<li><p>复用I/O请求：启动一个进程，同时响应N个连接请求。<br><img src="http://owatlfstl.bkt.clouddn.com/er.jpg" alt=""></p>
+</li>
+<li><p>复用多进程I/O模型：启动M个进程，每个进程响应N个请求，同时接受M*N个请求。</p>
+</li>
+</ul>
+<p><img src="http://owatlfstl.bkt.clouddn.com/rrt.jpg" alt=""></p>
+<h2 id="三、新特性"><a href="#三、新特性" class="headerlink" title="三、新特性"></a>三、新特性</h2><ul>
+<li>MPM支持运行为DSO机制，以模块形式按需加载</li>
+<li>event MPM生产环境可用</li>
+<li>异步读写机制</li>
+<li>支持每模块及每目录的单独自制级别定义</li>
+<li>每请求相关的专用配置</li>
+<li>增强版的表达式分析式</li>
+<li>毫秒级持久连接时长定义</li>
+<li>基于FQDN的虚拟主机不需要NameVirtualHost指令</li>
+<li>新指令，AllowOverList</li>
+<li>支持用户自定义变量</li>
+<li>更低的内存消耗</li>
+<li>不再支持使用Order，Deny,Allow来做基于IP的访问控制新模块</li>
+</ul>
+<h2 id="httpd-2-4文件介绍"><a href="#httpd-2-4文件介绍" class="headerlink" title="httpd-2.4文件介绍"></a>httpd-2.4文件介绍</h2><p>-配置文件</p>
+<pre><code>/etc/httpd/conf/httpd/conf
+/etc/httpd/conf.d/*.conf
+</code></pre><ul>
+<li><p>模块相关的配置文件</p>
+<p>  /etc/httpd/conf.modules.d/*.conf</p>
+</li>
+<li><p>系统启动文件</p>
+<p>  /usr/lib/systemd/system/httpd/service</p>
+</li>
+<li><p>主程序文件</p>
+<p>  /usr/sbin/httpdd</p>
+</li>
+<li><p>日志文件</p>
+<p>  /var/log/httpd/access_log<br>  /var/log/httpd/error_log</p>
+</li>
+<li><p>站点文档</p>
+<p>  /var/www/html</p>
+</li>
+<li><p>模块文件路径</p>
+<p>  /usr/lib64/httpd/moudles<br>  /etc/httpd/modules</p>
+</li>
+</ul>
+<h2 id="相关设置介绍"><a href="#相关设置介绍" class="headerlink" title="相关设置介绍"></a>相关设置介绍</h2><p>（1）切换使用MPM</p>
+<p><code>[root@localhost/etc/httpd/conf.modules.d]#vim 00-mpm.conf</code></p>
+<p><img src="http://owatlfstl.bkt.clouddn.com/2017-10-01_211652.jpg" alt=""></p>
+<p>如上图所示，如果要使用其他MPM将注释取消重启即可。</p>
+<p>（2）认证方式</p>
+<ul>
+<li><p>无明确授权的记录，默认拒绝</p>
+<p>  允许所有主机访问：Require all granted<br>  拒绝所有主机访问：Require all denied</p>
+</li>
+<li><p>控制特定的IP访问</p>
+<p>  Require ip IPADDR :授权指定来源的IP访问<br>  Require not ip IPADDR：拒绝特定的IP访问</p>
+</li>
+<li><p>控制特定的主机访问</p>
+<p>  Require host HOSTNAME :授权特定主机访问<br>  Require not host HOSTNAME：拒绝特定主机访问</p>
+<pre><code>  HOSTNAME:
+      FQDN:特定主机
+      domain.tld：指定域名下的所有主机
+</code></pre></li>
+</ul>
+<blockquote>
+<p>使用示例</p>
+</blockquote>
+<pre><code>&lt;RequireAll&gt;
+    Require all granted
+    Require not ip 192.168.4.150
+&lt;/RequireAll&gt;
+不能又失败，至少有一个成功匹配。
+
+&lt;RequireAny&gt;
+    Require all deny
+    Require not ip 192.168.4.150
+&lt;/RequireAny&gt;
+多个语句有一个成功，即成功优先。
+</code></pre><p>（3）虚拟主机</p>
+<p><strong>注意：基于FQDN的虚拟主机也不需要NameVirtualHost指令</strong></p>
+<blockquote>
+<p>示例</p>
+</blockquote>
+<pre><code>&lt;VirtualHost *:80&gt;
+    ServerName www.x.com
+    DocumentRoot  &quot;/app/www/x.com&quot;
+    &lt;Document &quot;/app/www/x.com&quot;&gt;
+        Option None
+        AllowOverride None
+        Require all granted
+    &lt;/Document&gt;
+&lt;/VirtualHost&gt;
+</code></pre><p><strong>注意：任意目录下的页面只有显示授权才能被访问。</strong></p>
+<p>（4）Sendfile机制</p>
+<blockquote>
+<p>不使用Sendfile的过程</p>
+</blockquote>
+<pre><code>1、系统调用read()产生一个上下文切换：从user mode 切换到Kernel mode，然后DMA(Direct Memory Access，直接内存存取)执行拷贝，把文件数据从硬盘读到一个Kernel buffer里。
+2、数据从Kernel buffer拷贝到user buffer，然后系统调用read()返回，这时又产生一个上下文切换：从kernel mode 切换到user mode
+3、系统调用write()产生一个上下文切换：从user mode 切换到kernel mode，然后把步骤2读到user buffer的数据拷贝到kernel buffer，不过关这次是相关联的。
+4、系统调用write()返回，产生一个上下文切换：从Kernel mode 切换到User mode，然后DMA从kernel buffer拷贝数据到协议栈。
+</code></pre><blockquote>
+<p>使用Sendfile机制过程</p>
+</blockquote>
+<pre><code>1、系统调用sendfile()通过DMA把硬盘数据拷贝到Kernel buffer，然后数据被kernel直接拷贝到另一个与socket相关的kernel buffer。这里没有user mode和kernel mode 之间的切换。在kernel中直接完成了从一个buffer到另一个buffer的拷贝。
+2、DMA把数据从kernel buffer直接拷贝给协议栈，没有切换也不需要把数据从user mode拷贝到kernel mode，以为数据就在Kernel 里。
+</code></pre><p>（5）方向代理功能</p>
+<pre><code>ProxyPass “/” &quot;http://www.example.com/&quot;
+ProxyPassReverse &quot;/&quot; &quot;http://www.example.com/&quot;
+</code></pre><p>特定URL反向代理</p>
+<pre><code>ProxyPass “/image” &quot;http://www.example.com/&quot;
+ProxyPassReverse &quot;/image&quot; &quot;http://www.example.com&quot;
+</code></pre><blockquote>
+<p>示例</p>
+</blockquote>
+<pre><code>&lt;VirtualHost *:80&gt;
+    ServerName www.x.com
+    ProxyPass / http://localhost:8080
+    ProxyPassReserver / http://localhost:8080
+&lt;/VirtualHost&gt;
+</code></pre><p>准备三台虚拟注意，CentOS 7 做web服务器，CentOS 7做代理服务器，另一台CentOS 6 做客户端</p>
+<p>（5）APR（Apache Portalbe Run-time Libararies，Apache 可移植运行库）</p>
+<p>主要为上层的应用程序提供一个可以跨越多操作系统平台使用的底层支持接口库。在早起的Apache版本中，应用程序本身必须能够处理各种具体操作系统平台的细节，并针对不同的平台调用不同的处理函数。</p>
+
             </div>
             <hr/>
 
@@ -806,25 +969,18 @@ http://apache.org/index.html#projects-list
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/Httpd-2.4特性/">
+                <a href="/2017/11/28/DNS实战一/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Httpd-2.4特性">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="DNS实战">
                         
-                        <span class="card-title">Httpd-2.4特性</span>
+                        <span class="card-title">DNS实战</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">新特性
-MPM支持运行为DSO机制，以模块形式按需加载
-event MPM生产环境可用
-异步读写机制
-支持每模块及每目录的单独自制级别定义
-每请求相关的专用配置
-增强版的表达式分析式
-毫秒级持久连接时长定义
-基于FQDN的虚拟主机不需要Na</div>
+                    <div class="summary">实战（1）搭建主DNS服务器（a）[root@localhost ~]# yum install -y bind   #安装包（b）[root@localhost ~]# vim /etc/named.conf   #修改主配置文件
+方式一</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -833,16 +989,12 @@ event MPM生产环境可用
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
-                            <a href="/categories/服务/Apache/" class="post-category" target="_blank">
-                                    Apache
-                                </a>
-                            
-                            <a href="/categories/服务/Apache/Httpd-2-4特性/" class="post-category" target="_blank">
-                                    Httpd-2.4特性
+                            <a href="/categories/常用服务/DNS/" class="post-category" target="_blank">
+                                    DNS
                                 </a>
                             
                             
@@ -852,8 +1004,8 @@ event MPM生产环境可用
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/httpd，2-4版本/" target="_blank">
-                        <span class="chip bg-color">httpd，2.4版本</span>
+                    <a href="/tags/DNS/" target="_blank">
+                        <span class="chip bg-color">DNS</span>
                     </a>
                     
                 </div>
@@ -867,17 +1019,20 @@ event MPM生产环境可用
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/KVM/">
+                <a href="/2017/11/28/HTTP请求报文/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="KVM基础">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="HTTP请求报文">
                         
-                        <span class="card-title">KVM基础</span>
+                        <span class="card-title">HTTP请求报文</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">KVM（Kernel-based Virtual Machine）是一种用于Linux内核中的虚拟化的基础设施，可以将Linux内核转换为一个hypervisor（虚拟机器监视器，virtual machine monitor，VMM）。K</div>
+                    <div class="summary">HTTP请求报文在之前我们介绍了Web请求的过程里面说了当Client向Serve发送建立请求时即发送请求报文。Server处理完成之后向Client发送响应报文，即响应报文。下面我们来具体说说这两个的结构。
+
+请求报文语法格式：
+&lt;</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -886,16 +1041,12 @@ event MPM生产环境可用
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/虚拟化/" class="post-category" target="_blank">
-                                    虚拟化
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
-                            <a href="/categories/虚拟化/KVM/" class="post-category" target="_blank">
-                                    KVM
-                                </a>
-                            
-                            <a href="/categories/虚拟化/KVM/KVM基础/" class="post-category" target="_blank">
-                                    KVM基础
+                            <a href="/categories/常用服务/Apache/" class="post-category" target="_blank">
+                                    Apache
                                 </a>
                             
                             
@@ -905,8 +1056,12 @@ event MPM生产环境可用
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/kvm，virsh，qemu-kvm/" target="_blank">
-                        <span class="chip bg-color">kvm，virsh，qemu-kvm</span>
+                    <a href="/tags/HTTP/" target="_blank">
+                        <span class="chip bg-color">HTTP</span>
+                    </a>
+                    
+                    <a href="/tags/Apache/" target="_blank">
+                        <span class="chip bg-color">Apache</span>
                     </a>
                     
                 </div>
@@ -933,7 +1088,7 @@ event MPM生产环境可用
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

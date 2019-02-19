@@ -37,7 +37,7 @@
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -113,7 +113,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -311,8 +311,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/samba/" target="_blank">
-                                <span class="chip bg-color">samba</span>
+                            <a href="/tags/Samba/" target="_blank">
+                                <span class="chip bg-color">Samba</span>
                             </a>
                         
                     </div>
@@ -323,11 +323,11 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/文件管理/" class="post-category" target="_blank">
-                                文件管理
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                常用服务
                             </a>
                         
-                            <a href="/categories/文件管理/Samba/" class="post-category" target="_blank">
+                            <a href="/categories/常用服务/Samba/" class="post-category" target="_blank">
                                 Samba
                             </a>
                         
@@ -964,18 +964,21 @@ multiuser：用于指定使用多用户挂载
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/SSH简单介绍/">
+                <a href="/2017/11/28/Redis集群/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="SSH简单介绍">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Redis集群">
                         
-                        <span class="card-title">SSH简单介绍</span>
+                        <span class="card-title">Redis集群</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">一、SSH基本介绍1、含义：
-    SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Group）所制定；SSH 为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话</div>
+                    <div class="summary">redis集群同步时间主机名互相解析确保firewalld和iptables关闭1、配置三个节点[root@node3~]#yum install -y redis
+2、修改配置文件
+node1配置：
+
+[root@node1~]#vim </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -984,16 +987,12 @@ multiuser：用于指定使用多用户挂载
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
+                            <a href="/categories/缓存/" class="post-category" target="_blank">
+                                    缓存
                                 </a>
                             
-                            <a href="/categories/服务/SSH/" class="post-category" target="_blank">
-                                    SSH
-                                </a>
-                            
-                            <a href="/categories/服务/SSH/SSH简单介绍/" class="post-category" target="_blank">
-                                    SSH简单介绍
+                            <a href="/categories/缓存/Redis/" class="post-category" target="_blank">
+                                    Redis
                                 </a>
                             
                             
@@ -1003,8 +1002,8 @@ multiuser：用于指定使用多用户挂载
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ssh/" target="_blank">
-                        <span class="chip bg-color">ssh</span>
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
                     </a>
                     
                 </div>
@@ -1018,17 +1017,20 @@ multiuser：用于指定使用多用户挂载
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/TCP_wrappers/">
+                <a href="/2017/11/28/Tomcat基于Memcached缓存session共享/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="TCP_wrappers">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Tomcat基于Redis缓存session共享">
                         
-                        <span class="card-title">TCP_wrappers</span>
+                        <span class="card-title">Tomcat基于Redis缓存session共享</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">tcp_wrappers1、概念Transmission Control Protocol (TCP) Wrappers 为由 inetd 生成的服务提供了增强的安全性。TCP Wrappers 是一种对使用 /etc/inetd.sec </div>
+                    <div class="summary">基于Memcached缓存session共享使用memcached服务存取session信息，应用服务器接受心情求将session信息保存于memcached中。
+缺点
+Memcached支持的数据结构比较单一
+Memcached内存必须足</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -1037,12 +1039,12 @@ multiuser：用于指定使用多用户挂载
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/安全/" class="post-category" target="_blank">
-                                    安全
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
-                            <a href="/categories/安全/TCP-wrappers/" class="post-category" target="_blank">
-                                    TCP_wrappers
+                            <a href="/categories/常用服务/Tomcat/" class="post-category" target="_blank">
+                                    Tomcat
                                 </a>
                             
                             
@@ -1052,8 +1054,8 @@ multiuser：用于指定使用多用户挂载
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/tcp-wrappers/" target="_blank">
-                        <span class="chip bg-color">tcp_wrappers</span>
+                    <a href="/tags/Tomcat/" target="_blank">
+                        <span class="chip bg-color">Tomcat</span>
                     </a>
                     
                 </div>
@@ -1080,7 +1082,7 @@ multiuser：用于指定使用多用户挂载
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Apache分析工具和日志管理工具, 运维小李">
+    <meta name="keywords" content="Apache分析和日志管理工具, 运维小李">
     <meta name="description" content="一、cronologcronolog 是一个简单的过滤程序，读取日志文件条目从标准输入和输出的每个条目并写入指定的日志文件的文件名模板和当前的日期和时间。cronolog 旨在和一个Web服务器一起使用，如Apache，分割访问日志为每天或">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Apache分析工具和日志管理工具 | 运维小李</title>
+    <title>Apache分析和日志管理工具 | 运维小李</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -37,7 +37,7 @@
                 <div class="brand-logo">
                     <a href="/" class="waves-effect waves-light">
                         
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
                         <span class="logo-span">运维小李</span>
                     </a>
@@ -113,7 +113,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">运维小李</div>
         <div class="logo-desc">
@@ -283,13 +283,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Apache分析工具和日志管理工具
+                        Apache分析和日志管理工具
                     </div>
                 </div>
             </div>
@@ -311,8 +311,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/tomcat/" target="_blank">
-                                <span class="chip bg-color">tomcat</span>
+                            <a href="/tags/cronlog/" target="_blank">
+                                <span class="chip bg-color">cronlog</span>
+                            </a>
+                        
+                            <a href="/tags/AWstat/" target="_blank">
+                                <span class="chip bg-color">AWstat</span>
                             </a>
                         
                     </div>
@@ -323,16 +327,12 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                服务
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                常用服务
                             </a>
                         
-                            <a href="/categories/服务/Apache/" class="post-category" target="_blank">
+                            <a href="/categories/常用服务/Apache/" class="post-category" target="_blank">
                                 Apache
-                            </a>
-                        
-                            <a href="/categories/服务/Apache/Apache分析工具和日志管理工具/" class="post-category" target="_blank">
-                                Apache分析工具和日志管理工具
                             </a>
                         
                     </div>
@@ -891,7 +891,7 @@ LoadPlugin=&quot;decodeutfkeys&quot;
                     </span>
                     <a href="www.lmfe.org" class="b-link-green">运维小李</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2017/11/28/Apache分析工具和日志管理工具/" class="b-link-green">Apache分析工具和日志管理工具</a>
+                    <a href="/2017/11/28/Apache分析工具和日志管理工具/" class="b-link-green">Apache分析和日志管理工具</a>
                 </p>
             </div>
         </div>
@@ -938,21 +938,21 @@ LoadPlugin=&quot;decodeutfkeys&quot;
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/MySQL索引/">
+                <a href="/2017/11/28/MySQL表分区/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="MySQL索引">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="MySQL表分区">
                         
-                        <span class="card-title">MySQL索引</span>
+                        <span class="card-title">MySQL表分区</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">mysql索引提取索引的创建在的表上字段中的数据，构建出一个独特的数据结构。
-索引的作用加速查询操作；副作用：降低些操作性能
-表中数据子集：把表中某个或某些字段的数据提取出来另存为一个特定数据结构组织的数据。
+                    <div class="summary">MySQL表分区MySQL表分区有两种切分方法：
+垂直切分：切库，把一个库中的多个表分组后放置于不同的物理服务器上。
+水平切分：切表，分散其行至多个表中存放（table partitions）。
 
-    某个字段或某些字段：</div>
+partition_options:PAR</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -965,8 +965,8 @@ LoadPlugin=&quot;decodeutfkeys&quot;
                                     数据库
                                 </a>
                             
-                            <a href="/categories/数据库/MySQL索引/" class="post-category" target="_blank">
-                                    MySQL索引
+                            <a href="/categories/数据库/MySQL表分区/" class="post-category" target="_blank">
+                                    MySQL表分区
                                 </a>
                             
                             
@@ -976,8 +976,8 @@ LoadPlugin=&quot;decodeutfkeys&quot;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/索引，mysql/" target="_blank">
-                        <span class="chip bg-color">索引，mysql</span>
+                    <a href="/tags/分表，mysql/" target="_blank">
+                        <span class="chip bg-color">分表，mysql</span>
                     </a>
                     
                 </div>
@@ -1010,11 +1010,11 @@ LoadPlugin=&quot;decodeutfkeys&quot;
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/文件管理/" class="post-category" target="_blank">
-                                    文件管理
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
-                            <a href="/categories/文件管理/NFS/" class="post-category" target="_blank">
+                            <a href="/categories/常用服务/NFS/" class="post-category" target="_blank">
                                     NFS
                                 </a>
                             
@@ -1025,8 +1025,8 @@ LoadPlugin=&quot;decodeutfkeys&quot;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/nfs/" target="_blank">
-                        <span class="chip bg-color">nfs</span>
+                    <a href="/tags/NFS/" target="_blank">
+                        <span class="chip bg-color">NFS</span>
                     </a>
                     
                 </div>
@@ -1053,7 +1053,7 @@ LoadPlugin=&quot;decodeutfkeys&quot;
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">178.2k</span>
+                <span class="white-color">176.4k</span>
             
 
             
