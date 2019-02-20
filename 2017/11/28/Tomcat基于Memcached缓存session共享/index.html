@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Tomcat基于Redis缓存session共享, 运维小李">
+    <meta name="keywords" content="Tomcat基于Redis缓存session共享, Joah">
     <meta name="description" content="基于Memcached缓存session共享使用memcached服务存取session信息，应用服务器接受心情求将session信息保存于memcached中。
 缺点
 Memcached支持的数据结构比较单一
@@ -16,7 +16,7 @@ Memcached内存必须足">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Tomcat基于Redis缓存session共享 | 运维小李</title>
+    <title>Tomcat基于Redis缓存session共享 | Joah</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -42,7 +42,7 @@ Memcached内存必须足">
                         
                         <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
-                        <span class="logo-span">运维小李</span>
+                        <span class="logo-span">Joah</span>
                     </a>
                 </div>
                 
@@ -118,10 +118,10 @@ Memcached内存必须足">
         
         <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
-        <div class="logo-name">运维小李</div>
+        <div class="logo-name">Joah</div>
         <div class="logo-desc">
             
-            Never really desperate, only the lost of the soul.
+            嘿，终于等到你来了。
             
         </div>
     </div>
@@ -328,10 +328,6 @@ Memcached内存必须足">
                         
                             <a href="/categories/常用服务/" class="post-category" target="_blank">
                                 常用服务
-                            </a>
-                        
-                            <a href="/categories/常用服务/Tomcat/" class="post-category" target="_blank">
-                                Tomcat
                             </a>
                         
                     </div>
@@ -639,7 +635,7 @@ requirepass centos
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="www.lmfe.org" class="b-link-green">运维小李</a>
+                    <a href="www.lmfe.org" class="b-link-green">Joah</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
                     <a href="/2017/11/28/Tomcat基于Memcached缓存session共享/" class="b-link-green">Tomcat基于Redis缓存session共享</a>
                 </p>
@@ -647,28 +643,6 @@ requirepass centos
         </div>
     </div>
 
-    
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '',
-        clientSecret: '',
-        repo: '',
-        owner: '',
-        admin: null,
-        id: '2017-11-28T00-00-00',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
     
 
     
@@ -688,17 +662,23 @@ requirepass centos
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/Samba/">
+                <a href="/2017/11/28/Tomcat会话保持/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Samba">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Tomcat会话保持">
                         
-                        <span class="card-title">Samba</span>
+                        <span class="card-title">Tomcat会话保持</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，基于C/S架构。SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印</div>
+                    <div class="summary">会话保持保证同一个用户相关的访问请求被分配到同一台服务器上。
+1、会话保持的类型（1）session sticky
+与调度器有关
+不同调度器实现方式nginx：ip_hash
+haproxy：source
+lvs：sh
+（2）session</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -711,10 +691,6 @@ requirepass centos
                                     常用服务
                                 </a>
                             
-                            <a href="/categories/常用服务/Samba/" class="post-category" target="_blank">
-                                    Samba
-                                </a>
-                            
                             
                         </span>
                     </div>
@@ -722,8 +698,8 @@ requirepass centos
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Samba/" target="_blank">
-                        <span class="chip bg-color">Samba</span>
+                    <a href="/tags/Tomcat/" target="_blank">
+                        <span class="chip bg-color">Tomcat</span>
                     </a>
                     
                 </div>
@@ -737,18 +713,18 @@ requirepass centos
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/VRRP协议/">
+                <a href="/2017/11/28/Tomcat简单介绍/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="VRRP协议">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Tomcat简单介绍">
                         
-                        <span class="card-title">VRRP协议</span>
+                        <span class="card-title">Tomcat简单介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
-一、VRRP协议虚拟路由冗余协议（VRRP，Virtual Router Redundancy Protocol）通过把几台路由设备联合组成一台虚拟的路由设备，使用一定的机制保证当主机的下一跳路由机出现故障时，及时将业务切换到备份路由器，</div>
+Tomcat是由Apache软件基金会下属的Jakarta项目开发的一个Servlet容器，按照Sun Microsystems提供的技术规范，实现了对Servlet和JavaServer Page（JSP）的支持，并提供了作为web服务</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -761,10 +737,6 @@ requirepass centos
                                     常用服务
                                 </a>
                             
-                            <a href="/categories/常用服务/Keepalived/" class="post-category" target="_blank">
-                                    Keepalived
-                                </a>
-                            
                             
                         </span>
                     </div>
@@ -772,8 +744,8 @@ requirepass centos
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/VRRP协议/" target="_blank">
-                        <span class="chip bg-color">VRRP协议</span>
+                    <a href="/tags/Tomcat/" target="_blank">
+                        <span class="chip bg-color">Tomcat</span>
                     </a>
                     
                 </div>
@@ -800,7 +772,7 @@ requirepass centos
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">176.4k</span>
+                <span class="white-color">179.1k</span>
             
 
             

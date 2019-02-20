@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Nginx模块, 运维小李">
+    <meta name="keywords" content="Nginx模块, Joah">
     <meta name="description" content="一、ngx_http_fastcgi_module转发请求到FastCGI服务器，不支持php模块方式
 （1）fastcgi_pass address
 address 为后端的fastcgi server的地址可用
@@ -16,7 +16,7 @@ Syntax:    f">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Nginx模块 | 运维小李</title>
+    <title>Nginx模块 | Joah</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -42,7 +42,7 @@ Syntax:    f">
                         
                         <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
-                        <span class="logo-span">运维小李</span>
+                        <span class="logo-span">Joah</span>
                     </a>
                 </div>
                 
@@ -118,10 +118,10 @@ Syntax:    f">
         
         <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
-        <div class="logo-name">运维小李</div>
+        <div class="logo-name">Joah</div>
         <div class="logo-desc">
             
-            Never really desperate, only the lost of the soul.
+            嘿，终于等到你来了。
             
         </div>
     </div>
@@ -328,10 +328,6 @@ Syntax:    f">
                         
                             <a href="/categories/常用服务/" class="post-category" target="_blank">
                                 常用服务
-                            </a>
-                        
-                            <a href="/categories/常用服务/Nginx/" class="post-category" target="_blank">
-                                Nginx
                             </a>
                         
                     </div>
@@ -827,7 +823,7 @@ server{
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="www.lmfe.org" class="b-link-green">运维小李</a>
+                    <a href="www.lmfe.org" class="b-link-green">Joah</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
                     <a href="/2017/11/28/Nginx模块/" class="b-link-green">Nginx模块</a>
                 </p>
@@ -835,28 +831,6 @@ server{
         </div>
     </div>
 
-    
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '',
-        clientSecret: '',
-        repo: '',
-        owner: '',
-        admin: null,
-        id: '2017-11-28T00-00-00',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
     
 
     
@@ -876,18 +850,20 @@ server{
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/DNS访问控制和智能DNS/">
+                <a href="/2017/11/28/Nginx指令/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="DNS访问控制和智能DNS">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Nginx指令">
                         
-                        <span class="card-title">DNS访问控制和智能DNS</span>
+                        <span class="card-title">Nginx指令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">DNS的管理功能你是不是有这样的想法，只想让某个IP或者某个IP端的地址进行访问，实现访问控制功能。DNS服务给我们提供了很好的解决方法。
-1、选项||allow-query {}；|  允许查询的主机，相当于白名单|allow-trans</div>
+                    <div class="summary">Nginx配置指令参考： https://nginx.org/en/docs/-
+事前注意：配置Nginx和配置Apache不一定，Nginx必须要在指定的部分添加指令，否则会报错。
+正常运行必备指令（1）user
+指定worker进程的运</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -900,10 +876,6 @@ server{
                                     常用服务
                                 </a>
                             
-                            <a href="/categories/常用服务/DNS/" class="post-category" target="_blank">
-                                    DNS
-                                </a>
-                            
                             
                         </span>
                     </div>
@@ -911,8 +883,8 @@ server{
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/DNS/" target="_blank">
-                        <span class="chip bg-color">DNS</span>
+                    <a href="/tags/nginx/" target="_blank">
+                        <span class="chip bg-color">nginx</span>
                     </a>
                     
                 </div>
@@ -926,17 +898,17 @@ server{
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/PHP工作方式/">
+                <a href="/2017/11/28/PAM/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="PHP">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="PAM">
                         
-                        <span class="card-title">PHP</span>
+                        <span class="card-title">PAM</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">CGI和FastCGI1、CGICGI（Common Gateway Interface，通用网关接口），HTTP服务器与你的货其他机器上的程序进行交谈的工具，其程序一般运行在网络服务器上。CGI可以用任何一种语言编写，只要这种语言具有标准</div>
+                    <div class="summary">PAM认证1、概念   PAM （Pluggable Authentication Modules）可插入认证模块是一套共享库,使本地系统管理员可以随意选择程序的认证方式.。提供了对所有服务进行认证的中央机制，适用于login，远程登录（t</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -945,12 +917,8 @@ server{
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/常用服务/" class="post-category" target="_blank">
-                                    常用服务
-                                </a>
-                            
-                            <a href="/categories/常用服务/PHP/" class="post-category" target="_blank">
-                                    PHP
+                            <a href="/categories/安全/" class="post-category" target="_blank">
+                                    安全
                                 </a>
                             
                             
@@ -960,8 +928,8 @@ server{
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PHP/" target="_blank">
-                        <span class="chip bg-color">PHP</span>
+                    <a href="/tags/PAM/" target="_blank">
+                        <span class="chip bg-color">PAM</span>
                     </a>
                     
                 </div>
@@ -988,7 +956,7 @@ server{
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">176.4k</span>
+                <span class="white-color">179.1k</span>
             
 
             

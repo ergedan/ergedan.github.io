@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="LVS, 运维小李">
+    <meta name="keywords" content="LVS, Joah">
     <meta name="description" content="一、LVS1、lvs（Linux Virtual Server）概念
 将一组服务器通过高速的局域网地理分布的广域网相互连接，在他们前段有一个负载调度器（Load Balancer），将网络请求调度到真实的服务器上，客户访问集群系统提供的网络">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>LVS | 运维小李</title>
+    <title>LVS | Joah</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -40,7 +40,7 @@
                         
                         <img src="/medias/logo.jpg" class="logo-img hide-on-small-only">
                         
-                        <span class="logo-span">运维小李</span>
+                        <span class="logo-span">Joah</span>
                     </a>
                 </div>
                 
@@ -116,10 +116,10 @@
         
         <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
-        <div class="logo-name">运维小李</div>
+        <div class="logo-name">Joah</div>
         <div class="logo-desc">
             
-            Never really desperate, only the lost of the soul.
+            嘿，终于等到你来了。
             
         </div>
     </div>
@@ -326,10 +326,6 @@
                         
                             <a href="/categories/常用服务/" class="post-category" target="_blank">
                                 常用服务
-                            </a>
-                        
-                            <a href="/categories/常用服务/LVS/" class="post-category" target="_blank">
-                                LVS
                             </a>
                         
                     </div>
@@ -898,7 +894,7 @@ ipvsadm -a -f NUMBER -r RIP -m
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="www.lmfe.org" class="b-link-green">运维小李</a>
+                    <a href="www.lmfe.org" class="b-link-green">Joah</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
                     <a href="/2017/11/28/LVS简单介绍/" class="b-link-green">LVS</a>
                 </p>
@@ -906,28 +902,6 @@ ipvsadm -a -f NUMBER -r RIP -m
         </div>
     </div>
 
-    
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '',
-        clientSecret: '',
-        repo: '',
-        owner: '',
-        admin: null,
-        id: '2017-11-28T00-00-00',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
     
 
     
@@ -947,20 +921,25 @@ ipvsadm -a -f NUMBER -r RIP -m
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/MPM工作模式/">
+                <a href="/2017/11/28/LVS实战/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="MPM工作模式">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="LVS实战">
                         
-                        <span class="card-title">MPM工作模式</span>
+                        <span class="card-title">LVS实战</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">MPM（MultiProcess Modules ）工作模式
-prefork
+                    <div class="summary">实例lvs-nat模型实现http负载集群（VS和RS之间直连）-
+（1）构建网络拓扑
 
-多进程I/O模型，每个进程响应一个请求，默认模型一个主进程生成N个子进程，创建套接字，每个子进程响应一个请求；而主进程不响应请求，只负责管理接受请求。系统初始化</div>
+（2）搭建网络环境
+
+配置路由器
+
+[root@VS~]#vim /etc/sysctl.conf #开启路由转发功能
+ 11 net.ipv4.ip</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -969,16 +948,8 @@ prefork
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/服务/" class="post-category" target="_blank">
-                                    服务
-                                </a>
-                            
-                            <a href="/categories/服务/Apache/" class="post-category" target="_blank">
-                                    Apache
-                                </a>
-                            
-                            <a href="/categories/服务/Apache/MPM（MultiProcess-Modules-）工作模式/" class="post-category" target="_blank">
-                                    MPM（MultiProcess Modules ）工作模式
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
                             
@@ -988,8 +959,8 @@ prefork
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/WEB/" target="_blank">
-                        <span class="chip bg-color">WEB</span>
+                    <a href="/tags/LVS/" target="_blank">
+                        <span class="chip bg-color">LVS</span>
                     </a>
                     
                 </div>
@@ -1003,22 +974,18 @@ prefork
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/MySQL主从复制/">
+                <a href="/2017/11/28/DNS访问控制和智能DNS/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="MySQL主从复制">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="DNS访问控制和智能DNS">
                         
-                        <span class="card-title">MySQL主从复制</span>
+                        <span class="card-title">DNS访问控制和智能DNS</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">实战：实现主从复制
-node1为主，node2为从
-在node1操作[root@node1~]#vim /etc/my.cnf.d/server.cnf
-
-[root@node1~]#systemctl start mariadb
-在nod</div>
+                    <div class="summary">DNS的管理功能你是不是有这样的想法，只想让某个IP或者某个IP端的地址进行访问，实现访问控制功能。DNS服务给我们提供了很好的解决方法。
+1、选项||allow-query {}；|  允许查询的主机，相当于白名单|allow-trans</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -1027,12 +994,8 @@ node1为主，node2为从
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/数据库/" class="post-category" target="_blank">
-                                    数据库
-                                </a>
-                            
-                            <a href="/categories/数据库/MySQL主从复制/" class="post-category" target="_blank">
-                                    MySQL主从复制
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
                             
@@ -1042,8 +1005,8 @@ node1为主，node2为从
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/主从复制，mysql/" target="_blank">
-                        <span class="chip bg-color">主从复制，mysql</span>
+                    <a href="/tags/DNS/" target="_blank">
+                        <span class="chip bg-color">DNS</span>
                     </a>
                     
                 </div>
@@ -1070,7 +1033,7 @@ node1为主，node2为从
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">176.4k</span>
+                <span class="white-color">179.1k</span>
             
 
             
