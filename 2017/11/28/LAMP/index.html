@@ -343,14 +343,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        4,892
+                        5,613
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        24 分
+                        28 分
                     </div>
                     
                 
@@ -692,6 +692,88 @@ ProxyPassMatch ^/(.*\.php)$ fcgi://127.0.0.1:9000/app/httpd24/htdocs/$1
 Time per request:       17.246 [ms] (mean)
 Time per request:       1.725 [ms] (mean, across all concurrent requests)
 Transfer rate:          37900.46 [Kbytes/sec] received
+</code></pre><hr>
+
+
+<h3 id="mysqlnd"><a href="#mysqlnd" class="headerlink" title="mysqlnd"></a>mysqlnd</h3><p>(1) 什么是mysqlnd驱动</p>
+<pre><code>mysqlnd（mysql native driver），是由PHP源码提供的mysql驱动连接代码；目的是代替旧的libmysql驱动。
+
+
+传统编译安装php需添加如下选项：
+    --with-mysql=/usr/local/mysql
+    --with-pdo-mysql=/usr/local/mysql
+这种方式是使用的mysql官方自带的libmysql驱动，PHP5.3已经不建议使用它；建议使用mysqlnd。
+</code></pre><p>(2)PDO与mysqlnd，libmysql是什么关系呢？</p>
+<pre><code>PDO （php data object）是一个应用层抽象类，底层和mysql server连接交互需要mysql驱动的支持，也就是说无论你使用什么驱动，都可以使用PDO。
+
+PDO提供PHP应用层接口，而mysqlnd libmysql则负责与mysql server进行网络协议交互。
+</code></pre><p>(3)mysqlnd优势</p>
+<ul>
+<li>libmysql驱动是由mysql AB公司编写，并按mysql license许可协议发布，mysqlnd是由php官方开发的驱动，以php license许可协议发布</li>
+<li>mysqlnd内置php源代码，在编译安装时就不需要预先安装mysql server可以提供mysql client API（mysql_connect，pdo，mysqli）</li>
+</ul>
+<p>(4)使用mysqlnd，编译时，选择如下参数即可</p>
+<pre><code>--with-mysql=mysqlnd
+--with-mysqli=mysqlnd
+--with-pdo-mysql=mysqlnd
+</code></pre><p>(5) 编译选项参考</p>
+<pre><code>./configure --prefix=/usr/local/php \
+--with-mysql=mysqlnd \
+--with-mysqli=mysqlnd \
+--with-pdo-mysql=mysqlnd
+--with-iconv-dir \
+--with-freetype-dir \
+--with-jpeg-dir \
+--with-png-dir \
+--with-zlib \
+--with-libxml-dir \
+--enable-xml \
+--disable-rpath \
+--enable-bcmath \
+--enable-shmop \
+--enable-sysvsem \
+--enable-inline-optimization \
+--with-curl \
+--with-mcrypt \
+--with-curlwrappers \
+--enable-mbregex \
+--enable-fpm \
+--enable-mbstring \
+--with-gd \
+--enable-gd-native-ttf \
+--with-openssl \
+--with-mhash \
+--enable-pcntl \
+--enable-sockets \
+--with-xmlrpc \
+--enable-zip \
+--enable-soap \
+--without-pear
+</code></pre><p>(6)配置</p>
+<blockquote>
+<p>配置环境变量</p>
+</blockquote>
+<p><code>vim /etc/profile.d/php-fpm.sh</code></p>
+<pre><code>export PATH=/usr/local/php/bin:$PATH
+</code></pre><blockquote>
+<p>复制配置文件</p>
+</blockquote>
+<p><code>cp php.ini-development /etc/php.ini</code>  #php.ini是php运行核心配置文件</p>
+<p><code>cd /usr/local/php/etc</code></p>
+<p><code>cp php-fpm.conf.default php-fpm.conf</code></p>
+<p><code>cp sapi/fpm/php-fpm.service /etc/systemd/system/</code> #复制启动文件</p>
+<p><code>chmod +x php-fpm.service</code></p>
+<p><em>如果出现如下内容，需修改下启动文件即可</em></p>
+<pre><code>Mar 07 11:31:07 node2 systemd[1]: [/usr/lib/systemd/system/php-fpm.service:7] Not an absolute path, ignoring: ${prefix}/var/run/php-fpm.pid
+Mar 07 11:31:07 node2 systemd[1]: [/usr/lib/systemd/system/php-fpm.service:8] Executable path is not absolute, ignoring: ${exec_prefix}/sbin/php-fpm --nodaemonize --fpm-config ${prefix}/etc/php-fpm.conf
+Mar 07 11:31:07 node2 systemd[1]: php-fpm.service lacks both ExecStart= and ExecStop= setting. Refusing.
+Mar 07 11:31:15 node2 systemd[1]: [/usr/lib/systemd/system/php-fpm.service:7] Not an absolute path, ignoring: ${prefix}/var/run/php-fpm.pid
+Mar 07 11:31:15 node2 systemd[1]: [/usr/lib/systemd/system/php-fpm.service:8] Executable path is not absolute, ignoring: ${exec_prefix}/sbin/php-fpm --nodaemonize --fpm-config ${prefix}/etc/php-fpm.conf
+Mar 07 11:31:15 node2 systemd[1]: php-fpm.service lacks both ExecStart= and ExecStop= setting. Refusing.
+Mar 07 11:31:35 node2 systemd[1]: [/usr/lib/systemd/system/php-fpm.service:7] Not an absolute path, ignoring: ${prefix}/var/run/php-fpm.pid
+Mar 07 11:31:35 node2 systemd[1]: [/usr/lib/systemd/system/php-fpm.service:8] Executable path is not absolute, ignoring: ${exec_prefix}/sbin/php-fpm --nodaemonize --fpm-config ${prefix}/etc/php-fpm.conf
+Mar 07 11:31:35 node2 systemd[1]: php-fpm.service lacks both ExecStart= and ExecStop= setting. Refusing.
+Mar 07 11:31:42 node2 systemd[1]: [/usr/lib/systemd/system/php-fpm.service:7] Not an absolute path, ignoring: ${prefix}/var/run/php-fpm.pid
 </code></pre>
             </div>
             <hr/>
@@ -857,17 +939,17 @@ Transfer rate:          37900.46 [Kbytes/sec] received
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/Dropbear/">
+                <a href="/2017/11/28/KVM/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Dropbear">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="KVM基础">
                         
-                        <span class="card-title">Dropbear</span>
+                        <span class="card-title">KVM基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">dropbearDropbear是一个相对较小的SSH服务器和客户端。它运行在一个基于POSIX的各种平台。 Dropbear是开源软件，在麻省理工学院式的许可证。 Dropbear是特别有用的“嵌入”式的Linux（或其他Unix）系统，</div>
+                    <div class="summary">KVM（Kernel-based Virtual Machine）是一种用于Linux内核中的虚拟化的基础设施，可以将Linux内核转换为一个hypervisor（虚拟机器监视器，virtual machine monitor，VMM）。K</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -876,8 +958,8 @@ Transfer rate:          37900.46 [Kbytes/sec] received
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/命令/" class="post-category" target="_blank">
-                                    命令
+                            <a href="/categories/虚拟化/" class="post-category" target="_blank">
+                                    虚拟化
                                 </a>
                             
                             
@@ -887,8 +969,8 @@ Transfer rate:          37900.46 [Kbytes/sec] received
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/dropbear/" target="_blank">
-                        <span class="chip bg-color">dropbear</span>
+                    <a href="/tags/kvm/" target="_blank">
+                        <span class="chip bg-color">kvm</span>
                     </a>
                     
                 </div>
@@ -902,23 +984,18 @@ Transfer rate:          37900.46 [Kbytes/sec] received
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/LNMT、LAMT环境/">
+                <a href="/2017/11/28/DNS访问控制和智能DNS/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="LNMT、LAMT环境">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="DNS访问控制和智能DNS">
                         
-                        <span class="card-title">LNMT、LAMT环境</span>
+                        <span class="card-title">DNS访问控制和智能DNS</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">LNMT环境搭建
-
-安装mysql数据库
-
-（1）安装mysql并配置环境
-[root@mysql ~]# yum install -y mysql-server
-[root@mysql ~]# service httpd start   </div>
+                    <div class="summary">DNS的管理功能你是不是有这样的想法，只想让某个IP或者某个IP端的地址进行访问，实现访问控制功能。DNS服务给我们提供了很好的解决方法。
+1、选项||allow-query {}；|  允许查询的主机，相当于白名单|allow-trans</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -938,8 +1015,8 @@ Transfer rate:          37900.46 [Kbytes/sec] received
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/tomcat/" target="_blank">
-                        <span class="chip bg-color">tomcat</span>
+                    <a href="/tags/DNS/" target="_blank">
+                        <span class="chip bg-color">DNS</span>
                     </a>
                     
                 </div>
@@ -963,7 +1040,7 @@ Transfer rate:          37900.46 [Kbytes/sec] received
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">179.1k</span>
+                <span class="white-color">180.3k</span>
             
 
             

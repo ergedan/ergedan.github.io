@@ -718,22 +718,21 @@ master和slave时间同步[root@master~]#ntpdate 172.18.0.1
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/MySQL主从复制/">
+                <a href="/2017/11/28/MySQL基于SSL实现主从复制/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="MySQL主从复制">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="MySQL基于SSL实现主从复制">
                         
-                        <span class="card-title">MySQL主从复制</span>
+                        <span class="card-title">MySQL基于SSL实现主从复制</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">实战：实现主从复制
-node1为主，node2为从
-在node1操作[root@node1~]#vim /etc/my.cnf.d/server.cnf
-
-[root@node1~]#systemctl start mariadb
-在nod</div>
+                    <div class="summary">mysql数据库基于SSL实现主从复制实验环境：
+node1:192.168.4.61
+node2:192.168.4.62
+CA：192.168.4.63
+node1和node2时间同步[root@node1~]#ntpdate 172.</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -768,18 +767,22 @@ node1为主，node2为从
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/MySQL半同步复制/">
+                <a href="/2017/11/28/MySQL基于证书连接/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="MySQL半同步复制">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="MySQL基于证书连接">
                         
-                        <span class="card-title">MySQL半同步复制</span>
+                        <span class="card-title">MySQL基于证书连接</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">mysql半同步复制-
-半同步复制是基于异步复制基础之上进行的。从Slave节点中选取一个节点进行半同步复制，当master节点提交一个事物将受到阻塞，直到得知一个已开启半同步复制功能的Slave同步完成之后返回ack包，master才会向</div>
+                    <div class="summary">基于证书连接
+搭建私有CA
+
+[root@CA/etc/pki/CA]#echo 01 &gt; serial
+[root@CA/etc/pki/CA]#touch index.txt
+[root@CA/etc/pki/CA]#(umask</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -824,7 +827,7 @@ node1为主，node2为从
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">179.1k</span>
+                <span class="white-color">180.3k</span>
             
 
             

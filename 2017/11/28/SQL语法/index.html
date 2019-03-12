@@ -1081,21 +1081,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/Redis集群/">
+                <a href="/2017/11/28/Redis主从复制/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Redis集群">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Redis主从复制">
                         
-                        <span class="card-title">Redis集群</span>
+                        <span class="card-title">Redis主从复制</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">redis集群同步时间主机名互相解析确保firewalld和iptables关闭1、配置三个节点[root@node3~]#yum install -y redis
-2、修改配置文件
-node1配置：
-
-[root@node1~]#vim </div>
+                    <div class="summary">redis主从复制一个master可以有多个slave主机，支持链式复制；master以非阻塞方式同步数据值slave主机。
+修改方式：
+redis-cli&gt; SLAVEOF &lt;MASTER_IP&gt; &lt;MASTER_</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -1130,17 +1128,17 @@ node1配置：
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/SSH端口转发/">
+                <a href="/2017/11/28/TCP_wrappers/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="SSH端口转发">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="TCP_wrappers">
                         
-                        <span class="card-title">SSH端口转发</span>
+                        <span class="card-title">TCP_wrappers</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">端口转发在日常生产中，我们常常会遇到这样的问题，在公司运行一个服务或者一些程序，想要查看其运行状态及其结果等；公司的机器只能从内部访问外网，而内部外的并不能访问内部的机器；或者公司有一台ssh服务器，不能使用telnet服务去访问内部的主机</div>
+                    <div class="summary">tcp_wrappers1、概念Transmission Control Protocol (TCP) Wrappers 为由 inetd 生成的服务提供了增强的安全性。TCP Wrappers 是一种对使用 /etc/inetd.sec </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -1149,8 +1147,8 @@ node1配置：
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/常用服务/" class="post-category" target="_blank">
-                                    常用服务
+                            <a href="/categories/安全/" class="post-category" target="_blank">
+                                    安全
                                 </a>
                             
                             
@@ -1160,8 +1158,8 @@ node1配置：
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SSH/" target="_blank">
-                        <span class="chip bg-color">SSH</span>
+                    <a href="/tags/tcp-wrappers/" target="_blank">
+                        <span class="chip bg-color">tcp_wrappers</span>
                     </a>
                     
                 </div>
@@ -1185,7 +1183,7 @@ node1配置：
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">179.1k</span>
+                <span class="white-color">180.3k</span>
             
 
             

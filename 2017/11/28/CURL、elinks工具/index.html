@@ -560,17 +560,39 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/keepalived/">
+                <a href="/2017/11/28/MHA+Keepalived+MySQL主从/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="keepalived简单介绍">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="MHA+Keepalived+MySQL主从">
                         
-                        <span class="card-title">keepalived简单介绍</span>
+                        <span class="card-title">MHA+Keepalived+MySQL主从</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">keepalived介绍keepalived是linux下一个轻量级高可用的解决方案，主要通过VRRP实现高可用功能，作用域网络层、传输层和应用层；主要用作RealServer的健康性检查以及LoadBalance主机和Bcakup主机之间</div>
+                    <div class="summary">MHA+Keepalived+mysql主从
+
+
+
+主机名
+mysql
+keepalived
+MHA
+IP
+
+
+
+
+manager
+—
+—
+master-0.56
+192.168.4.64
+
+
+master
+mariadb-5.5.56
+√</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -579,8 +601,8 @@
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/常用服务/" class="post-category" target="_blank">
-                                    常用服务
+                            <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
                                 </a>
                             
                             
@@ -590,8 +612,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Keepalived/" target="_blank">
-                        <span class="chip bg-color">Keepalived</span>
+                    <a href="/tags/keepalived，mha，mysql/" target="_blank">
+                        <span class="chip bg-color">keepalived，mha，mysql</span>
                     </a>
                     
                 </div>
@@ -605,19 +627,22 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/memcached/">
+                <a href="/2017/11/28/MySQL主从复制/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="memcached">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="MySQL主从复制">
                         
-                        <span class="card-title">memcached</span>
+                        <span class="card-title">MySQL主从复制</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-memcached是是一款开源、高性能、分布式存储内存对象缓存系统。主要目的是通过降低对Database的访问来加速web应用程序。一个基于内存的”键值对”存储用于存储数据库调用、API调用或页面引用结果的直接数据，如字符串、对象等。
-一</div>
+                    <div class="summary">实战：实现主从复制
+node1为主，node2为从
+在node1操作[root@node1~]#vim /etc/my.cnf.d/server.cnf
+
+[root@node1~]#systemctl start mariadb
+在nod</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -626,8 +651,8 @@ memcached是是一款开源、高性能、分布式存储内存对象缓存系�
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/缓存/" class="post-category" target="_blank">
-                                    缓存
+                            <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
                                 </a>
                             
                             
@@ -637,8 +662,8 @@ memcached是是一款开源、高性能、分布式存储内存对象缓存系�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/memcached/" target="_blank">
-                        <span class="chip bg-color">memcached</span>
+                    <a href="/tags/mysql/" target="_blank">
+                        <span class="chip bg-color">mysql</span>
                     </a>
                     
                 </div>
@@ -662,7 +687,7 @@ memcached是是一款开源、高性能、分布式存储内存对象缓存系�
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">179.1k</span>
+                <span class="white-color">180.3k</span>
             
 
             
