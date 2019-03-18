@@ -626,19 +626,21 @@ MariaDB [student]&gt; EXPLAIN SELECT name,age FROM students WHERE age &gt; (SELE
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/MySQL用户管理/">
+                <a href="/2017/11/28/MySQL工作方式/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="MySQL用户管理">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MySQL工作方式">
                         
-                        <span class="card-title">MySQL用户管理</span>
+                        <span class="card-title">MySQL工作方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">用户管理1、新建普通用户（1）使用CREATE USER语句创建新用户
-使用格式：
-CREATE USER  &#39;user&#39;@&#39;host&#39; [IDENTIFIED BY [PASSWORD] &#39;pass</div>
+                    <div class="summary">
+##1、mysql读取配置文件次序
+###my_print_defaultsdisplay options from option files
+使用方法：
+my_print_defaults [options] option_group </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -673,21 +675,20 @@ CREATE USER  &#39;user&#39;@&#39;host&#39; [IDENTIFIED BY [PASSWORD] &#39;pass</
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/MySQL表分区/">
+                <a href="/2017/11/28/MySQL引擎/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="MySQL表分区">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="MySQL引擎">
                         
-                        <span class="card-title">MySQL表分区</span>
+                        <span class="card-title">MySQL引擎</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">MySQL表分区MySQL表分区有两种切分方法：
-垂直切分：切库，把一个库中的多个表分组后放置于不同的物理服务器上。
-水平切分：切表，分散其行至多个表中存放（table partitions）。
-
-partition_options:PAR</div>
+                    <div class="summary">ACID测试
+A：AUTOMICITY ，原子性；整个事物中的所有操作要么全部成功执行，要么全部失败后回滚
+C：CONSISTENY,一致性；数据库总是应该从一个一致性状态转为另一个一致性状态
+I：ISOLATION：隔离性；一个数据所作出</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -732,7 +733,7 @@ partition_options:PAR</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">180.3k</span>
+                <span class="white-color">181.1k</span>
             
 
             

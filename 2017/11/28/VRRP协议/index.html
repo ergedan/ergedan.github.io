@@ -555,20 +555,23 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/Tomcat基于Memcached缓存session共享/">
+                <a href="/2017/11/28/Tomcat会话保持/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Tomcat基于Redis缓存session共享">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Tomcat会话保持">
                         
-                        <span class="card-title">Tomcat基于Redis缓存session共享</span>
+                        <span class="card-title">Tomcat会话保持</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">基于Memcached缓存session共享使用memcached服务存取session信息，应用服务器接受心情求将session信息保存于memcached中。
-缺点
-Memcached支持的数据结构比较单一
-Memcached内存必须足</div>
+                    <div class="summary">会话保持保证同一个用户相关的访问请求被分配到同一台服务器上。
+1、会话保持的类型（1）session sticky
+与调度器有关
+不同调度器实现方式nginx：ip_hash
+haproxy：source
+lvs：sh
+（2）session</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -603,18 +606,21 @@ Memcached内存必须足</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/axel/">
+                <a href="/2017/11/28/WEB工作过程/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="axel">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="WEB工作过程">
                         
-                        <span class="card-title">axel</span>
+                        <span class="card-title">WEB工作过程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">axelaxel是 Linux 下一个不错的HTTP/FTP高速下载工具。支持多线程下载、断点续传，且可以从多个地址或者从一个地址的多个连接来下载同一个文件。适合网速不给力时多线程下载提高下载速度
---max-speed=x        </div>
+                    <div class="summary">Web服务请求处理过程    此图为经过的OSI模型
+
+
+（1）Client需要和Server通信，这时需要发出建立连接请求
+（2）Client与Server进行传输数据包时，需要经应用层–&gt;传输层–&gt;网络层–&gt;链路层:层</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -623,8 +629,8 @@ Memcached内存必须足</div>
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/命令/" class="post-category" target="_blank">
-                                    命令
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
                             
@@ -634,8 +640,8 @@ Memcached内存必须足</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/axel/" target="_blank">
-                        <span class="chip bg-color">axel</span>
+                    <a href="/tags/Apache，HTTP/" target="_blank">
+                        <span class="chip bg-color">Apache，HTTP</span>
                     </a>
                     
                 </div>
@@ -659,7 +665,7 @@ Memcached内存必须足</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">180.3k</span>
+                <span class="white-color">181.1k</span>
             
 
             

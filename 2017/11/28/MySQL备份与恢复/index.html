@@ -746,21 +746,21 @@ MariaDB [hellodb]&gt; SHOW MASTER STATUS;
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/MySQL工作方式/">
+                <a href="/2017/11/28/MySQL基于SSL实现主从复制/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MySQL工作方式">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="MySQL基于SSL实现主从复制">
                         
-                        <span class="card-title">MySQL工作方式</span>
+                        <span class="card-title">MySQL基于SSL实现主从复制</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-##1、mysql读取配置文件次序
-###my_print_defaultsdisplay options from option files
-使用方法：
-my_print_defaults [options] option_group </div>
+                    <div class="summary">mysql数据库基于SSL实现主从复制实验环境：
+node1:192.168.4.61
+node2:192.168.4.62
+CA：192.168.4.63
+node1和node2时间同步[root@node1~]#ntpdate 172.</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -795,20 +795,24 @@ my_print_defaults [options] option_group </div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/MySQL引擎/">
+                <a href="/2017/11/28/MySQL日志/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="MySQL引擎">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="MySQL日志">
                         
-                        <span class="card-title">MySQL引擎</span>
+                        <span class="card-title">MySQL日志</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">ACID测试
-A：AUTOMICITY ，原子性；整个事物中的所有操作要么全部成功执行，要么全部失败后回滚
-C：CONSISTENY,一致性；数据库总是应该从一个一致性状态转为另一个一致性状态
-I：ISOLATION：隔离性；一个数据所作出</div>
+                    <div class="summary">##mysql日志
+mysql日志分类
+查询日志：general_log
+慢查询日志：log_slow_queries
+错误日志：log_error，log_warnings
+二进制日志：binlog
+中继日志：relay_log
+事物日志</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -853,7 +857,7 @@ I：ISOLATION：隔离性；一个数据所作出</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">180.3k</span>
+                <span class="white-color">181.1k</span>
             
 
             

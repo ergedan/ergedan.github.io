@@ -718,21 +718,22 @@ master和slave时间同步[root@master~]#ntpdate 172.18.0.1
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/MySQL基于SSL实现主从复制/">
+                <a href="/2017/11/28/MySQL双主模式/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="MySQL基于SSL实现主从复制">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MySQL双主模式">
                         
-                        <span class="card-title">MySQL基于SSL实现主从复制</span>
+                        <span class="card-title">MySQL双主模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">mysql数据库基于SSL实现主从复制实验环境：
-node1:192.168.4.61
-node2:192.168.4.62
-CA：192.168.4.63
-node1和node2时间同步[root@node1~]#ntpdate 172.</div>
+                    <div class="summary">双主模式互为主从：两个节点各自都要开启binlog和relay log
+（1）数据不一致
+（2）自动增长ID 
+    定义一个节点使用奇数ID
+        auto_increment_offset=1
+        auto_in</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -827,7 +828,7 @@ node1和node2时间同步[root@node1~]#ntpdate 172.</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">180.3k</span>
+                <span class="white-color">181.1k</span>
             
 
             

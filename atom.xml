@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="www.lmfe.org/"/>
-  <updated>2019-03-12T03:38:08.838Z</updated>
+  <updated>2019-03-12T09:19:29.766Z</updated>
   <id>www.lmfe.org/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DokuWiKi</title>
+    <link href="www.lmfe.org/2019/03/12/Dokuwiki/"/>
+    <id>www.lmfe.org/2019/03/12/Dokuwiki/</id>
+    <published>2019-03-11T16:00:00.000Z</published>
+    <updated>2019-03-12T09:19:29.766Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;DokuWIKI&quot;&gt;&lt;a href=&quot;#DokuWIKI&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="wiki" scheme="www.lmfe.org/categories/wiki/"/>
+    
+    
+      <category term="wiki" scheme="www.lmfe.org/tags/wiki/"/>
+    
+  </entry>
   
   <entry>
     <title>rsyslog</title>
@@ -229,32 +255,6 @@
   </entry>
   
   <entry>
-    <title>Dockerfile指令</title>
-    <link href="www.lmfe.org/2017/12/13/Dockerfile%E6%8C%87%E4%BB%A4%E8%AF%A6%E8%A7%A3/"/>
-    <id>www.lmfe.org/2017/12/13/Dockerfile指令详解/</id>
-    <published>2017-12-12T16:00:00.000Z</published>
-    <updated>2019-02-20T08:36:42.040Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;一、Dockerfile&quot;&gt;&lt;a href=&quot;#一、Dockerfile&quot; class=&quot;headerlink&quot; title=&quot;一、Dockerfile&quot;&gt;&lt;/a&gt;一、Dockerfile&lt;/h1&gt;&lt;p&gt;&lt;img
-        
-      
-    
-    </summary>
-    
-      <category term="虚拟化" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
-    
-    
-      <category term="docker，dockerfile" scheme="www.lmfe.org/tags/docker%EF%BC%8Cdockerfile/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Docker Compose</title>
     <link href="www.lmfe.org/2017/12/13/Docker%20Compose/"/>
     <id>www.lmfe.org/2017/12/13/Docker Compose/</id>
@@ -282,6 +282,32 @@
   </entry>
   
   <entry>
+    <title>Dockerfile指令</title>
+    <link href="www.lmfe.org/2017/12/13/Dockerfile%E6%8C%87%E4%BB%A4%E8%AF%A6%E8%A7%A3/"/>
+    <id>www.lmfe.org/2017/12/13/Dockerfile指令详解/</id>
+    <published>2017-12-12T16:00:00.000Z</published>
+    <updated>2019-02-20T08:36:42.040Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、Dockerfile&quot;&gt;&lt;a href=&quot;#一、Dockerfile&quot; class=&quot;headerlink&quot; title=&quot;一、Dockerfile&quot;&gt;&lt;/a&gt;一、Dockerfile&lt;/h1&gt;&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="虚拟化" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
+    
+    
+      <category term="docker，dockerfile" scheme="www.lmfe.org/tags/docker%EF%BC%8Cdockerfile/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Docker存储</title>
     <link href="www.lmfe.org/2017/12/12/Docker%E5%AD%98%E5%82%A8/"/>
     <id>www.lmfe.org/2017/12/12/Docker存储/</id>
@@ -295,32 +321,6 @@
         
         
           &lt;h1 id=&quot;一、Docker-卷&quot;&gt;&lt;a href=&quot;#一、Docker-卷&quot; class=&quot;headerlink&quot; title=&quot;一、Docker 卷&quot;&gt;&lt;/a&gt;一、Docker 卷&lt;/h1&gt;&lt;p&gt;&lt;img
-        
-      
-    
-    </summary>
-    
-      <category term="虚拟化" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
-    
-    
-      <category term="docker" scheme="www.lmfe.org/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker四种网络模式</title>
-    <link href="www.lmfe.org/2017/12/11/Docker%20%E5%9B%9B%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/"/>
-    <id>www.lmfe.org/2017/12/11/Docker 四种网络模式/</id>
-    <published>2017-12-10T16:00:00.000Z</published>
-    <updated>2019-02-20T08:36:38.094Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;一、Docker四种网络模式&quot;&gt;&lt;a href=&quot;#一、Docker四种网络模式&quot; class=&quot;headerlink&quot;
         
       
     
@@ -360,11 +360,11 @@
   </entry>
   
   <entry>
-    <title>LXC介绍</title>
-    <link href="www.lmfe.org/2017/12/10/LXC%E4%BB%8B%E7%BB%8D/"/>
-    <id>www.lmfe.org/2017/12/10/LXC介绍/</id>
-    <published>2017-12-09T16:00:00.000Z</published>
-    <updated>2019-02-20T08:39:40.752Z</updated>
+    <title>Docker四种网络模式</title>
+    <link href="www.lmfe.org/2017/12/11/Docker%20%E5%9B%9B%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/"/>
+    <id>www.lmfe.org/2017/12/11/Docker 四种网络模式/</id>
+    <published>2017-12-10T16:00:00.000Z</published>
+    <updated>2019-02-20T08:36:38.094Z</updated>
     
     <summary type="html">
     
@@ -372,7 +372,7 @@
       
         
         
-          &lt;h1 id=&quot;一、LXC&quot;&gt;&lt;a href=&quot;#一、LXC&quot; class=&quot;headerlink&quot; title=&quot;一、LXC&quot;&gt;&lt;/a&gt;一、LXC&lt;/h1&gt;&lt;p&gt;&lt;img
+          &lt;h1 id=&quot;一、Docker四种网络模式&quot;&gt;&lt;a href=&quot;#一、Docker四种网络模式&quot; class=&quot;headerlink&quot;
         
       
     
@@ -381,7 +381,7 @@
       <category term="虚拟化" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
     
-      <category term="LXC" scheme="www.lmfe.org/tags/LXC/"/>
+      <category term="docker" scheme="www.lmfe.org/tags/docker/"/>
     
   </entry>
   
@@ -408,6 +408,32 @@
     
     
       <category term="docker" scheme="www.lmfe.org/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LXC介绍</title>
+    <link href="www.lmfe.org/2017/12/10/LXC%E4%BB%8B%E7%BB%8D/"/>
+    <id>www.lmfe.org/2017/12/10/LXC介绍/</id>
+    <published>2017-12-09T16:00:00.000Z</published>
+    <updated>2019-02-20T08:39:40.752Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、LXC&quot;&gt;&lt;a href=&quot;#一、LXC&quot; class=&quot;headerlink&quot; title=&quot;一、LXC&quot;&gt;&lt;/a&gt;一、LXC&lt;/h1&gt;&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="虚拟化" scheme="www.lmfe.org/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
+    
+    
+      <category term="LXC" scheme="www.lmfe.org/tags/LXC/"/>
     
   </entry>
   
@@ -515,33 +541,6 @@
     
     
       <category term="Elasticsearch" scheme="www.lmfe.org/tags/Elasticsearch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git</title>
-    <link href="www.lmfe.org/2017/12/03/git%E5%9F%BA%E7%A1%80/"/>
-    <id>www.lmfe.org/2017/12/03/git基础/</id>
-    <published>2017-12-02T16:00:00.000Z</published>
-    <updated>2019-02-20T08:38:08.612Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Git是一个分布式版本控制软件。用于敏捷高效地处理任何大小项目。&lt;/p&gt;
-&lt;h2 id=&quot;一、Git三种状态&quot;&gt;&lt;a href=&quot;#一、Git三种状态&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Git" scheme="www.lmfe.org/categories/Git/"/>
-    
-    
-      <category term="git" scheme="www.lmfe.org/tags/git/"/>
     
   </entry>
   
