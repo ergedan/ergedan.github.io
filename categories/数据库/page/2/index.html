@@ -330,19 +330,10 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/categories/服务/" title="服务: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F5EEF8;">服务
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/常用服务/" title="常用服务: 32">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">常用服务
+                            style="background-color: #F5EEF8;">常用服务
                         <span class="tag-length">32</span>
                     </span>
                 </a>
@@ -351,8 +342,17 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 <a href="/categories/命令/" title="命令: 8">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">命令
+                            style="background-color: #D5F5E3;">命令
                         <span class="tag-length">8</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/服务/" title="服务: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">服务
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -393,19 +393,19 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/categories/存储/" title="存储: 2">
+                <a href="/categories/Git/" title="Git: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #A3E4D7;">存储
+                            style="background-color: #A3E4D7;">Git
                         <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Git/" title="Git: 2">
+                <a href="/categories/存储/" title="存储: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">Git
+                            style="background-color: #85C1E9;">存储
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -645,21 +645,21 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2017/11/28/MySQL用户管理/">
+                    <a href="/2017/11/28/MySQL索引/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="MySQL用户管理">
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="MySQL索引">
                             
-                            <span class="card-title">MySQL用户管理</span>
+                            <span class="card-title">MySQL索引</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary">
                             
-                                用户管理1、新建普通用户（1）使用CREATE USER语句创建新用户
-使用格式：
-CREATE USER  &#39;user&#39;@
+                                mysql索引提取索引的创建在的表上字段中的数据，构建出一个独特的数据结构。
+索引的作用加速查询操作；副作用：降低些操作性能
+表中数据子集：
                             
                         </div>
                         <div class="publish-info">
@@ -741,21 +741,23 @@ CREATE USER  &#39;user&#39;@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2017/11/28/MySQL引擎/">
+                    <a href="/2017/11/28/MySQL日志/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="MySQL引擎">
+                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="MySQL日志">
                             
-                            <span class="card-title">MySQL引擎</span>
+                            <span class="card-title">MySQL日志</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary">
                             
-                                ACID测试
-A：AUTOMICITY ，原子性；整个事物中的所有操作要么全部成功执行，要么全部失败后回滚
-C：CONSISTENY,一致性
+                                ##mysql日志
+mysql日志分类
+查询日志：general_log
+慢查询日志：log_slow_queries
+错误日志：log_e
                             
                         </div>
                         <div class="publish-info">
@@ -789,21 +791,21 @@ C：CONSISTENY,一致性
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2017/11/28/MySQL索引/">
+                    <a href="/2017/11/28/MySQL引擎/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="MySQL索引">
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="MySQL引擎">
                             
-                            <span class="card-title">MySQL索引</span>
+                            <span class="card-title">MySQL引擎</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary">
                             
-                                mysql索引提取索引的创建在的表上字段中的数据，构建出一个独特的数据结构。
-索引的作用加速查询操作；副作用：降低些操作性能
-表中数据子集：
+                                ACID测试
+A：AUTOMICITY ，原子性；整个事物中的所有操作要么全部成功执行，要么全部失败后回滚
+C：CONSISTENY,一致性
                             
                         </div>
                         <div class="publish-info">

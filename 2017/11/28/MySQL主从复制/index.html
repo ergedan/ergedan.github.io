@@ -558,24 +558,20 @@ MariaDB [(none)]&gt; SHOW SLAVE STATUS\G;  #查看从服务器状态
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/MySQL日志/">
+                <a href="/2017/11/28/MPM工作模式/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="MySQL日志">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="MPM工作模式">
                         
-                        <span class="card-title">MySQL日志</span>
+                        <span class="card-title">MPM工作模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">##mysql日志
-mysql日志分类
-查询日志：general_log
-慢查询日志：log_slow_queries
-错误日志：log_error，log_warnings
-二进制日志：binlog
-中继日志：relay_log
-事物日志</div>
+                    <div class="summary">MPM（MultiProcess Modules ）工作模式
+prefork
+
+多进程I/O模型，每个进程响应一个请求，默认模型一个主进程生成N个子进程，创建套接字，每个子进程响应一个请求；而主进程不响应请求，只负责管理接受请求。系统初始化</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -584,8 +580,8 @@ mysql日志分类
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/数据库/" class="post-category" target="_blank">
-                                    数据库
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
                             
@@ -595,8 +591,8 @@ mysql日志分类
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/mysql/" target="_blank">
-                        <span class="chip bg-color">mysql</span>
+                    <a href="/tags/WEB/" target="_blank">
+                        <span class="chip bg-color">WEB</span>
                     </a>
                     
                 </div>
@@ -610,21 +606,22 @@ mysql日志分类
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/MySQL工作方式/">
+                <a href="/2017/11/28/MySQL双主模式/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MySQL工作方式">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MySQL双主模式">
                         
-                        <span class="card-title">MySQL工作方式</span>
+                        <span class="card-title">MySQL双主模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-##1、mysql读取配置文件次序
-###my_print_defaultsdisplay options from option files
-使用方法：
-my_print_defaults [options] option_group </div>
+                    <div class="summary">双主模式互为主从：两个节点各自都要开启binlog和relay log
+（1）数据不一致
+（2）自动增长ID 
+    定义一个节点使用奇数ID
+        auto_increment_offset=1
+        auto_in</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28

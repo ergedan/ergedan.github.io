@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="www.lmfe.org/"/>
-  <updated>2019-03-12T09:19:29.766Z</updated>
+  <updated>2019-03-19T09:30:42.821Z</updated>
   <id>www.lmfe.org/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="www.lmfe.org/2019/03/12/Dokuwiki/"/>
     <id>www.lmfe.org/2019/03/12/Dokuwiki/</id>
     <published>2019-03-11T16:00:00.000Z</published>
-    <updated>2019-03-12T09:19:29.766Z</updated>
+    <updated>2019-03-19T09:30:42.821Z</updated>
     
     <summary type="html">
     
@@ -47,7 +47,7 @@
     <link href="www.lmfe.org/2019/03/11/rsyslog/"/>
     <id>www.lmfe.org/2019/03/11/rsyslog/</id>
     <published>2019-03-10T16:00:00.000Z</published>
-    <updated>2019-03-12T03:38:08.838Z</updated>
+    <updated>2019-03-19T09:29:52.442Z</updated>
     
     <summary type="html">
     
@@ -176,32 +176,6 @@
   </entry>
   
   <entry>
-    <title>MogileFS</title>
-    <link href="www.lmfe.org/2017/12/16/MogileFS/"/>
-    <id>www.lmfe.org/2017/12/16/MogileFS/</id>
-    <published>2017-12-15T16:00:00.000Z</published>
-    <updated>2019-02-20T08:40:45.877Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;一、分布式文件系统&quot;&gt;&lt;a href=&quot;#一、分布式文件系统&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="存储" scheme="www.lmfe.org/categories/%E5%AD%98%E5%82%A8/"/>
-    
-    
-      <category term="mogilefs" scheme="www.lmfe.org/tags/mogilefs/"/>
-    
-  </entry>
-  
-  <entry>
     <title>FastDFS</title>
     <link href="www.lmfe.org/2017/12/16/FastDFS/"/>
     <id>www.lmfe.org/2017/12/16/FastDFS/</id>
@@ -224,6 +198,32 @@
     
     
       <category term="fastdfs" scheme="www.lmfe.org/tags/fastdfs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MogileFS</title>
+    <link href="www.lmfe.org/2017/12/16/MogileFS/"/>
+    <id>www.lmfe.org/2017/12/16/MogileFS/</id>
+    <published>2017-12-15T16:00:00.000Z</published>
+    <updated>2019-02-20T08:40:45.877Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、分布式文件系统&quot;&gt;&lt;a href=&quot;#一、分布式文件系统&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="存储" scheme="www.lmfe.org/categories/%E5%AD%98%E5%82%A8/"/>
+    
+    
+      <category term="mogilefs" scheme="www.lmfe.org/tags/mogilefs/"/>
     
   </entry>
   

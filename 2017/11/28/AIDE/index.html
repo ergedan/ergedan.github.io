@@ -658,20 +658,22 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/11/28/Nginx模块/">
+                <a href="/2017/11/28/MySQL双主模式/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Nginx模块">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MySQL双主模式">
                         
-                        <span class="card-title">Nginx模块</span>
+                        <span class="card-title">MySQL双主模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">一、ngx_http_fastcgi_module转发请求到FastCGI服务器，不支持php模块方式
-（1）fastcgi_pass address
-address 为后端的fastcgi server的地址可用
-Syntax:    f</div>
+                    <div class="summary">双主模式互为主从：两个节点各自都要开启binlog和relay log
+（1）数据不一致
+（2）自动增长ID 
+    定义一个节点使用奇数ID
+        auto_increment_offset=1
+        auto_in</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -680,8 +682,8 @@ Syntax:    f</div>
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/常用服务/" class="post-category" target="_blank">
-                                    常用服务
+                            <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
                                 </a>
                             
                             
@@ -691,8 +693,8 @@ Syntax:    f</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/nginx/" target="_blank">
-                        <span class="chip bg-color">nginx</span>
+                    <a href="/tags/mysql/" target="_blank">
+                        <span class="chip bg-color">mysql</span>
                     </a>
                     
                 </div>
@@ -706,17 +708,18 @@ Syntax:    f</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/PAM/">
+                <a href="/2017/11/28/MySQL半同步复制/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="PAM">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="MySQL半同步复制">
                         
-                        <span class="card-title">PAM</span>
+                        <span class="card-title">MySQL半同步复制</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">PAM认证1、概念   PAM （Pluggable Authentication Modules）可插入认证模块是一套共享库,使本地系统管理员可以随意选择程序的认证方式.。提供了对所有服务进行认证的中央机制，适用于login，远程登录（t</div>
+                    <div class="summary">mysql半同步复制-
+半同步复制是基于异步复制基础之上进行的。从Slave节点中选取一个节点进行半同步复制，当master节点提交一个事物将受到阻塞，直到得知一个已开启半同步复制功能的Slave同步完成之后返回ack包，master才会向</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -725,8 +728,8 @@ Syntax:    f</div>
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/安全/" class="post-category" target="_blank">
-                                    安全
+                            <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
                                 </a>
                             
                             
@@ -736,8 +739,8 @@ Syntax:    f</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PAM/" target="_blank">
-                        <span class="chip bg-color">PAM</span>
+                    <a href="/tags/mysql/" target="_blank">
+                        <span class="chip bg-color">mysql</span>
                     </a>
                     
                 </div>
