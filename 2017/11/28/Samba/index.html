@@ -983,20 +983,23 @@ multiuser：用于指定使用多用户挂载
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/Tomcat基于Memcached缓存session共享/">
+                <a href="/2017/11/28/Tomcat会话保持/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Tomcat基于Redis缓存session共享">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Tomcat会话保持">
                         
-                        <span class="card-title">Tomcat基于Redis缓存session共享</span>
+                        <span class="card-title">Tomcat会话保持</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">基于Memcached缓存session共享使用memcached服务存取session信息，应用服务器接受心情求将session信息保存于memcached中。
-缺点
-Memcached支持的数据结构比较单一
-Memcached内存必须足</div>
+                    <div class="summary">会话保持保证同一个用户相关的访问请求被分配到同一台服务器上。
+1、会话保持的类型（1）session sticky
+与调度器有关
+不同调度器实现方式nginx：ip_hash
+haproxy：source
+lvs：sh
+（2）session</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
@@ -1041,7 +1044,7 @@ Memcached内存必须足</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">181.1k</span>
+                <span class="white-color">181.9k</span>
             
 
             

@@ -4,11 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="网站访问量计算方式, Joah">
-    <meta name="description" content="网站访问量计算方式
-IP(独立IP)：即Internet Protocol,指独立IP数。一天内来自相同客户机IP地址只计算一次，记录远程客户机IP地址的计算机访问网站的次数，是衡量网站流量的重要指标。
-
-PV(访问量)： 即Page Vi">
+    <meta name="keywords" content="SSH进阶, Joah">
+    <meta name="description" content="疑惑最近在研究Jenkins，想到一个问题，如果我在同一台linux主机上管理多个项目，而且项目存放在github上的地址又不一样，以不同的用户去访问，如何去访问呢？
+1、单个账号去访问~]# ssh-keygen -C &amp;#39;admi">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +14,7 @@ PV(访问量)： 即Page Vi">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>网站访问量计算方式 | Joah</title>
+    <title>SSH进阶 | Joah</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -286,13 +284,13 @@ PV(访问量)： 即Page Vi">
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        网站访问量计算方式
+                        SSH进阶
                     </div>
                 </div>
             </div>
@@ -314,8 +312,8 @@ PV(访问量)： 即Page Vi">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/访问量计算/" target="_blank">
-                                <span class="chip bg-color">访问量计算</span>
+                            <a href="/tags/ssh/" target="_blank">
+                                <span class="chip bg-color">ssh</span>
                             </a>
                         
                     </div>
@@ -338,21 +336,21 @@ PV(访问量)： 即Page Vi">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2017-11-28
+                    2019-03-20
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        346
+                        776
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        4 分
                     </div>
                     
                 
@@ -368,18 +366,125 @@ PV(访问量)： 即Page Vi">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="网站访问量计算方式"><a href="#网站访问量计算方式" class="headerlink" title="网站访问量计算方式"></a>网站访问量计算方式</h2><ul>
-<li><p>IP(独立IP)：即Internet Protocol,指独立IP数。一天内来自相同客户机IP地址只计算一次，记录远程客户机IP地址的计算机访问网站的次数，是衡量网站流量的重要指标。</p>
-</li>
-<li><p>PV(访问量)： 即Page View, 页面浏览量或点击量，用户每次刷新即被计算一次，PV反映的是浏览某网站的页面数，PV与来访者的数量成正比，PV并不是页面的来访者数量，而是网站被访问的页面数量。</p>
-</li>
-<li><p>UV(独立访客)：即Unique Visitor,访问网站的一台电脑为一个访客。一天内相同的客户端只被计算一次。可以理解成访问某网站的电脑的数量。网站判断来访电脑的身份是通过来访电脑的cookies实现的。如果更换了IP后但不清除cookies，再访问相同网站，该网站的统计中UV数是不变的</p>
-</li>
-</ul>
-<p><a href="http://www.alexa.cn/rank/" target="_blank" rel="noopener">http://www.alexa.cn/rank/</a>可以查看全球网站的统计量</p>
-<p><strong>示例：</strong></p>
-<p>小明在家用ADSL拨号上网，早上8点访问了www.baidu.com下的2个页面，下午2点又拨号访问了www.baidu.com3个页面。那么，对于www.baidu.com来讲，今天的PV、UV、VV、IP各项指标该如何计算呢 ？</p>
-<pre><code>IP 2        PV  5       UV  1
+                <h2 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑"></a>疑惑</h2><pre><code>最近在研究Jenkins，想到一个问题，如果我在同一台linux主机上管理多个项目，而且项目存放在github上的地址又不一样，以不同的用户去访问，如何去访问呢？
+</code></pre><h3 id="1、单个账号去访问"><a href="#1、单个账号去访问" class="headerlink" title="1、单个账号去访问"></a>1、单个账号去访问</h3><p><code>~]# ssh-keygen -C &#39;admin@qq.com&#39;</code></p>
+<pre><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): 
+Created directory &#39;/root/.ssh&#39;.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:R5Bn/O/0oHszGJkwBTV31xdsWjeYuzCLXo+qNroBEms admin@qq.com
+The key&#39;s randomart image is:
++---[RSA 2048]----+
+|        .o.oo =.=|
+|        ..+ .= *=|
+| .       o.o  = +|
+|  o      .oo.o   |
+| E .    S oo++.  |
+|. . .    o o+.+  |
+|     .  . . o* o |
+|      .o . .o.= .|
+|     o+.o.. .o o |
++----[SHA256]-----+
+</code></pre><p><em>或者/home/.ssh目录下生成如下文件</em></p>
+<p><code>.ssh]# ls</code></p>
+<pre><code>id_rsa (私钥) id_rsa.pub（公钥）
+</code></pre><blockquote>
+<p>设置全局用户和邮箱</p>
+</blockquote>
+<p><code>git config --global user.name &#39;test&#39;</code></p>
+<p><code>git config --global user.email &#39;admin@qq.com&#39;</code></p>
+<blockquote>
+<p>查看刚刚配置的内容</p>
+</blockquote>
+<p><code>~]# cat .gitconfig</code></p>
+<pre><code>[user]
+    email = admin@qq.com
+    name = test
+</code></pre><h3 id="2、多个账户配置"><a href="#2、多个账户配置" class="headerlink" title="2、多个账户配置"></a>2、多个账户配置</h3><pre><code>在实际过程中，不同项目会有不同的账户去登录github等git服务器上。我们如何配置多个Git账号呢？
+</code></pre><p><code>~]# ssh-keygen</code></p>
+<pre><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): /root/.ssh/id_rsa_test        #如果有多个SSH用户，需要指定名称。
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/id_rsa_test.
+Your public key has been saved in /root/.ssh/id_rsa_test.pub.
+The key fingerprint is:
+SHA256:0fNPZ/FJsD3fbUKa1MqU/itvst7vueMqaOTaf+79w6U root@master
+The key&#39;s randomart image is:
++---[RSA 2048]----+
+|             .   |
+|         .   o+  |
+|        . o +.o= |
+|         . B =. O|
+|        S   B o.O|
+|         .   + =.|
+|        o .   +..|
+|        .+ .ooE=.|
+|       .o..oBX*BO|
++----[SHA256]-----+
+</code></pre><blockquote>
+<p>创建config文件</p>
+</blockquote>
+<p><code>vim /root/.ssh/config</code></p>
+<pre><code>Host github
+        HostName github.com
+        User git
+        PreferredAuthentications publickey
+        IdentityFile /root/.ssh/id_rsa_test
+</code></pre><p>#</p>
+<pre><code>Host     相当于定义别名
+HostName     服务器地址
+Port    指定端口号
+User    登录的用户名
+PreferredAuthentications     选择认证方式
+IdentityFile    私钥文件的路径
+</code></pre><blockquote>
+<p>连接</p>
+</blockquote>
+<p><em>我们可以直接使用 <code>ssh github</code>进行连接</em></p>
+<h3 id="3、代理登录"><a href="#3、代理登录" class="headerlink" title="3、代理登录"></a>3、代理登录</h3><pre><code>有时候我们无法直接连接到某台服务器，而需要一台中转服务器进行中转。
+</code></pre><h4 id="1-netcat实现"><a href="#1-netcat实现" class="headerlink" title="(1)netcat实现"></a>(1)netcat实现</h4><pre><code>使用nc命令实现。假设本地SSH代理服务端口为3000
+</code></pre><blockquote>
+<p>示例</p>
+</blockquote>
+<pre><code>Host gateway
+    HostName 127.0.0.1
+    Port 3000
+    User root
+
+Host db
+    HostName db.internal.example.com
+    User root
+    ProxyCommand nc -x gateway  %h %p
+</code></pre><p>#<br>    %h 表示目标地址<br>    %p 表示目标端口</p>
+<p><code>ProxyCommand ssh gateway nc %h %p</code></p>
+<p><em>通过proxyCommand，可以在开启SSH之前执行一个命令打开代理隧道，<code>nc %h %p</code> 含义为在跳板机上使用nc开启了远程隧道。</em></p>
+<h4 id="（2）使用SSH自身代理功能"><a href="#（2）使用SSH自身代理功能" class="headerlink" title="（2）使用SSH自身代理功能"></a>（2）使用SSH自身代理功能</h4><blockquote>
+<p>示例</p>
+</blockquote>
+<pre><code>Host B
+    HostName %h
+    User dsl
+    Port 1046
+    IdentityFile ~/.ssh/id_dsa
+
+Host C
+    HostName %h
+    User dsl 
+    Port 1046
+    IdentityFile ~/.ssh/id_rsa
+    ProxyCommand ssh -W %h:%p B
+</code></pre><p><em>通过ProxyCommand命令先与gateway建立ssh连接，并把这个中间连接当做一个代理使用。</em></p>
+<h3 id="问题集合"><a href="#问题集合" class="headerlink" title="问题集合"></a>问题集合</h3><p>如果执行<code>ssh-add</code> 命令提示如下错误：</p>
+<pre><code>Could not open a connection to your authentication agent.
+</code></pre><blockquote>
+<p>解决方式</p>
+</blockquote>
+<pre><code>那么请执行eval $(ssh-agent)命令后再重试，如果还不行，请再执行ssh-agent bash命令后再执行eval $(ssh-agent)后执行添加命令。另外上述测试配置的命令不能执行时也可以在ssh-agent bash执行完后再测试
 </code></pre>
             </div>
             <hr/>
@@ -520,7 +625,7 @@ PV(访问量)： 即Page Vi">
                     </span>
                     <a href="www.lmfe.org" class="b-link-green">Joah</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2017/11/28/网站访问量计算/" class="b-link-green">网站访问量计算方式</a>
+                    <a href="/2019/03/20/SSH进阶/" class="b-link-green">SSH进阶</a>
                 </p>
             </div>
         </div>
@@ -541,54 +646,45 @@ PV(访问量)： 即Page Vi">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2017/11/28/ansible模块/">
+                <a href="/2019/03/20/SSH进阶/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="ansible常用模块">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="SSH进阶">
                         
-                        <span class="card-title">ansible常用模块</span>
+                        <span class="card-title">SSH进阶</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">常用模块介绍ansible中执行命令时，必须考虑其幂等性；即返回的结果不是错误的。如果一个文件存在则不再创建等等情况。
-（1）command模块：在远程节点执行命令，此模块为默认模块
-
-
-
-action
-说明
-
-
-
-
-chdir
-执行命令切</div>
+                    <div class="summary">疑惑最近在研究Jenkins，想到一个问题，如果我在同一台linux主机上管理多个项目，而且项目存放在github上的地址又不一样，以不同的用户去访问，如何去访问呢？
+1、单个账号去访问~]# ssh-keygen -C &#39;admi</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/自动化/" class="post-category" target="_blank">
-                                    自动化
+                            <a href="/categories/常用服务/" class="post-category" target="_blank">
+                                    常用服务
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ansible/" target="_blank">
-                        <span class="chip bg-color">ansible</span>
+                    <a href="/tags/ssh/" target="_blank">
+                        <span class="chip bg-color">ssh</span>
                     </a>
                     
                 </div>
@@ -602,28 +698,30 @@ chdir
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/11/28/系统安装/">
+                <a href="/2019/03/12/Dokuwiki/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="系统安装">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="DokuWiKi">
                         
-                        <span class="card-title">系统安装</span>
+                        <span class="card-title">DokuWiKi</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">为什么我们要自动化安装系统呢？管理一些重复性的操作呢，这样可以减轻自己的操作，并且提高了工作效率，假如公司中又有十几台甚至更多的服务器，不可能自己一台一台的安装，这样就需要自动化安装。
-一、光盘内容简介1、CentOS系统的启动流程POST</div>
+                    <div class="summary">DokuWIKIDokuWIKI是一个用途多样的开源WIKI软件，并且不需要数据库。
+一、DokuWIKI配置文件acl.auth.php.dist acl.auth.php的默认发布
+acronyms.conf  用于定义首字母缩写词
+d</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-28
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/自动化/" class="post-category" target="_blank">
-                                    自动化
+                            <a href="/categories/wiki/" class="post-category" target="_blank">
+                                    wiki
                                 </a>
                             
                             
@@ -633,8 +731,8 @@ chdir
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/系统安装/" target="_blank">
-                        <span class="chip bg-color">系统安装</span>
+                    <a href="/tags/wiki/" target="_blank">
+                        <span class="chip bg-color">wiki</span>
                     </a>
                     
                 </div>
